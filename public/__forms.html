@@ -1,0 +1,26 @@
+<!--
+  Static form definition for Netlify build-time form detection.
+  The interactive React form in components/sections/lead-magnet.tsx
+  submits to the same form-name via fetch.
+  Do not remove — Netlify Forms requires this static HTML to register the form.
+-->
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Netlify forms — StartPoint IA</title>
+  </head>
+  <body>
+    <form
+      name="lead-magnet"
+      method="POST"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      hidden
+    >
+      <input type="hidden" name="form-name" value="lead-magnet" />
+      <input type="text" name="bot-field" />
+      <input type="email" name="email" />
+    </form>
+  </body>
+</html>

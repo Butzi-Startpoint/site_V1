@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { fadeUp, stagger, scaleIn, viewport } from '@/lib/animations'
+import { CtaChevronButton } from '@/components/ui/cta-chevron-button'
 
 export function Financing() {
   return (
@@ -83,17 +84,17 @@ export function Financing() {
             </div>
           </div>
 
-          <motion.a
+          <CtaChevronButton
+            as="a"
             href="https://calendly.com/"
             target="_blank"
             rel="noopener noreferrer"
-            whileHover={{ scale: 1.03, boxShadow: '0 8px 24px rgba(255,255,171,0.25)' }}
-            whileTap={{ scale: 0.97 }}
-            className="relative z-10 flex-shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#FFFFAB] text-[#1E172D] font-bold text-sm cursor-pointer shimmer-hover"
-            style={{ fontFamily: 'var(--font-display)' }}
+            tone="yellow"
+            size="md"
+            className="relative z-10 flex-shrink-0"
           >
-            Réserver un appel gratuit →
-          </motion.a>
+            Réserver un appel gratuit
+          </CtaChevronButton>
         </motion.div>
       </div>
     </section>

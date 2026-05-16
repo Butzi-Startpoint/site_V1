@@ -7,6 +7,21 @@
   --sp-purple:   #A68AFF;
   --sp-lavender: #D8D0FF;
   --sp-dark:     #1E172D;
+
+  /* shadcn/ui tokens mapped to StartPoint IA palette */
+  --background:        #ffffff;
+  --foreground:        #1E172D;
+  --card:              #ffffff;
+  --card-foreground:   #1E172D;
+  --muted:             #F6F1EB;
+  --muted-foreground:  rgba(30,23,45,0.55);
+  --border:            rgba(30,23,45,0.1);
+  --input:             rgba(30,23,45,0.1);
+  --primary:           #1E172D;
+  --primary-foreground:#F6F1EB;
+  --accent:            #A68AFF;
+  --accent-foreground: #1E172D;
+  --ring:              #A68AFF;
 }
 
 @theme inline {

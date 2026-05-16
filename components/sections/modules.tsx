@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { fadeUp, stagger, viewport } from '@/lib/animations'
 import type { Variants } from 'framer-motion'
@@ -10,49 +11,90 @@ const cardSpring: Variants = {
     transition: { type: 'spring', stiffness: 220, damping: 24 } },
 }
 
-const modules = [
-  { num: 'Module 1', title: 'Poser les fondations',
-    desc: "Panorama des outils IA, sécurité, prompting avancé. Emails : reformuler, nuancer, adapter le ton. Présenter visuellement avec Claude.",
-    livrable: 'Vos premiers prompts maîtrisés + un email pro réécrit' },
-  { num: 'Module 2', title: 'Gagnez du temps de suite',
-    desc: "Des résultats immédiats sur vos tâches chronophages. Organisation optimisée, documents légaux en minutes, recherche et veille accélérées, notes automatiques.",
-    livrable: "1 document légal prêt à l'emploi + semaine type optimisée" },
-  { num: 'Module 3', title: 'Marketing augmenté',
-    desc: "Clarifiez votre message, créez du contenu qui parle à votre cible. Persona, posts et visuels IA, votre site fait avec l'IA, 1 contenu = 5 formats.",
-    livrable: '1 post publié + calendrier éditorial + site en ligne' },
-  { num: 'Module 4', title: 'Vente augmentée',
-    desc: "Construisez une offre solide, trouvez les bonnes personnes, closez avec confiance. Présentations commerciales percutantes, fidélisation et upsell.",
-    livrable: '1 offre structurée + proposition commerciale chiffrée' },
-  { num: 'Module 5', title: 'Débloquez votre quotidien',
-    desc: "L'IA devient un outil sur mesure pour votre métier. Créez vos propres projets, Claude Skills, vibe coding, visuels et design sur mesure.",
-    livrable: 'Votre création codée + des templates Claude Skills' },
-  { num: 'Module 6', title: "L'IA comme partenaire stratégique",
-    desc: "Prenez du recul sur votre business. Clarifiez vos idées, explorez des pistes, prenez de meilleures décisions. Stratégie CA augmentée.",
-    livrable: 'Votre stratégie business augmentée + dashboard livrable' },
+const phases = [
+  {
+    num: 'Phase 1',
+    label: 'Semaines 0–2',
+    title: 'Simplifier',
+    tagline: 'Récupérez du temps dès la semaine 1',
+    bullets: [
+      'Vos outils IA configurés et prêts à l\'emploi',
+      'Des prompts testés, adaptés à votre quotidien',
+      'Vos emails et documents rédigés en quelques clics',
+      'Votre veille métier qui tourne sans vous',
+      'Vos premières heures récupérées chaque semaine',
+    ],
+    result: "Vos premières heures récupérées dès la semaine 1.",
+    color: '#A68AFF',
+    dotColor: '#A68AFF',
+    bg: 'rgba(166,138,255,0.08)',
+    border: '1px solid rgba(166,138,255,0.25)',
+    iconBg: 'rgba(166,138,255,0.12)',
+    icon: (
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#A68AFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M18.37 2.63 14 7l-1.59-1.59a2 2 0 0 0-2.82 0L8 7l9 9 1.59-1.58a2 2 0 0 0 0-2.82L17 10l4.37-4.37a2.12 2.12 0 1 0-3-3Z"/>
+        <path d="M9 8c-2 3-4 3.5-7 4l8 10c2-1 6-5 6-7"/>
+        <path d="M14.5 17.5 4.5 15"/>
+      </svg>
+    ),
+  },
+  {
+    num: 'Phase 2',
+    label: 'Semaines 3–4',
+    title: 'Scaler',
+    tagline: 'Produisez plus sans travailler plus',
+    bullets: [
+      'Un contenu créé une fois, décliné partout',
+      'Votre marketing qui produit pendant que vous bossez',
+      'Une offre claire, chiffrée, prête à envoyer',
+      'Des prospects identifiés et contactés par l\'IA',
+      'Vos textes et prises de parole calibrés en minutes',
+    ],
+    result: "Un système de contenu et une offre prêts à vendre.",
+    color: '#1E172D',
+    dotColor: '#1E172D',
+    bg: 'rgba(255,255,171,0.25)',
+    border: '1px solid rgba(255,255,171,0.7)',
+    iconBg: 'rgba(255,255,171,0.5)',
+    icon: (
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1E172D" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
+        <polyline points="16 7 22 7 22 13"/>
+      </svg>
+    ),
+  },
+  {
+    num: 'Phase 3',
+    label: 'Semaines 5–6',
+    title: 'Systématiser',
+    tagline: 'Construisez le système qui tourne sans vous',
+    bullets: [
+      'Vos assistants IA sur mesure',
+      'Vos tâches répétitives tournent en automatique',
+      'Une feuille de route IA alignée sur vos revenus',
+      'Un projet IA déployé dans votre activité',
+      'Votre système complet, documenté, prêt à déléguer',
+    ],
+    result: "Votre système IA personnel, opérationnel et documenté.",
+    color: '#A68AFF',
+    dotColor: '#A68AFF',
+    bg: 'rgba(30,23,45,0.04)',
+    border: '1px solid rgba(30,23,45,0.12)',
+    iconBg: 'rgba(30,23,45,0.08)',
+    icon: (
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#A68AFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/>
+        <path d="M15.54 8.46a5 5 0 0 1 0 7.07M8.46 8.46a5 5 0 0 0 0 7.07"/>
+      </svg>
+    ),
+    dark: true,
+  },
 ]
-
-const Livrable = ({ text, dark = false }: { text: string; dark?: boolean }) => (
-  <motion.div
-    initial={{ opacity: 0, x: -8 }}
-    whileInView={{ opacity: 1, x: 0 }}
-    viewport={viewport}
-    transition={{ duration: 0.4, delay: 0.2 }}
-    className={`flex items-center gap-2.5 text-sm font-semibold px-4 py-2.5 rounded-xl mt-auto ${
-      dark
-        ? 'bg-[#A68AFF]/15 border border-[#A68AFF]/25 text-[#D8D0FF]'
-        : 'bg-[#A68AFF]/8 border border-[#A68AFF]/15 text-[#1E172D]/75'
-    }`}
-    style={{ fontFamily: 'var(--font-display)' }}
-  >
-    <span className="text-base">✨</span>
-    <span>{text}</span>
-  </motion.div>
-)
 
 export function Modules() {
   return (
     <section className="bg-white py-20 md:py-28 relative overflow-hidden" id="modules">
-      {/* Subtle top gradient */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#A68AFF]/30 to-transparent" />
 
       <div className="max-w-[1140px] mx-auto px-6">
@@ -66,132 +108,112 @@ export function Modules() {
         >
           <motion.span
             variants={fadeUp}
-            className="inline-block px-4 py-1.5 rounded-full bg-[#FFFFAB] text-[#1E172D] text-xs font-bold uppercase tracking-widest mb-5"
+            className="inline-block px-4 py-1.5 rounded-full bg-[#FFFFAB] text-[#1E172D] text-xs font-bold uppercase tracking-widest mb-4"
             style={{ fontFamily: 'var(--font-display)' }}
           >
-            Les 7 modules
+            La Méthode 3S
           </motion.span>
+          <motion.p
+            variants={fadeUp}
+            className="text-[#A68AFF] text-sm font-semibold uppercase tracking-wider mb-3"
+            style={{ fontFamily: 'var(--font-display)' }}
+          >
+            de &ldquo;j&apos;ai testé ChatGPT&rdquo; à &ldquo;j&apos;ai un système IA&rdquo;
+          </motion.p>
           <motion.h2
             variants={fadeUp}
-            className="text-4xl md:text-5xl font-extrabold text-[#1E172D] leading-[1.15] tracking-tight mb-4"
+            className="text-4xl md:text-5xl font-extrabold text-[#1E172D] leading-[1.15] tracking-tight mb-5"
             style={{ fontFamily: 'var(--font-display)' }}
           >
-            Semaine par semaine,{' '}
-            <span className="text-[#A68AFF]">vous montez en puissance.</span>
+            3 phases.{' '}
+            <span className="text-[#A68AFF]">6 semaines.</span>
           </motion.h2>
-          <motion.p variants={fadeUp} className="text-[#1E172D]/55 text-lg">
-            Chaque module combine session live, cours en ligne et missions pratiques.
+          <motion.p variants={fadeUp} className="text-[#1E172D]/55 text-lg max-w-[560px] mx-auto">
+            Un chemin clair pour intégrer l&apos;IA dans votre quotidien d&apos;indépendant.
           </motion.p>
         </motion.div>
 
-        {/* Session préparatoire — full width */}
+        {/* 3 Phase cards */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={viewport}
-          variants={fadeUp}
-          className="mb-5"
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } } }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-12"
         >
-          <motion.div
-            whileHover={{ y: -3, boxShadow: '0 12px 36px rgba(255,255,171,0.2)' }}
-            transition={{ type: 'spring', stiffness: 300, damping: 24 }}
-            className="rounded-2xl p-7 md:p-8 cursor-default relative overflow-hidden"
-            style={{
-              background: 'linear-gradient(135deg, rgba(255,255,171,0.15) 0%, rgba(255,255,171,0.08) 100%)',
-              border: '1px solid rgba(255,255,171,0.45)',
-            }}
-          >
-            <span
-              className="text-xs font-bold uppercase tracking-widest text-[#A68AFF] mb-2 block"
-              style={{ fontFamily: 'var(--font-display)' }}
-            >
-              Session préparatoire
-            </span>
-            <h3 className="text-xl font-bold text-[#1E172D] mb-3" style={{ fontFamily: 'var(--font-display)' }}>
-              Préparation &amp; paramétrage
-            </h3>
-            <p className="text-[#1E172D]/60 text-sm leading-relaxed mb-5 max-w-3xl">
-              On se connaît, on paramètre vos outils, on prépare le terrain. Ice breaker, communauté WhatsApp,
-              fonctionnalité audio — vous arrivez en semaine 1 prêt à produire.
-            </p>
-            <Livrable text="Votre outil configuré pour votre métier" />
-          </motion.div>
-        </motion.div>
-
-        {/* Modules 1–6 */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-60px' }}
-          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } } }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5"
-        >
-          {modules.map((m) => (
+          {phases.map((p) => (
             <motion.div
-              key={m.num}
+              key={p.num}
               variants={cardSpring}
               whileHover={{
-                y: -6,
-                boxShadow: '0 16px 48px rgba(30,23,45,0.09)',
+                y: -8,
+                boxShadow: '0 24px 56px rgba(30,23,45,0.1)',
                 transition: { type: 'spring', stiffness: 300, damping: 22 },
               }}
-              className="bg-white border border-[#1E172D]/8 rounded-2xl p-7 flex flex-col cursor-default relative overflow-hidden group"
+              className="rounded-2xl p-7 flex flex-col cursor-default relative overflow-hidden"
+              style={{ background: p.bg, border: p.border }}
             >
-              {/* Hover gradient top-left corner */}
-              <motion.div
-                className="absolute -top-12 -left-12 w-32 h-32 rounded-full pointer-events-none"
-                style={{ background: 'radial-gradient(circle, rgba(166,138,255,0.1) 0%, transparent 70%)' }}
-                initial={{ opacity: 0 }}
-                whileHover={{ opacity: 1 }}
-              />
+              {/* Icon */}
+              <div
+                className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 flex-shrink-0"
+                style={{ background: p.iconBg }}
+              >
+                {p.icon}
+              </div>
 
-              <span
-                className="text-xs font-bold uppercase tracking-widest text-[#A68AFF] mb-2"
+              {/* Phase num + label */}
+              <div className="flex items-baseline gap-2 mb-1">
+                <span
+                  className="text-xs font-bold uppercase tracking-widest"
+                  style={{ color: p.color, fontFamily: 'var(--font-display)' }}
+                >
+                  {p.num}
+                </span>
+                <span className="text-xs text-[#1E172D]/40 font-medium">{p.label}</span>
+              </div>
+
+              <h3
+                className="text-2xl font-extrabold text-[#1E172D] mb-1 tracking-tight"
                 style={{ fontFamily: 'var(--font-display)' }}
               >
-                {m.num}
-              </span>
-              <h3 className="text-xl font-bold text-[#1E172D] mb-3" style={{ fontFamily: 'var(--font-display)' }}>
-                {m.title}
+                {p.title}
               </h3>
-              <p className="text-[#1E172D]/58 text-sm leading-relaxed mb-5 flex-1">{m.desc}</p>
-              <Livrable text={m.livrable} />
+
+              <p className="text-[#1E172D]/45 text-xs font-medium mb-4 leading-snug">{p.tagline}</p>
+
+              {/* Bullet list */}
+              <ul className="flex flex-col gap-2 mb-5 flex-1">
+                {p.bullets.map((b) => (
+                  <li key={b} className="flex items-start gap-2.5">
+                    <span
+                      className="flex-shrink-0 w-1.5 h-1.5 rounded-full mt-[5px]"
+                      style={{ background: p.dotColor, opacity: 0.7 }}
+                    />
+                    <span className="text-[#1E172D]/70 text-sm leading-snug">{b}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* Résultat */}
+              <div
+                className="flex items-start gap-2.5 text-sm font-semibold px-4 py-3 rounded-xl"
+                style={{
+                  background: p.dark ? 'rgba(166,138,255,0.1)' : 'rgba(30,23,45,0.05)',
+                  border: p.dark ? '1px solid rgba(166,138,255,0.2)' : '1px solid rgba(30,23,45,0.08)',
+                  fontFamily: 'var(--font-display)',
+                  color: p.dark ? '#A68AFF' : '#1E172D',
+                }}
+              >
+                <span className="mt-0.5 flex-shrink-0">→</span>
+                <span className="text-[#1E172D]/70 font-medium text-xs leading-relaxed">
+                  <span className="text-[#1E172D] font-bold">Résultat&nbsp;:</span> {p.result}
+                </span>
+              </div>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Module 7 — dark full width */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewport}
-          variants={fadeUp}
-          className="mb-12"
-        >
-          <motion.div
-            whileHover={{ y: -4, boxShadow: '0 20px 60px rgba(30,23,45,0.3)' }}
-            transition={{ type: 'spring', stiffness: 300, damping: 24 }}
-            className="bg-[#1E172D] rounded-2xl p-7 md:p-8 cursor-default relative overflow-hidden"
-          >
-            {/* Glow orb */}
-            <div className="absolute top-0 right-0 w-64 h-64 pointer-events-none"
-              style={{ background: 'radial-gradient(circle at 80% 20%, rgba(166,138,255,0.15) 0%, transparent 60%)' }} />
-
-            <span className="text-xs font-bold uppercase tracking-widest text-[#A68AFF] mb-2 block" style={{ fontFamily: 'var(--font-display)' }}>
-              Module 7
-            </span>
-            <h3 className="text-xl font-bold text-[#F6F1EB] mb-3" style={{ fontFamily: 'var(--font-display)' }}>
-              Votre système IA personnel
-            </h3>
-            <p className="text-[#F6F1EB]/55 text-sm leading-relaxed mb-5 max-w-3xl">
-              Agents, connecteurs Claude, plan d&apos;action — construisez le système qui tourne pour vous.
-              Et la question qui compte : qu&apos;allez-vous changer dès demain ?
-            </p>
-            <Livrable text="Votre plan d'action IA complet + système opérationnel" dark />
-          </motion.div>
-        </motion.div>
-
-        {/* CTA */}
+        {/* Lien vers le programme détaillé */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -199,15 +221,16 @@ export function Modules() {
           variants={fadeUp}
           className="text-center"
         >
-          <motion.a
-            href="#pricing"
-            whileHover={{ scale: 1.04, boxShadow: '0 12px 32px rgba(255,255,171,0.3)' }}
-            whileTap={{ scale: 0.97 }}
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#FFFFAB] text-[#1E172D] font-bold text-base cursor-pointer shimmer-hover"
+          <Link
+            href="/programme"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[#1E172D]/15 bg-white text-[#1E172D] font-semibold text-sm hover:border-[#A68AFF] hover:text-[#A68AFF] transition-colors cursor-pointer"
             style={{ fontFamily: 'var(--font-display)' }}
           >
-            Rejoindre la prochaine cohorte →
-          </motion.a>
+            Voir le programme complet et les modalités
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </Link>
         </motion.div>
       </div>
     </section>

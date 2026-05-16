@@ -3,6 +3,7 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { fadeUp, stagger, viewport } from '@/lib/animations'
+import { CtaChevronButton } from '@/components/ui/cta-chevron-button'
 
 export function CtaFinal() {
   const ref = useRef<HTMLElement>(null)
@@ -50,7 +51,7 @@ export function CtaFinal() {
               animate={{ scale: [1, 1.6, 1], opacity: [1, 0.5, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
             />
-            Prochaine cohorte — Places limitées
+            Prochaine cohorte : 9 juin — 4 places restantes
           </motion.span>
 
           <motion.h2
@@ -58,19 +59,16 @@ export function CtaFinal() {
             className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#F6F1EB] leading-[1.12] tracking-tight mb-5"
             style={{ fontFamily: 'var(--font-display)' }}
           >
-            Prêt à devenir un{' '}
+            Prochaine cohorte : 9 juin.{' '}
             <br />
-            <span className="text-[#A68AFF]">Entrepreneur Augmenté</span>{' '}
-            <span className="text-[#F6F1EB]">?</span>
+            <span className="text-[#A68AFF]">4 places restantes.</span>
           </motion.h2>
 
           <motion.p
             variants={fadeUp}
             className="text-[#F6F1EB]/50 text-lg leading-relaxed mb-10"
           >
-            Les places sont limitées pour garantir la qualité de l&apos;accompagnement.
-            <br className="hidden sm:block" />
-            Rejoignez la prochaine cohorte.
+            Les places sont limitées à 8 pour garantir la qualité de l&apos;accompagnement.
           </motion.p>
 
           <motion.div
@@ -90,17 +88,16 @@ export function CtaFinal() {
               </svg>
             </motion.a>
 
-            <motion.a
+            <CtaChevronButton
+              as="a"
               href="https://calendly.com/"
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.02, borderColor: 'rgba(246,241,235,0.5)' }}
-              whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full border-2 border-[#F6F1EB]/22 text-[#F6F1EB] font-semibold text-base cursor-pointer transition-colors hover:bg-[#F6F1EB]/5"
-              style={{ fontFamily: 'var(--font-display)' }}
+              tone="cream-outline"
+              size="lg"
             >
-              Réserver un appel gratuit →
-            </motion.a>
+              Réserver un appel gratuit
+            </CtaChevronButton>
           </motion.div>
 
           {/* Trust indicators */}

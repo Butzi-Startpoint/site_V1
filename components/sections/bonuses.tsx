@@ -1,0 +1,166 @@
+'use client'
+
+import { motion } from 'framer-motion'
+import { fadeUp, stagger, viewport } from '@/lib/animations'
+
+const bonuses = [
+  {
+    num: 'Bonus 1',
+    title: 'Kit Accélérateur "Premiers résultats en 48h"',
+    desc: '5 workflows IA prêts à l\'emploi : emails pro, posts LinkedIn, devis, comptes-rendus, veille métier. Copiez-les, commencez à gagner du temps avant même la première session.',
+    value: '297 €',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1E172D" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+      </svg>
+    ),
+  },
+  {
+    num: 'Bonus 2',
+    title: 'Bibliothèque de Cas d\'Usage IA pour Indépendants',
+    desc: '+40 cas d\'usage classés par métier (consultant, coach, formateur, freelance) avec le prompt exact et le résultat attendu.',
+    value: '197 €',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1E172D" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+      </svg>
+    ),
+  },
+  {
+    num: 'Bonus 3',
+    title: 'Garantie Zéro Session Perdue',
+    desc: 'Replays sous 24h + résumé écrit avec les actions clés de chaque session. Vous manquez une session, vous ne perdez rien.',
+    value: '197 €',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1E172D" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <polyline points="9 12 11 14 15 10"/>
+      </svg>
+    ),
+  },
+]
+
+const cardVariant = {
+  hidden: { opacity: 0, y: 24, scale: 0.97 },
+  visible: { opacity: 1, y: 0, scale: 1, transition: { type: 'spring' as const, stiffness: 220, damping: 24 } },
+}
+
+export function Bonuses() {
+  return (
+    <section className="bg-[#F6F1EB] py-20 md:py-28 relative overflow-hidden">
+      <div className="max-w-[800px] mx-auto px-6">
+        {/* Header */}
+        <motion.div
+          initial="hidden" whileInView="visible" viewport={viewport} variants={stagger}
+          className="text-center mb-10"
+        >
+          <motion.span
+            variants={fadeUp}
+            className="inline-block px-4 py-1.5 rounded-full bg-[#FFFFAB] text-[#1E172D] text-xs font-bold uppercase tracking-widest mb-5"
+            style={{ fontFamily: 'var(--font-display)' }}
+          >
+            Bonus
+          </motion.span>
+          <motion.h2
+            variants={fadeUp}
+            className="text-3xl md:text-4xl font-extrabold text-[#1E172D] leading-[1.2] tracking-tight"
+            style={{ fontFamily: 'var(--font-display)' }}
+          >
+            Bonus inclus dans{' '}
+            <span className="text-[#A68AFF]">toutes les offres</span>
+          </motion.h2>
+        </motion.div>
+
+        {/* Bonus cards */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-60px' }}
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } } }}
+          className="space-y-4 mb-8"
+        >
+          {bonuses.map((b) => (
+            <motion.div
+              key={b.num}
+              variants={cardVariant}
+              whileHover={{
+                y: -3,
+                transition: { type: 'spring', stiffness: 300, damping: 22 },
+              }}
+              className="flex gap-5 rounded-2xl p-6 cursor-default relative overflow-hidden bg-white"
+              style={{
+                border: '1px solid rgba(30,23,45,0.07)',
+              }}
+            >
+              {/* Icon in yellow */}
+              <div
+                className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5"
+                style={{ background: '#FFFFAB' }}
+              >
+                {b.icon}
+              </div>
+
+              <div className="flex-1 min-w-0">
+                <div className="flex items-start justify-between gap-4 mb-1.5">
+                  <div>
+                    <span
+                      className="text-[10px] font-bold uppercase tracking-widest text-[#A68AFF] block mb-0.5"
+                      style={{ fontFamily: 'var(--font-display)' }}
+                    >
+                      {b.num}
+                    </span>
+                    <h3
+                      className="text-[#1E172D] font-bold text-base leading-snug"
+                      style={{ fontFamily: 'var(--font-display)' }}
+                    >
+                      {b.title}
+                    </h3>
+                  </div>
+                  <span
+                    className="flex-shrink-0 text-[#A68AFF] font-bold text-sm whitespace-nowrap"
+                    style={{ fontFamily: 'var(--font-display)' }}
+                  >
+                    {b.value}
+                  </span>
+                </div>
+                <p className="text-[#1E172D]/60 text-sm leading-relaxed">{b.desc}</p>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Total bar */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={viewport}
+          transition={{ duration: 0.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          className="flex items-center justify-between rounded-2xl px-6 py-4"
+          style={{
+            background: 'rgba(30,23,45,0.05)',
+            border: '1px solid rgba(30,23,45,0.1)',
+          }}
+        >
+          <div className="flex items-center gap-3">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A68AFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+            <p className="text-[#1E172D]/70 text-sm font-medium">
+              Valeur totale des bonus —{' '}
+              <span className="text-[#A68AFF] font-bold" style={{ fontFamily: 'var(--font-display)' }}>
+                691 €
+              </span>
+            </p>
+          </div>
+          <span
+            className="text-[#1E172D]/40 text-xs font-semibold uppercase tracking-wider"
+            style={{ fontFamily: 'var(--font-display)' }}
+          >
+            Inclus dans toutes les offres
+          </span>
+        </motion.div>
+      </div>
+    </section>
+  )
+}

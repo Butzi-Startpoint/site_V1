@@ -6,7 +6,7 @@ import type { Variants } from 'framer-motion'
 
 const forYes = [
   'Vous êtes coach, consultant, formateur ou freelance',
-  'Votre CA est entre 50k€ et 130k€',
+  'Vous vivez de votre activité depuis au moins 2 ans',
   'Vous utilisez des outils numériques au quotidien',
   'Vous avez testé ChatGPT mais sans méthode structurée',
   "Vous voulez gagner du temps et développer votre activité avec l'IA",
@@ -17,8 +17,8 @@ const forNo = [
   'Vous cherchez une solution magique sans effort',
   'Vous êtes développeur ou profil technique avancé',
   'Vous débutez totalement en entrepreneuriat',
-  'Vous cherchez uniquement à connecter des outils entre eux',
-  'Vous pensez que "l\'IA va faire le travail à votre place"',
+  'Vous voulez juste des prompts à copier-coller sans comprendre la logique derrière',
+  "Vous pensez que l'IA va faire le travail à votre place",
 ]
 
 const listItem: Variants = {
@@ -63,43 +63,35 @@ export function ForWho() {
           </motion.h2>
         </motion.div>
 
-        {/* Two columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+        {/* Two columns — open layout, no boxes */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 mb-12">
+
           {/* YES */}
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={viewport}
             variants={stagger}
-            whileHover={{ boxShadow: '0 16px 48px rgba(30,23,45,0.07)' }}
-            transition={{ duration: 0.2 }}
-            className="bg-white rounded-2xl p-8 border border-[#1E172D]/8 relative overflow-hidden cursor-default"
           >
-            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#FFFFAB] via-[#A68AFF] to-[#D8D0FF] rounded-t-2xl" />
+            <motion.div variants={fadeUp} className="flex items-center gap-3 mb-7">
+              <span className="w-2 h-2 rounded-full bg-[#A68AFF] flex-shrink-0" />
+              <h3
+                className="text-xl font-extrabold text-[#1E172D] tracking-tight"
+                style={{ fontFamily: 'var(--font-display)' }}
+              >
+                C&apos;est pour vous
+              </h3>
+            </motion.div>
 
-            <motion.h3
-              variants={fadeUp}
-              className="flex items-center gap-3 text-xl font-bold text-[#1E172D] mb-7"
-              style={{ fontFamily: 'var(--font-display)' }}
-            >
-              <span className="w-9 h-9 rounded-full bg-[#FFFFAB] flex items-center justify-center text-lg shadow-sm">✅</span>
-              C&apos;est pour vous
-            </motion.h3>
-
-            <motion.ul variants={staggerList} className="flex flex-col gap-3">
+            <motion.ul variants={staggerList} className="flex flex-col gap-4">
               {forYes.map((item) => (
                 <motion.li
                   key={item}
                   variants={listItem}
-                  className="flex items-start gap-3 text-[0.93rem] text-[#1E172D]/78 leading-snug group"
+                  className="flex items-start gap-3.5"
                 >
-                  <motion.span
-                    className="mt-0.5 w-5 h-5 rounded-full bg-[#A68AFF]/15 flex items-center justify-center flex-shrink-0 text-[#A68AFF] text-xs font-bold"
-                    whileHover={{ scale: 1.15, backgroundColor: 'rgba(166,138,255,0.3)' }}
-                  >
-                    →
-                  </motion.span>
-                  {item}
+                  <span className="mt-[3px] flex-shrink-0 w-1.5 h-1.5 rounded-full bg-[#A68AFF]" style={{ opacity: 0.7 }} />
+                  <span className="text-[#1E172D]/75 text-[0.95rem] leading-relaxed">{item}</span>
                 </motion.li>
               ))}
             </motion.ul>
@@ -111,36 +103,36 @@ export function ForWho() {
             whileInView="visible"
             viewport={viewport}
             variants={stagger}
-            whileHover={{ boxShadow: '0 16px 48px rgba(30,23,45,0.07)' }}
-            transition={{ duration: 0.2 }}
-            className="bg-white rounded-2xl p-8 border border-[#1E172D]/8 relative overflow-hidden cursor-default"
           >
-            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#1E172D]/20 via-[#1E172D]/10 to-transparent rounded-t-2xl" />
+            <motion.div variants={fadeUp} className="flex items-center gap-3 mb-7">
+              <span className="w-2 h-2 rounded-full bg-[#1E172D]/30 flex-shrink-0" />
+              <h3
+                className="text-xl font-extrabold text-[#1E172D] tracking-tight"
+                style={{ fontFamily: 'var(--font-display)' }}
+              >
+                Ce n&apos;est pas pour vous
+              </h3>
+            </motion.div>
 
-            <motion.h3
-              variants={fadeUp}
-              className="flex items-center gap-3 text-xl font-bold text-[#1E172D] mb-7"
-              style={{ fontFamily: 'var(--font-display)' }}
-            >
-              <span className="w-9 h-9 rounded-full bg-[#1E172D]/8 flex items-center justify-center text-lg">❌</span>
-              Ce n&apos;est pas pour vous
-            </motion.h3>
-
-            <motion.ul variants={staggerList} className="flex flex-col gap-3">
+            <motion.ul variants={staggerList} className="flex flex-col gap-4">
               {forNo.map((item) => (
                 <motion.li
                   key={item}
                   variants={listItem}
-                  className="flex items-start gap-3 text-[0.93rem] text-[#1E172D]/45 leading-snug"
+                  className="flex items-start gap-3.5"
                 >
-                  <span className="mt-0.5 flex-shrink-0 text-[#1E172D]/25 font-bold text-xs w-5 h-5 flex items-center justify-center">
+                  <span
+                    className="mt-0.5 flex-shrink-0 text-[#1E172D]/30 font-bold text-sm leading-none select-none"
+                    style={{ fontFamily: 'var(--font-display)' }}
+                  >
                     ✕
                   </span>
-                  {item}
+                  <span className="text-[#1E172D]/40 text-[0.95rem] leading-relaxed">{item}</span>
                 </motion.li>
               ))}
             </motion.ul>
           </motion.div>
+
         </div>
 
         {/* CTA */}

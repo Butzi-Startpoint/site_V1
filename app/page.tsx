@@ -1,15 +1,18 @@
 import { Navbar } from '@/components/sections/navbar'
 import { LandingAccordionItem } from '@/components/ui/interactive-image-accordion'
 import { TestimonialsSection } from '@/components/sections/testimonials-section'
-import { SocialProofBar } from '@/components/sections/social-proof-bar'
+import { ClientsBar } from '@/components/sections/clients-bar'
+import { CircularTestimonialsSection } from '@/components/sections/circular-testimonials-section'
 import { Problem } from '@/components/sections/problem'
-import { Solution } from '@/components/sections/solution'
 import { Modules } from '@/components/sections/modules'
 import { ForWho } from '@/components/sections/for-who'
+import { ValueStack } from '@/components/sections/value-stack'
+import { Bonuses } from '@/components/sections/bonuses'
 import { Pricing } from '@/components/sections/pricing'
-import { Financing } from '@/components/sections/financing'
 import { Guarantees } from '@/components/sections/guarantees'
+import { AfterProgram } from '@/components/sections/after-program'
 import { FaqSection } from '@/components/sections/faq-section'
+import { LeadMagnet } from '@/components/sections/lead-magnet'
 import { CtaFinal } from '@/components/sections/cta-final'
 import { FooterSection } from '@/components/sections/footer-section'
 
@@ -23,16 +26,19 @@ export default function Home() {
         <LandingAccordionItem />
       </div>
 
-      <SocialProofBar />
+      <ClientsBar />
       <Problem />
-      <Solution />
-      <TestimonialsSection />
+      <CircularTestimonialsSection />
       <Modules />
+      <TestimonialsSection />
+      <ValueStack />
+      <Bonuses />
       <ForWho />
       <Pricing />
-      <Financing />
       <Guarantees />
+      <AfterProgram />
       <FaqSection />
+      <LeadMagnet />
       <CtaFinal />
       <FooterSection />
     </>

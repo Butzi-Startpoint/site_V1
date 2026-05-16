@@ -1,94 +1,18 @@
 'use client'
 
-import { useState } from 'react'
+import React from 'react'
 import { motion } from 'framer-motion'
-import { fadeUp, stagger, staggerFast, viewport } from '@/lib/animations'
-import type { Variants } from 'framer-motion'
+import { fadeUp, stagger, viewport } from '@/lib/animations'
+import { CtaChevronButton } from '@/components/ui/cta-chevron-button'
 
-const problems = [
-  {
-    icon: '🤯',
-    title: "Trop d'outils, aucune stratégie",
-    desc: "ChatGPT, Perplexity, Claude, Gemini… Vous testez tout, vous ne maîtrisez rien.",
-    color: '#D8D0FF',
-  },
-  {
-    icon: '😰',
-    title: "La peur d'être largué",
-    desc: "Vos concurrents avancent. Vous voyez l'IA partout mais vous ne savez pas par où commencer.",
-    color: '#FFFFAB',
-  },
-  {
-    icon: '💸',
-    title: "Du temps et de l'énergie gaspillés",
-    desc: "Des heures sur des tâches que l'IA pourrait accélérer : emails, contenus, admin, recherche…",
-    color: '#A68AFF',
-  },
+const problems: React.ReactNode[] = [
+  <>Vous passez plus de temps à <strong>faire tourner votre boîte</strong> qu&apos;à <strong>exercer votre métier</strong>.</>,
+  <>Vous avez testé ChatGPT. Résultat&nbsp;: du <strong>texte générique</strong> que vous <strong>n&apos;avez jamais utilisé</strong>.</>,
+  <>Vous voyez des concurrents <strong>publier tous les jours</strong> et vous vous demandez <strong>comment ils trouvent le temps</strong>.</>,
+  <><strong>Vos devis, vos mails, vos relances</strong>&nbsp;: tout est <strong>refait à la main</strong>, à chaque fois.</>,
+  <>Vous n&apos;avez pas le temps de tester 15 outils IA pour trouver <strong>celui qui marche pour VOUS</strong>.</>,
+  <>Vous avez l&apos;impression que <strong>vos concurrents utilisent l&apos;IA mieux que vous</strong>.</>,
 ]
-
-const cardVariant: Variants = {
-  hidden:  { opacity: 0, x: -28, rotateY: -5 },
-  visible: { opacity: 1, x: 0,   rotateY: 0,
-    transition: { type: 'spring', stiffness: 200, damping: 22 } },
-}
-
-function TiltCard({ item }: { item: typeof problems[0] }) {
-  const [tilt, setTilt] = useState({ x: 0, y: 0 })
-  const [hovered, setHovered] = useState(false)
-
-  const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect()
-    const x = ((e.clientX - rect.left) / rect.width  - 0.5) * 10
-    const y = ((e.clientY - rect.top)  / rect.height - 0.5) * 10
-    setTilt({ x: -y, y: x })
-  }
-
-  return (
-    <motion.div
-      variants={cardVariant}
-      onMouseMove={handleMove}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => { setTilt({ x: 0, y: 0 }); setHovered(false) }}
-      animate={{
-        rotateX: tilt.x,
-        rotateY: tilt.y,
-        scale: hovered ? 1.02 : 1,
-        boxShadow: hovered
-          ? `0 20px 48px rgba(30,23,45,0.14), 0 0 0 1px ${item.color}33`
-          : '0 2px 8px rgba(30,23,45,0.04)',
-      }}
-      transition={{ type: 'spring', stiffness: 300, damping: 28 }}
-      style={{ transformStyle: 'preserve-3d', perspective: 800 }}
-      className="bg-white rounded-2xl px-6 py-5 flex items-start gap-4 cursor-default"
-    >
-      {/* Colored left bar that grows on hover */}
-      <motion.div
-        className="absolute left-0 top-4 bottom-4 w-1 rounded-r-full"
-        style={{ backgroundColor: item.color }}
-        animate={{ scaleY: hovered ? 1 : 0.3, opacity: hovered ? 1 : 0.4 }}
-        transition={{ duration: 0.2 }}
-      />
-
-      <motion.span
-        className="text-2xl flex-shrink-0 mt-0.5 select-none"
-        animate={{ scale: hovered ? 1.15 : 1 }}
-        transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-      >
-        {item.icon}
-      </motion.span>
-
-      <div style={{ transform: 'translateZ(8px)' }}>
-        <h4
-          className="font-bold text-[#1E172D] text-[0.95rem] mb-1"
-          style={{ fontFamily: 'var(--font-display)' }}
-        >
-          {item.title}
-        </h4>
-        <p className="text-[#1E172D]/60 text-sm leading-relaxed">{item.desc}</p>
-      </div>
-    </motion.div>
-  )
-}
 
 export function Problem() {
   return (
@@ -140,65 +64,53 @@ export function Problem() {
               variants={fadeUp}
               className="text-[#1E172D]/70 text-lg leading-relaxed mb-8"
             >
-              Vous avez testé ChatGPT. Deux-trois prompts. Des résultats moyens. Vous êtes retourné à vos
-              habitudes.{' '}
+              Vous avez testé ChatGPT. Deux-trois prompts. Des résultats moyens. Vous êtes retourné à vos habitudes.{' '}
               <strong className="text-[#1E172D]">
-                Le problème, ce n&apos;est pas l&apos;outil. C&apos;est l&apos;absence de méthode.
+                Le problème, ce n&apos;est pas l&apos;outil. C&apos;est que personne ne vous a montré comment
+                l&apos;utiliser pour VOTRE métier.
               </strong>
             </motion.p>
 
             <motion.div variants={fadeUp}>
-              <motion.a
-                href="#pricing"
-                whileHover={{ scale: 1.03, boxShadow: '0 12px 40px rgba(30,23,45,0.2)' }}
-                whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#1E172D] text-[#F6F1EB] font-semibold text-base shadow-lg cursor-pointer shimmer-hover"
-                style={{ fontFamily: 'var(--font-display)' }}
+              <CtaChevronButton
+                as="a"
+                href="https://calendly.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                tone="dark"
+                size="md"
               >
                 Réserver un appel gratuit
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                </svg>
-              </motion.a>
+              </CtaChevronButton>
             </motion.div>
           </motion.div>
 
-          {/* Right — cartes avec tilt 3D */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewport}
-            variants={staggerFast}
-            className="flex flex-col gap-4 relative"
-            style={{ perspective: 1000 }}
-          >
-            {problems.map((p) => (
-              <div key={p.title} className="relative">
-                <TiltCard item={p} />
-              </div>
+          {/* Right — liste de pain points */}
+          <ul className="flex flex-col">
+            {problems.map((text, i) => (
+              <motion.li
+                key={i}
+                initial={{ opacity: 0, filter: 'blur(14px)', y: 6 }}
+                whileInView={{ opacity: 1, filter: 'blur(0px)', y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ duration: 1.2, delay: i * 0.18, ease: [0.16, 1, 0.3, 1] }}
+                className="flex items-start gap-4 py-4 border-b border-[#1E172D]/10 last:border-0"
+              >
+                {/* Croix violette */}
+                <span
+                  className="flex-shrink-0 mt-0.5 text-[#A68AFF] font-bold text-base leading-none select-none"
+                  style={{ fontFamily: 'var(--font-display)' }}
+                >
+                  ✕
+                </span>
+                <p className="text-[#1E172D]/75 text-[0.95rem] leading-relaxed [&_strong]:text-[#1E172D] [&_strong]:font-bold">
+                  {text}
+                </p>
+              </motion.li>
             ))}
-          </motion.div>
+          </ul>
 
         </div>
-
-        {/* Bottom CTA */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewport}
-          variants={fadeUp}
-          className="text-center mt-14"
-        >
-          <motion.a
-            href="#programme"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 border-[#1E172D]/30 text-[#1E172D] font-semibold text-sm hover:border-[#1E172D]/60 hover:bg-white/60 transition-colors cursor-pointer"
-            style={{ fontFamily: 'var(--font-display)' }}
-          >
-            Découvrir le parcours IA →
-          </motion.a>
-        </motion.div>
       </div>
     </section>
   )

@@ -109,7 +109,6 @@ export function Solution() {
                 boxShadow: '0 2px 8px rgba(30,23,45,0.04)',
               }}
             >
-              {/* Hover background tint */}
               <motion.div
                 className="absolute inset-0 rounded-2xl pointer-events-none"
                 style={{ background: f.accentBg }}
@@ -117,8 +116,6 @@ export function Solution() {
                 whileHover={{ opacity: 1 }}
                 transition={{ duration: 0.25 }}
               />
-
-              {/* Icon */}
               <motion.div
                 className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5 relative z-10"
                 style={{ background: f.accentBg, border: `1px solid ${f.accentBorder}` }}
@@ -127,28 +124,14 @@ export function Solution() {
               >
                 {f.icon}
               </motion.div>
-
-              {/* Number */}
               <div className="relative z-10 flex items-baseline justify-center gap-0.5 mb-1">
-                <span
-                  className="text-5xl font-extrabold text-[#1E172D] tracking-tight leading-none"
-                  style={{ fontFamily: 'var(--font-display)' }}
-                >
-                  {f.hours}
-                </span>
-                <span
-                  className="text-2xl font-bold text-[#A68AFF]"
-                  style={{ fontFamily: 'var(--font-display)' }}
-                >
-                  {f.unit}
-                </span>
+                <span className="text-5xl font-extrabold text-[#1E172D] tracking-tight leading-none"
+                  style={{ fontFamily: 'var(--font-display)' }}>{f.hours}</span>
+                <span className="text-2xl font-bold text-[#A68AFF]"
+                  style={{ fontFamily: 'var(--font-display)' }}>{f.unit}</span>
               </div>
-              <h3
-                className="relative z-10 text-[#1E172D] font-bold text-base mb-2"
-                style={{ fontFamily: 'var(--font-display)' }}
-              >
-                {f.title}
-              </h3>
+              <h3 className="relative z-10 text-[#1E172D] font-bold text-base mb-2"
+                style={{ fontFamily: 'var(--font-display)' }}>{f.title}</h3>
               <p className="relative z-10 text-[#1E172D]/55 text-sm leading-relaxed">{f.desc}</p>
             </motion.div>
           ))}
@@ -156,10 +139,7 @@ export function Solution() {
 
         {/* Places restantes — pill */}
         <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewport}
-          variants={fadeUp}
+          initial="hidden" whileInView="visible" viewport={viewport} variants={fadeUp}
           className="flex justify-center"
         >
           <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-[#1E172D]/10 shadow-sm text-[0.9rem] font-medium text-[#1E172D]"
