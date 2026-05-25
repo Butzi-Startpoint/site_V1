@@ -51,7 +51,7 @@ export function CtaFinal() {
               animate={{ scale: [1, 1.6, 1], opacity: [1, 0.5, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
             />
-            Prochaine cohorte : 9 juin — 4 places restantes
+            Prochaine cohorte : 23 septembre 2026 — 4 places restantes
           </motion.span>
 
           <motion.h2
@@ -59,7 +59,7 @@ export function CtaFinal() {
             className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#F6F1EB] leading-[1.12] tracking-tight mb-5"
             style={{ fontFamily: 'var(--font-display)' }}
           >
-            Prochaine cohorte : 9 juin.{' '}
+            Prochaine cohorte : 23 septembre 2026.{' '}
             <br />
             <span className="text-[#A68AFF]">4 places restantes.</span>
           </motion.h2>

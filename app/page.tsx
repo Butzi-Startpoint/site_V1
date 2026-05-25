@@ -11,6 +11,7 @@ import { Bonuses } from '@/components/sections/bonuses'
 import { Pricing } from '@/components/sections/pricing'
 import { Guarantees } from '@/components/sections/guarantees'
 import { AfterProgram } from '@/components/sections/after-program'
+import { Team } from '@/components/sections/team'
 import { FaqSection } from '@/components/sections/faq-section'
 import { LeadMagnet } from '@/components/sections/lead-magnet'
 import { CtaFinal } from '@/components/sections/cta-final'
@@ -33,10 +34,11 @@ export default function Home() {
       <TestimonialsSection />
       <ValueStack />
       <Bonuses />
-      <ForWho />
       <Pricing />
       <Guarantees />
+      <ForWho />
       <AfterProgram />
+      <Team />
       <FaqSection />
       <LeadMagnet />
       <CtaFinal />

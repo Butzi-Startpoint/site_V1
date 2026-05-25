@@ -64,20 +64,33 @@ export function Guarantees() {
           {/* Text */}
           <motion.p variants={fadeUp} className="text-[#1E172D]/70 text-base md:text-lg leading-relaxed mb-6">
             Vous suivez le programme, vous faites les exercices, et après 6 semaines vous n&apos;avez pas
-            de workflow IA opérationnel ? On continue ensemble gratuitement :{' '}
-            <strong className="text-[#1E172D]">3 mois de Cercle offerts + 1 session individuelle de déblocage.</strong>
+            de système d&apos;IA opérationnel ? On continue ensemble gratuitement :{' '}
+            <strong className="text-[#1E172D]">3 mois de Cercle StartPoint offerts + 1 session individuelle de déblocage.</strong>
           </motion.p>
 
           {/* Condition pill */}
           <motion.div
             variants={fadeUp}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl"
-            style={{ background: 'rgba(166,138,255,0.08)', border: '1px solid rgba(166,138,255,0.15)' }}
+            className="flex flex-col gap-3"
           >
-            <div className="w-1.5 h-1.5 rounded-full bg-[#A68AFF] flex-shrink-0" />
-            <p className="text-[#1E172D]/45 text-xs italic">
-              Applicable aux offres Essentiel et Momentum · Présence à minimum 5/6 sessions + exercices rendus.
-            </p>
+            <div
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl self-start"
+              style={{ background: 'rgba(166,138,255,0.08)', border: '1px solid rgba(166,138,255,0.15)' }}
+            >
+              <div className="w-1.5 h-1.5 rounded-full bg-[#A68AFF] flex-shrink-0" />
+              <p className="text-[#1E172D]/45 text-xs italic">
+                Applicable aux offres Essentiel et Momentum · Présence à minimum 6/7 sessions + exercices rendus.
+              </p>
+            </div>
+            <div
+              className="inline-flex items-start gap-2 px-4 py-2 rounded-xl self-start"
+              style={{ background: 'rgba(166,138,255,0.08)', border: '1px solid rgba(166,138,255,0.15)' }}
+            >
+              <div className="w-1.5 h-1.5 rounded-full bg-[#A68AFF] flex-shrink-0 mt-1.5" />
+              <p className="text-[#1E172D]/45 text-xs italic">
+                Possibilité de se faire remplacer par une personne de son entreprise en cas d&apos;indisponibilité sur une session.
+              </p>
+            </div>
           </motion.div>
         </motion.div>
       </div>

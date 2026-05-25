@@ -20,10 +20,11 @@ export function Navbar() {
   }, [])
 
   const links = [
-    { label: 'Accueil',   href: '/'           },
-    { label: 'Programme', href: '/programme'  },
-    { label: 'Offres',    href: '/#pricing'   },
-    { label: 'FAQ',       href: '/#faq'       },
+    { label: 'Accueil',     href: '/'             },
+    { label: 'Programme',   href: '/#modules'     },
+    { label: 'Offres',      href: '/#pricing'     },
+    { label: 'Financement', href: '/financement'  },
+    { label: 'FAQ',         href: '/#faq'         },
   ]
 
   const isActive = (href: string) => {
@@ -53,17 +54,15 @@ export function Navbar() {
         }`}
       >
         <div className="max-w-[1140px] mx-auto px-6 py-3 flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 no-underline group cursor-pointer">
-            <motion.div
-              whileHover={{ scale: 1.08, rotate: 3 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-              className="w-8 h-8 rounded-lg bg-[#1E172D] flex items-center justify-center flex-shrink-0"
-            >
-              <span className="text-[#FFFFAB] font-extrabold text-[13px]" style={{ fontFamily: 'var(--font-display)' }}>S</span>
-            </motion.div>
-            <span className="font-bold text-[#1E172D] text-[17px] tracking-tight" style={{ fontFamily: 'var(--font-display)' }}>
-              StartPoint<span className="text-[#A68AFF]"> IA</span>
+          {/* Logo animé — zoom 3× dans un cadre de hauteur navbar (rogne le canvas vide du GIF) */}
+          <Link href="/" className="flex items-center no-underline group cursor-pointer">
+            <span className="block h-10 md:h-12 w-[150px] md:w-[180px] overflow-hidden">
+              <img
+                src="/startpoint-logo.gif"
+                alt="StartPoint IA"
+                className="h-full w-auto"
+                style={{ transform: 'scale(3)', transformOrigin: 'left center' }}
+              />
             </span>
           </Link>
 
@@ -89,11 +88,11 @@ export function Navbar() {
           <CtaChevronButton
             as="a"
             href={ctaHref}
-            tone="dark"
+            tone="yellow"
             size="sm"
             className="hidden md:inline-flex"
           >
-            Rejoindre le programme
+            Prochaine cohorte 23 septembre
           </CtaChevronButton>
 
           {/* Burger */}
@@ -129,9 +128,9 @@ export function Navbar() {
               </Link>
             ))}
             <a href={ctaHref} onClick={() => setMenuOpen(false)}
-              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-[#1E172D] text-[#F6F1EB] text-sm font-semibold mt-2 cursor-pointer"
+              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-[#FFFFAB] text-[#1E172D] text-sm font-semibold mt-2 cursor-pointer"
               style={{ fontFamily: 'var(--font-display)' }}>
-              Rejoindre le programme →
+              Prochaine cohorte 23 septembre →
             </a>
           </div>
         </motion.div>

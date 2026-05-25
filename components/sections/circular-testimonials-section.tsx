@@ -6,34 +6,28 @@ import { CircularTestimonials } from '@/components/ui/circular-testimonials'
 
 const testimonials = [
   {
-    quote: "En 3 semaines j'avais déjà récupéré 6h par semaine sur mes emails et devis. Le ROI est immédiat, pas besoin d'attendre la fin du programme pour voir les résultats.",
-    name: "Marie Leroy",
-    designation: "Consultante RH indépendante",
-    src: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=800&auto=format&fit=crop",
+    quote:
+      "Les conseils de Butzi m'ont aidé à me défaire de certains préjugés sur des outils d'IA, à les intégrer plus rapidement dans mon travail et à gagner en fluidité et en temps.",
+    name: "Daniel Marín",
+    designation: "Coach Ayurveda",
+    src: "/accompli/Daniel.jpg",
   },
   {
-    quote: "J'avais testé 4 formations IA avant celle-ci. C'est la première qui part vraiment de mon business et pas d'un outil. La méthode change tout.",
-    name: "Thomas Mercier",
-    designation: "Fondateur, Buildlab Studio",
-    src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop",
+    quote: [
+      { text: "Avant je tournais à 60h par semaine entre mes trois activités, sans jamais avoir le temps de créer, et je ne voyais pas comment l'IA pouvait changer ça. Butzi m'a aidé à construire un vrai système : aujourd'hui l'IA gère ma prise de notes, une partie de mon admin, et l'IA est devenue un réflexe. " },
+      { text: "Je suis redescendu à 45h par semaine, je dégage 8h pour la création pure, et mon chiffre d'affaires a grimpé de 35% sur quatre mois.", bold: true },
+      { text: " Le projet qui résume tout ça : j'ai créé Growth Cats, avec Claude. Sans coder. Et je respire enfin un peu !" },
+    ],
+    name: "Nabeel Arshad",
+    designation: "Growth Cats · One With Magic — magicien & entrepreneur",
+    src: "/accompli/nabeel.png",
   },
   {
-    quote: "Mon système de contenu tourne maintenant en quasi-autonomie. Je publie 3x plus qu'avant en y passant 2x moins de temps. C'est exactement ce que je cherchais.",
-    name: "Sofia Aziz",
-    designation: "Coach certifiée & fondatrice",
-    src: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop",
-  },
-  {
-    quote: "Le module sur les propositions commerciales m'a changé la vie. Je génère des devis 5x plus vite, avec plus de qualité et de personnalisation.",
-    name: "Julien Fabre",
-    designation: "Consultant stratégie digitale",
-    src: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=800&auto=format&fit=crop",
-  },
-  {
-    quote: "Butzi ne vend pas du rêve. Il te donne des outils concrets, adaptés à ton activité. J'ai vu les résultats dès la première session.",
-    name: "Camille Rousseau",
-    designation: "Architecte d'intérieur freelance",
-    src: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop",
+    quote:
+      "J'utilisais déjà certains outils IA de manière isolée et je sentais que j'utilisais à peine 10% de leur potentiel. Après la formation, ma vision a changé : je commence par une stratégie globale où l'IA m'accompagne dès le début, avant de rentrer dans le détail, notamment sur l'automatisation. Nous avons même pu créer notre propre ERP qu'aucun autre outil du marché n'était en mesure de faire. Un gain de temps énorme et des choses impossibles à envisager avant !",
+    name: "Guillaume Touzé",
+    designation: "Association Easy Way",
+    src: "/accompli/Guillaume.jpg",
   },
 ]
 
@@ -53,7 +47,7 @@ export function CircularTestimonialsSection() {
             className="inline-block px-4 py-1.5 rounded-full bg-[#FFFFAB] text-[#1E172D] text-xs font-bold uppercase tracking-widest mb-5"
             style={{ fontFamily: 'var(--font-display)' }}
           >
-            Témoignages
+            Des vrais résultats
           </motion.span>
           <motion.h2
             variants={fadeUp}

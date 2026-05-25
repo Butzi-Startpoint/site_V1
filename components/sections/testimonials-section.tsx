@@ -24,7 +24,7 @@ const testimonials: Testimonial[] = [
     role: "Coach certifiée & fondatrice",
   },
   {
-    text: "La méthode Butzi est concrète et applicable dès la première session. Zéro blabla, on passe directement aux workflows.",
+    text: "La méthode Butzi est concrète et applicable dès la première session. Zéro blabla, on passe directement aux systèmes d'IA.",
     image: "https://randomuser.me/api/portraits/men/75.jpg",
     name: "Julien Fabre",
     role: "Consultant stratégie digitale",
@@ -54,7 +54,7 @@ const testimonials: Testimonial[] = [
     role: "Photographe professionnel",
   },
   {
-    text: "La communauté seule vaut l'investissement. Des gens sérieux, qui partagent leurs workflows, leurs prompts, leurs erreurs. Un vrai levier.",
+    text: "La communauté seule vaut l'investissement. Des gens sérieux, qui partagent leurs systèmes d'IA, leurs prompts, leurs erreurs. Un vrai levier.",
     image: "https://randomuser.me/api/portraits/women/90.jpg",
     name: "Nadia Hamid",
     role: "Directrice de formation",
@@ -84,18 +84,18 @@ export function TestimonialsSection() {
             className="inline-block px-4 py-1.5 rounded-full bg-[#1E172D] text-[#FFFFAB] text-xs font-bold uppercase tracking-widest mb-5"
             style={{ fontFamily: 'var(--font-display)' }}
           >
-            Ils l&apos;ont fait
+            Des vrais résultats
           </motion.span>
           <motion.h2
             variants={fadeUp}
             className="text-4xl md:text-5xl font-extrabold text-[#1E172D] leading-[1.15] tracking-tight mb-4"
             style={{ fontFamily: 'var(--font-display)' }}
           >
-            Ce qu&apos;ils disent{' '}
-            <span className="text-[#A68AFF]">après le programme</span>
+            Les retours d&apos;entrepreneurs{' '}
+            <span className="text-[#A68AFF]">après l&apos;accompagnement</span>
           </motion.h2>
           <motion.p variants={fadeUp} className="text-[#1E172D]/55 text-base leading-relaxed">
-            Des entrepreneurs qui ont récupéré leur temps et structuré leur activité avec l&apos;IA.
+            Des entrepreneurs qui ont intégré l&apos;IA dans leur quotidien.
           </motion.p>
         </motion.div>
 

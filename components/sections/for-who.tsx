@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { Check } from 'lucide-react'
 import { fadeUp, stagger, viewport } from '@/lib/animations'
 import type { Variants } from 'framer-motion'
 
@@ -90,7 +91,7 @@ export function ForWho() {
                   variants={listItem}
                   className="flex items-start gap-3.5"
                 >
-                  <span className="mt-[3px] flex-shrink-0 w-1.5 h-1.5 rounded-full bg-[#A68AFF]" style={{ opacity: 0.7 }} />
+                  <Check className="mt-[2px] flex-shrink-0 w-[18px] h-[18px] text-[#22A06B]" strokeWidth={2.75} aria-hidden="true" />
                   <span className="text-[#1E172D]/75 text-[0.95rem] leading-relaxed">{item}</span>
                 </motion.li>
               ))}
@@ -119,15 +120,10 @@ export function ForWho() {
                 <motion.li
                   key={item}
                   variants={listItem}
-                  className="flex items-start gap-3.5"
+                  className="flex items-start justify-between gap-3.5"
                 >
-                  <span
-                    className="mt-0.5 flex-shrink-0 text-[#1E172D]/30 font-bold text-sm leading-none select-none"
-                    style={{ fontFamily: 'var(--font-display)' }}
-                  >
-                    ✕
-                  </span>
                   <span className="text-[#1E172D]/40 text-[0.95rem] leading-relaxed">{item}</span>
+                  <span className="mt-[1px] flex-shrink-0 text-base leading-none select-none">❌</span>
                 </motion.li>
               ))}
             </motion.ul>

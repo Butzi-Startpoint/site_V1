@@ -4,8 +4,9 @@ import React, { useEffect, useRef, useState, useMemo, useCallback } from "react"
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa"
 import { motion, AnimatePresence } from "framer-motion"
 
+type QuoteSegment = { text: string; bold?: boolean }
 interface Testimonial {
-  quote: string
+  quote: string | QuoteSegment[]
   name: string
   designation: string
   src: string
@@ -157,15 +158,22 @@ export const CircularTestimonials = ({
                 {active.designation}
               </p>
               <p style={{ color: colorTestimony, fontSize: fsQuote, lineHeight: 1.75 }}>
-                {active.quote.split(" ").map((word, i) => (
-                  <motion.span key={i}
-                    initial={{ filter: "blur(10px)", opacity: 0, y: 5 }}
-                    animate={{ filter: "blur(0px)", opacity: 1, y: 0 }}
-                    transition={{ duration: 0.22, ease: "easeInOut", delay: 0.025 * i }}
-                    style={{ display: "inline-block" }}>
-                    {word}&nbsp;
-                  </motion.span>
-                ))}
+                {(Array.isArray(active.quote) ? active.quote : [{ text: active.quote }])
+                  .flatMap((seg) =>
+                    seg.text
+                      .split(" ")
+                      .filter(Boolean)
+                      .map((w) => ({ w, bold: seg.bold })),
+                  )
+                  .map(({ w, bold }, i) => (
+                    <motion.span key={i}
+                      initial={{ filter: "blur(10px)", opacity: 0, y: 5 }}
+                      animate={{ filter: "blur(0px)", opacity: 1, y: 0 }}
+                      transition={{ duration: 0.22, ease: "easeInOut", delay: 0.025 * i }}
+                      style={{ display: "inline-block", fontWeight: bold ? 700 : "inherit", color: bold ? colorName : "inherit" }}>
+                      {w}&nbsp;
+                    </motion.span>
+                  ))}
               </p>
             </motion.div>
           </AnimatePresence>

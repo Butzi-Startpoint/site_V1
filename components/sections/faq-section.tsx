@@ -1,25 +1,72 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, type ReactNode } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { fadeUp, stagger, viewport } from '@/lib/animations'
 
-const faqs = [
-  { q: "J'ai déjà testé ChatGPT, pourquoi ce programme serait différent ?",
-    a: "Tester ChatGPT sans méthode, c'est comme avoir un outil sans le mode d'emploi. Ce programme vous donne un cadre structuré, des cas d'usage concrets pour votre métier, et un accompagnement pour passer de \"j'ai essayé\" à \"je l'utilise tous les jours\"." },
-  { q: "Je ne suis pas technique, est-ce que je vais suivre ?",
-    a: "Le programme est conçu spécifiquement pour des entrepreneurs non-tech. Si vous savez utiliser un ordinateur, envoyer des emails et naviguer sur internet, vous avez le niveau. Zéro code, zéro jargon technique." },
-  { q: "Combien de temps ça demande par semaine ?",
-    a: "Comptez environ 3h30 par semaine : 2h de session live + 1h à 1h30 de cours en ligne et exercices. C'est un engagement, mais c'est ce qui fait la différence avec un cours en ligne qu'on ne finit jamais." },
-  { q: "Est-ce que je peux faire financer la formation ?",
-    a: "Oui, la formation est certifiée Qualiopi et donc éligible aux financements FAF (FIF-PL pour les professions libérales, AGEFICE pour les dirigeants). Selon votre statut, vous pouvez bénéficier de 900 € à 2 500 € de prise en charge. On vous guide dans les démarches." },
-  { q: "Et si je rate une session ?",
-    a: "Toutes les sessions sont enregistrées et les replays sont accessibles immédiatement. Cela dit, la valeur du programme vient de la pratique en live — on vous recommande d'être présent au maximum." },
-  { q: "Quelle est la différence entre Essentiel et Momentum ?",
-    a: "L'Essentiel vous donne tout le programme groupe + les ressources. Le Momentum ajoute un accompagnement personnalisé : un audit avant le programme pour cibler vos besoins, un hot seat individuel à mi-parcours, et 6 mois d'accès au Cercle post-programme." },
+type Faq = { q: string; a: ReactNode }
+
+const faqs: Faq[] = [
+  {
+    q: 'Est-ce que je peux financer la formation avec mon CPF ?',
+    a: (
+      <>
+        Non, la formation n&apos;est pas finançable par le CPF. Le CPF ne couvre pas
+        ce type de formation pour les indépendants et dirigeants. Mais d&apos;autres
+        financements existent et sont souvent plus avantageux&nbsp;: votre FAF
+        (AGEFICE, FIF-PL ou FAFCEA selon votre statut), la déductibilité fiscale
+        de la formation, et le crédit d&apos;impôt formation dirigeant.{' '}
+        <a
+          href="/financement"
+          className="text-[#A68AFF] font-bold hover:underline whitespace-nowrap"
+        >
+          Estimez votre prise en charge en 2 min →
+        </a>
+      </>
+    ),
+  },
+  {
+    q: "J'ai déjà testé ChatGPT, pourquoi ce programme serait différent ?",
+    a: "Tester ChatGPT sans méthode, c'est comme avoir un outil sans le mode d'emploi. Ce programme vous donne un cadre structuré, des cas d'usage concrets pour votre métier, et un accompagnement pour passer de \"j'ai essayé\" à \"je l'utilise tous les jours\".",
+  },
+  {
+    q: 'Je ne suis pas technique, est-ce que je vais suivre ?',
+    a: "Le programme est conçu spécifiquement pour des entrepreneurs non-tech. Si vous savez utiliser un ordinateur, envoyer des emails et naviguer sur internet, vous avez le niveau. Zéro code, zéro jargon technique.",
+  },
+  {
+    q: 'Combien de temps ça demande par semaine ?',
+    a: "Comptez environ 3h30 par semaine : 2h de session live + 1h à 1h30 de cours en ligne et exercices. C'est un engagement, mais c'est ce qui fait la différence avec un cours en ligne qu'on ne finit jamais.",
+  },
+  {
+    q: 'Est-ce que je peux faire financer la formation ?',
+    a: (
+      <>
+        Oui, la formation est certifiée Qualiopi et éligible aux financements FAF
+        (AGEFICE pour les dirigeants, FIF-PL pour les professions libérales,
+        FAFCEA pour les artisans). Selon votre statut, votre prise en charge peut
+        couvrir plusieurs centaines d&apos;euros, à combiner avec la déductibilité
+        fiscale et le crédit d&apos;impôt formation dirigeant. On vous guide dans
+        les démarches.{' '}
+        <a
+          href="/financement"
+          className="text-[#A68AFF] font-bold hover:underline whitespace-nowrap"
+        >
+          Estimez votre prise en charge →
+        </a>
+      </>
+    ),
+  },
+  {
+    q: 'Et si je rate une session ?',
+    a: "Toutes les sessions sont enregistrées et les replays sont accessibles immédiatement. Cela dit, la valeur du programme vient de la pratique en live — on vous recommande d'être présent au maximum.",
+  },
+  {
+    q: 'Quelle est la différence entre Essentiel et Momentum ?',
+    a: "L'Essentiel vous donne tout le programme groupe + les ressources. Le Momentum ajoute un accompagnement personnalisé : un audit avant le programme pour cibler vos besoins, un hot seat individuel à mi-parcours, et 6 mois d'accès au Cercle StartPoint post-programme.",
+  },
 ]
 
-function FaqItem({ q, a, index }: { q: string; a: string; index: number }) {
+function FaqItem({ q, a, index }: { q: string; a: ReactNode; index: number }) {
   const [open, setOpen] = useState(false)
 
   return (

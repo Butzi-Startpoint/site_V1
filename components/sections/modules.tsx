@@ -1,6 +1,5 @@
 'use client'
 
-import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { fadeUp, stagger, viewport } from '@/lib/animations'
 import type { Variants } from 'framer-motion'
@@ -10,6 +9,41 @@ const cardSpring: Variants = {
   visible: { opacity: 1, y: 0,  scale: 1,
     transition: { type: 'spring', stiffness: 220, damping: 24 } },
 }
+
+const phaseModules: {
+  phase: string
+  phaseColor: string
+  pre?: { badge: string; title: string }
+  modules: { num: string; title: string }[]
+  post?: { badge: string; title: string }
+}[] = [
+  {
+    phase: 'Phase 1 — Simplifier',
+    phaseColor: '#A68AFF',
+    pre: { badge: 'Prépa', title: 'Paramétrage & connexion des outils' },
+    modules: [
+      { num: '1', title: 'Poser les fondations' },
+      { num: '2', title: 'Gagnez du temps tout de suite' },
+    ],
+  },
+  {
+    phase: 'Phase 2 — Scaler',
+    phaseColor: '#1E172D',
+    modules: [
+      { num: '3', title: 'Marketing augmenté' },
+      { num: '4', title: 'La vente augmentée' },
+      { num: '5', title: 'Vision stratégique augmentée' },
+    ],
+  },
+  {
+    phase: 'Phase 3 — Systématiser',
+    phaseColor: '#A68AFF',
+    modules: [
+      { num: '6', title: 'Débloquer son quotidien' },
+    ],
+    post: { badge: 'Inclus', title: 'Coaching de groupe : créer son plan d\'action et son système' },
+  },
+]
 
 const phases = [
   {
@@ -40,7 +74,7 @@ const phases = [
   },
   {
     num: 'Phase 2',
-    label: 'Semaines 3–4',
+    label: 'Semaines 3–5',
     title: 'Scaler',
     tagline: 'Produisez plus sans travailler plus',
     bullets: [
@@ -213,7 +247,96 @@ export function Modules() {
           ))}
         </motion.div>
 
-        {/* Lien vers le programme détaillé */}
+        {/* Détail des modules par phase */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+          variants={stagger}
+          className="mt-4 mb-12"
+        >
+          <motion.h3
+            variants={fadeUp}
+            className="text-center text-xs font-bold uppercase tracking-widest text-[#1E172D]/45 mb-8"
+            style={{ fontFamily: 'var(--font-display)' }}
+          >
+            Au programme
+          </motion.h3>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-start">
+            {phaseModules.map((row) => (
+              <motion.div key={row.phase} variants={fadeUp}>
+                {/* En-tête de phase */}
+                <div className="flex items-center gap-2.5 mb-3 px-1">
+                  <span
+                    className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                    style={{ background: row.phaseColor }}
+                  />
+                  <h4
+                    className="text-[11px] font-bold uppercase tracking-widest text-[#1E172D]/55"
+                    style={{ fontFamily: 'var(--font-display)' }}
+                  >
+                    {row.phase}
+                  </h4>
+                </div>
+
+                {/* Liste fine des modules */}
+                <div
+                  className="rounded-2xl bg-white border border-[#1E172D]/8 overflow-hidden"
+                  style={{ boxShadow: '0 1px 4px rgba(30,23,45,0.03)' }}
+                >
+                  {row.pre && (
+                    <div className="flex items-center gap-3 px-4 py-3 border-b border-[#1E172D]/[0.06] bg-[#FFFFAB]/25">
+                      <span
+                        className="flex-shrink-0 inline-flex items-center justify-center px-2 h-6 rounded-md text-[10px] font-bold uppercase tracking-wider bg-[#FFFFAB] text-[#1E172D]"
+                        style={{ fontFamily: 'var(--font-display)' }}
+                      >
+                        {row.pre.badge}
+                      </span>
+                      <span className="text-[#1E172D]/70 font-medium text-sm leading-snug">
+                        {row.pre.title}
+                      </span>
+                    </div>
+                  )}
+                  {row.modules.map((m) => (
+                    <div
+                      key={m.num}
+                      className="flex items-center gap-3 px-4 py-3 border-b border-[#1E172D]/[0.06] last:border-0 transition-colors hover:bg-[#A68AFF]/[0.04]"
+                    >
+                      <span
+                        className="flex-shrink-0 w-6 h-6 rounded-md inline-flex items-center justify-center text-[11px] font-bold bg-[#A68AFF]/12 text-[#A68AFF]"
+                        style={{ fontFamily: 'var(--font-display)' }}
+                      >
+                        {m.num}
+                      </span>
+                      <span
+                        className="text-[#1E172D] font-semibold text-sm leading-snug tracking-tight"
+                        style={{ fontFamily: 'var(--font-display)' }}
+                      >
+                        {m.title}
+                      </span>
+                    </div>
+                  ))}
+                  {row.post && (
+                    <div className="flex items-center gap-3 px-4 py-3 border-t border-[#1E172D]/[0.06] bg-[#FFFFAB]/25">
+                      <span
+                        className="flex-shrink-0 inline-flex items-center justify-center px-2 h-6 rounded-md text-[10px] font-bold uppercase tracking-wider bg-[#FFFFAB] text-[#1E172D]"
+                        style={{ fontFamily: 'var(--font-display)' }}
+                      >
+                        {row.post.badge}
+                      </span>
+                      <span className="text-[#1E172D]/70 font-medium text-sm leading-snug">
+                        {row.post.title}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* CTA : recevoir le programme */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -221,16 +344,16 @@ export function Modules() {
           variants={fadeUp}
           className="text-center"
         >
-          <Link
-            href="/programme"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[#1E172D]/15 bg-white text-[#1E172D] font-semibold text-sm hover:border-[#A68AFF] hover:text-[#A68AFF] transition-colors cursor-pointer"
+          <a
+            href="mailto:contact@startpoint-ia.fr?subject=Recevoir%20le%20programme%20Acc%C3%A9l%C3%A9ration%20IA%20360%20d%C3%A9taill%C3%A9&body=Bonjour%2C%0A%0AJe%20souhaite%20recevoir%20le%20programme%20Acc%C3%A9l%C3%A9ration%20IA%20360%20d%C3%A9taill%C3%A9.%0A%0AMerci."
+            className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#1E172D] text-[#FFFFAB] font-bold text-sm hover:bg-[#2a1f3d] transition-colors cursor-pointer"
             style={{ fontFamily: 'var(--font-display)' }}
           >
-            Voir le programme complet et les modalités
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+            Recevoir le programme
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
             </svg>
-          </Link>
+          </a>
         </motion.div>
       </div>
     </section>

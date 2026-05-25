@@ -1,42 +1,34 @@
 'use client';
 
 import React, { useState } from 'react';
+import { ScrambleText } from '@/components/ui/scramble-text';
 
 // --- Données de l'accordion StartPoint IA ---
 const accordionItems = [
   {
     id: 1,
-    title: 'Gagnez du temps',
-    imageUrl:
-      'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?q=80&w=2072&auto=format&fit=crop',
+    title: 'Gagnez jusqu’à 10h / semaine',
+    imageUrl: '/accordion/1.jpg',
     // Productivité / planning
   },
   {
     id: 2,
-    title: 'Structurez votre méthode',
+    title: 'Débloquer votre potentiel de CA',
     imageUrl:
       'https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop',
     // Coaching / équipe / tableau blanc
   },
   {
     id: 3,
-    title: 'Créez du contenu',
-    imageUrl:
-      'https://images.unsplash.com/photo-1677756119517-756a188d2d94?q=80&w=2070&auto=format&fit=crop',
+    title: 'Accélérer l’administratif',
+    imageUrl: '/accordion/3.jpg',
     // Intelligence artificielle
   },
   {
     id: 4,
-    title: 'Développez votre visibilité',
-    imageUrl:
-      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop',
-    // Entrepreneuriat / analytics
-  },
-  {
-    id: 5,
-    title: 'Pilotez avec l’IA',
-    imageUrl:
-      'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop',
+    title: 'Créer un vrai système d’IA',
+    imageUrl: '/accordion/5.jpg',
+    objectPosition: 'left bottom',
     // Formation en ligne / laptop
   },
 ];
@@ -46,6 +38,8 @@ interface AccordionItemData {
   id: number;
   title: string;
   imageUrl: string;
+  objectPosition?: string;
+  zoom?: number;
 }
 
 interface AccordionItemProps {
@@ -75,7 +69,11 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
         src={item.imageUrl}
         alt={item.title}
         className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-in-out"
-        style={{ transform: isActive ? 'scale(1.03)' : 'scale(1)' }}
+        style={{
+          transform: isActive ? `scale(${item.zoom ?? 1.03})` : 'scale(1)',
+          transformOrigin: item.objectPosition ?? 'center',
+          objectPosition: item.objectPosition ?? 'center',
+        }}
         onError={(e) => {
           const target = e.target as HTMLImageElement;
           target.onerror = null;
@@ -135,45 +133,66 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
 
 // --- Composant principal ---
 export function LandingAccordionItem() {
-  const [activeIndex, setActiveIndex] = useState(4);
+  const [activeIndex, setActiveIndex] = useState(3);
 
   return (
     <section className="bg-[#1E172D] font-sans">
-      <div className="container mx-auto px-6 py-16 md:py-28">
+      <div className="container mx-auto px-6 pt-8 md:pt-12 pb-16 md:pb-28">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-14">
 
           {/* ── Côté gauche : texte ── */}
           <div className="w-full lg:w-[45%] text-center lg:text-left space-y-6">
 
+            {/* Marque — petit wordmark tech + effet déchiffrage */}
+            <ScrambleText
+              text="Accélération IA 360"
+              className="block text-[#A68AFF] text-sm md:text-base font-bold tracking-[0.12em] uppercase whitespace-nowrap"
+              style={{ fontFamily: 'var(--font-tech)' }}
+            />
+
             {/* Badge */}
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#A68AFF]/15 border border-[#A68AFF]/30 text-[#D8D0FF] text-sm font-medium tracking-wide">
               <span className="w-2 h-2 rounded-full bg-[#A68AFF] animate-pulse" />
-              Prochaine cohorte : 9 juin — 4 places restantes
+              Prochaine cohorte : 23 septembre 2026 — 4 places restantes
             </span>
 
-            {/* Titre principal */}
-            <h1 className="text-4xl md:text-5xl lg:text-[3.25rem] font-bold text-[#F6F1EB] leading-[1.15] tracking-tight">
-              Récupérez{' '}
-              <span className="relative inline-block">
-                <span className="text-[#FFFFAB]">1 jour par semaine</span>
-                <span className="absolute -bottom-1 left-0 w-full h-[3px] bg-[#A68AFF] rounded-full" />
+            {/* Titre principal — promesse */}
+            <h1
+              className="text-5xl md:text-6xl lg:text-[3.75rem] font-bold text-[#F6F1EB] leading-[1.05] tracking-tight"
+              style={{ fontFamily: 'var(--font-display)' }}
+            >
+              <span className="block">Plus de temps</span>
+              <span className="block">Plus de clients</span>
+              <span className="block mt-1">
+                <span className="relative inline-block">
+                  <span className="text-[#FFFFAB]">En 6 semaines</span>
+                  <span className="absolute -bottom-1 left-0 w-full h-[3px] bg-[#A68AFF] rounded-full" />
+                </span>
+                .
               </span>
-              {' '}grâce à l&apos;IA.
-              <br />
-              <span className="text-[#A68AFF]">En 6 semaines.</span>
             </h1>
 
+            {/* Phrase intermédiaire qui ressort */}
+            <p
+              className="text-lg md:text-2xl font-bold text-[#F6F1EB] whitespace-nowrap pt-3 md:pt-4"
+              style={{ fontFamily: 'var(--font-display)' }}
+            >
+              C&apos;est possible aujourd&apos;hui avec{' '}
+              <span className="text-[#A68AFF]">l&apos;IA</span>.
+            </p>
+
             {/* Sous-titre */}
-            <p className="text-lg text-[#D8D0FF] leading-relaxed max-w-lg mx-auto lg:mx-0">
-              Vous repartez avec un système de contenu qui tourne, des workflows qui automatisent votre admin,
-              et une offre commerciale structurée par l&apos;IA.{' '}
-              <span className="text-[#F6F1EB] font-medium">
-                2h par semaine en live, le reste à votre rythme. Zéro technique requise.
+            <p className="text-lg text-[#D8D0FF] leading-relaxed max-w-xl mx-auto lg:mx-0">
+              <span className="block [text-wrap:balance]">
+                Coupez votre administratif en deux et boostez votre visibilité avec des outils et des méthodes accessibles sans compétences techniques.
+              </span>
+              <span className="block mt-2 text-[#F6F1EB] font-medium">
+                2h / semaine live, le reste à votre rythme
               </span>
             </p>
 
             {/* CTA + social proof */}
-            <div className="flex flex-col sm:flex-row items-center lg:items-start gap-4 pt-2">
+            <div className="flex flex-col sm:flex-row items-center lg:items-start gap-4 pt-6 md:pt-8">
               <a
                 href="#cohorte"
                 className={[

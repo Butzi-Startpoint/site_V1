@@ -6,12 +6,10 @@ import { fadeUp, stagger, viewport } from '@/lib/animations'
 import { CtaChevronButton } from '@/components/ui/cta-chevron-button'
 
 const problems: React.ReactNode[] = [
-  <>Vous passez plus de temps à <strong>faire tourner votre boîte</strong> qu&apos;à <strong>exercer votre métier</strong>.</>,
-  <>Vous avez testé ChatGPT. Résultat&nbsp;: du <strong>texte générique</strong> que vous <strong>n&apos;avez jamais utilisé</strong>.</>,
-  <>Vous voyez des concurrents <strong>publier tous les jours</strong> et vous vous demandez <strong>comment ils trouvent le temps</strong>.</>,
-  <><strong>Vos devis, vos mails, vos relances</strong>&nbsp;: tout est <strong>refait à la main</strong>, à chaque fois.</>,
   <>Vous n&apos;avez pas le temps de tester 15 outils IA pour trouver <strong>celui qui marche pour VOUS</strong>.</>,
+  <><strong>Vos devis, vos mails, vos relances</strong>&nbsp;: tout est <strong>refait à la main</strong>, à chaque fois.</>,
   <>Vous avez l&apos;impression que <strong>vos concurrents utilisent l&apos;IA mieux que vous</strong>.</>,
+  <>Vous oubliez une relance, un devis reste sans suite&nbsp;: c&apos;est du <strong>chiffre d&apos;affaires en moins</strong>.</>,
 ]
 
 export function Problem() {

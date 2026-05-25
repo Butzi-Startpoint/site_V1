@@ -6,6 +6,12 @@ export type Logo = {
   alt: string
   width?: number
   height?: number
+  /** Classe de hauteur Tailwind (par défaut 'h-5 md:h-6') */
+  heightClass?: string
+  /** Ne pas appliquer le filtre silhouette blanche (garde les couleurs d'origine) */
+  noInvert?: boolean
+  /** Texte affiché à côté du logo (ex. wordmark manquant) */
+  label?: string
 }
 
 type LogoCloudProps = React.ComponentProps<'div'> & {
@@ -23,16 +29,30 @@ export function LogoCloud({ className, logos, ...props }: LogoCloudProps) {
     >
       <InfiniteSlider gap={56} duration={35} durationOnHover={70}>
         {logos.map((logo) => (
-          <img
-            key={`logo-${logo.alt}`}
-            alt={logo.alt}
-            src={logo.src}
-            height={logo.height ?? 'auto'}
-            width={logo.width ?? 'auto'}
-            loading="lazy"
-            className="pointer-events-none h-5 select-none md:h-6 object-contain"
-            style={{ filter: 'brightness(0) invert(1) opacity(0.7)' }}
-          />
+          <div key={`logo-${logo.alt}`} className="flex items-center gap-2.5">
+            <img
+              alt={logo.alt}
+              src={logo.src}
+              loading="lazy"
+              className={cn(
+                'pointer-events-none select-none object-contain w-auto',
+                logo.heightClass ?? 'h-5 md:h-6',
+              )}
+              style={
+                logo.noInvert
+                  ? { opacity: 0.95 }
+                  : { filter: 'brightness(0) invert(1) opacity(0.7)' }
+              }
+            />
+            {logo.label && (
+              <span
+                className="text-[#F6F1EB]/70 font-bold uppercase tracking-wide text-base md:text-lg whitespace-nowrap"
+                style={{ fontFamily: 'var(--font-display)' }}
+              >
+                {logo.label}
+              </span>
+            )}
+          </div>
         ))}
       </InfiniteSlider>
     </div>

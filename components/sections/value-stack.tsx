@@ -6,9 +6,9 @@ import { fadeUp, stagger, viewport } from '@/lib/animations'
 const stackItems = [
   {
     num: '01',
-    title: '6 sessions live en groupe',
-    desc: '1 session/semaine · 2h · Démos, Q&A, mise en pratique sur VOS cas',
-    value: '1 800 €',
+    title: '7 sessions live en groupe',
+    desc: 'Chaque semaine, on travaille SUR votre business, pas en théorie. Vous repartez avec des actions concrètes à chaque session.',
+    value: '2 100 €',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A68AFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="6" width="14" height="12" rx="2"/>
@@ -18,32 +18,9 @@ const stackItems = [
   },
   {
     num: '02',
-    title: 'Accès au cours en ligne : +80 vidéos',
-    desc: 'Théorie, tutos, exemples concrets · à votre rythme',
+    title: 'La Méthode 3S : votre système IA complet',
+    desc: 'Simplifier › Scaler › Systématiser. La méthode qui transforme l\'IA d\'un gadget en levier de croissance pour votre activité.',
     value: '997 €',
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A68AFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-        <line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="13" y2="11"/>
-      </svg>
-    ),
-  },
-  {
-    num: '03',
-    title: 'La Méthode 3S : framework complet',
-    desc: 'Le système Simplifier › Scaler › Systématiser appliqué à votre métier',
-    value: '500 €',
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A68AFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="2" y="3" width="20" height="5" rx="1"/><rect x="2" y="10" width="20" height="5" rx="1"/><rect x="2" y="17" width="20" height="5" rx="1"/>
-      </svg>
-    ),
-  },
-  {
-    num: '04',
-    title: 'Kit de prompts et templates à chaque module',
-    desc: 'Prêts à l\'emploi, testés sur +120 entrepreneurs',
-    value: '397 €',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A68AFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
@@ -54,10 +31,21 @@ const stackItems = [
     ),
   },
   {
-    num: '05',
-    title: 'Communauté WhatsApp Entrepreneurs Augmentés',
-    desc: 'Groupe privé participants + contenu exclusif',
-    value: '297 €',
+    num: '03',
+    title: 'Accès au cours en ligne : +80 vidéos',
+    desc: 'Toute la théorie, les tutos et les exemples concrets accessibles à vie, à votre rythme, en complément des sessions live.',
+    value: '497 €',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A68AFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <polygon points="5,3 19,12 5,21 5,3"/>
+      </svg>
+    ),
+  },
+  {
+    num: '04',
+    title: 'Communauté : Cercle StartPoint',
+    desc: 'Le réseau privé d\'entrepreneurs qui utilisent l\'IA au quotidien. Entraide, partages de résultats, contenus exclusifs.',
+    value: '497 €',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A68AFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -68,13 +56,13 @@ const stackItems = [
     ),
   },
   {
-    num: '06',
-    title: 'Replays des sessions + Q&A entre les sessions',
-    desc: 'Vous ne perdez rien si vous manquez une session',
-    value: '297 €',
+    num: '05',
+    title: 'Accompagnement continu entre les sessions',
+    desc: 'Vous n\'êtes jamais bloqué. Questions illimitées, feedback personnalisé, ressources complémentaires entre chaque live.',
+    value: '397 €',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A68AFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <polygon points="5,3 19,12 5,21 5,3"/>
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
       </svg>
     ),
   },
@@ -110,7 +98,7 @@ export function ValueStack() {
             style={{ fontFamily: 'var(--font-display)' }}
           >
             Ce qui est inclus dans le programme{' '}
-            <span className="text-[#A68AFF]">Méthode 3S</span>
+            <span className="text-[#A68AFF]" style={{ fontFamily: 'var(--font-tech)' }}>Accélération IA 360</span>
           </motion.h2>
         </motion.div>
 
@@ -175,7 +163,7 @@ export function ValueStack() {
             </p>
             <p className="text-[#1E172D] font-extrabold text-3xl tracking-tight mt-0.5"
               style={{ fontFamily: 'var(--font-display)' }}>
-              4 288 €
+              4 488 €
             </p>
           </div>
           <div className="text-right">

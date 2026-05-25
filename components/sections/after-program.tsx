@@ -144,7 +144,7 @@ export function AfterProgram() {
                 className="text-2xl md:text-3xl font-extrabold text-[#F6F1EB] tracking-tight"
                 style={{ fontFamily: 'var(--font-display)' }}
               >
-                Le Cercle Entrepreneurs Augmentés
+                Le Cercle StartPoint
               </h3>
             </motion.div>
 
@@ -152,7 +152,7 @@ export function AfterProgram() {
               variants={fadeUp}
               className="text-[#F6F1EB] text-lg md:text-xl leading-relaxed max-w-[640px] mx-auto"
             >
-              La communauté privée des alumni StartPoint IA. Pour continuer à
+              La communauté privée des alumni du Cercle StartPoint. Pour continuer à
               progresser, rester à jour et ne pas bosser seul avec l&apos;IA.
             </motion.p>
           </motion.div>

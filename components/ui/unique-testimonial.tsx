@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils"
 const testimonials = [
   {
     id: 1,
-    quote: "J'ai divisé par 3 le temps passé sur mes devis et mes emails. En 6 semaines, j'ai des workflows qui tournent seuls.",
+    quote: "J'ai divisé par 3 le temps passé sur mes devis et mes emails. En 6 semaines, j'ai des systèmes d'IA qui tournent seuls.",
     author: "Marie Leroy",
     role: "Consultante RH indépendante",
     avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=200&auto=format&fit=crop",
