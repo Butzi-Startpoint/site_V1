@@ -13,7 +13,7 @@ export default function FinancementPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-[64px] bg-[#F6F1EB] min-h-screen">
+      <main className="pt-[88px] bg-[#F6F1EB] min-h-screen">
         <FinancementSimulator />
       </main>
       <FooterSection />

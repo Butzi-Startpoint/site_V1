@@ -23,7 +23,7 @@ export default function Home() {
       <Navbar />
 
       {/* Hero accordion — offset pour la navbar fixe */}
-      <div className="pt-[64px]">
+      <div className="pt-[88px]">
         <LandingAccordionItem />
       </div>
 
