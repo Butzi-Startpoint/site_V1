@@ -54,16 +54,13 @@ export function Navbar() {
         }`}
       >
         <div className="max-w-[1140px] mx-auto px-6 py-3 flex items-center justify-between">
-          {/* Logo animé — zoom 3× dans un cadre de hauteur navbar (rogne le canvas vide du GIF) */}
-          <Link href="/" className="flex items-center no-underline group cursor-pointer">
-            <span className="block h-10 md:h-12 w-[150px] md:w-[180px] overflow-hidden">
-              <img
-                src="/startpoint-logo.gif"
-                alt="StartPoint IA"
-                className="h-full w-auto"
-                style={{ transform: 'scale(3)', transformOrigin: 'left center' }}
-              />
-            </span>
+          {/* Logo animé — 3× plus grand (object-contain) */}
+          <Link href="/" className="flex items-center no-underline group cursor-pointer -my-10 md:-my-12">
+            <img
+              src="/startpoint-logo.gif"
+              alt="StartPoint IA"
+              className="h-36 md:h-40 w-auto object-contain"
+            />
           </Link>
 
           {/* Nav links */}
