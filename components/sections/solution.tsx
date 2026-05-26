@@ -8,7 +8,7 @@ const formats = [
     hours: '12',
     unit: 'h',
     title: 'Sessions live en groupe',
-    desc: "7 sessions de 90 mn en visio. Démos, Q&A, mise en pratique sur VOS cas.",
+    desc: "8 sessions de 90 mn en visio. Démos, Q&A, mise en pratique sur VOS cas.",
     accentBg: 'rgba(166,138,255,0.12)',
     accentBorder: 'rgba(166,138,255,0.25)',
     icon: (

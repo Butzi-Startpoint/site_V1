@@ -3,15 +3,13 @@ export function FooterSection() {
     <footer className="bg-[#1E172D] border-t border-[#F6F1EB]/8 py-10 text-center">
       <div className="max-w-[1140px] mx-auto px-6">
         {/* Logo */}
-        <div className="flex items-center justify-center gap-2.5 mb-6">
-          <div className="w-7 h-7 rounded-lg bg-[#FFFFAB]/15 flex items-center justify-center">
-            <span className="text-[#FFFFAB] font-extrabold text-xs" style={{ fontFamily: 'var(--font-display)' }}>
-              S
-            </span>
-          </div>
-          <span className="font-bold text-[#F6F1EB]/70 text-sm tracking-tight" style={{ fontFamily: 'var(--font-display)' }}>
-            StartPoint<span className="text-[#A68AFF]"> IA</span>
-          </span>
+        <div className="flex items-center justify-center mb-6">
+          <img
+            src="/startpoint-wordmark.png"
+            alt="StartPoint IA"
+            className="h-7 w-auto"
+            style={{ filter: 'brightness(0) invert(1)', opacity: 0.8 }}
+          />
         </div>
 
         <p className="text-[#F6F1EB]/30 text-sm mb-3">

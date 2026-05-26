@@ -195,7 +195,7 @@ export function LandingAccordionItem() {
             {/* CTA + social proof */}
             <div className="flex flex-col sm:flex-row items-center lg:items-start gap-4 pt-6 md:pt-8">
               <a
-                href="#cohorte"
+                href="#pricing"
                 className={[
                   'inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-base',
                   'bg-[#FFFFAB] text-[#1E172D] shadow-lg shadow-[#FFFFAB]/20',

@@ -6,16 +6,16 @@ import { fadeUp, stagger, viewport } from '@/lib/animations'
 import type { Variants } from 'framer-motion'
 
 const forYes = [
-  'Vous êtes coach, consultant, formateur ou freelance',
+  'Vous êtes indépendant(e) ou entrepreneur(e)',
   'Vous vivez de votre activité depuis au moins 2 ans',
   'Vous utilisez des outils numériques au quotidien',
   'Vous avez testé ChatGPT mais sans méthode structurée',
   "Vous voulez gagner du temps et développer votre activité avec l'IA",
-  'Vous êtes prêt à investir du temps pendant 6 semaines',
+  'Vous êtes prêt à investir 1h30 / semaine pour développer votre business',
 ]
 
 const forNo = [
-  'Vous cherchez une solution magique sans effort',
+  'Vous utilisez très peu les outils digitaux',
   'Vous êtes développeur ou profil technique avancé',
   'Vous débutez totalement en entrepreneuriat',
   'Vous voulez juste des prompts à copier-coller sans comprendre la logique derrière',

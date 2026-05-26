@@ -86,7 +86,7 @@ export function Financing() {
 
           <CtaChevronButton
             as="a"
-            href="https://calendly.com/"
+            href="https://calendly.com/butzi/15-minutes-call-catch-up"
             target="_blank"
             rel="noopener noreferrer"
             tone="yellow"

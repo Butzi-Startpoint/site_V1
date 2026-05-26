@@ -3,6 +3,7 @@
 import { useState, type ReactNode } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { fadeUp, stagger, viewport } from '@/lib/animations'
+import { PhoneRevealButton } from '@/components/ui/phone-reveal-button'
 
 type Faq = { q: string; a: ReactNode }
 
@@ -27,7 +28,7 @@ const faqs: Faq[] = [
   },
   {
     q: "J'ai déjà testé ChatGPT, pourquoi ce programme serait différent ?",
-    a: "Tester ChatGPT sans méthode, c'est comme avoir un outil sans le mode d'emploi. Ce programme vous donne un cadre structuré, des cas d'usage concrets pour votre métier, et un accompagnement pour passer de \"j'ai essayé\" à \"je l'utilise tous les jours\".",
+    a: "Tester ChatGPT sans méthode, c'est comme utiliser un smartphone que pour appeler. Ce programme vous donne un cadre structuré, des cas d'usage concrets pour votre métier, et un accompagnement pour passer de \"j'ai essayé\" à \"je l'utilise tous les jours\".",
   },
   {
     q: 'Je ne suis pas technique, est-ce que je vais suivre ?',
@@ -35,7 +36,7 @@ const faqs: Faq[] = [
   },
   {
     q: 'Combien de temps ça demande par semaine ?',
-    a: "Comptez environ 3h par semaine : 1h30 de session live + 1h à 1h30 de cours en ligne et exercices. C'est un engagement, mais c'est ce qui fait la différence avec un cours en ligne qu'on ne finit jamais.",
+    a: "Comptez environ 3h par semaine : 1h30 de session live, et 1h à 1h30 en plus pour pratiquer ou visionner le cours en ligne. C'est un engagement, mais c'est ce qui fait la différence avec un cours en ligne qu'on ne finit jamais.",
   },
   {
     q: 'Est-ce que je peux faire financer la formation ?',
@@ -58,7 +59,7 @@ const faqs: Faq[] = [
   },
   {
     q: 'Et si je rate une session ?',
-    a: "Toutes les sessions sont enregistrées et les replays sont accessibles immédiatement. Cela dit, la valeur du programme vient de la pratique en live — on vous recommande d'être présent au maximum.",
+    a: "Toutes les sessions sont enregistrées et les replays sont accessibles immédiatement. Cela dit, la valeur du programme vient de la pratique en live, on vous recommande d'être présent au maximum. Surtout si vous voulez être financé et avoir un certificat de fin de formation, c'est obligatoire d'être présent. Il y a aussi la possibilité de rattraper une séance.",
   },
   {
     q: 'Quelle est la différence entre Essentiel et Momentum ?',
@@ -175,7 +176,7 @@ export function FaqSection() {
           whileInView="visible"
           viewport={viewport}
           variants={fadeUp}
-          className="text-center"
+          className="flex flex-col sm:flex-row items-center justify-center gap-3"
         >
           <motion.a
             href="#pricing"
@@ -186,6 +187,7 @@ export function FaqSection() {
           >
             Choisir mon offre →
           </motion.a>
+          <PhoneRevealButton className="rounded-full" />
         </motion.div>
       </div>
     </section>

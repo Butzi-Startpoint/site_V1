@@ -79,7 +79,7 @@ export function Guarantees() {
             >
               <div className="w-1.5 h-1.5 rounded-full bg-[#A68AFF] flex-shrink-0" />
               <p className="text-[#1E172D]/45 text-xs italic">
-                Applicable aux offres Essentiel et Momentum · Présence à minimum 6/7 sessions + exercices rendus.
+                Applicable aux offres Essentiel et Momentum · Présence à minimum 7/8 sessions + exercices rendus.
               </p>
             </div>
             <div

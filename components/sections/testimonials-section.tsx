@@ -31,35 +31,29 @@ const testimonials: Testimonial[] = [
     role: "Done Design",
   },
   {
-    text: "J'utilisais l'IA au hasard, sans vraie méthode. Aujourd'hui j'ai un système clair qui gère mes contenus et une partie de mon administratif — je récupère facilement une journée par semaine.",
+    text: "En 3 semaines j'avais déjà récupéré 6h par semaine sur mes emails et devis. Le ROI est immédiat, pas besoin d'attendre la fin du programme.",
     image: "/retours/diana-chao.jpg",
     name: "Diana Chao",
     role: "Chez Mama Ly",
   },
   // Retours complémentaires
   {
-    text: "En 3 semaines j'avais déjà récupéré 6h par semaine sur mes emails et devis. Le ROI est immédiat, pas besoin d'attendre la fin du programme.",
-    image: "https://randomuser.me/api/portraits/women/44.jpg",
-    name: "Marie Leroy",
-    role: "Consultante RH indépendante",
+    text: "Il a ouvert les esprits et nous a fourni des outils précis pour mettre en application l'IA dans notre quotidien professionnel.",
+    image: "https://randomuser.me/api/portraits/women/65.jpg",
+    name: "Léna T.",
+    role: "CerFrance",
   },
   {
-    text: "J'avais testé 4 formations IA avant celle-ci. C'est la première qui part vraiment de mon business et pas d'un outil. La différence est énorme.",
-    image: "https://randomuser.me/api/portraits/men/32.jpg",
-    name: "Thomas Mercier",
-    role: "Fondateur, Buildlab Studio",
+    text: "Très bonne intervention sur l'utilisation de l'IA ! Merci pour votre intervention inspirante.",
+    image: "https://randomuser.me/api/portraits/women/32.jpg",
+    name: "Valérie Daviré",
+    role: "Secrétaire médicale indépendante",
   },
   {
-    text: "Mon système de contenu tourne maintenant en quasi-autonome. Je publie 3x plus qu'avant en y passant 2x moins de temps.",
-    image: "https://randomuser.me/api/portraits/women/68.jpg",
-    name: "Sofia Aziz",
-    role: "Coach certifiée & fondatrice",
-  },
-  {
-    text: "J'ai arrêté de passer mes dimanches à préparer ma semaine. L'IA s'en charge. Je me concentre enfin sur ce que j'aime faire.",
-    image: "https://randomuser.me/api/portraits/women/12.jpg",
-    name: "Camille Rousseau",
-    role: "Architecte d'intérieur freelance",
+    text: "Le propos est pertinent, l'animation est rythmée et tonique, l'atmosphère toujours bienveillante. Ce détour inspirant a été apprécié à chaque fois par les participants.",
+    image: "https://randomuser.me/api/portraits/women/47.jpg",
+    name: "Laurène Castor",
+    role: "Openclassrooms",
   },
 ]
 

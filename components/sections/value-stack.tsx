@@ -6,7 +6,7 @@ import { fadeUp, stagger, viewport } from '@/lib/animations'
 const stackItems = [
   {
     num: '01',
-    title: '7 sessions live en groupe',
+    title: '8 sessions live en groupe',
     desc: 'Chaque semaine, on travaille SUR votre business, pas en théorie. Vous repartez avec des actions concrètes à chaque session.',
     value: '2 100 €',
     icon: (

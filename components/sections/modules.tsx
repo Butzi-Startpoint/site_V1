@@ -2,6 +2,8 @@
 
 import { motion } from 'framer-motion'
 import { fadeUp, stagger, viewport } from '@/lib/animations'
+import { PhoneRevealButton } from '@/components/ui/phone-reveal-button'
+import { ProgramEmailButton } from '@/components/ui/program-email-button'
 import type { Variants } from 'framer-motion'
 
 const cardSpring: Variants = {
@@ -324,24 +326,19 @@ export function Modules() {
           </div>
         </motion.div>
 
-        {/* CTA : recevoir le programme */}
+        {/* CTA : recevoir le programme + appel */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={viewport}
           variants={fadeUp}
-          className="text-center"
+          className="flex flex-col sm:flex-row items-center justify-center gap-3"
         >
-          <a
-            href="mailto:contact@startpoint-ia.fr?subject=Recevoir%20le%20programme%20Acc%C3%A9l%C3%A9ration%20IA%20360%20d%C3%A9taill%C3%A9&body=Bonjour%2C%0A%0AJe%20souhaite%20recevoir%20le%20programme%20Acc%C3%A9l%C3%A9ration%20IA%20360%20d%C3%A9taill%C3%A9.%0A%0AMerci."
-            className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#1E172D] text-[#FFFFAB] font-bold text-sm hover:bg-[#2a1f3d] transition-colors cursor-pointer"
-            style={{ fontFamily: 'var(--font-display)' }}
-          >
-            Recevoir le programme complet
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-            </svg>
-          </a>
+          <ProgramEmailButton label="Recevoir le programme complet" />
+          <PhoneRevealButton
+            label="Appel gratuit pour plus d'informations"
+            className="px-7 py-3.5 rounded-full"
+          />
         </motion.div>
       </div>
     </section>
