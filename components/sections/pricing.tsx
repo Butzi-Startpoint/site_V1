@@ -1,11 +1,39 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { CheckCircle2, Users, Zap, Star } from 'lucide-react'
 import { fadeUp, stagger, viewport } from '@/lib/animations'
 import { Button } from '@/components/ui/button'
 import * as PricingCard from '@/components/ui/pricing-card'
+import { ScrambleText } from '@/components/ui/scramble-text'
+import { QualiopiBadge } from '@/components/ui/qualiopi-badge'
 import type { Variants } from 'framer-motion'
+
+/* Bouton appel : au clic, se transforme en numéro de téléphone avec l'effet cipher */
+function CallButton() {
+  const [revealed, setRevealed] = useState(false)
+  const cls =
+    'inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl bg-[#1E172D] text-[#F6F1EB] font-bold text-sm hover:bg-[#2a1f3d] transition-colors cursor-pointer no-underline'
+
+  if (revealed) {
+    return (
+      <a href="tel:+33631986525" className={cls} style={{ fontFamily: 'var(--font-tech)' }}>
+        <ScrambleText text="+33 6 31 98 65 25" style={{ fontFamily: 'var(--font-tech)' }} />
+      </a>
+    )
+  }
+  return (
+    <button
+      type="button"
+      onClick={() => setRevealed(true)}
+      className={cls}
+      style={{ fontFamily: 'var(--font-display)' }}
+    >
+      Appel gratuit pour toutes questions
+    </button>
+  )
+}
 
 const cardVariant: Variants = {
   hidden:  { opacity: 0, y: 40, scale: 0.96 },
@@ -162,7 +190,7 @@ const plans: Plan[] = [
     payment: 'Paiement en 1x ou 3x sans frais',
     paymentSecondary: 'soit 999 €/mois en 3x',
     features: [
-      '7 sessions live en groupe (1/semaine, 2h)',
+      '7 sessions live en groupe (1/semaine, 90 mn)',
       'Accès au cours en ligne : +80 vidéos',
       'La Méthode 3S : la méthode complète',
       'Kit de prompts et templates à chaque module',
@@ -379,30 +407,43 @@ export function Pricing() {
                     )}
 
                     {plan.extras && (
-                      <>
-                        {plan.extrasTitle && (
-                          <p
-                            className={`text-center text-sm font-extrabold tracking-tight ${t.extrasTitle}`}
-                            style={{ fontFamily: 'var(--font-display)' }}
+                      <details className="group">
+                        <summary
+                          className={`flex items-center justify-center gap-1.5 cursor-pointer list-none [&::-webkit-details-marker]:hidden text-[11px] font-bold uppercase tracking-widest ${t.sectionLabel}`}
+                          style={{ fontFamily: 'var(--font-display)' }}
+                        >
+                          Valeur incluse
+                          <svg
+                            className="w-3.5 h-3.5 transition-transform duration-200 group-open:rotate-180"
+                            fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"
                           >
-                            {plan.extrasTitle}
-                          </p>
-                        )}
-                        <PricingCard.Separator className={t.extrasSeparator}>valeur incluse</PricingCard.Separator>
-                        <div className={`rounded-xl px-4 py-3 text-sm border ${t.extrasContainer}`}>
-                          {plan.extras.map(row => (
-                            <div key={row.label} className={`flex justify-between text-xs py-1 ${t.extrasRow}`}>
-                              <span>{row.label}</span><span>{row.val}</span>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </summary>
+                        <div className="mt-3">
+                          {plan.extrasTitle && (
+                            <p
+                              className={`text-center text-sm font-extrabold tracking-tight mb-3 ${t.extrasTitle}`}
+                              style={{ fontFamily: 'var(--font-display)' }}
+                            >
+                              {plan.extrasTitle}
+                            </p>
+                          )}
+                          <div className={`rounded-xl px-4 py-3 text-sm border ${t.extrasContainer}`}>
+                            {plan.extras.map(row => (
+                              <div key={row.label} className={`flex justify-between text-xs py-1 ${t.extrasRow}`}>
+                                <span>{row.label}</span><span>{row.val}</span>
+                              </div>
+                            ))}
+                            <div className={`border-t mt-2 pt-2 flex justify-between font-bold text-xs ${t.extrasTotal}`}>
+                              <span>Valeur totale des extras</span><span>1 024 €</span>
                             </div>
-                          ))}
-                          <div className={`border-t mt-2 pt-2 flex justify-between font-bold text-xs ${t.extrasTotal}`}>
-                            <span>Valeur totale des extras</span><span>1 024 €</span>
+                            <p className={`text-[11px] font-semibold mt-2 text-center ${t.extrasFooter}`}>
+                              Pour seulement 500 € de plus
+                            </p>
                           </div>
-                          <p className={`text-[11px] font-semibold mt-2 text-center ${t.extrasFooter}`}>
-                            Pour seulement 500 € de plus
-                          </p>
                         </div>
-                      </>
+                      </details>
                     )}
                   </PricingCard.Body>
                 </PricingCard.Card>
@@ -416,18 +457,7 @@ export function Pricing() {
           initial="hidden" whileInView="visible" viewport={viewport} variants={fadeUp}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8"
         >
-          <a
-            href="https://calendly.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-7 py-4 rounded-2xl bg-[#1E172D] text-[#F6F1EB] font-bold text-sm hover:bg-[#2a1f3d] transition-colors cursor-pointer no-underline"
-            style={{ fontFamily: 'var(--font-display)' }}
-          >
-            Appel gratuit pour toutes questions
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-            </svg>
-          </a>
+          <CallButton />
 
           <a
             href="/financement"
@@ -439,9 +469,6 @@ export function Pricing() {
               fontFamily: 'var(--font-display)',
             }}
           >
-            <span className="text-[0.95rem] font-bold text-[#1E172D]">
-              C&apos;est trop cher&nbsp;?
-            </span>
             <span className="inline-flex items-center gap-1.5 text-[0.95rem] font-semibold text-[#A68AFF] group-hover:gap-2.5 transition-all">
               Découvrez les possibilités de financement
               <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
@@ -449,6 +476,14 @@ export function Pricing() {
               </svg>
             </span>
           </a>
+        </motion.div>
+
+        {/* Réassurance Qualiopi */}
+        <motion.div
+          initial="hidden" whileInView="visible" viewport={viewport} variants={fadeUp}
+          className="mt-12 flex justify-center"
+        >
+          <QualiopiBadge size="md" />
         </motion.div>
       </div>
     </section>

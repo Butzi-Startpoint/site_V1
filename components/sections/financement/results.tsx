@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from 'react'
 import { motion } from 'framer-motion'
 import { CountUp } from './count-up'
+import { ScrambleText } from '@/components/ui/scramble-text'
 import type { Estimation, FafName } from './types'
 
 function encodeForm(data: Record<string, string>) {
@@ -113,7 +114,7 @@ export function Results({ estimation }: { estimation: Estimation; shareUrl?: str
           <div className="flex justify-between items-baseline pb-4 border-b border-[#1E172D]/10">
             <div>
               <p className="text-[#1E172D] font-semibold" style={{ fontFamily: 'var(--font-display)' }}>
-                Formation Accélération IA 360 (14h)
+                Formation <ScrambleText text="Accélération IA 360" style={{ fontFamily: 'var(--font-tech)' }} /> (14h)
               </p>
               <p className="text-xs text-[#1E172D]/50 mt-0.5">Tarif Essentiel HT</p>
             </div>
@@ -312,8 +313,8 @@ export function Results({ estimation }: { estimation: Estimation; shareUrl?: str
                   className="mt-1 w-4 h-4 accent-[#A68AFF] cursor-pointer"
                 />
                 <span>
-                  J&apos;accepte de recevoir le guide et des informations sur le programme
-                  Accélération IA 360.
+                  J&apos;accepte de recevoir le guide et des informations sur le programme{' '}
+                  <ScrambleText text="Accélération IA 360" style={{ fontFamily: 'var(--font-tech)' }} />.
                 </span>
               </label>
               <button

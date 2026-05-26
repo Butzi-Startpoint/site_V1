@@ -98,7 +98,7 @@ export function ValueStack() {
             style={{ fontFamily: 'var(--font-display)' }}
           >
             Ce qui est inclus dans le programme{' '}
-            <span className="text-[#A68AFF]" style={{ fontFamily: 'var(--font-tech)' }}>Accélération IA 360</span>
+            <span className="text-[#A68AFF]">Accélération IA 360</span>
           </motion.h2>
         </motion.div>
 

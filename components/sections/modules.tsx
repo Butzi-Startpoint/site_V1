@@ -13,16 +13,15 @@ const cardSpring: Variants = {
 const phaseModules: {
   phase: string
   phaseColor: string
-  pre?: { badge: string; title: string }
+  pre?: { title: string }
   modules: { num: string; title: string }[]
-  post?: { badge: string; title: string }
 }[] = [
   {
     phase: 'Phase 1 — Simplifier',
     phaseColor: '#A68AFF',
-    pre: { badge: 'Prépa', title: 'Paramétrage & connexion des outils' },
+    pre: { title: 'Paramétrage des outils & rencontre' },
     modules: [
-      { num: '1', title: 'Poser les fondations' },
+      { num: '1', title: 'Les bases de l\'IA et de votre LLM' },
       { num: '2', title: 'Gagnez du temps tout de suite' },
     ],
   },
@@ -30,9 +29,9 @@ const phaseModules: {
     phase: 'Phase 2 — Scaler',
     phaseColor: '#1E172D',
     modules: [
-      { num: '3', title: 'Marketing augmenté' },
-      { num: '4', title: 'La vente augmentée' },
-      { num: '5', title: 'Vision stratégique augmentée' },
+      { num: '3', title: 'Vision stratégique augmentée' },
+      { num: '4', title: 'Marketing augmenté' },
+      { num: '5', title: 'La vente augmentée' },
     ],
   },
   {
@@ -40,8 +39,8 @@ const phaseModules: {
     phaseColor: '#A68AFF',
     modules: [
       { num: '6', title: 'Débloquer son quotidien' },
+      { num: '7', title: 'Coaching de groupe : créer son plan d\'action et son écosystème d\'outils IA' },
     ],
-    post: { badge: 'Inclus', title: 'Coaching de groupe : créer son plan d\'action et son système' },
   },
 ]
 
@@ -260,7 +259,7 @@ export function Modules() {
             className="text-center text-xs font-bold uppercase tracking-widest text-[#1E172D]/45 mb-8"
             style={{ fontFamily: 'var(--font-display)' }}
           >
-            Au programme
+            Au programme · 8 sessions de 90 minutes
           </motion.h3>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-start">
@@ -286,14 +285,16 @@ export function Modules() {
                   style={{ boxShadow: '0 1px 4px rgba(30,23,45,0.03)' }}
                 >
                   {row.pre && (
-                    <div className="flex items-center gap-3 px-4 py-3 border-b border-[#1E172D]/[0.06] bg-[#FFFFAB]/25">
+                    <div className="flex items-center gap-3 px-4 py-3 border-b border-[#1E172D]/[0.06] transition-colors hover:bg-[#A68AFF]/[0.04]">
+                      <span className="flex-shrink-0 w-6 h-6 rounded-md inline-flex items-center justify-center bg-[#A68AFF]/12 text-[#A68AFF]">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                          <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                      </span>
                       <span
-                        className="flex-shrink-0 inline-flex items-center justify-center px-2 h-6 rounded-md text-[10px] font-bold uppercase tracking-wider bg-[#FFFFAB] text-[#1E172D]"
+                        className="text-[#1E172D] font-semibold text-sm leading-snug tracking-tight"
                         style={{ fontFamily: 'var(--font-display)' }}
                       >
-                        {row.pre.badge}
-                      </span>
-                      <span className="text-[#1E172D]/70 font-medium text-sm leading-snug">
                         {row.pre.title}
                       </span>
                     </div>
@@ -317,19 +318,6 @@ export function Modules() {
                       </span>
                     </div>
                   ))}
-                  {row.post && (
-                    <div className="flex items-center gap-3 px-4 py-3 border-t border-[#1E172D]/[0.06] bg-[#FFFFAB]/25">
-                      <span
-                        className="flex-shrink-0 inline-flex items-center justify-center px-2 h-6 rounded-md text-[10px] font-bold uppercase tracking-wider bg-[#FFFFAB] text-[#1E172D]"
-                        style={{ fontFamily: 'var(--font-display)' }}
-                      >
-                        {row.post.badge}
-                      </span>
-                      <span className="text-[#1E172D]/70 font-medium text-sm leading-snug">
-                        {row.post.title}
-                      </span>
-                    </div>
-                  )}
                 </div>
               </motion.div>
             ))}
@@ -349,7 +337,7 @@ export function Modules() {
             className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#1E172D] text-[#FFFFAB] font-bold text-sm hover:bg-[#2a1f3d] transition-colors cursor-pointer"
             style={{ fontFamily: 'var(--font-display)' }}
           >
-            Recevoir le programme
+            Recevoir le programme complet
             <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
             </svg>

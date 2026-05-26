@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { fadeUp, stagger, viewport } from '@/lib/animations'
+import { ScrambleText } from '@/components/ui/scramble-text'
 
 const bonuses = [
   {
@@ -184,7 +185,11 @@ export function Bonuses() {
           <div className="relative w-full">
             <div className="space-y-2.5">
               <div className="flex items-baseline justify-between gap-6 text-[#F6F1EB]/85">
-                <span className="text-sm md:text-base">Programme Accélération IA 360 complet</span>
+                <span className="text-sm md:text-base">
+                  Programme{' '}
+                  <ScrambleText text="Accélération IA 360" style={{ fontFamily: 'var(--font-tech)' }} />{' '}
+                  complet
+                </span>
                 <span
                   className="font-bold text-base md:text-lg whitespace-nowrap"
                   style={{ fontFamily: 'var(--font-display)' }}

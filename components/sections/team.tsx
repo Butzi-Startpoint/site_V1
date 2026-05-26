@@ -3,11 +3,20 @@
 import { motion } from 'framer-motion'
 import type { Variants } from 'framer-motion'
 import { fadeUp, stagger, viewport } from '@/lib/animations'
+import { InfiniteSlider } from '@/components/ui/infinite-slider'
 
 const metrics = [
   { value: '4', label: 'TEDx' },
-  { value: '200+', label: 'Conférences' },
+  { value: '500+', label: 'Interventions' },
   { value: '2', label: 'Livres publiés' },
+]
+
+const butziGallery = [
+  { src: '/mini-carroussel/tedx.jpg', caption: 'Conférencier TEDx' },
+  { src: '/mini-carroussel/bpifrance.jpg', caption: 'Chez BPI France' },
+  { src: '/mini-carroussel/samsung.png', caption: 'Chez Samsung' },
+  { src: '/mini-carroussel/congres-comptables.jpeg', caption: 'Congrès comptables' },
+  { src: '/mini-carroussel/telecom-nancy.jpeg', caption: 'Télécom Nancy' },
 ]
 
 type Member = {
@@ -16,6 +25,7 @@ type Member = {
   bio: string
   img: string
   linkedin: string
+  imgScale?: number
 }
 
 const teamMembers: Member[] = [
@@ -25,6 +35,7 @@ const teamMembers: Member[] = [
     bio: "Diplômé de l'ESSEC, spécialisé en IA appliquée et performance business. Notre expert Claude : il gère les coachings spécialisés et les intégrations avancées du programme. Si Claude avait un prof préféré, ce serait lui.",
     img: '/team/clement.png',
     linkedin: 'https://www.linkedin.com/in/clementpredo/',
+    imgScale: 1.3,
   },
   {
     name: 'Alexandre Mili',
@@ -32,6 +43,7 @@ const teamMembers: Member[] = [
     bio: "Spécialiste automatisations et agents intelligents. Il conçoit les systèmes qui permettent aux entrepreneurs de déléguer leurs tâches répétitives à l'IA. Pendant que vous dormez, ses automations travaillent.",
     img: '/team/alexandre.png',
     linkedin: 'https://www.linkedin.com/in/alexandremili/',
+    imgScale: 1.3,
   },
   {
     name: 'Gladys',
@@ -59,9 +71,9 @@ const cardVariant: Variants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
 }
 
-/* Dégradé violet réutilisé pour les conteneurs de photo */
+/* Dégradé clair (violet → blanc) derrière les photos */
 const PHOTO_GRADIENT =
-  'linear-gradient(135deg, #C9B8FF 0%, #A68AFF 45%, #7B5FE0 100%)'
+  'linear-gradient(150deg, #EEEDFE 0%, #C9B8FF 55%, #FFFFFF 100%)'
 
 /* Icône LinkedIn (SVG inline, hover violet) */
 function LinkedInIcon({ href, label }: { href: string; label: string }) {
@@ -133,7 +145,7 @@ export function Team() {
               {/* Décor violet derrière la photo */}
               <div className="absolute -bottom-3 -right-3 w-full h-full rounded-2xl bg-[#A68AFF]/15" />
               <div
-                className="relative w-[280px] h-[350px] rounded-2xl overflow-hidden"
+                className="relative w-[280px] h-[350px] md:w-[392px] md:h-[490px] rounded-2xl overflow-hidden"
                 style={{ background: PHOTO_GRADIENT }}
               >
                 <img
@@ -200,6 +212,37 @@ export function Team() {
               <div className="flex justify-center md:justify-start mt-4 -ml-1">
                 <LinkedInIcon href="https://www.linkedin.com/in/music2music/" label="Butzi" />
               </div>
+
+              {/* Mini carrousel photos — défilement auto lent */}
+              <div className="mt-6">
+                <InfiniteSlider
+                  gap={12}
+                  duration={45}
+                  durationOnHover={90}
+                  className="[mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]"
+                >
+                  {butziGallery.map((p) => (
+                    <div
+                      key={p.src}
+                      className="relative flex-shrink-0 w-36 h-28 md:w-44 md:h-32 rounded-xl overflow-hidden"
+                    >
+                      <img
+                        src={p.src}
+                        alt={p.caption}
+                        loading="lazy"
+                        className="absolute inset-0 w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[#1E172D]/90 via-[#1E172D]/40 to-transparent" />
+                      <span
+                        className="absolute bottom-2 left-2.5 right-2.5 text-white text-xs font-semibold leading-tight"
+                        style={{ fontFamily: 'var(--font-display)' }}
+                      >
+                        {p.caption}
+                      </span>
+                    </div>
+                  ))}
+                </InfiniteSlider>
+              </div>
             </motion.div>
           </div>
         </motion.div>
@@ -222,7 +265,7 @@ export function Team() {
             >
               {/* Photo ronde avec dégradé */}
               <div
-                className="relative w-20 h-20 rounded-full flex-shrink-0 overflow-hidden"
+                className="relative w-40 h-40 rounded-full flex-shrink-0 overflow-hidden"
                 style={{ background: PHOTO_GRADIENT }}
               >
                 <img
@@ -230,6 +273,7 @@ export function Team() {
                   alt={m.name}
                   loading="lazy"
                   className="absolute inset-0 w-full h-full object-cover object-top"
+                  style={m.imgScale ? { transform: `scale(${m.imgScale}) translateY(7%)`, transformOrigin: 'center', objectPosition: 'center' } : undefined}
                   onError={(e) => {
                     ;(e.target as HTMLImageElement).style.display = 'none'
                   }}

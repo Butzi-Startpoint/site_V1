@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { ScrambleText } from '@/components/ui/scramble-text';
+import { CertLink } from '@/components/ui/qualiopi-badge';
 
 // --- Données de l'accordion StartPoint IA ---
 const accordionItems = [
@@ -133,7 +134,7 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
 
 // --- Composant principal ---
 export function LandingAccordionItem() {
-  const [activeIndex, setActiveIndex] = useState(3);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   return (
     <section className="bg-[#1E172D] font-sans">
@@ -187,7 +188,7 @@ export function LandingAccordionItem() {
                 Coupez votre administratif en deux et boostez votre visibilité avec des outils et des méthodes accessibles sans compétences techniques.
               </span>
               <span className="block mt-2 text-[#F6F1EB] font-medium">
-                2h / semaine live, le reste à votre rythme
+                90 mn / semaine live, le reste à votre rythme
               </span>
             </p>
 
@@ -218,6 +219,17 @@ export function LandingAccordionItem() {
                 </svg>
               </a>
 
+            </div>
+
+            {/* Réassurance Qualiopi — sous le bouton */}
+            <div className="mt-5 text-center lg:text-left">
+              <p
+                className="text-[#FFFFAB] text-sm font-semibold tracking-wide"
+                style={{ fontFamily: 'var(--font-display)' }}
+              >
+                Organisme de formation certifié Qualiopi
+              </p>
+              <CertLink className="mt-1 text-[#D8D0FF] text-xs hover:text-[#F6F1EB] transition-colors" />
             </div>
           </div>
 

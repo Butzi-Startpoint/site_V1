@@ -5,6 +5,38 @@ import { fadeUp, stagger, viewport } from '@/lib/animations'
 import { TestimonialsColumn, type Testimonial } from '@/components/ui/testimonials-columns-1'
 
 const testimonials: Testimonial[] = [
+  // Vrais retours
+  {
+    text: "Butzi m'a aidé à intégrer l'IA bien plus vite dans mon travail et à gagner en fluidité et en temps.",
+    image: "/accompli/Daniel.jpg",
+    name: "Daniel Marín",
+    role: "Coach Ayurveda",
+  },
+  {
+    text: "Je suis redescendu à 45h par semaine, je dégage 8h pour la création pure, et mon chiffre d'affaires a grimpé de 35% sur quatre mois.",
+    image: "/accompli/nabeel.jpeg",
+    name: "Nabeel Arshad",
+    role: "Growth Cats · One With Magic",
+  },
+  {
+    text: "Nous avons pu créer notre propre ERP, qu'aucun autre outil du marché n'était en mesure de faire. Un gain de temps énorme.",
+    image: "/accompli/Guillaume.jpg",
+    name: "Guillaume Touzé",
+    role: "Association Easy Way",
+  },
+  {
+    text: "J'ai réalisé que l'IA n'était pas limitée à un usage précis, mais quelque chose de beaucoup plus vaste, aux possibilités presque infinies.",
+    image: "/accompli/Paul.jpeg",
+    name: "Paul Rivenc",
+    role: "Done Design",
+  },
+  {
+    text: "J'utilisais l'IA au hasard, sans vraie méthode. Aujourd'hui j'ai un système clair qui gère mes contenus et une partie de mon administratif — je récupère facilement une journée par semaine.",
+    image: "/retours/diana-chao.jpg",
+    name: "Diana Chao",
+    role: "Chez Mama Ly",
+  },
+  // Retours complémentaires
   {
     text: "En 3 semaines j'avais déjà récupéré 6h par semaine sur mes emails et devis. Le ROI est immédiat, pas besoin d'attendre la fin du programme.",
     image: "https://randomuser.me/api/portraits/women/44.jpg",
@@ -24,40 +56,10 @@ const testimonials: Testimonial[] = [
     role: "Coach certifiée & fondatrice",
   },
   {
-    text: "La méthode Butzi est concrète et applicable dès la première session. Zéro blabla, on passe directement aux systèmes d'IA.",
-    image: "https://randomuser.me/api/portraits/men/75.jpg",
-    name: "Julien Fabre",
-    role: "Consultant stratégie digitale",
-  },
-  {
     text: "J'ai arrêté de passer mes dimanches à préparer ma semaine. L'IA s'en charge. Je me concentre enfin sur ce que j'aime faire.",
     image: "https://randomuser.me/api/portraits/women/12.jpg",
     name: "Camille Rousseau",
     role: "Architecte d'intérieur freelance",
-  },
-  {
-    text: "En tant que solopreneur, je n'avais pas de marge d'erreur. Ce programme m'a donné des systèmes fiables qui ne dépendent pas de ma disponibilité.",
-    image: "https://randomuser.me/api/portraits/men/55.jpg",
-    name: "Antoine Dubois",
-    role: "Formateur indépendant",
-  },
-  {
-    text: "Le module sur l'automatisation des propositions commerciales m'a changé la vie. Je génère des devis 5x plus vite, avec plus de qualité.",
-    image: "https://randomuser.me/api/portraits/women/28.jpg",
-    name: "Lucie Bernard",
-    role: "Designer UX freelance",
-  },
-  {
-    text: "Butzi ne vend pas du rêve. Il te donne des outils concrets, il t'aide à les adapter à ton activité, et tu vois les résultats immédiatement.",
-    image: "https://randomuser.me/api/portraits/men/19.jpg",
-    name: "Romain Petit",
-    role: "Photographe professionnel",
-  },
-  {
-    text: "La communauté seule vaut l'investissement. Des gens sérieux, qui partagent leurs systèmes d'IA, leurs prompts, leurs erreurs. Un vrai levier.",
-    image: "https://randomuser.me/api/portraits/women/90.jpg",
-    name: "Nadia Hamid",
-    role: "Directrice de formation",
   },
 ]
 

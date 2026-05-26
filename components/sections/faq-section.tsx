@@ -35,7 +35,7 @@ const faqs: Faq[] = [
   },
   {
     q: 'Combien de temps ça demande par semaine ?',
-    a: "Comptez environ 3h30 par semaine : 2h de session live + 1h à 1h30 de cours en ligne et exercices. C'est un engagement, mais c'est ce qui fait la différence avec un cours en ligne qu'on ne finit jamais.",
+    a: "Comptez environ 3h par semaine : 1h30 de session live + 1h à 1h30 de cours en ligne et exercices. C'est un engagement, mais c'est ce qui fait la différence avec un cours en ligne qu'on ne finit jamais.",
   },
   {
     q: 'Est-ce que je peux faire financer la formation ?',

@@ -20,7 +20,7 @@ const testimonials = [
     ],
     name: "Nabeel Arshad",
     designation: "Growth Cats · One With Magic — magicien & entrepreneur",
-    src: "/accompli/nabeel.png",
+    src: "/accompli/nabeel.jpeg",
   },
   {
     quote:
@@ -28,6 +28,13 @@ const testimonials = [
     name: "Guillaume Touzé",
     designation: "Association Easy Way",
     src: "/accompli/Guillaume.jpg",
+  },
+  {
+    quote:
+      "Avant de travailler avec Butzi, j'avais quelques notions sur l'IA : je comprenais globalement ce que c'était et à quoi ça servait, mais je n'étais absolument pas conscient de l'ampleur et du potentiel qu'elle pouvait avoir. La première chose que Butzi a apportée, ça a été de m'aider à mettre de l'ordre dans toutes les informations que j'avais déjà en tête, tout en élargissant énormément ma compréhension du sujet. Sa formation m'a surtout été très utile dans ma manière d'utiliser l'IA au quotidien : j'ai réalisé que ce n'était pas un outil limité à une seule fonction, mais quelque chose de beaucoup plus vaste, avec des possibilités presque infinies.",
+    name: "Paul Rivenc",
+    designation: "Done Design",
+    src: "/accompli/Paul.jpeg",
   },
 ]
 

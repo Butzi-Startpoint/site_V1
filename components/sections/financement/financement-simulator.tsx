@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { OptionButton } from './option-button'
 import { Results } from './results'
+import { ScrambleText } from '@/components/ui/scramble-text'
 import { computeEstimation } from './calculator'
 import type {
   Anciennete,
@@ -492,7 +493,8 @@ export function FinancementSimulator() {
                   />
                   <span>
                     J&apos;accepte de recevoir l&apos;estimation et des informations sur
-                    le programme Accélération IA 360.
+                    le programme{' '}
+                    <ScrambleText text="Accélération IA 360" style={{ fontFamily: 'var(--font-tech)' }} />.
                   </span>
                 </label>
                 <button

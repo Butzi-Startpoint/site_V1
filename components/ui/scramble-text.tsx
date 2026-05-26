@@ -18,8 +18,9 @@ type Props = {
 
 /**
  * Effet "déchiffrage / cipher" : le texte se brouille puis se révèle
- * lettre par lettre, de gauche à droite. Rendu SSR-safe (affiche le
- * texte final au premier paint, puis démarre l'animation au montage).
+ * lettre par lettre. Se déclenche quand l'élément entre dans le viewport
+ * (une seule fois). Rendu SSR-safe : le texte final est affiché au premier
+ * paint, puis l'animation démarre.
  */
 export function ScrambleText({
   text,
@@ -27,14 +28,15 @@ export function ScrambleText({
   style,
   speed = 45,
   revealEvery = 2,
-  delay = 150,
+  delay = 80,
 }: Props) {
   const [display, setDisplay] = useState(text)
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
-  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const ref = useRef<HTMLSpanElement>(null)
 
   useEffect(() => {
-    // Respecte prefers-reduced-motion
+    const el = ref.current
+    if (!el) return
+
     const prefersReduced =
       typeof window !== 'undefined' &&
       window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
@@ -43,39 +45,59 @@ export function ScrambleText({
       return
     }
 
-    const chars = Array.from(text)
-    let revealed = 0
-    let tick = 0
+    let started = false
+    let interval: ReturnType<typeof setInterval> | null = null
+    let timeout: ReturnType<typeof setTimeout> | null = null
 
-    const start = () => {
-      intervalRef.current = setInterval(() => {
-        tick++
-        const out = chars
-          .map((ch, i) => {
-            if (ch === ' ') return ' '
-            if (i < revealed) return ch
-            return CIPHER[Math.floor(Math.random() * CIPHER.length)]
-          })
-          .join('')
-        setDisplay(out)
-        if (tick % revealEvery === 0) revealed++
-        if (revealed > chars.length) {
-          setDisplay(text)
-          if (intervalRef.current) clearInterval(intervalRef.current)
-        }
-      }, speed)
+    const run = () => {
+      if (started) return
+      started = true
+      const chars = Array.from(text)
+      let revealed = 0
+      let tick = 0
+      timeout = setTimeout(() => {
+        interval = setInterval(() => {
+          tick++
+          setDisplay(
+            chars
+              .map((ch, i) => {
+                if (ch === ' ') return ' '
+                if (i < revealed) return ch
+                return CIPHER[Math.floor(Math.random() * CIPHER.length)]
+              })
+              .join(''),
+          )
+          if (tick % revealEvery === 0) revealed++
+          if (revealed > chars.length) {
+            setDisplay(text)
+            if (interval) clearInterval(interval)
+          }
+        }, speed)
+      }, delay)
     }
 
-    timeoutRef.current = setTimeout(start, delay)
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            run()
+            io.disconnect()
+          }
+        })
+      },
+      { threshold: 0.5 },
+    )
+    io.observe(el)
 
     return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current)
-      if (timeoutRef.current) clearTimeout(timeoutRef.current)
+      io.disconnect()
+      if (interval) clearInterval(interval)
+      if (timeout) clearTimeout(timeout)
     }
   }, [text, speed, revealEvery, delay])
 
   return (
-    <span className={className} style={style} aria-label={text}>
+    <span ref={ref} className={className} style={style} aria-label={text}>
       {display}
     </span>
   )

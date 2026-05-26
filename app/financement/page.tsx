@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Navbar } from '@/components/sections/navbar'
 import { FooterSection } from '@/components/sections/footer-section'
 import { FinancementSimulator } from '@/components/sections/financement/financement-simulator'
+import { QualiopiBadge } from '@/components/ui/qualiopi-badge'
 
 export const metadata: Metadata = {
   title: 'Simulateur de financement formation IA — Accélération IA 360 | StartPoint IA',
@@ -15,6 +16,10 @@ export default function FinancementPage() {
       <Navbar />
       <main className="pt-[88px] bg-[#F6F1EB] min-h-screen">
         <FinancementSimulator />
+        {/* Réassurance Qualiopi — sous le calculateur */}
+        <div className="max-w-[720px] mx-auto px-6 pb-16 flex justify-center">
+          <QualiopiBadge size="lg" />
+        </div>
       </main>
       <FooterSection />
       {/* Netlify form detection — hidden static form for build-time detection */}
