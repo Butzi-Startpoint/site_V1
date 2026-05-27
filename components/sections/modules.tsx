@@ -261,7 +261,7 @@ export function Modules() {
             className="text-center text-xs font-bold uppercase tracking-widest text-[#1E172D]/45 mb-3"
             style={{ fontFamily: 'var(--font-display)' }}
           >
-            Au programme · 8 sessions de 90 minutes
+            Au programme · 8 sessions de 90 minutes · 12 heures de formation
           </motion.h3>
           <motion.p
             variants={fadeUp}
