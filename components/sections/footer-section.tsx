@@ -15,9 +15,8 @@ export function FooterSection() {
         <p className="text-[#F6F1EB]/30 text-sm mb-2">
           © 2026 StartPoint IA (EURL BUTZI) · Organisme de formation certifié Qualiopi
         </p>
-        {/* TODO: remplacer [NDA À COMPLÉTER] par le vrai numéro de déclaration d'activité (récépissé de déclaration / Digiforma) */}
         <p className="text-[#F6F1EB]/30 text-sm mb-3 max-w-[640px] mx-auto leading-relaxed">
-          Organisme de formation enregistré sous le numéro [NDA À COMPLÉTER] auprès du préfet
+          Organisme de formation enregistré sous le numéro 11941352394 auprès du préfet
           de région Île-de-France. Cet enregistrement ne vaut pas agrément de l&apos;État.
         </p>
         <div className="flex items-center justify-center gap-4 text-sm flex-wrap">
