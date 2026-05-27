@@ -141,6 +141,14 @@ export function FinancementSimulator() {
     }
   }, [])
 
+  // Quand le résultat s'affiche, on remonte en haut de page pour que l'utilisateur
+  // voie d'abord son estimation (sinon il reste sur la position de scroll du questionnaire).
+  useEffect(() => {
+    if (showResults && typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }, [showResults])
+
   // Étapes : 5 questions de base + TMI conditionnelle + date de début (= dernière). Le résultat
   // s'affiche directement après la dernière question (plus d'étape email).
   const showTmiStep = state.fiscal === 'ir-reel'
