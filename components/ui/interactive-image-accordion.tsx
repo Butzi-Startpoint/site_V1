@@ -163,7 +163,7 @@ export function LandingAccordionItem() {
               style={{ fontFamily: 'var(--font-display)' }}
             >
               <span className="block">Agenda saturé.</span>
-              <span className="block">Un CA plafonné.</span>
+              <span className="block">CA plafonné.</span>
               <span className="block mt-1">
                 Changez la donne{' '}
                 <span className="relative inline-block">

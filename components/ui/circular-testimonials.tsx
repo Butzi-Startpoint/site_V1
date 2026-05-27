@@ -71,9 +71,25 @@ export const CircularTestimonials = ({
     return () => window.removeEventListener("resize", resize)
   }, [])
 
+  // Autoplay désactivé sur mobile : la hauteur du témoignage varie selon la
+  // longueur du texte (colonne unique), ce qui décalait toute la page à chaque
+  // rotation pendant le scroll. Sur desktop, la colonne image (hauteur fixe)
+  // domine donc aucun décalage.
   useEffect(() => {
-    if (autoplay) intervalRef.current = setInterval(() => setActiveIndex(p => (p + 1) % len), 5000)
-    return () => { if (intervalRef.current) clearInterval(intervalRef.current) }
+    if (!autoplay) return
+    const mq = window.matchMedia('(min-width: 768px)')
+    const start = () => {
+      if (intervalRef.current) clearInterval(intervalRef.current)
+      if (mq.matches) {
+        intervalRef.current = setInterval(() => setActiveIndex(p => (p + 1) % len), 5000)
+      }
+    }
+    start()
+    mq.addEventListener('change', start)
+    return () => {
+      mq.removeEventListener('change', start)
+      if (intervalRef.current) clearInterval(intervalRef.current)
+    }
   }, [autoplay, len])
 
   const handleNext = useCallback(() => {
