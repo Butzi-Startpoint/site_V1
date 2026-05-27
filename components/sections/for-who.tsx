@@ -140,10 +140,12 @@ export function ForWho() {
           className="text-center"
         >
           <motion.a
-            href="#pricing"
+            href="https://calendly.com/butzi/15-minutes-call-catch-up"
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.02, borderColor: 'rgba(30,23,45,0.5)' }}
             whileTap={{ scale: 0.98 }}
-            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border-2 border-[#1E172D]/20 text-[#1E172D] font-semibold text-base cursor-pointer"
+            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border-2 border-[#1E172D]/20 text-[#1E172D] font-semibold text-base cursor-pointer no-underline"
             style={{ fontFamily: 'var(--font-display)' }}
           >
             Parlez-nous de vos objectifs →

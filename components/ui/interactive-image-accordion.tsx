@@ -4,8 +4,17 @@ import React, { useState } from 'react';
 import { ScrambleText } from '@/components/ui/scramble-text';
 import { CertLink } from '@/components/ui/qualiopi-badge';
 
+// --- Types ---
+interface AccordionItemData {
+  id: number;
+  title: string;
+  imageUrl: string;
+  objectPosition?: string;
+  zoom?: number;
+}
+
 // --- Données de l'accordion StartPoint IA ---
-const accordionItems = [
+const accordionItems: AccordionItemData[] = [
   {
     id: 1,
     title: 'Gagnez jusqu’à 10h / semaine',
@@ -33,15 +42,6 @@ const accordionItems = [
     // Formation en ligne / laptop
   },
 ];
-
-// --- Types ---
-interface AccordionItemData {
-  id: number;
-  title: string;
-  imageUrl: string;
-  objectPosition?: string;
-  zoom?: number;
-}
 
 interface AccordionItemProps {
   item: AccordionItemData;
@@ -162,33 +162,25 @@ export function LandingAccordionItem() {
               className="text-5xl md:text-6xl lg:text-[3.75rem] font-bold text-[#F6F1EB] leading-[1.05] tracking-tight"
               style={{ fontFamily: 'var(--font-display)' }}
             >
-              <span className="block">Plus de temps</span>
-              <span className="block">Plus de clients</span>
+              <span className="block">Agenda saturé.</span>
+              <span className="block">Un CA plafonné.</span>
               <span className="block mt-1">
+                Changez la donne{' '}
                 <span className="relative inline-block">
-                  <span className="text-[#FFFFAB]">En 6 semaines</span>
+                  <span className="text-[#FFFFAB]">en 6 semaines</span>
                   <span className="absolute -bottom-1 left-0 w-full h-[3px] bg-[#A68AFF] rounded-full" />
                 </span>
                 .
               </span>
             </h1>
 
-            {/* Phrase intermédiaire qui ressort */}
-            <p
-              className="text-lg md:text-2xl font-bold text-[#F6F1EB] whitespace-nowrap pt-3 md:pt-4"
-              style={{ fontFamily: 'var(--font-display)' }}
-            >
-              C&apos;est possible aujourd&apos;hui avec{' '}
-              <span className="text-[#A68AFF]">l&apos;IA</span>.
-            </p>
-
             {/* Sous-titre */}
-            <p className="text-lg text-[#D8D0FF] leading-relaxed max-w-xl mx-auto lg:mx-0">
+            <p className="text-lg text-[#D8D0FF] leading-relaxed max-w-xl mx-auto lg:mx-0 pt-2">
               <span className="block [text-wrap:balance]">
-                Coupez votre administratif en deux et boostez votre visibilité avec des outils et des méthodes accessibles sans compétences techniques.
+                Ce n&apos;est pas du marketing bullsh*t. C&apos;est possible aujourd&apos;hui grâce à des outils d&apos;IA révolutionnaires et des méthodes accessibles sans compétences techniques.
               </span>
               <span className="block mt-2 text-[#F6F1EB] font-medium">
-                90 mn / semaine live, le reste à votre rythme
+                1h30 / semaine live, le reste à votre rythme
               </span>
             </p>
 
@@ -235,7 +227,8 @@ export function LandingAccordionItem() {
 
           {/* ── Côté droit : accordion images ── */}
           <div className="w-full lg:w-[55%]">
-            <div className="flex flex-row items-center justify-center gap-3 overflow-x-auto p-2 pb-4 scrollbar-none">
+            {/* Desktop : accordéon multi-panneaux */}
+            <div className="hidden lg:flex flex-row items-center justify-center gap-3 overflow-x-auto p-2 pb-4 scrollbar-none">
               {accordionItems.map((item, index) => (
                 <AccordionItem
                   key={item.id}
@@ -244,6 +237,34 @@ export function LandingAccordionItem() {
                   onMouseEnter={() => setActiveIndex(index)}
                 />
               ))}
+            </div>
+
+            {/* Mobile : carrousel image unique (plein écran) */}
+            <div className="lg:hidden">
+              <div className="relative w-full h-[380px] rounded-2xl overflow-hidden ring-2 ring-[#A68AFF]/50 shadow-[0_0_32px_rgba(166,138,255,0.25)]">
+                <img
+                  key={accordionItems[activeIndex].id}
+                  src={accordionItems[activeIndex].imageUrl}
+                  alt={accordionItems[activeIndex].title}
+                  className="absolute inset-0 w-full h-full object-cover"
+                  style={{
+                    objectPosition: accordionItems[activeIndex].objectPosition ?? 'center',
+                    transform: accordionItems[activeIndex].zoom
+                      ? `scale(${accordionItems[activeIndex].zoom})`
+                      : undefined,
+                    transformOrigin: accordionItems[activeIndex].objectPosition ?? 'center',
+                  }}
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement
+                    target.onerror = null
+                    target.src = 'https://placehold.co/600x380/1E172D/A68AFF?text=StartPoint+IA'
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1E172D]/85 via-[#1E172D]/20 to-transparent" />
+                <span className="absolute bottom-5 left-1/2 -translate-x-1/2 w-[88%] text-center text-white font-semibold text-lg leading-snug">
+                  {accordionItems[activeIndex].title}
+                </span>
+              </div>
             </div>
 
             {/* Indicateurs de navigation mobile */}

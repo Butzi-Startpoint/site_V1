@@ -130,7 +130,7 @@ export function Team() {
           whileInView="visible"
           viewport={viewport}
           variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.15 } } }}
-          className="relative rounded-3xl bg-white border border-[#1E172D]/8 p-8 md:p-12 mb-12 overflow-hidden"
+          className="relative rounded-3xl bg-white border border-[#1E172D]/8 p-6 md:p-12 mb-12 overflow-hidden"
           style={{ boxShadow: '0 8px 40px rgba(30,23,45,0.06)' }}
         >
           {/* Blob décoratif violet */}
@@ -145,7 +145,7 @@ export function Team() {
               {/* Décor violet derrière la photo */}
               <div className="absolute -bottom-3 -right-3 w-full h-full rounded-2xl bg-[#A68AFF]/15" />
               <div
-                className="relative w-[280px] h-[350px] md:w-[392px] md:h-[490px] rounded-2xl overflow-hidden"
+                className="relative w-[230px] h-[290px] md:w-[392px] md:h-[490px] rounded-2xl overflow-hidden"
                 style={{ background: PHOTO_GRADIENT }}
               >
                 <img
@@ -213,8 +213,8 @@ export function Team() {
                 <LinkedInIcon href="https://www.linkedin.com/in/butzispeaker/" label="Butzi" />
               </div>
 
-              {/* Mini carrousel photos — défilement auto lent */}
-              <div className="mt-6">
+              {/* Mini carrousel photos — défilement auto lent (masqué sur mobile) */}
+              <div className="mt-6 hidden md:block">
                 <InfiniteSlider
                   gap={12}
                   duration={45}

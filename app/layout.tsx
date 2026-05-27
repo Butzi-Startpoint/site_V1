@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import { Geist } from 'next/font/google'
 import { Plus_Jakarta_Sans } from 'next/font/google'
 import { Chakra_Petch } from 'next/font/google'
+import { WhatsAppButton } from '@/components/ui/whatsapp-button'
+import { ChatWidget } from '@/components/ui/chat-widget'
 import './globals.css'
 
 const geistSans = Geist({
@@ -37,7 +39,11 @@ export default function RootLayout({
       lang="fr"
       className={`${geistSans.variable} ${plusJakartaSans.variable} ${chakraPetch.variable} antialiased`}
     >
-      <body className="min-h-screen overflow-x-hidden">{children}</body>
+      <body className="min-h-screen overflow-x-hidden">
+        {children}
+        <WhatsAppButton />
+        <ChatWidget />
+      </body>
     </html>
   )
 }
