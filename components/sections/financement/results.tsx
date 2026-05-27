@@ -70,7 +70,7 @@ export function Results({ estimation }: { estimation: Estimation; shareUrl?: str
       localStorage.setItem('financement-lead', JSON.stringify({ ...payload, ts: Date.now() }))
     } catch {}
     try {
-      await fetch('/', {
+      await fetch('/__forms.html', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: encodeForm(payload),

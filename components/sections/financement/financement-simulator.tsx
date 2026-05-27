@@ -209,7 +209,7 @@ export function FinancementSimulator() {
 
     // Try Netlify Forms submission (no-op if not on Netlify)
     try {
-      await fetch('/', {
+      await fetch('/__forms.html', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: encodeForm(payload),

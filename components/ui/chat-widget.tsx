@@ -29,7 +29,7 @@ export function ChatWidget() {
     setSending(true)
     const payload = { 'form-name': 'chat-messages', email, message }
     try {
-      await fetch('/', {
+      await fetch('/__forms.html', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: encodeForm(payload),
