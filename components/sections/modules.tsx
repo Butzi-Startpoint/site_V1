@@ -258,11 +258,18 @@ export function Modules() {
         >
           <motion.h3
             variants={fadeUp}
-            className="text-center text-xs font-bold uppercase tracking-widest text-[#1E172D]/45 mb-8"
+            className="text-center text-xs font-bold uppercase tracking-widest text-[#1E172D]/45 mb-3"
             style={{ fontFamily: 'var(--font-display)' }}
           >
             Au programme · 8 sessions de 90 minutes
           </motion.h3>
+          <motion.p
+            variants={fadeUp}
+            className="text-center text-[#1E172D]/55 text-sm max-w-[560px] mx-auto mb-8 leading-relaxed"
+          >
+            Une session de 90 minutes chaque mardi matin, de 9h30 à 11h.{' '}
+            <span className="text-[#1E172D]/45">Replays disponibles, rattrapage possible.</span>
+          </motion.p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-start">
             {phaseModules.map((row) => (
