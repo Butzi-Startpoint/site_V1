@@ -138,6 +138,7 @@ type Plan = {
   price: string
   badge: string | null
   cta: string
+  href: string
   popular: boolean
   sectionLabel: string
   payment: string | null
@@ -159,6 +160,7 @@ const plans: Plan[] = [
     price: '2 997 €',
     badge: null,
     cta: 'Réserver ma place',
+    href: 'https://panier.acceleration-ia.fr/essentiel',
     popular: false,
     sectionLabel: 'Inclus',
     payment: 'Paiement en 1x ou 3x sans frais',
@@ -183,6 +185,7 @@ const plans: Plan[] = [
     price: '3 497 €',
     badge: 'Recommandé',
     cta: 'Réserver ma place',
+    href: 'https://panier.acceleration-ia.fr/momentum',
     popular: true,
     sectionLabel: 'Tout l\'Essentiel, plus',
     payment: 'Paiement en 1x ou 3x sans frais',
@@ -211,6 +214,7 @@ const plans: Plan[] = [
     price: '5 997 €',
     badge: null,
     cta: 'Réserver ma place',
+    href: 'https://panier.acceleration-ia.fr/premium',
     popular: false,
     sectionLabel: 'Inclus',
     payment: 'Paiement en 1x ou 3x sans frais',
@@ -328,11 +332,12 @@ export function Pricing() {
                     )}
 
                     <Button
+                      asChild
                       variant="default"
                       className={`w-full font-bold rounded-full cursor-pointer mt-3 ${t.cta}`}
                       style={{ fontFamily: 'var(--font-display)' }}
                     >
-                      {plan.cta} →
+                      <a href={plan.href}>{plan.cta} →</a>
                     </Button>
 
                     {plan.payment && (
