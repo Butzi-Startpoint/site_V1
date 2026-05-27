@@ -24,8 +24,7 @@ const accordionItems: AccordionItemData[] = [
   {
     id: 2,
     title: 'Débloquer votre potentiel de CA',
-    imageUrl:
-      'https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop',
+    imageUrl: '/accordion/2.jpg',
     // Coaching / équipe / tableau blanc
   },
   {

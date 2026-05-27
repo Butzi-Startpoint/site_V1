@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useEffect, useRef, useState, useMemo, useCallback } from "react"
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa"
+import { ArrowLeft, ArrowRight } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 
 type QuoteSegment = { text: string; bold?: boolean }
@@ -207,7 +207,7 @@ export const CircularTestimonials = ({
                 cursor: "pointer", transition: "background-color 0.3s",
                 backgroundColor: hoverPrev ? colorArrowHover : colorArrowBg,
               }}>
-              <FaArrowLeft size={18} color={colorArrowFg} />
+              <ArrowLeft size={18} color={colorArrowFg} />
             </button>
             <button onClick={handleNext}
               onMouseEnter={() => setHoverNext(true)}
@@ -219,7 +219,7 @@ export const CircularTestimonials = ({
                 cursor: "pointer", transition: "background-color 0.3s",
                 backgroundColor: hoverNext ? colorArrowHover : colorArrowBg,
               }}>
-              <FaArrowRight size={18} color={colorArrowFg} />
+              <ArrowRight size={18} color={colorArrowFg} />
             </button>
           </div>
         </div>

@@ -33,7 +33,7 @@ const teamMembers: Member[] = [
     name: 'Clément Predo',
     role: 'Formateur & Spécialiste Claude',
     bio: "Diplômé de l'ESSEC, spécialisé en IA appliquée et performance business. Notre expert Claude : il gère les coachings spécialisés et les intégrations avancées du programme. Si Claude avait un prof préféré, ce serait lui.",
-    img: '/team/clement.png',
+    img: '/team/clement.webp',
     linkedin: 'https://www.linkedin.com/in/clement-predo/',
     imgScale: 1.3,
   },
@@ -41,7 +41,7 @@ const teamMembers: Member[] = [
     name: 'Alexandre Mili',
     role: 'Automatisations & Agents IA',
     bio: "Spécialiste automatisations et agents intelligents. Il conçoit les systèmes qui permettent aux entrepreneurs de déléguer leurs tâches répétitives à l'IA. Pendant que vous dormez, ses automations travaillent.",
-    img: '/team/alexandre.png',
+    img: '/team/alexandre.webp',
     linkedin: 'https://www.linkedin.com/in/amili/',
     imgScale: 1.3,
   },
@@ -49,7 +49,7 @@ const teamMembers: Member[] = [
     name: 'Gladys',
     role: 'Business Manager & Opérations',
     bio: "Dirige les opérations de StartPoint IA. Coordination des programmes, gestion des cohortes, relation participants. Si tout a l'air simple côté client, c'est grâce à elle.",
-    img: '/team/gladys.png',
+    img: '/team/gladys.webp',
     linkedin: 'https://www.linkedin.com/in/gladys-ducos/',
   },
 ]
@@ -149,7 +149,7 @@ export function Team() {
                 style={{ background: PHOTO_GRADIENT }}
               >
                 <img
-                  src="/team/butzi.png"
+                  src="/team/butzi.webp"
                   alt="Butzi (Johannes Alinhac)"
                   className="absolute inset-0 w-full h-full object-cover object-top"
                   onError={(e) => {
