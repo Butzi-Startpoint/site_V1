@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Navbar } from '@/components/sections/navbar'
 import { FooterSection } from '@/components/sections/footer-section'
+import { MeshGradientBg } from '@/components/ui/mesh-gradient-bg'
 
 export const metadata: Metadata = {
   title: 'Programme détaillé — Accélération IA 360 | StartPoint IA',
@@ -12,22 +13,32 @@ export const metadata: Metadata = {
 
 const ficheItems: { label: string; value: string }[] = [
   { label: 'Intitulé', value: 'Accélération IA 360 — Méthode 3S' },
-  { label: 'Durée', value: '12 h en live collectif (8 sessions de 90 min) + accès e-learning en autonomie' },
-  { label: 'Modalité', value: '100 % à distance (visioconférence + plateforme e-learning)' },
-  { label: 'Rythme', value: 'Une session par semaine, le mardi de 9 h 30 à 11 h · replays disponibles' },
-  { label: 'Public', value: 'Indépendants, freelances, coachs, consultants, formateurs, dirigeants de TPE' },
-  { label: 'Prérequis', value: "Aucun prérequis technique · usage courant d'un navigateur et de la bureautique" },
-  { label: 'Tarif', value: 'À partir de 2 997 € HT — finançable (FAF, crédit d\'impôt)' },
+  { label: 'Durée', value: "35 heures de formation (e-learning + exercices + évaluations), sur 8 semaines" },
+  { label: 'Modalité', value: 'Formation à distance (FOAD) — 100 % asynchrone via plateforme LMS + classes virtuelles hebdomadaires' },
+  { label: 'Sessions live', value: '8 classes virtuelles de 90 min (accompagnement collectif, non obligatoire pour la validation)' },
+  { label: 'Public', value: 'Indépendants, consultants, coaches, formateurs, freelances' },
+  { label: 'Prérequis', value: "Activité indépendante depuis 2 ans min. · usage quotidien d'outils numériques · niveau débutant en IA accepté" },
+  { label: 'Effectif', value: '8 participants maximum par cohorte' },
+  { label: 'Tarif', value: "À partir de 2 997 € HT — finançable (FAF, crédit d'impôt)" },
   { label: 'Sanction', value: 'Attestation de fin de formation' },
+  { label: 'Accessibilité', value: 'Formation accessible aux personnes en situation de handicap' },
 ]
 
 const objectifs: string[] = [
-  "Identifier et configurer les principaux outils d'IA générative adaptés à son activité.",
-  "Rédiger des prompts structurés et efficaces pour automatiser ses tâches récurrentes.",
-  "Produire des contenus, des documents et des supports professionnels assistés par l'IA.",
-  "Concevoir une stratégie et un système marketing & commercial augmentés par l'IA.",
-  "Mettre en place au moins 3 automatisations opérationnelles dans son activité.",
-  "Élaborer un plan d'action IA aligné sur ses objectifs de chiffre d'affaires.",
+  "Configurer et paramétrer un assistant IA adapté à son activité professionnelle.",
+  "Concevoir des prompts structurés et efficaces pour ses cas d'usage métier.",
+  "Produire des documents professionnels (emails, devis, contrats, contenus marketing) assistés par l'IA.",
+  "Construire une stratégie de contenu et de prospection augmentée par l'IA.",
+  "Mettre en place des automatisations et un système d'outils IA opérationnel et documenté.",
+  "Évaluer la pertinence et les limites d'un outil IA pour un cas d'usage donné.",
+]
+
+const evaluation: string[] = [
+  'Évaluation de positionnement en début de formation (auto-évaluation).',
+  'Quiz de validation des acquis à chaque module.',
+  'Projet final : construction de son « Système IA Personnel » (cas pratique évalué).',
+  'Enquête de satisfaction en fin de formation.',
+  'Seuil de réussite : 80 % aux évaluations.',
 ]
 
 type Module = {
@@ -40,52 +51,45 @@ type Module = {
 
 const phases: { phase: string; semaines: string; intro: string; modules: Module[] }[] = [
   {
-    phase: 'Session préparatoire',
-    semaines: 'Semaine 0',
-    intro: "Mise en route du parcours et prise en main de l'environnement de travail.",
+    phase: 'Phase 1 — Simplifier',
+    semaines: 'Semaines 0–2',
+    intro: "Récupérer du temps dès la première semaine grâce aux fondamentaux de l'IA.",
     modules: [
       {
         num: '0',
-        title: 'Paramétrage des outils & rencontre',
+        title: 'Préparation et communauté',
         objectif: "Disposer d'un environnement IA opérationnel et rejoindre la communauté d'apprenants.",
         contenu: [
           'Présentation du parcours, des objectifs et des modalités de suivi',
-          'Création et paramétrage des comptes et outils IA',
-          'Prise en main de la plateforme e-learning et de la communauté',
-          'Tour de table et recueil des attentes individuelles',
+          'Paramétrage complet de votre outil IA',
+          'Accès au programme, au Cercle StartPoint et aux formateurs',
+          'Mise en place de la fonctionnalité audio',
         ],
-        livrable: 'Environnement IA configuré et adapté à votre métier.',
+        livrable: 'Votre outil configuré et un réseau.',
       },
-    ],
-  },
-  {
-    phase: 'Phase 1 — Simplifier',
-    semaines: 'Semaines 1–2',
-    intro: 'Récupérer du temps dès la première semaine grâce aux fondamentaux de l\'IA.',
-    modules: [
       {
         num: '1',
-        title: "Les bases de l'IA et de votre LLM",
-        objectif: "Comprendre le fonctionnement d'un modèle de langage et produire des prompts fiables.",
+        title: 'Poser les fondations',
+        objectif: "Comprendre le fonctionnement d'un assistant IA et produire des prompts fiables.",
         contenu: [
-          'Panorama des outils d\'IA générative et de leurs usages',
-          'Bonnes pratiques de sécurité et de confidentialité des données (RGPD)',
-          'Techniques de prompting avancé : rôle, contexte, format, itération',
-          'Configuration de votre assistant IA pour votre activité',
+          'Démystification de l\'IA : ce qui marche vraiment pour les indépendants',
+          'Sécurité et limites des outils',
+          'Prompting : les bases et les techniques avancées',
+          'Création de visuels, de présentations et d\'emails professionnels',
         ],
-        livrable: 'Une bibliothèque de prompts testés et adaptés à votre quotidien.',
+        livrable: "Les bases de l'IA générative et une cartographie de votre workflow.",
       },
       {
         num: '2',
         title: 'Gagnez du temps tout de suite',
-        objectif: "Automatiser les tâches récurrentes à faible valeur ajoutée du quotidien.",
+        objectif: 'Automatiser les tâches récurrentes à faible valeur ajoutée du quotidien.',
         contenu: [
-          'Rédaction et reformulation d\'emails et de documents en quelques clics',
-          'Organisation, synthèse de notes et comptes rendus automatiques',
-          'Recherche et veille métier accélérées par l\'IA',
-          'Optimisation de votre semaine type',
+          'Prise de notes automatique et productivité',
+          'Organisation intelligente : to-do, blocs de temps, planification',
+          'Génération et analyse de documents personnalisés',
+          'Recherche et veille accélérées',
         ],
-        livrable: 'Une semaine type optimisée et au moins un document professionnel produit.',
+        livrable: 'Un document prêt à l\'emploi et une semaine type optimisée.',
       },
     ],
   },
@@ -99,41 +103,42 @@ const phases: { phase: string; semaines: string; intro: string; modules: Module[
         title: 'Vision stratégique augmentée',
         objectif: "Utiliser l'IA comme partenaire stratégique pour piloter son activité.",
         contenu: [
-          'L\'IA comme sparring partner stratégique',
-          'Construction de scénarios et arbitrages de chiffre d\'affaires',
+          'Clarification de la vision et structuration des idées',
+          'Comparaison de scénarios business et prise de décision',
+          'Identification des leviers de croissance',
           'Mise en place d\'un tableau de bord de pilotage',
         ],
-        livrable: 'Une analyse stratégique augmentée et un tableau de bord de pilotage.',
+        livrable: 'Un dashboard stratégique, une matrice impact/effort et un plan d\'action.',
       },
       {
         num: '4',
         title: 'Marketing augmenté',
         objectif: "Concevoir et décliner ses contenus marketing à grande échelle avec l'IA.",
         contenu: [
-          'Définition du persona et de la ligne éditoriale',
-          'Création de contenus et de visuels assistés par l\'IA',
-          'Principe « un contenu = cinq formats »',
-          'Construction d\'un calendrier éditorial',
+          'Définition du persona et choix des canaux',
+          'Formulation de l\'USP',
+          'Création de posts, de visuels et d\'un site avec l\'IA',
+          'Distribution : un contenu décliné en cinq formats',
         ],
-        livrable: 'Un contenu publié et un calendrier éditorial sur plusieurs semaines.',
+        livrable: 'Un post publié (texte + visuel) et un site réalisé avec l\'IA.',
       },
       {
         num: '5',
-        title: 'La vente augmentée',
+        title: 'Vente augmentée',
         objectif: "Structurer son offre et son cycle de vente avec l'appui de l'IA.",
         contenu: [
-          'Structuration et chiffrage de l\'offre',
-          'Prospection et personnalisation assistées par l\'IA',
-          'Préparation de présentations et propositions commerciales',
-          'Fidélisation et stratégies d\'upsell',
+          'Construction et chiffrage d\'une offre',
+          'Prospection et génération de leads assistées par l\'IA',
+          'Préparation de calls, scripts et négociation',
+          'Présentations commerciales et fidélisation (upsell, cross-sell)',
         ],
-        livrable: 'Une offre structurée et une proposition commerciale chiffrée.',
+        livrable: 'Une offre structurée et deux propositions commerciales.',
       },
     ],
   },
   {
     phase: 'Phase 3 — Systématiser',
-    semaines: 'Semaines 5–6',
+    semaines: 'Semaines 6–7',
     intro: 'Construire le système qui tourne sans vous et le rendre durable.',
     modules: [
       {
@@ -141,23 +146,24 @@ const phases: { phase: string; semaines: string; intro: string; modules: Module[
         title: 'Débloquer son quotidien',
         objectif: "Créer des solutions IA sur mesure pour ses besoins spécifiques.",
         contenu: [
-          'Conception de projets et d\'assistants IA personnalisés',
-          'Mise en place d\'automatisations de tâches répétitives',
-          'Création de supports et de visuels avancés',
+          'Création de projets avec l\'IA',
+          'Maîtrise des Claude Skills',
+          'Découverte et test du vibe coding',
+          'Création d\'un tableau de bord',
         ],
-        livrable: 'Au moins une création sur mesure et des automatisations opérationnelles.',
+        livrable: 'Une création codée et des modèles pour Claude Skills.',
       },
       {
         num: '7',
-        title: "Coaching de groupe : créer son plan d'action et son écosystème d'outils IA",
-        objectif: "Formaliser un système IA personnel complet et un plan d'action à 90 jours.",
+        title: 'Votre système IA personnel',
+        objectif: "Formaliser un système IA personnel complet et un plan d'action durable.",
         contenu: [
-          'Mise en place d\'agents et de connecteurs',
-          'Construction de l\'écosystème d\'outils IA',
-          'Élaboration du plan d\'action à 90 jours',
-          'Coaching de groupe et retours personnalisés',
+          'Agents et assistants pour gagner en autonomie',
+          'Connecteurs et Cowork : automatiser sans coder',
+          'Roadmap : standardiser → simplifier → automatiser',
+          'Coaching de groupe et plan d\'action personnel',
         ],
-        livrable: 'Un plan d\'action IA complet et un système personnel documenté.',
+        livrable: 'Un système IA complet et un plan d\'action post-programme.',
       },
     ],
   },
@@ -209,26 +215,63 @@ export default function ProgrammePage() {
     <>
       <Navbar />
       <main className="pt-[88px] bg-[#F6F1EB] min-h-screen">
-        {/* En-tête */}
-        <header className="bg-[#1E172D] py-14 md:py-20">
-          <div className="max-w-[860px] mx-auto px-6">
+        {/* ── Bandeau premium ── */}
+        <header className="relative overflow-hidden bg-[#1E172D] py-16 md:py-24">
+          <MeshGradientBg
+            colors={['#1E172D', '#3A2860', '#A68AFF', '#D8D0FF', '#FFFFAB']}
+            veilClassName="bg-[#1E172D]/68"
+          />
+          <div className="relative z-10 max-w-[860px] mx-auto px-6 text-center md:text-left">
+            {/* Badge glassmorphism */}
             <span
-              className="inline-block px-4 py-1.5 rounded-full bg-[#FFFFAB] text-[#1E172D] text-xs font-bold uppercase tracking-widest mb-5"
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[#F6F1EB] text-xs font-bold uppercase tracking-widest mb-6"
               style={{ fontFamily: 'var(--font-display)' }}
             >
-              Programme de formation
+              <span className="w-2 h-2 rounded-full bg-[#FFFFAB] animate-pulse" />
+              Formation intensive · 8 semaines
             </span>
+
             <h1
-              className="text-4xl md:text-5xl font-extrabold text-[#F6F1EB] leading-[1.1] tracking-tight mb-4"
+              className="text-4xl md:text-6xl font-extrabold text-[#F6F1EB] leading-[1.05] tracking-tight mb-4"
               style={{ fontFamily: 'var(--font-display)' }}
             >
               Accélération IA 360
             </h1>
-            <p className="text-[#D8D0FF] text-lg leading-relaxed">
-              Programme détaillé · Méthode 3S (Simplifier › Scaler › Systématiser). Organisme de
-              formation <strong className="text-[#F6F1EB]">StartPoint IA (EURL BUTZI)</strong> —
-              certifié Qualiopi au titre des actions de formation.
+
+            <p
+              className="text-xl md:text-2xl font-bold leading-snug mb-5"
+              style={{ fontFamily: 'var(--font-display)' }}
+            >
+              <span className="text-[#D8D0FF]">De «&nbsp;j&apos;ai testé ChatGPT&nbsp;»</span>{' '}
+              <span className="text-[#F6F1EB]">à «&nbsp;</span>
+              <span className="text-[#FFFFAB]">j&apos;ai un système IA</span>
+              <span className="text-[#F6F1EB]">&nbsp;».</span>
             </p>
+
+            <p className="text-[#D8D0FF]/85 text-base md:text-lg leading-relaxed max-w-[640px] mx-auto md:mx-0">
+              Programme détaillé suivant la Méthode 3S (Simplifier › Scaler › Systématiser).
+              Organisme de formation{' '}
+              <strong className="text-[#F6F1EB]">StartPoint IA (EURL BUTZI)</strong> — certifié
+              Qualiopi au titre des actions de formation.
+            </p>
+
+            {/* CTA */}
+            <div className="flex flex-col sm:flex-row items-center md:items-start justify-center md:justify-start gap-3 mt-8">
+              <a
+                href="/#pricing"
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#FFFFAB] text-[#1E172D] font-bold text-sm md:text-base hover:bg-[#f5f08c] hover:scale-[1.02] transition-all"
+                style={{ fontFamily: 'var(--font-display)' }}
+              >
+                Rejoindre la prochaine cohorte →
+              </a>
+              <a
+                href="/financement"
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-white/25 bg-white/5 backdrop-blur-md text-[#F6F1EB] font-semibold text-sm md:text-base hover:bg-white/10 transition-colors"
+                style={{ fontFamily: 'var(--font-display)' }}
+              >
+                Estimer mon financement
+              </a>
+            </div>
           </div>
         </header>
 
@@ -253,56 +296,57 @@ export default function ProgrammePage() {
           {/* Présentation */}
           <Section title="Présentation de la formation">
             <p>
-              <strong>Accélération IA 360</strong> est un parcours de 6 semaines qui permet aux
-              indépendants et dirigeants de TPE d&apos;intégrer concrètement l&apos;intelligence
-              artificielle dans leur activité, sans compétences techniques préalables. La
-              progression suit la <strong>Méthode 3S</strong> : <em>Simplifier</em> son quotidien,{' '}
-              <em>Scaler</em> sa production, puis <em>Systématiser</em> grâce à un système IA
-              personnel.
+              <strong>Accélération IA 360</strong>{' '}
+              est un parcours de 8 semaines qui permet aux indépendants et dirigeants de TPE
+              d&apos;intégrer concrètement l&apos;intelligence artificielle dans leur activité, sans
+              compétences techniques préalables. La progression suit la{' '}
+              <strong>Méthode 3S</strong> : <em>Simplifier</em> son quotidien, <em>Scaler</em> sa
+              production, puis <em>Systématiser</em> grâce à un système IA personnel.
             </p>
           </Section>
 
           {/* Objectifs pédagogiques */}
           <Section title="Objectifs pédagogiques">
-            <p>À l&apos;issue de la formation, le participant sera capable de :</p>
+            <p>À l&apos;issue de la formation, le stagiaire sera capable de :</p>
             <Bullets items={objectifs} />
           </Section>
 
           {/* Public & prérequis */}
           <Section title="Public visé et prérequis">
             <p>
-              <strong>Public :</strong> indépendants, freelances, coachs, consultants, formateurs,
-              dirigeants de TPE et porteurs de projet souhaitant gagner du temps et développer leur
-              activité avec l&apos;IA.
+              <strong>Public :</strong>{' '}
+              indépendants, consultants, coaches, formateurs et freelances souhaitant gagner du
+              temps et développer leur activité avec l&apos;IA.
             </p>
             <p>
-              <strong>Prérequis :</strong> aucun prérequis technique en IA ou en programmation. Une
-              utilisation courante d&apos;un navigateur web et des outils bureautiques est
-              nécessaire, ainsi qu&apos;une maîtrise du français à l&apos;oral et à l&apos;écrit.
+              <strong>Prérequis :</strong>{' '}
+              activité indépendante depuis au moins 2 ans ; usage quotidien d&apos;outils
+              numériques ; niveau débutant en IA accepté ; maîtrise du français à l&apos;oral et à
+              l&apos;écrit.
             </p>
             <p>
-              <strong>Matériel :</strong> un ordinateur avec une connexion internet stable, un
-              casque ou des écouteurs, et une webcam recommandée pour les sessions live.
-            </p>
-            <p>
-              <strong>Disponibilité :</strong> environ 3 heures par semaine (sessions live +
-              mise en pratique) pendant la durée du parcours.
+              <strong>Matériel :</strong>{' '}
+              un ordinateur avec une connexion internet.
             </p>
           </Section>
 
           {/* Durée, rythme et modalités */}
           <Section title="Durée, rythme et modalités">
             <p>
-              La formation représente <strong>12 heures de formation en live collectif</strong>,
-              réparties en <strong>8 sessions de 90 minutes</strong>, complétées par un accès à une
-              plateforme e-learning (plus de 80 vidéos) et un accompagnement asynchrone entre les
-              sessions.
+              La formation représente <strong>35 heures au total</strong> (modules e-learning,
+              exercices d&apos;application et évaluations), réparties sur <strong>8 semaines</strong>.
+              Elle se déroule <strong>à distance (FOAD)</strong>, 100 % en asynchrone via une
+              plateforme LMS.
             </p>
             <p>
-              Les sessions live ont lieu <strong>chaque mardi de 9 h 30 à 11 h</strong>, en
-              visioconférence. Les <strong>replays sont disponibles</strong> et le rattrapage est
-              possible en cas d&apos;absence ponctuelle. La formation se déroule{' '}
-              <strong>100 % à distance</strong>.
+              Elle est accompagnée de <strong>8 classes virtuelles de groupe de 90 minutes</strong>{' '}
+              (une par semaine, le mardi de 9 h 30 à 11 h). Ces classes constituent un
+              accompagnement collectif et ne sont pas obligatoires pour la validation : les{' '}
+              <strong>replays sont disponibles</strong> et le rattrapage est possible.
+            </p>
+            <p>
+              <strong>Disponibilité conseillée :</strong>{' '}
+              environ 4 à 5 heures par semaine pendant la durée du parcours.
             </p>
           </Section>
 
@@ -345,14 +389,16 @@ export default function ProgrammePage() {
                           </h4>
                         </div>
                         <p className="text-[#1E172D]/75 text-sm mb-3">
-                          <strong className="text-[#1E172D]">Objectif :</strong> {m.objectif}
+                          <strong className="text-[#1E172D]">Objectif :</strong>{' '}
+                          {m.objectif}
                         </p>
                         <p className="text-[11px] font-bold uppercase tracking-widest text-[#1E172D]/40 mb-2">
                           Contenu
                         </p>
                         <Bullets items={m.contenu} />
                         <p className="text-sm text-[#1E172D]/75 mt-3 pt-3 border-t border-[#1E172D]/8">
-                          <strong className="text-[#1E172D]">Livrable :</strong> {m.livrable}
+                          <strong className="text-[#1E172D]">Livrable :</strong>{' '}
+                          {m.livrable}
                         </p>
                       </div>
                     ))}
@@ -366,8 +412,8 @@ export default function ProgrammePage() {
           <Section title="Méthodes pédagogiques et moyens">
             <Bullets
               items={[
-                'Sessions live interactives en petit groupe, alternant apports théoriques et mises en pratique.',
                 'Plateforme e-learning accessible 24/7 (plus de 80 vidéos, fiches et modèles).',
+                'Classes virtuelles interactives en petit groupe (8 participants maximum).',
                 'Kit de prompts et de modèles fourni à chaque module.',
                 'Accompagnement asynchrone et communauté d\'apprenants entre les sessions.',
                 'Études de cas et exercices appliqués à l\'activité de chaque participant.',
@@ -377,27 +423,20 @@ export default function ProgrammePage() {
 
           {/* Évaluation & sanction */}
           <Section title="Modalités d'évaluation et sanction">
-            <Bullets
-              items={[
-                'Évaluation initiale : questionnaire de positionnement à l\'entrée en formation.',
-                'Évaluation continue : auto-évaluations et un livrable validé à chaque module.',
-                'Évaluation finale : présentation du système IA personnel et grille de compétences.',
-                'Bilan : enquêtes de satisfaction à chaud puis à distance.',
-              ]}
-            />
+            <Bullets items={evaluation} />
             <p>
-              <strong>Sanction :</strong> une <strong>attestation de fin de formation</strong> est
-              remise à l&apos;issue du parcours, mentionnant les objectifs, le volume horaire et les
-              compétences acquises.
+              <strong>Sanction :</strong>{' '}
+              une <strong>attestation de fin de formation</strong> est remise à l&apos;issue du
+              parcours, mentionnant les objectifs, le volume horaire et les compétences acquises.
             </p>
           </Section>
 
           {/* Suivi & assiduité */}
           <Section title="Modalités de suivi et d'assiduité">
             <p>
-              L&apos;assiduité est suivie via les feuilles de présence (émargement) des sessions
-              live, les connexions à la plateforme e-learning et la remise des livrables. Un
-              référent pédagogique assure le suivi individuel tout au long du parcours.
+              L&apos;assiduité est suivie via les connexions à la plateforme e-learning, la
+              participation aux classes virtuelles et la remise des livrables. Un référent
+              pédagogique assure le suivi individuel tout au long du parcours.
             </p>
           </Section>
 
@@ -438,10 +477,10 @@ export default function ProgrammePage() {
               évaluations) et, le cas échéant, une orientation vers les acteurs spécialisés (Cap
               Emploi, Agefiph, FIPHFP). Notre référent handicap est joignable à{' '}
               <a
-                href="mailto:contact@startpoint-ia.fr"
+                href="mailto:hello@startpoint-ia.fr"
                 className="text-[#A68AFF] font-bold hover:underline"
               >
-                contact@startpoint-ia.fr
+                hello@startpoint-ia.fr
               </a>{' '}
               (réponse sous 48 h ouvrées).
             </p>
@@ -452,10 +491,10 @@ export default function ProgrammePage() {
             <p>
               Toute réclamation peut être adressée par écrit à{' '}
               <a
-                href="mailto:contact@startpoint-ia.fr"
+                href="mailto:hello@startpoint-ia.fr"
                 className="text-[#A68AFF] font-bold hover:underline"
               >
-                contact@startpoint-ia.fr
+                hello@startpoint-ia.fr
               </a>
               . Une réponse écrite est apportée sous 15 jours ouvrés. À défaut de solution amiable,
               le recours à un médiateur de la consommation reste possible.
@@ -492,10 +531,10 @@ export default function ProgrammePage() {
               <p>
                 Contact :{' '}
                 <a
-                  href="mailto:contact@startpoint-ia.fr"
+                  href="mailto:hello@startpoint-ia.fr"
                   className="text-[#A68AFF] font-bold hover:underline"
                 >
-                  contact@startpoint-ia.fr
+                  hello@startpoint-ia.fr
                 </a>
               </p>
             </div>
