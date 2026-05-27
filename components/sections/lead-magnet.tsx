@@ -29,6 +29,7 @@ export function LeadMagnet() {
           'form-name': 'lead-magnet',
           'bot-field': '',
           email,
+          demande: 'Mini-cours gratuit pour indépendants',
         }),
       })
       setStatus('success')
