@@ -13,13 +13,13 @@ export const metadata: Metadata = {
 
 const ficheItems: { label: string; value: string }[] = [
   { label: 'Intitulé', value: 'Accélération IA 360 — Méthode 3S' },
-  { label: 'Durée', value: "35 heures de formation (e-learning + exercices + évaluations), sur 8 semaines" },
-  { label: 'Modalité', value: 'Formation à distance (FOAD) — 100 % asynchrone via plateforme LMS + classes virtuelles hebdomadaires' },
-  { label: 'Sessions live', value: '8 classes virtuelles de 90 min (accompagnement collectif, non obligatoire pour la validation)' },
-  { label: 'Public', value: 'Indépendants, consultants, coaches, formateurs, freelances' },
-  { label: 'Prérequis', value: "Activité indépendante depuis 2 ans min. · usage quotidien d'outils numériques · niveau débutant en IA accepté" },
-  { label: 'Effectif', value: '8 participants maximum par cohorte' },
-  { label: 'Tarif', value: "À partir de 2 997 € HT — finançable (FAF, crédit d'impôt)" },
+  { label: 'Durée', value: '12 heures de formation, sur 8 semaines' },
+  { label: 'Modalité', value: 'Formation à distance — distanciel synchrone via classes virtuelles de groupe hebdomadaires' },
+  { label: 'Sessions live', value: '8 classes virtuelles de 90 min' },
+  { label: 'Public', value: 'Entrepreneurs, indépendants, consultants, coaches, formateurs, freelances' },
+  { label: 'Prérequis', value: 'Avoir un ordinateur avec une connexion internet · niveau débutant en IA accepté' },
+  { label: 'Effectif', value: '10 participants maximum par cohorte' },
+  { label: 'Tarif', value: "À partir de 2 997 € HT — finançable (FAF, déductibilité fiscale)" },
   { label: 'Sanction', value: 'Attestation de fin de formation' },
   { label: 'Accessibilité', value: 'Formation accessible aux personnes en situation de handicap' },
 ]
@@ -29,7 +29,6 @@ const objectifs: string[] = [
   "Concevoir des prompts structurés et efficaces pour ses cas d'usage métier.",
   "Produire des documents professionnels (emails, devis, contrats, contenus marketing) assistés par l'IA.",
   "Construire une stratégie de contenu et de prospection augmentée par l'IA.",
-  "Mettre en place des automatisations et un système d'outils IA opérationnel et documenté.",
   "Évaluer la pertinence et les limites d'un outil IA pour un cas d'usage donné.",
 ]
 
@@ -52,118 +51,118 @@ type Module = {
 const phases: { phase: string; semaines: string; intro: string; modules: Module[] }[] = [
   {
     phase: 'Phase 1 — Simplifier',
-    semaines: 'Semaines 0–2',
-    intro: "Récupérer du temps dès la première semaine grâce aux fondamentaux de l'IA.",
+    semaines: 'Semaines 1–3',
+    intro: "Récupérer du temps dès la deuxième semaine grâce aux fondamentaux de l'IA.",
     modules: [
       {
-        num: '0',
+        num: '1',
         title: 'Préparation et communauté',
-        objectif: "Disposer d'un environnement IA opérationnel et rejoindre la communauté d'apprenants.",
+        objectif: "Disposer d'un environnement IA opérationnel et rencontrer la communauté d'entrepreneurs.",
         contenu: [
           'Présentation du parcours, des objectifs et des modalités de suivi',
           'Paramétrage complet de votre outil IA',
-          'Accès au programme, au Cercle StartPoint et aux formateurs',
+          "Rencontre avec la communauté d'entrepreneurs et accès au Cercle StartPoint",
           'Mise en place de la fonctionnalité audio',
         ],
         livrable: 'Votre outil configuré et un réseau.',
       },
       {
-        num: '1',
+        num: '2',
         title: 'Poser les fondations',
-        objectif: "Comprendre le fonctionnement d'un assistant IA et produire des prompts fiables.",
+        objectif: "Comprendre l'architecture d'un assistant IA, le connecter à vos outils et produire vos premiers prompts fiables.",
         contenu: [
-          'Démystification de l\'IA : ce qui marche vraiment pour les indépendants',
-          'Sécurité et limites des outils',
-          'Prompting : les bases et les techniques avancées',
-          'Création de visuels, de présentations et d\'emails professionnels',
+          "Démystification de l'IA : ce qui marche vraiment pour les entrepreneurs",
+          'Architecture et subtilités du prompt',
+          'Connecter Claude à vos outils du quotidien',
+          "Création de visuels, de présentations et d'emails professionnels",
         ],
         livrable: "Les bases de l'IA générative et une cartographie de votre workflow.",
       },
       {
-        num: '2',
-        title: 'Gagnez du temps tout de suite',
-        objectif: 'Automatiser les tâches récurrentes à faible valeur ajoutée du quotidien.',
+        num: '3',
+        title: 'Gagnez du temps de suite',
+        objectif: 'Soulager les tâches les plus pénibles et chronophages du quotidien.',
         contenu: [
           'Prise de notes automatique et productivité',
           'Organisation intelligente : to-do, blocs de temps, planification',
-          'Génération et analyse de documents personnalisés',
+          'Création de documents personnalisés sans hallucination',
           'Recherche et veille accélérées',
         ],
-        livrable: 'Un document prêt à l\'emploi et une semaine type optimisée.',
+        livrable: "Un document prêt à l'emploi et une semaine type optimisée.",
       },
     ],
   },
   {
     phase: 'Phase 2 — Scaler',
-    semaines: 'Semaines 3–5',
+    semaines: 'Semaines 4–6',
     intro: 'Produire davantage sans travailler plus : stratégie, marketing et vente augmentés.',
     modules: [
       {
-        num: '3',
+        num: '4',
         title: 'Vision stratégique augmentée',
         objectif: "Utiliser l'IA comme partenaire stratégique pour piloter son activité.",
         contenu: [
           'Clarification de la vision et structuration des idées',
           'Comparaison de scénarios business et prise de décision',
           'Identification des leviers de croissance',
-          'Mise en place d\'un tableau de bord de pilotage',
+          'Construction de votre dashboard stratégique pluggé sur vos données',
         ],
-        livrable: 'Un dashboard stratégique, une matrice impact/effort et un plan d\'action.',
+        livrable: "Un dashboard stratégique pluggé sur vos données, une matrice impact/effort et un plan d'action.",
       },
       {
-        num: '4',
+        num: '5',
         title: 'Marketing augmenté',
         objectif: "Concevoir et décliner ses contenus marketing à grande échelle avec l'IA.",
         contenu: [
           'Définition du persona et choix des canaux',
-          'Formulation de l\'USP',
-          'Création de posts, de visuels et d\'un site avec l\'IA',
+          "Formulation de l'USP",
+          "Création de posts, de visuels et d'un site avec l'IA",
           'Distribution : un contenu décliné en cinq formats',
         ],
-        livrable: 'Un post publié (texte + visuel) et un site réalisé avec l\'IA.',
+        livrable: "Un post publié (texte + visuel) et un site réalisé avec l'IA.",
       },
       {
-        num: '5',
+        num: '6',
         title: 'Vente augmentée',
         objectif: "Structurer son offre et son cycle de vente avec l'appui de l'IA.",
         contenu: [
-          'Construction et chiffrage d\'une offre',
-          'Prospection et génération de leads assistées par l\'IA',
+          "Construction et chiffrage d'une offre",
+          "Prospection et génération de leads assistées par l'IA",
           'Préparation de calls, scripts et négociation',
-          'Présentations commerciales et fidélisation (upsell, cross-sell)',
+          'Supports commerciaux interactifs et fidélisation (upsell, cross-sell)',
         ],
-        livrable: 'Une offre structurée et deux propositions commerciales.',
+        livrable: 'Une offre structurée et deux propositions commerciales avec supports interactifs.',
       },
     ],
   },
   {
     phase: 'Phase 3 — Systématiser',
-    semaines: 'Semaines 6–7',
+    semaines: 'Semaines 7–8',
     intro: 'Construire le système qui tourne sans vous et le rendre durable.',
     modules: [
       {
-        num: '6',
+        num: '7',
         title: 'Débloquer son quotidien',
         objectif: "Créer des solutions IA sur mesure pour ses besoins spécifiques.",
         contenu: [
-          'Création de projets avec l\'IA',
+          "Création de projets avec l'IA",
           'Maîtrise des Claude Skills',
           'Découverte et test du vibe coding',
-          'Création d\'un tableau de bord',
+          "Création d'un tableau de bord",
         ],
         livrable: 'Une création codée et des modèles pour Claude Skills.',
       },
       {
-        num: '7',
+        num: '8',
         title: 'Votre système IA personnel',
         objectif: "Formaliser un système IA personnel complet et un plan d'action durable.",
         contenu: [
           'Agents et assistants pour gagner en autonomie',
           'Connecteurs et Cowork : automatiser sans coder',
           'Roadmap : standardiser → simplifier → automatiser',
-          'Coaching de groupe et plan d\'action personnel',
+          'Coaching personnalisé pour construire vos premiers projets sur mesure',
         ],
-        livrable: 'Un système IA complet et un plan d\'action post-programme.',
+        livrable: "Un système IA complet et un plan d'action post-programme.",
       },
     ],
   },
@@ -297,7 +296,7 @@ export default function ProgrammePage() {
           <Section title="Présentation de la formation">
             <p>
               <strong>Accélération IA 360</strong>{' '}
-              est un parcours de 8 semaines qui permet aux indépendants et dirigeants de TPE
+              est un parcours de 8 semaines qui permet aux entrepreneurs, indépendants et dirigeants de TPE
               d&apos;intégrer concrètement l&apos;intelligence artificielle dans leur activité, sans
               compétences techniques préalables. La progression suit la{' '}
               <strong>Méthode 3S</strong> : <em>Simplifier</em> son quotidien, <em>Scaler</em> sa
@@ -315,38 +314,30 @@ export default function ProgrammePage() {
           <Section title="Public visé et prérequis">
             <p>
               <strong>Public :</strong>{' '}
-              indépendants, consultants, coaches, formateurs et freelances souhaitant gagner du
-              temps et développer leur activité avec l&apos;IA.
+              entrepreneurs, indépendants, consultants, coaches, formateurs et freelances souhaitant
+              gagner du temps et développer leur activité avec l&apos;IA.
             </p>
             <p>
               <strong>Prérequis :</strong>{' '}
-              activité indépendante depuis au moins 2 ans ; usage quotidien d&apos;outils
-              numériques ; niveau débutant en IA accepté ; maîtrise du français à l&apos;oral et à
-              l&apos;écrit.
-            </p>
-            <p>
-              <strong>Matériel :</strong>{' '}
-              un ordinateur avec une connexion internet.
+              avoir un ordinateur avec une connexion internet ; niveau débutant en IA accepté.
             </p>
           </Section>
 
           {/* Durée, rythme et modalités */}
           <Section title="Durée, rythme et modalités">
             <p>
-              La formation représente <strong>35 heures au total</strong> (modules e-learning,
-              exercices d&apos;application et évaluations), réparties sur <strong>8 semaines</strong>.
-              Elle se déroule <strong>à distance (FOAD)</strong>, 100 % en asynchrone via une
-              plateforme LMS.
+              La formation représente <strong>12 heures au total</strong>, réparties sur{' '}
+              <strong>8 semaines</strong>. Elle se déroule <strong>à distance en synchrone</strong>{' '}
+              via des classes virtuelles de groupe hebdomadaires.
             </p>
             <p>
-              Elle est accompagnée de <strong>8 classes virtuelles de groupe de 90 minutes</strong>{' '}
-              (une par semaine, le mardi de 9 h 30 à 11 h). Ces classes constituent un
-              accompagnement collectif et ne sont pas obligatoires pour la validation : les{' '}
+              Le format se compose de <strong>8 classes virtuelles de groupe de 90 minutes</strong>{' '}
+              (une par semaine, le mardi de 9 h 30 à 11 h). Les{' '}
               <strong>replays sont disponibles</strong> et le rattrapage est possible.
             </p>
             <p>
               <strong>Disponibilité conseillée :</strong>{' '}
-              environ 4 à 5 heures par semaine pendant la durée du parcours.
+              environ 1 h 30 par semaine pendant la durée du parcours.
             </p>
           </Section>
 
@@ -413,7 +404,7 @@ export default function ProgrammePage() {
             <Bullets
               items={[
                 'Plateforme e-learning accessible 24/7 (plus de 80 vidéos, fiches et modèles).',
-                'Classes virtuelles interactives en petit groupe (8 participants maximum).',
+                'Classes virtuelles interactives en petit groupe (10 participants maximum).',
                 'Kit de prompts et de modèles fourni à chaque module.',
                 'Accompagnement asynchrone et communauté d\'apprenants entre les sessions.',
                 'Études de cas et exercices appliqués à l\'activité de chaque participant.',
@@ -448,8 +439,9 @@ export default function ProgrammePage() {
             </p>
             <p>
               La formation est <strong>éligible au financement</strong> par les Fonds
-              d&apos;Assurance Formation (AGEFICE, FIF-PL, FAFCEA) et peut ouvrir droit au crédit
-              d&apos;impôt formation du dirigeant. Une estimation personnalisée est disponible sur la{' '}
+              d&apos;Assurance Formation (AGEFICE, FIF-PL, FAFCEA) et les frais sont{' '}
+              <strong>déductibles fiscalement</strong> (IS ou BIC/BNC réel selon votre statut).
+              Une estimation personnalisée est disponible sur la{' '}
               <a href="/financement" className="text-[#A68AFF] font-bold hover:underline">
                 page financement
               </a>

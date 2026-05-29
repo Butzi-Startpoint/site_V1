@@ -32,7 +32,6 @@ export type Estimation = {
   fafName: FafName
   fafAmount: number
   fafNote: string
-  creditImpot: number
   deductibility: number
   remainingAfterFaf: number
   netCost: number

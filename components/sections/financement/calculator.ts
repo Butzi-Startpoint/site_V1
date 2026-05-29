@@ -1,8 +1,7 @@
 import type { Estimation, FafName, Fiscal, Statut, Tmi, WizardState } from './types'
 
 export const FORMATION_PRICE = 2997
-export const FORMATION_HOURS = 14
-export const SMIC_HORAIRE = 11.88
+export const FORMATION_HOURS = 12
 
 export function calculateFaf(statut: Statut | null): { amount: number; name: FafName; note: string } {
   switch (statut) {
@@ -37,11 +36,6 @@ export function calculateFaf(statut: Statut | null): { amount: number; name: Faf
   }
 }
 
-export function calculateCreditImpot(fiscal: Fiscal | null): number {
-  if (!fiscal || fiscal === 'micro') return 0
-  return Math.round(FORMATION_HOURS * SMIC_HORAIRE)
-}
-
 export function calculateDeductibility(
   fiscal: Fiscal | null,
   tmi: Tmi | null,
@@ -61,13 +55,11 @@ export function computeEstimation(state: WizardState): Estimation {
   const fafAmount = faf.amount
   const remainingAfterFaf = Math.max(0, FORMATION_PRICE - fafAmount)
   const deductibility = calculateDeductibility(state.fiscal, state.tmi, remainingAfterFaf)
-  const creditImpot = calculateCreditImpot(state.fiscal)
-  const netCost = Math.max(0, FORMATION_PRICE - fafAmount - deductibility - creditImpot)
+  const netCost = Math.max(0, FORMATION_PRICE - fafAmount - deductibility)
   return {
     fafName: faf.name,
     fafAmount,
     fafNote: faf.note,
-    creditImpot,
     deductibility,
     remainingAfterFaf,
     netCost,

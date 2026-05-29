@@ -7,7 +7,7 @@ import { QualiopiBadge } from '@/components/ui/qualiopi-badge'
 export const metadata: Metadata = {
   title: 'Simulateur de financement formation IA — Accélération IA 360 | StartPoint IA',
   description:
-    'Calculez en 2 minutes combien vous pouvez vous faire financer sur la formation Accélération IA 360. AGEFICE, FIFPL, FAFCEA, crédit d\'impôt : estimation personnalisée.',
+    'Calculez en 2 minutes combien vous pouvez vous faire financer sur la formation Accélération IA 360. AGEFICE, FIFPL, FAFCEA, déductibilité fiscale : estimation personnalisée.',
 }
 
 export default function FinancementPage() {

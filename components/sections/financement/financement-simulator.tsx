@@ -203,7 +203,6 @@ export function FinancementSimulator() {
         faf: estimation.fafName,
         fafAmount: estimation.fafAmount,
         deductibility: estimation.deductibility,
-        creditImpot: estimation.creditImpot,
       }),
       consent: state.consent ? 'oui' : 'non',
     }
@@ -244,8 +243,8 @@ export function FinancementSimulator() {
           <span className="text-[#A68AFF]">vous faire financer</span> ?
         </h1>
         <p className="text-[#1E172D]/65 text-base md:text-lg leading-relaxed max-w-[560px] mx-auto">
-          En 2 minutes, découvrez le coût réel de la formation selon votre statut. FAF,
-          crédit d&apos;impôt, déductibilité&nbsp;: on calcule tout pour vous.
+          En 2 minutes, découvrez le coût réel de la formation selon votre statut. FAF
+          et déductibilité fiscale&nbsp;: on calcule tout pour vous.
         </p>
         <p className="text-[11px] text-[#1E172D]/45 mt-3">
           Formation certifiée Qualiopi · Organisme&nbsp;: StartPoint IA (BUTZI EURL)

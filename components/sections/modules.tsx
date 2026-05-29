@@ -29,14 +29,20 @@ const programmePhases: { phase: string; color: string; sessions: Session[] }[] =
       {
         n: '1',
         week: 'Semaine 1',
-        title: 'Poser les fondations',
-        desc: "Comprendre ce que l'IA peut vraiment faire pour votre business. Produire votre premier résultat concret avant la fin de la session.",
+        title: 'Préparation et communauté',
+        desc: "Vous rencontrez la communauté d'entrepreneurs, installez vos outils et arrivez en semaine 2 prêt à produire.",
       },
       {
         n: '2',
         week: 'Semaine 2',
+        title: 'Poser les fondations',
+        desc: "Comprendre ce que l'IA peut vraiment faire pour votre business. Architecture et subtilités de prompt, connecter Claude à vos outils. Premier résultat concret avant la fin de la session.",
+      },
+      {
+        n: '3',
+        week: 'Semaine 3',
         title: 'Gagnez du temps de suite',
-        desc: "Des résultats immédiats sur vos tâches les plus chronophages. Organisation, documents légaux, recherche : tout s'accélère.",
+        desc: "Des résultats immédiats sur vos tâches les plus pénibles et chronophages. Créez vos documents sans hallucination.",
       },
     ],
   },
@@ -45,22 +51,22 @@ const programmePhases: { phase: string; color: string; sessions: Session[] }[] =
     color: '#1E172D',
     sessions: [
       {
-        n: '3',
-        week: 'Semaine 3',
-        title: 'Vision stratégique augmentée',
-        desc: 'Prenez du recul sur votre business. Clarifiez votre vision, explorez de nouvelles pistes, tranchez vos décisions importantes.',
-      },
-      {
         n: '4',
         week: 'Semaine 4',
-        title: 'Marketing augmenté',
-        desc: "Clarifiez votre message, créez du contenu qui parle vraiment à votre cible et construisez votre site, le tout avec l'IA.",
+        title: 'Vision stratégique augmentée',
+        desc: 'Prenez du recul sur votre business. Clarifiez votre vision, tranchez vos décisions importantes et créez votre dashboard stratégique pluggé sur vos données.',
       },
       {
         n: '5',
         week: 'Semaine 5',
+        title: 'Marketing augmenté',
+        desc: "Clarifiez votre message, créez du contenu qui parle vraiment à votre cible et construisez votre site, le tout avec l'IA.",
+      },
+      {
+        n: '6',
+        week: 'Semaine 6',
         title: 'Vente augmentée',
-        desc: 'Construisez une offre solide, trouvez les bonnes personnes, closez avec confiance. Et présentez le tout avec des supports qui font la différence.',
+        desc: 'Construisez une offre solide, trouvez les bonnes personnes, closez avec confiance. Et présentez le tout avec des supports interactifs incroyables.',
       },
     ],
   },
@@ -69,16 +75,16 @@ const programmePhases: { phase: string; color: string; sessions: Session[] }[] =
     color: '#A68AFF',
     sessions: [
       {
-        n: '6',
-        week: 'Semaine 6',
+        n: '7',
+        week: 'Semaine 7',
         title: 'Débloquer son quotidien',
         desc: "L'IA devient un outil sur mesure pour votre métier. Créez vos propres projets, codez sans coder, débloquez votre quotidien.",
       },
       {
-        n: '7',
-        week: 'Semaine 7',
+        n: '8',
+        week: 'Semaine 8',
         title: 'Votre système IA personnel',
-        desc: "Transformez les semaines d'apprentissage en habitudes durables. Standardisez, simplifiez, automatisez, et passez à l'action pour de bon.",
+        desc: "Transformez les semaines d'apprentissage en habitudes durables. Standardisez, simplifiez, automatisez, et passez à l'action pour de bon. Coaching personnalisé pour construire vos premiers projets sur mesure.",
       },
     ],
   },
@@ -88,12 +94,12 @@ const programmePhases: { phase: string; color: string; sessions: Session[] }[] =
 const ficheQualiopi: [string, string][] = [
   ['Intitulé officiel', 'Accélération IA 360 — Méthode 3S'],
   ['Organisme', 'BUTZI EURL — Organisme de formation certifié Qualiopi (SIRET 84759310000013)'],
-  ['Modalité', 'Formation à distance (FOAD) — 100 % asynchrone via plateforme LMS, accompagnée de classes virtuelles de groupe hebdomadaires'],
-  ['Durée totale', "35 heures de formation (modules e-learning + exercices d'application + évaluations), sur 8 semaines"],
-  ['Sessions live', '8 classes virtuelles de 90 minutes (accompagnement collectif, non obligatoire pour la validation)'],
-  ['Public visé', 'Indépendants, consultants, coaches, formateurs, freelances'],
-  ['Prérequis', "Activité indépendante depuis minimum 2 ans ; usage quotidien d'outils numériques ; niveau débutant en IA accepté"],
-  ['Effectif', '8 participants maximum par cohorte'],
+  ['Modalité', 'Formation à distance — distanciel synchrone via classes virtuelles de groupe hebdomadaires'],
+  ['Durée totale', '12 heures de formation, sur 8 semaines'],
+  ['Sessions live', '8 classes virtuelles de 90 minutes'],
+  ['Public visé', 'Entrepreneurs, indépendants, consultants, coaches, formateurs, freelances'],
+  ['Prérequis', 'Avoir un ordinateur avec une connexion internet ; niveau débutant en IA accepté'],
+  ['Effectif', '10 participants maximum par cohorte'],
   ['Accessibilité', 'Formation accessible aux personnes en situation de handicap. Contactez-nous pour adapter les modalités.'],
 ]
 
@@ -102,7 +108,6 @@ const objectifsQualiopi = [
   'Concevoir des prompts structurés et efficaces pour ses cas d\'usage métier',
   'Produire des documents professionnels (emails, devis, contrats, contenus marketing) assistés par l\'IA',
   'Construire une stratégie de contenu et de prospection augmentée par l\'IA',
-  'Mettre en place des automatisations et un système d\'outils IA opérationnel et documenté',
   'Évaluer la pertinence et les limites d\'un outil IA pour un cas d\'usage donné',
 ]
 
@@ -117,9 +122,9 @@ const evaluationQualiopi = [
 const phases = [
   {
     num: 'Phase 1',
-    label: 'Semaines 1–2',
+    label: 'Semaines 1–3',
     title: 'Simplifier',
-    tagline: 'Récupérez du temps dès la semaine 1',
+    tagline: 'Récupérez du temps dès la semaine 2',
     bullets: [
       'Vos outils IA configurés et prêts à l\'emploi',
       'Des prompts testés, adaptés à votre quotidien',
@@ -127,7 +132,7 @@ const phases = [
       'Votre veille métier qui tourne sans vous',
       'Vos premières heures récupérées chaque semaine',
     ],
-    result: "Vos premières heures récupérées dès la semaine 1.",
+    result: "Vos premières heures récupérées dès la semaine 2.",
     color: '#A68AFF',
     dotColor: '#A68AFF',
     bg: 'rgba(166,138,255,0.08)',
@@ -143,7 +148,7 @@ const phases = [
   },
   {
     num: 'Phase 2',
-    label: 'Semaines 3–5',
+    label: 'Semaines 4–6',
     title: 'Scaler',
     tagline: 'Produisez plus sans travailler plus',
     bullets: [
@@ -168,7 +173,7 @@ const phases = [
   },
   {
     num: 'Phase 3',
-    label: 'Semaines 6–7',
+    label: 'Semaines 7–8',
     title: 'Systématiser',
     tagline: 'Construisez le système qui tourne sans vous',
     bullets: [

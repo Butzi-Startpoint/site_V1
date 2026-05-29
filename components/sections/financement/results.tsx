@@ -114,7 +114,7 @@ export function Results({ estimation }: { estimation: Estimation; shareUrl?: str
           <div className="flex justify-between items-baseline pb-4 border-b border-[#1E172D]/10">
             <div>
               <p className="text-[#1E172D] font-semibold" style={{ fontFamily: 'var(--font-display)' }}>
-                Formation <ScrambleText text="Accélération IA 360" style={{ fontFamily: 'var(--font-tech)' }} /> (14h)
+                Formation <ScrambleText text="Accélération IA 360" style={{ fontFamily: 'var(--font-tech)' }} /> (12h)
               </p>
               <p className="text-xs text-[#1E172D]/50 mt-0.5">Tarif Essentiel HT</p>
             </div>
@@ -162,24 +162,6 @@ export function Results({ estimation }: { estimation: Estimation; shareUrl?: str
             </p>
           </div>
 
-          {/* Crédit d'impôt */}
-          <div className="flex justify-between items-baseline">
-            <div className="flex-1 pr-4">
-              <p className="text-[#1E172D]/80 font-medium" style={{ fontFamily: 'var(--font-display)' }}>
-                — Crédit d&apos;impôt formation dirigeant
-              </p>
-              <p className="text-xs text-[#1E172D]/50 mt-1 leading-relaxed">
-                14h × 11,88 € SMIC horaire
-              </p>
-            </div>
-            <p
-              className="text-lg md:text-xl font-bold text-emerald-600 whitespace-nowrap"
-              style={{ fontFamily: 'var(--font-display)' }}
-            >
-              <CountUp to={-estimation.creditImpot} startDelay={1000} />
-            </p>
-          </div>
-
           {/* Total */}
           <div className="border-t-2 border-dashed border-[#1E172D]/20 pt-5 mt-2">
             <div className="bg-[#FFFFAB] rounded-2xl p-5 flex justify-between items-center">
@@ -193,7 +175,7 @@ export function Results({ estimation }: { estimation: Estimation; shareUrl?: str
                 className="text-2xl md:text-3xl font-extrabold text-[#1E172D]"
                 style={{ fontFamily: 'var(--font-display)' }}
               >
-                <CountUp to={estimation.netCost} durationMs={1600} startDelay={1300} />
+                <CountUp to={estimation.netCost} durationMs={1600} startDelay={1000} />
               </p>
             </div>
           </div>
