@@ -6,15 +6,13 @@ import { cn } from '@/lib/utils'
 function isValidEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
 }
-function encodeForm(data: Record<string, string>) {
-  return Object.keys(data)
-    .map((k) => encodeURIComponent(k) + '=' + encodeURIComponent(data[k]))
-    .join('&')
-}
 
 /**
- * Bouton qui ouvre une pop-up demandant l'email pour recevoir
+ * Bouton qui ouvre une pop-up demandant prénom + email pour recevoir
  * le programme complet (certifié Qualiopi).
+ * Déclenche l'envoi de 2 emails via /api/programme-lead :
+ *  - notification à Butzi
+ *  - auto-réponse au demandeur avec lien programme + Calendly
  */
 export function ProgramEmailButton({
   label = 'Recevoir le programme complet',
@@ -24,27 +22,35 @@ export function ProgramEmailButton({
   className?: string
 }) {
   const [open, setOpen] = useState(false)
+  const [firstName, setFirstName] = useState('')
   const [email, setEmail] = useState('')
   const [sending, setSending] = useState(false)
   const [sent, setSent] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+
+  const canSubmit = firstName.trim().length >= 2 && isValidEmail(email)
 
   const submit = async (e: FormEvent) => {
     e.preventDefault()
-    if (!isValidEmail(email)) return
+    if (!canSubmit) return
     setSending(true)
-    const payload = { 'form-name': 'programme-leads', email }
+    setError(null)
     try {
-      localStorage.setItem('programme-lead', JSON.stringify({ ...payload, ts: Date.now() }))
-    } catch {}
-    try {
-      await fetch('/__forms.html', {
+      const res = await fetch('/api/programme-lead', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encodeForm(payload),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ firstName: firstName.trim(), email: email.trim() }),
       })
-    } catch {}
-    setSending(false)
-    setSent(true)
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}))
+        throw new Error(data.error || 'Échec de l\'envoi')
+      }
+      setSent(true)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Une erreur est survenue')
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
@@ -93,7 +99,8 @@ export function ProgramEmailButton({
                   C&apos;est envoyé&nbsp;! 🎉
                 </h3>
                 <p className="text-[#1E172D]/65 text-sm leading-relaxed">
-                  Le programme complet certifié Qualiopi arrive dans votre boîte mail.
+                  Le programme complet certifié Qualiopi arrive dans votre boîte mail,
+                  avec une proposition de RDV 15 min pour en discuter.
                 </p>
               </div>
             ) : (
@@ -105,22 +112,36 @@ export function ProgramEmailButton({
                   Recevez le programme complet
                 </h3>
                 <p className="text-[#1E172D]/60 text-sm leading-relaxed mb-5">
-                  Laissez votre email : on vous envoie le programme détaillé
+                  Laissez vos coordonnées&nbsp;: on vous envoie le programme détaillé
                   &nbsp;Accélération&nbsp;IA&nbsp;360, certifié Qualiopi.
                 </p>
                 <form onSubmit={submit} className="space-y-3">
+                  <input
+                    type="text"
+                    required
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                    placeholder="Votre prénom"
+                    autoComplete="given-name"
+                    className="w-full px-5 py-3.5 rounded-2xl border-2 border-[#1E172D]/12 bg-white text-[#1E172D] text-base font-medium focus:outline-none focus:border-[#A68AFF] transition-colors"
+                    style={{ fontFamily: 'var(--font-display)' }}
+                  />
                   <input
                     type="email"
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="prenom@votreentreprise.fr"
+                    autoComplete="email"
                     className="w-full px-5 py-3.5 rounded-2xl border-2 border-[#1E172D]/12 bg-white text-[#1E172D] text-base font-medium focus:outline-none focus:border-[#A68AFF] transition-colors"
                     style={{ fontFamily: 'var(--font-display)' }}
                   />
+                  {error && (
+                    <p className="text-sm text-red-600 leading-relaxed">{error}</p>
+                  )}
                   <button
                     type="submit"
-                    disabled={!isValidEmail(email) || sending}
+                    disabled={!canSubmit || sending}
                     className="w-full inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-2xl bg-[#1E172D] text-[#FFFFAB] font-bold text-sm hover:bg-[#2a1f3d] disabled:opacity-40 disabled:cursor-not-allowed transition-colors cursor-pointer"
                     style={{ fontFamily: 'var(--font-display)' }}
                   >
