@@ -27,8 +27,8 @@ const faqs: Faq[] = [
     ),
   },
   {
-    q: "J'ai déjà testé ChatGPT, pourquoi ce programme serait différent ?",
-    a: "Tester ChatGPT sans méthode, c'est comme utiliser un smartphone que pour appeler. Ce programme vous donne un cadre structuré, des cas d'usage concrets pour votre métier, et un accompagnement pour passer de \"j'ai essayé\" à \"je l'utilise tous les jours\".",
+    q: "J'utilise déjà ChatGPT et Claude, qu'est-ce que ce programme va m'apporter en plus ?",
+    a: "Utiliser ChatGPT ou Claude, c'est une chose. En faire un véritable système qui transforme votre activité, c'en est une autre. Ce programme vous donne une méthode structurée, des cas d'usage concrets pour votre métier, et un accompagnement pour passer d'un usage ponctuel à un système IA complet qui tourne au quotidien.",
   },
   {
     q: 'Je ne suis pas technique, est-ce que je vais suivre ?',
