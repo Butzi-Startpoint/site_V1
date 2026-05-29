@@ -53,14 +53,20 @@ export function Navbar() {
             : 'bg-[#F6F1EB]/85 backdrop-blur-md border-transparent'
         }`}
       >
-        <div className="max-w-[1140px] mx-auto px-6 py-3 flex items-center justify-between">
-          {/* Logo animé — 3× plus grand (object-contain) */}
-          <Link href="/" className="flex items-center no-underline group cursor-pointer -my-10 md:-my-12">
+        <div className="max-w-[1280px] mx-auto px-6 py-3 flex items-center justify-between">
+          {/* Logo animé + sous-titre */}
+          <Link href="/" className="flex flex-col items-start no-underline group cursor-pointer -my-10 md:-my-12">
             <img
               src="/startpoint-logo.gif"
               alt="StartPoint IA"
               className="h-36 md:h-40 w-auto object-contain"
             />
+            <span
+              className="hidden md:block text-[#A68AFF] text-[10px] font-bold tracking-[0.18em] uppercase -mt-2 pl-0.5"
+              style={{ fontFamily: 'var(--font-tech)' }}
+            >
+              Accélération IA 360
+            </span>
           </Link>
 
           {/* Nav links */}
