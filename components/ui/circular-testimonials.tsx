@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState, useMemo, useCallback } from "react"
 import { ArrowLeft, ArrowRight } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
+import { useSwipe } from "@/lib/use-swipe"
 
 type QuoteSegment = { text: string; bold?: boolean }
 interface Testimonial {
@@ -102,6 +103,8 @@ export const CircularTestimonials = ({
     if (intervalRef.current) clearInterval(intervalRef.current)
   }, [len])
 
+  const swipe = useSwipe(handleNext, handlePrev)
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "ArrowLeft") handlePrev()
@@ -147,9 +150,10 @@ export const CircularTestimonials = ({
         className="md:grid-cols-2 grid-cols-1">
         {/* Images */}
         <div ref={containerRef}
-          style={{ position: "relative", width: "100%", height: "24rem", perspective: "1000px" }}>
+          {...swipe}
+          style={{ position: "relative", width: "100%", height: "24rem", perspective: "1000px", touchAction: "pan-y", userSelect: "none" }}>
           {testimonials.map((t, i) => (
-            <img key={t.src} src={t.src} alt={t.name}
+            <img key={t.src} src={t.src} alt={t.name} draggable={false}
               style={{
                 position: "absolute", width: "100%", height: "100%",
                 objectFit: "cover", borderRadius: "1.5rem",

@@ -20,7 +20,7 @@ const testimonials: Testimonial[] = [
   },
   {
     text: "Nous avons pu créer notre propre ERP, qu'aucun autre outil du marché n'était en mesure de faire. Un gain de temps énorme.",
-    image: "/accompli/Guillaume.jpg",
+    image: "/accompli/guillaume.jpg",
     name: "Guillaume Touzé",
     role: "Association Easy Way",
   },

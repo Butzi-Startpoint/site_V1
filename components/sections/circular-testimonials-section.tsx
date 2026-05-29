@@ -27,7 +27,7 @@ const testimonials = [
       "J'utilisais déjà certains outils IA de manière isolée et je sentais que j'utilisais à peine 10% de leur potentiel. Après la formation, ma vision a changé : je commence par une stratégie globale où l'IA m'accompagne dès le début, avant de rentrer dans le détail, notamment sur l'automatisation. Nous avons même pu créer notre propre ERP qu'aucun autre outil du marché n'était en mesure de faire. Un gain de temps énorme et des choses impossibles à envisager avant !",
     name: "Guillaume Touzé",
     designation: "Association Easy Way",
-    src: "/accompli/Guillaume.jpg",
+    src: "/accompli/guillaume.jpg",
   },
   {
     quote:

@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { ScrambleText } from '@/components/ui/scramble-text';
 import { CertLink } from '@/components/ui/qualiopi-badge';
+import { useSwipe } from '@/lib/use-swipe';
 
 // --- Types ---
 interface AccordionItemData {
@@ -135,6 +136,10 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
 export function LandingAccordionItem() {
   const [activeIndex, setActiveIndex] = useState(0);
 
+  const goNext = () => setActiveIndex((i) => (i + 1) % accordionItems.length);
+  const goPrev = () => setActiveIndex((i) => (i - 1 + accordionItems.length) % accordionItems.length);
+  const swipe = useSwipe(goNext, goPrev);
+
   return (
     <section className="bg-[#1E172D] font-sans">
       <div className="container mx-auto px-6 pt-8 md:pt-12 pb-16 md:pb-28">
@@ -240,7 +245,10 @@ export function LandingAccordionItem() {
 
             {/* Mobile : carrousel image unique (plein écran) */}
             <div className="lg:hidden">
-              <div className="relative w-full h-[380px] rounded-2xl overflow-hidden ring-2 ring-[#A68AFF]/50 shadow-[0_0_32px_rgba(166,138,255,0.25)]">
+              <div
+                className="relative w-full h-[380px] rounded-2xl overflow-hidden ring-2 ring-[#A68AFF]/50 shadow-[0_0_32px_rgba(166,138,255,0.25)] touch-pan-y select-none"
+                {...swipe}
+              >
                 <img
                   key={accordionItems[activeIndex].id}
                   src={accordionItems[activeIndex].imageUrl}
