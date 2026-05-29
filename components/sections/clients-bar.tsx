@@ -5,13 +5,13 @@ import { LogoCloud } from '@/components/ui/logo-cloud-3'
 // Logos clients (PNG à fond transparent) — rendus en silhouette blanche
 // par le filtre du LogoCloud (brightness(0) invert(1) opacity(0.7)).
 const logos = [
-  { alt: 'Chanel', src: '/logos/chanel.png' },
+  { alt: 'Chanel', src: '/logos/chanel.png', heightClass: 'h-3.5 md:h-4' },
   { alt: 'TED', src: '/logos/ted.png' },
   { alt: 'Samsung', src: '/logos/Samsung.png' },
   { alt: 'Airbus', src: '/logos/Airbus_Logo_2017.svg.png', heightClass: 'h-4 md:h-5' },
   { alt: 'Mindvalley', src: '/logos/Mindvalley.png', heightClass: 'h-5 md:h-6', label: 'Mindvalley' },
   { alt: 'Bpifrance', src: '/logos/Bpifrance_logo.svg.png' },
-  { alt: 'CCI', src: '/logos/CCI.png', heightClass: 'h-12 md:h-14' },
+  { alt: 'CCI', src: '/logos/CCI.png', heightClass: 'h-16 md:h-[72px]' },
   { alt: 'DCF', src: '/logos/DCF_Logo_Nom_complet.png', heightClass: 'h-8 md:h-10' },
 ]
 

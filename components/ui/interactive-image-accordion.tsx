@@ -170,21 +170,26 @@ export function LandingAccordionItem() {
               <span className="block">CA plafonné.</span>
               <span className="block mt-1">
                 Changez la donne{' '}
-                <span className="relative inline-block">
-                  <span className="text-[#FFFFAB]">en 6 semaines</span>
-                  <span className="absolute -bottom-1 left-0 w-full h-[3px] bg-[#A68AFF] rounded-full" />
-                </span>
+                <span className="text-[#FFFFAB]">avec l&apos;IA</span>
                 .
               </span>
             </h1>
 
+            {/* Phrase intermédiaire */}
+            <p
+              className="text-xl md:text-2xl text-[#D8D0FF] font-semibold leading-snug max-w-xl mx-auto lg:mx-0"
+              style={{ fontFamily: 'var(--font-display)' }}
+            >
+              Formation à distance : résultats dès les premières semaines.
+            </p>
+
             {/* Sous-titre */}
             <p className="text-lg text-[#D8D0FF] leading-relaxed max-w-xl mx-auto lg:mx-0 pt-2">
               <span className="block [text-wrap:balance]">
-                Ce n&apos;est pas du marketing bullsh*t. C&apos;est possible aujourd&apos;hui grâce à des outils d&apos;IA révolutionnaires et des méthodes accessibles sans compétences techniques.
+                C&apos;est possible aujourd&apos;hui grâce à des outils d&apos;IA révolutionnaires et des méthodes accessibles sans compétences techniques.
               </span>
               <span className="block mt-2 text-[#F6F1EB] font-medium">
-                1h30 / semaine live, le reste à votre rythme
+                1h30 / semaine live, sur 8 semaines.
               </span>
             </p>
 

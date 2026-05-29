@@ -395,53 +395,68 @@ export function Modules() {
           ))}
         </motion.div>
 
-        {/* Aperçu des sessions (nom + une phrase) */}
+        {/* Programme de la formation — dépliant */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={viewport}
-          variants={stagger}
-          className="mt-4 mb-12"
+          variants={fadeUp}
+          className="mt-4 mb-12 max-w-[900px] mx-auto rounded-3xl border border-[#A68AFF]/25 bg-[#F6F1EB] overflow-hidden"
         >
-          <motion.h3
-            variants={fadeUp}
-            className="text-center text-xs font-bold uppercase tracking-widest text-[#1E172D]/45 mb-3"
-            style={{ fontFamily: 'var(--font-display)' }}
-          >
-            Au programme · 8 sessions de 90 minutes
-          </motion.h3>
-          <motion.p
-            variants={fadeUp}
-            className="text-center text-[#1E172D]/55 text-sm max-w-[560px] mx-auto mb-8 leading-relaxed"
-          >
-            Une classe virtuelle de 90 minutes chaque semaine, le mardi de 9h30 à 11h.{' '}
-            <span className="text-[#1E172D]/45">Replays disponibles, rattrapage possible.</span>
-          </motion.p>
+          <details className="group">
+            <summary className="flex items-center gap-3 px-6 md:px-8 py-5 cursor-pointer list-none [&::-webkit-details-marker]:hidden hover:bg-[#A68AFF]/[0.04] transition-colors bg-white/60">
+              <span className="flex-shrink-0 w-10 h-10 rounded-xl bg-[#A68AFF]/12 inline-flex items-center justify-center">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A68AFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+              </span>
+              <div className="flex-1">
+                <h3
+                  className="text-lg md:text-xl font-extrabold text-[#1E172D] tracking-tight"
+                  style={{ fontFamily: 'var(--font-display)' }}
+                >
+                  Le programme de la formation
+                </h3>
+                <p className="text-[#1E172D]/50 text-xs">8 sessions de 90 minutes · cliquez pour voir le détail</p>
+              </div>
+              <svg
+                className="w-4 h-4 text-[#1E172D]/40 transition-transform duration-200 group-open:rotate-180 flex-shrink-0"
+                fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
 
-          <div className="max-w-[860px] mx-auto space-y-8">
-            {programmePhases.map((ph) => (
-              <motion.div key={ph.phase} variants={fadeUp}>
-                {/* En-tête de phase */}
-                <div className="flex items-center gap-2.5 mb-3 px-1">
-                  <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: ph.color }} />
-                  <h4
-                    className="text-[11px] font-bold uppercase tracking-widest text-[#1E172D]/55"
-                    style={{ fontFamily: 'var(--font-display)' }}
-                  >
-                    {ph.phase}
-                  </h4>
-                </div>
-                <div className="space-y-2.5">
-                  {ph.sessions.map((s) => (
-                    <SessionRow key={s.n} s={s} color={ph.color} />
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
+            <div className="px-6 md:px-8 py-6 md:py-7 border-t border-[#1E172D]/[0.06]">
+              <p className="text-[#1E172D]/55 text-sm mb-6 leading-relaxed">
+                Une classe virtuelle de 90 minutes chaque semaine, le mardi de 9h30 à 11h.{' '}
+                <span className="text-[#1E172D]/45">Replays disponibles, rattrapage possible.</span>
+              </p>
+              <div className="space-y-8">
+                {programmePhases.map((ph) => (
+                  <div key={ph.phase}>
+                    <div className="flex items-center gap-2.5 mb-3 px-1">
+                      <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: ph.color }} />
+                      <h4
+                        className="text-[11px] font-bold uppercase tracking-widest text-[#1E172D]/55"
+                        style={{ fontFamily: 'var(--font-display)' }}
+                      >
+                        {ph.phase}
+                      </h4>
+                    </div>
+                    <div className="space-y-2.5">
+                      {ph.sessions.map((s) => (
+                        <SessionRow key={s.n} s={s} color={ph.color} />
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </details>
         </motion.div>
 
-        {/* Bloc Qualiopi — menus déroulants */}
+        {/* Bloc Qualiopi — dépliant principal */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -449,28 +464,34 @@ export function Modules() {
           variants={fadeUp}
           className="max-w-[900px] mx-auto mb-12 rounded-3xl border border-[#A68AFF]/25 bg-[#F6F1EB] overflow-hidden"
         >
-          {/* En-tête */}
-          <div className="flex items-center gap-3 px-6 md:px-8 py-5 border-b border-[#1E172D]/8 bg-white/60">
-            <span className="flex-shrink-0 w-10 h-10 rounded-xl bg-[#A68AFF]/12 inline-flex items-center justify-center">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A68AFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                <polyline points="9 12 11 14 15 9" />
-              </svg>
-            </span>
-            <div>
-              <h3
-                className="text-lg md:text-xl font-extrabold text-[#1E172D] tracking-tight"
-                style={{ fontFamily: 'var(--font-display)' }}
+          <details className="group">
+            <summary className="flex items-center gap-3 px-6 md:px-8 py-5 cursor-pointer list-none [&::-webkit-details-marker]:hidden hover:bg-[#A68AFF]/[0.04] transition-colors bg-white/60">
+              <span className="flex-shrink-0 w-10 h-10 rounded-xl bg-[#A68AFF]/12 inline-flex items-center justify-center">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A68AFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  <polyline points="9 12 11 14 15 9" />
+                </svg>
+              </span>
+              <div className="flex-1">
+                <h3
+                  className="text-lg md:text-xl font-extrabold text-[#1E172D] tracking-tight"
+                  style={{ fontFamily: 'var(--font-display)' }}
+                >
+                  Cadre &amp; certification Qualiopi
+                </h3>
+                <p className="text-[#1E172D]/50 text-xs">
+                  Organisme certifié Qualiopi · informations réglementaires
+                </p>
+              </div>
+              <svg
+                className="w-4 h-4 text-[#1E172D]/40 transition-transform duration-200 group-open:rotate-180 flex-shrink-0"
+                fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"
               >
-                Cadre &amp; certification Qualiopi
-              </h3>
-              <p className="text-[#1E172D]/50 text-xs">
-                Organisme certifié Qualiopi · informations réglementaires
-              </p>
-            </div>
-          </div>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
 
-          <div className="px-6 md:px-8 py-6 md:py-7 space-y-3">
+          <div className="px-6 md:px-8 py-6 md:py-7 space-y-3 border-t border-[#1E172D]/[0.06]">
             {/* Modalités de formation */}
             <Dropdown title="Modalités de formation">
               <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3.5 mt-4">
@@ -514,6 +535,7 @@ export function Modules() {
               </a>
             </p>
           </div>
+          </details>
         </motion.div>
 
         {/* CTA : recevoir le programme + appel */}

@@ -102,6 +102,9 @@ export function ProgramEmailButton({
                   Le programme complet certifié Qualiopi arrive dans votre boîte mail,
                   avec une proposition de RDV 15 min pour en discuter.
                 </p>
+                <p className="text-[#1E172D]/55 text-xs leading-relaxed mt-3 italic">
+                  Pensez à vérifier vos spams au cas où.
+                </p>
               </div>
             ) : (
               <>
