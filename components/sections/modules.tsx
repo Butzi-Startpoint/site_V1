@@ -12,15 +12,13 @@ const cardSpring: Variants = {
     transition: { type: 'spring', stiffness: 220, damping: 24 } },
 }
 
-/* ── Sessions détaillées (accordéon) ── */
+/* ── Sessions (aperçu landing : nom + une phrase) ──
+   Le détail complet de chaque session vit sur la page formation. */
 type Session = {
   n: string
   week: string
   title: string
   desc: string
-  live: string[]
-  pendant: string[]
-  livrable: string
 }
 
 const programmePhases: { phase: string; color: string; sessions: Session[] }[] = [
@@ -29,63 +27,16 @@ const programmePhases: { phase: string; color: string; sessions: Session[] }[] =
     color: '#A68AFF',
     sessions: [
       {
-        n: '0',
-        week: 'Semaine 0',
-        title: 'Préparation et communauté',
-        desc: 'Faites connaissance avec le groupe, installez vos outils et rejoignez la communauté. Vous arrivez en semaine 1 prêt à produire.',
-        live: [
-          'Ice breaker et présentation du groupe',
-          'Paramétrage complet de votre outil IA',
-          'Accès programme, Cercle StartPoint, formateurs',
-          'Mise en place de la fonctionnalité audio',
-        ],
-        pendant: [
-          'Échanges entre participants',
-          'Pas à pas guidé avec le formateur',
-          'Premiers tests audio en direct, avec debrief',
-          'Vos questions, en temps réel',
-        ],
-        livrable: 'Votre outil configuré et un réseau',
-      },
-      {
         n: '1',
         week: 'Semaine 1',
         title: 'Poser les fondations',
         desc: "Comprendre ce que l'IA peut vraiment faire pour votre business. Produire votre premier résultat concret avant la fin de la session.",
-        live: [
-          'Démystification IA : ce qui marche vraiment pour les indépendants',
-          'Sécurité et limites : ce qu\'il faut savoir',
-          'Prompting : les bases + 2 hacks puissants',
-          'Créer des visuels et présentations percutantes avec l\'IA',
-          'Rédiger des emails professionnels en 2 minutes',
-          'Fonctionnalités avancées de Claude',
-        ],
-        pendant: [
-          'On démêle le vrai du faux : ce qui marche vs le bullshit ambiant',
-          'Debrief de vos premiers prompts en direct',
-          'Les subtilités qui changent tout dans vos résultats',
-          'Feedback personnalisé du formateur',
-        ],
-        livrable: "Les bases de l'IA générative et une cartographie de votre workflow",
       },
       {
         n: '2',
         week: 'Semaine 2',
         title: 'Gagnez du temps de suite',
         desc: "Des résultats immédiats sur vos tâches les plus chronophages. Organisation, documents légaux, recherche : tout s'accélère.",
-        live: [
-          'Prise de notes automatique et productivité',
-          'Organisation intelligente : to-do, blocs temps, planification',
-          'Générer et analyser des documents légaux personnalisés',
-          'Recherche et veille accélérées',
-        ],
-        pendant: [
-          'Ce qui marche vraiment vs les promesses marketing des outils',
-          'Debrief de vos documents générés',
-          'Les subtilités juridiques à ne pas rater',
-          'Feedback personnalisé sur vos cas concrets',
-        ],
-        livrable: "1 document légal prêt à l'emploi + semaine type optimisée",
       },
     ],
   },
@@ -98,60 +49,18 @@ const programmePhases: { phase: string; color: string; sessions: Session[] }[] =
         week: 'Semaine 3',
         title: 'Vision stratégique augmentée',
         desc: 'Prenez du recul sur votre business. Clarifiez votre vision, explorez de nouvelles pistes, tranchez vos décisions importantes.',
-        live: [
-          'Clarifier ses pensées et structurer des idées floues',
-          'Explorer de nouvelles pistes : comparer des scénarios business',
-          'Trancher une décision importante avec méthode',
-          'Identifier vos leviers de croissance cachés',
-          'Revoir son offre, son positionnement, ses projets fantômes',
-        ],
-        pendant: [
-          'Le vrai du faux sur l\'IA « stratège »',
-          'Debrief de vos réflexions stratégiques en direct',
-          'Les subtilités pour poser les bonnes questions à l\'IA',
-          'Feedback personnalisé sur votre vision business',
-        ],
-        livrable: "Dashboard stratégique + matrice impact/effort + plan d'action",
       },
       {
         n: '4',
         week: 'Semaine 4',
         title: 'Marketing augmenté',
         desc: "Clarifiez votre message, créez du contenu qui parle vraiment à votre cible et construisez votre site, le tout avec l'IA.",
-        live: [
-          'Travailler son persona et choisir le bon canal',
-          'Formuler son USP en une phrase claire',
-          'Créer des posts impactants : idées, rédaction, visuels IA',
-          'Créer un site avec l\'IA',
-          'Distribution : 1 contenu = 5 formats',
-        ],
-        pendant: [
-          'Feedback stratégique sur votre positionnement et votre cible',
-          'Accompagnement pour obtenir le visuel que vous avez en tête',
-          'Guidage pas à pas sur votre site : les pièges à éviter',
-          'Automatisation vs votre créativité et authenticité',
-        ],
-        livrable: "1 post publié (texte + visuel) + un site fait avec l'IA",
       },
       {
         n: '5',
         week: 'Semaine 5',
         title: 'Vente augmentée',
         desc: 'Construisez une offre solide, trouvez les bonnes personnes, closez avec confiance. Et présentez le tout avec des supports qui font la différence.',
-        live: [
-          'Construire une offre irrésistible et chiffrée',
-          'Trouver des clients : prospection et génération de leads avec l\'IA',
-          'Closer : scripts, préparation de call, négociation',
-          'Créer des présentations commerciales visuelles et impactantes',
-          'Fidélisation : upsell, cross-sell, offre récurrente',
-        ],
-        pendant: [
-          'Le vrai du faux sur la prospection IA',
-          'Debrief de vos offres et propositions en direct',
-          'Les subtilités qui font la différence dans un closing',
-          'Feedback personnalisé sur votre approche commerciale',
-        ],
-        livrable: '1 offre structurée + 2 propositions commerciales',
       },
     ],
   },
@@ -164,39 +73,12 @@ const programmePhases: { phase: string; color: string; sessions: Session[] }[] =
         week: 'Semaine 6',
         title: 'Débloquer son quotidien',
         desc: "L'IA devient un outil sur mesure pour votre métier. Créez vos propres projets, codez sans coder, débloquez votre quotidien.",
-        live: [
-          'Créer ses projets avec l\'IA',
-          'Maîtriser les Claude Skills',
-          'Comprendre et tester le vibe coding',
-          'Créer un tableau de bord',
-        ],
-        pendant: [
-          'Ce qu\'on peut vraiment coder sans savoir coder',
-          'Debrief de vos créations en direct',
-          'Les subtilités pour obtenir un résultat pro',
-          'Accompagnement personnalisé sur vos projets',
-        ],
-        livrable: 'Votre création codée + des templates pour Claude Skills',
       },
       {
         n: '7',
         week: 'Semaine 7',
         title: 'Votre système IA personnel',
         desc: "Transformez les semaines d'apprentissage en habitudes durables. Standardisez, simplifiez, automatisez, et passez à l'action pour de bon.",
-        live: [
-          'Agents et assistants : gagner en autonomie au quotidien',
-          'Les connecteurs et Cowork : automatiser sans coder',
-          'Compréhension des implications de l\'automatisation',
-          'Standardiser → simplifier → automatiser : votre roadmap',
-          '« Quelle est LA chose que vous allez changer dès demain ? »',
-        ],
-        pendant: [
-          'Le vrai du faux sur les agents et l\'automatisation',
-          'Debrief de vos systèmes et workflows',
-          'Les subtilités entre automatiser et sur-automatiser',
-          'Accompagnement sur votre plan d\'action personnel',
-        ],
-        livrable: "Votre système IA complet + plan d'action post-programme",
       },
     ],
   },
@@ -235,7 +117,7 @@ const evaluationQualiopi = [
 const phases = [
   {
     num: 'Phase 1',
-    label: 'Semaines 0–2',
+    label: 'Semaines 1–2',
     title: 'Simplifier',
     tagline: 'Récupérez du temps dès la semaine 1',
     bullets: [
@@ -327,26 +209,53 @@ function MiniList({ items, color }: { items: string[]; color: string }) {
   )
 }
 
-function SessionItem({ s, color }: { s: Session; color: string }) {
+/* Aperçu d'une session : nom + une phrase, sans détail. */
+function SessionRow({ s, color }: { s: Session; color: string }) {
   return (
-    <details className="group bg-white rounded-2xl border border-[#1E172D]/10 overflow-hidden">
-      <summary className="flex items-center gap-3 px-4 md:px-5 py-4 cursor-pointer list-none [&::-webkit-details-marker]:hidden hover:bg-[#A68AFF]/[0.04] transition-colors">
-        <span
-          className="flex-shrink-0 w-8 h-8 rounded-lg inline-flex items-center justify-center text-sm font-bold"
-          style={{ background: `${color}1f`, color, fontFamily: 'var(--font-display)' }}
-        >
-          {s.n}
+    <div className="flex items-start gap-3 bg-white rounded-2xl border border-[#1E172D]/10 px-4 md:px-5 py-4">
+      <span
+        className="flex-shrink-0 w-8 h-8 rounded-lg inline-flex items-center justify-center text-sm font-bold"
+        style={{ background: `${color}1f`, color, fontFamily: 'var(--font-display)' }}
+      >
+        {s.n}
+      </span>
+      <div className="flex-1 min-w-0">
+        <span className="block text-[10px] font-bold uppercase tracking-widest" style={{ color }}>
+          {s.week}
         </span>
-        <span className="flex-1 min-w-0">
-          <span className="block text-[10px] font-bold uppercase tracking-widest" style={{ color }}>
-            {s.week}
-          </span>
-          <span
-            className="block text-[#1E172D] font-bold text-sm md:text-[15px] leading-snug tracking-tight"
-            style={{ fontFamily: 'var(--font-display)' }}
-          >
-            {s.title}
-          </span>
+        <span
+          className="block text-[#1E172D] font-bold text-sm md:text-[15px] leading-snug tracking-tight"
+          style={{ fontFamily: 'var(--font-display)' }}
+        >
+          {s.title}
+        </span>
+        <p className="text-[#1E172D]/60 text-sm leading-relaxed mt-1">{s.desc}</p>
+      </div>
+    </div>
+  )
+}
+
+/* Menu déroulant générique (accordéon). */
+function Dropdown({
+  title,
+  children,
+  defaultOpen = false,
+}: {
+  title: string
+  children: React.ReactNode
+  defaultOpen?: boolean
+}) {
+  return (
+    <details
+      className="group rounded-2xl border border-[#1E172D]/10 bg-white overflow-hidden"
+      {...(defaultOpen ? { open: true } : {})}
+    >
+      <summary className="flex items-center gap-3 px-5 md:px-6 py-4 cursor-pointer list-none [&::-webkit-details-marker]:hidden hover:bg-[#A68AFF]/[0.04] transition-colors">
+        <span
+          className="flex-1 text-[#1E172D] font-bold text-sm md:text-base tracking-tight"
+          style={{ fontFamily: 'var(--font-display)' }}
+        >
+          {title}
         </span>
         <svg
           className="w-4 h-4 text-[#1E172D]/40 transition-transform duration-200 group-open:rotate-180 flex-shrink-0"
@@ -355,39 +264,7 @@ function SessionItem({ s, color }: { s: Session; color: string }) {
           <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
         </svg>
       </summary>
-
-      <div className="px-4 md:px-5 pb-5 pt-1 border-t border-[#1E172D]/[0.06]">
-        <p className="text-[#1E172D]/60 text-sm leading-relaxed mb-4 mt-3">{s.desc}</p>
-
-        <div className="grid sm:grid-cols-2 gap-4 mb-4">
-          <div>
-            <p className="text-[10px] font-bold uppercase tracking-widest text-[#1E172D]/40 mb-2"
-              style={{ fontFamily: 'var(--font-display)' }}>
-              Session live
-            </p>
-            <MiniList items={s.live} color={color} />
-          </div>
-          <div>
-            <p className="text-[10px] font-bold uppercase tracking-widest text-[#1E172D]/40 mb-2"
-              style={{ fontFamily: 'var(--font-display)' }}>
-              Pendant la session
-            </p>
-            <MiniList items={s.pendant} color={color} />
-          </div>
-        </div>
-
-        <div className="flex items-start gap-2.5 rounded-xl px-4 py-3 bg-[#FFFFAB]/40 border border-[#FFFFAB]">
-          <svg className="w-4 h-4 flex-shrink-0 mt-0.5 text-[#1E172D]" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-            <polyline points="20 6 9 17 4 12" />
-          </svg>
-          <p className="text-sm text-[#1E172D]/85 leading-snug">
-            <span className="font-bold text-[#1E172D]" style={{ fontFamily: 'var(--font-display)' }}>
-              Vous ressortez avec&nbsp;:
-            </span>{' '}
-            {s.livrable}
-          </p>
-        </div>
-      </div>
+      <div className="px-5 md:px-6 pb-6 pt-1 border-t border-[#1E172D]/[0.06]">{children}</div>
     </details>
   )
 }
@@ -513,7 +390,7 @@ export function Modules() {
           ))}
         </motion.div>
 
-        {/* Détail des sessions (accordéon) */}
+        {/* Aperçu des sessions (nom + une phrase) */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -551,7 +428,7 @@ export function Modules() {
                 </div>
                 <div className="space-y-2.5">
                   {ph.sessions.map((s) => (
-                    <SessionItem key={s.n} s={s} color={ph.color} />
+                    <SessionRow key={s.n} s={s} color={ph.color} />
                   ))}
                 </div>
               </motion.div>
@@ -559,7 +436,7 @@ export function Modules() {
           </div>
         </motion.div>
 
-        {/* Bloc Qualiopi — Modalités de formation */}
+        {/* Bloc Qualiopi — menus déroulants */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -580,7 +457,7 @@ export function Modules() {
                 className="text-lg md:text-xl font-extrabold text-[#1E172D] tracking-tight"
                 style={{ fontFamily: 'var(--font-display)' }}
               >
-                Modalités de formation
+                Cadre &amp; certification Qualiopi
               </h3>
               <p className="text-[#1E172D]/50 text-xs">
                 Organisme certifié Qualiopi · informations réglementaires
@@ -588,49 +465,41 @@ export function Modules() {
             </div>
           </div>
 
-          <div className="px-6 md:px-8 py-6 md:py-7">
-            {/* Fiche */}
-            <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3.5">
-              {ficheQualiopi.map(([label, value]) => (
-                <div key={label} className="border-b border-[#1E172D]/8 pb-3">
-                  <dt
-                    className="text-[10px] font-bold uppercase tracking-widest text-[#A68AFF] mb-1"
-                    style={{ fontFamily: 'var(--font-display)' }}
-                  >
-                    {label}
-                  </dt>
-                  <dd className="text-[#1E172D]/80 text-[13px] leading-relaxed">{value}</dd>
-                </div>
-              ))}
-            </dl>
+          <div className="px-6 md:px-8 py-6 md:py-7 space-y-3">
+            {/* Modalités de formation */}
+            <Dropdown title="Modalités de formation">
+              <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3.5 mt-4">
+                {ficheQualiopi.map(([label, value]) => (
+                  <div key={label} className="border-b border-[#1E172D]/8 pb-3">
+                    <dt
+                      className="text-[10px] font-bold uppercase tracking-widest text-[#A68AFF] mb-1"
+                      style={{ fontFamily: 'var(--font-display)' }}
+                    >
+                      {label}
+                    </dt>
+                    <dd className="text-[#1E172D]/80 text-[13px] leading-relaxed">{value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </Dropdown>
 
-            {/* Objectifs */}
-            <div className="mt-7">
-              <h4
-                className="text-sm font-extrabold text-[#1E172D] mb-1 tracking-tight"
-                style={{ fontFamily: 'var(--font-display)' }}
-              >
-                Objectifs pédagogiques
-              </h4>
-              <p className="text-[#1E172D]/55 text-[13px] mb-3">
+            {/* Objectifs pédagogiques */}
+            <Dropdown title="Objectifs pédagogiques">
+              <p className="text-[#1E172D]/55 text-[13px] mb-3 mt-4">
                 À l&apos;issue de la formation, le stagiaire sera capable de&nbsp;:
               </p>
               <MiniList items={objectifsQualiopi} color="#A68AFF" />
-            </div>
+            </Dropdown>
 
-            {/* Évaluation */}
-            <div className="mt-6">
-              <h4
-                className="text-sm font-extrabold text-[#1E172D] mb-3 tracking-tight"
-                style={{ fontFamily: 'var(--font-display)' }}
-              >
-                Modalités d&apos;évaluation
-              </h4>
-              <MiniList items={evaluationQualiopi} color="#A68AFF" />
-            </div>
+            {/* Modalités d'évaluation */}
+            <Dropdown title="Modalités d'évaluation">
+              <div className="mt-4">
+                <MiniList items={evaluationQualiopi} color="#A68AFF" />
+              </div>
+            </Dropdown>
 
             {/* Financement */}
-            <p className="mt-6 text-[13px] text-[#1E172D]/70 leading-relaxed">
+            <p className="pt-3 text-[13px] text-[#1E172D]/70 leading-relaxed">
               <span className="font-bold text-[#1E172D]" style={{ fontFamily: 'var(--font-display)' }}>
                 Financement&nbsp;:
               </span>{' '}

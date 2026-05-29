@@ -1,14 +1,14 @@
 'use client'
 
 import { useState } from 'react'
-import { ScrambleText } from './scramble-text'
+import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
 
 const PHONE_DISPLAY = '+33 6 31 98 65 25'
 const PHONE_TEL = 'tel:+33631986525'
 
 /**
- * Bouton qui se transforme en numéro de téléphone (effet déchiffrage) au clic.
+ * Bouton qui se transforme en numéro de téléphone (apparition en fondu) au clic.
  */
 export function PhoneRevealButton({
   label = 'Appel gratuit pour toutes questions',
@@ -26,7 +26,14 @@ export function PhoneRevealButton({
   if (revealed) {
     return (
       <a href={PHONE_TEL} className={base} style={{ fontFamily: 'var(--font-tech)' }}>
-        <ScrambleText text={PHONE_DISPLAY} style={{ fontFamily: 'var(--font-tech)' }} />
+        <motion.span
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, ease: 'easeInOut' }}
+          style={{ fontFamily: 'var(--font-tech)' }}
+        >
+          {PHONE_DISPLAY}
+        </motion.span>
       </a>
     )
   }
