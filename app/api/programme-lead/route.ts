@@ -91,7 +91,7 @@ export async function POST(request: Request) {
       from: FROM,
       to: email,
       replyTo: REPLY_TO,
-      subject: 'Le programme Accélération IA 360 — et un café (virtuel) ?',
+      subject: 'Le programme Accélération IA 360, et un café (virtuel) ?',
       html: welcomeHtml(firstName),
     }),
   ])
