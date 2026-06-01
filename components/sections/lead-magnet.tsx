@@ -88,23 +88,6 @@ export function LeadMagnet() {
                 4 vidéos par email pour faire vos premiers pas avec l&apos;IA dans votre
                 activité d&apos;indépendant.
               </motion.p>
-
-              <motion.ul
-                variants={fadeUp}
-                className="mt-5 space-y-2 text-sm text-[#1E172D]/70"
-              >
-                {[
-                  'Vos 3 premiers prompts qui font gagner du temps',
-                  '1 méthode pour réécrire vos emails en 30 secondes',
-                  '1 routine de veille assistée par IA',
-                  'La feuille de route 6 semaines en bonus',
-                ].map((t) => (
-                  <li key={t} className="flex items-start gap-2">
-                    <span className="text-[#A68AFF] font-bold mt-0.5">›</span>
-                    <span>{t}</span>
-                  </li>
-                ))}
-              </motion.ul>
             </div>
 
             {/* Right: form */}
