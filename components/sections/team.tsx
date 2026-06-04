@@ -162,7 +162,7 @@ export function Team() {
             </motion.div>
 
             {/* Texte + métriques */}
-            <motion.div variants={fadeRight} className="flex-1 text-center md:text-left">
+            <motion.div variants={fadeRight} className="flex-1 w-full min-w-0 md:w-auto text-center md:text-left">
               <h3
                 className="text-2xl md:text-[28px] font-extrabold text-[#1E172D] tracking-tight leading-tight"
                 style={{ fontFamily: 'var(--font-display)' }}
