@@ -77,7 +77,7 @@ export async function POST(request: Request) {
     return Response.json({ error: 'Service email non configuré' }, { status: 500 })
   }
 
-  let body: { email?: unknown }
+  let body: { email?: unknown; previewFollowup?: unknown }
   try {
     body = await request.json()
   } catch {
@@ -90,6 +90,22 @@ export async function POST(request: Request) {
   }
 
   const resend = new Resend(RESEND_API_KEY)
+
+  // Aperçu : envoie la relance « café virtuel » immédiatement (test, à retirer ensuite)
+  if (body.previewFollowup === true) {
+    const preview = await resend.emails.send({
+      from: FROM,
+      to: email,
+      replyTo: REPLY_TO,
+      subject: 'Vous avez fini le mini-cours — un café virtuel ? ☕',
+      html: followupHtml(),
+    })
+    if (preview.error) {
+      console.error('[mini-cours-lead] preview error', preview.error)
+      return Response.json({ error: 'Échec de l\'envoi' }, { status: 502 })
+    }
+    return Response.json({ ok: true, preview: true })
+  }
 
   // 1) Bienvenue (immédiat) + notification à Butzi
   const [welcome] = await Promise.all([
