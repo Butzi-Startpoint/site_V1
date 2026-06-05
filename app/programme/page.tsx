@@ -4,7 +4,7 @@ import { FooterSection } from '@/components/sections/footer-section'
 import { MeshGradientBg } from '@/components/ui/mesh-gradient-bg'
 
 export const metadata: Metadata = {
-  title: 'Programme détaillé — Accélération IA 360 | StartPoint IA',
+  title: 'Programme détaillé : Accélération IA 360 | StartPoint IA',
   description:
     "Programme de formation détaillé Accélération IA 360 : objectifs pédagogiques, contenu des modules, modalités, évaluation, accessibilité et mentions Qualiopi de l'organisme StartPoint IA (EURL BUTZI).",
 }
@@ -12,14 +12,14 @@ export const metadata: Metadata = {
 /* ───────────────────────── Données du programme ───────────────────────── */
 
 const ficheItems: { label: string; value: string }[] = [
-  { label: 'Intitulé', value: 'Accélération IA 360 — Méthode 3S' },
+  { label: 'Intitulé', value: 'Accélération IA 360 : Méthode Levier' },
   { label: 'Durée', value: '12 heures de formation, sur 8 semaines' },
-  { label: 'Modalité', value: 'Formation à distance — distanciel synchrone via classes virtuelles de groupe hebdomadaires' },
+  { label: 'Modalité', value: 'Formation à distance : distanciel synchrone via classes virtuelles de groupe hebdomadaires' },
   { label: 'Sessions live', value: '8 classes virtuelles de 90 min' },
   { label: 'Public', value: 'Entrepreneurs, indépendants, consultants, coaches, formateurs, freelances' },
   { label: 'Prérequis', value: 'Avoir un ordinateur avec une connexion internet · niveau débutant en IA accepté' },
   { label: 'Effectif', value: '10 participants maximum par cohorte' },
-  { label: 'Tarif', value: "À partir de 2 997 € HT — finançable (FAF, déductibilité fiscale)" },
+  { label: 'Tarif', value: "À partir de 2 997 € HT, finançable (FAF, déductibilité fiscale)" },
   { label: 'Sanction', value: 'Attestation de fin de formation' },
   { label: 'Accessibilité', value: 'Formation accessible aux personnes en situation de handicap' },
 ]
@@ -42,129 +42,117 @@ const evaluation: string[] = [
 
 type Module = {
   num: string
-  title: string
+  week: string
+  step: string
   objectif: string
   contenu: string[]
   livrable: string
 }
 
-const phases: { phase: string; semaines: string; intro: string; modules: Module[] }[] = [
+const modules: Module[] = [
   {
-    phase: 'Phase 1 — Simplifier',
-    semaines: 'Semaines 1–3',
-    intro: "Récupérer du temps dès la deuxième semaine grâce aux fondamentaux de l'IA.",
-    modules: [
-      {
-        num: '1',
-        title: 'Préparation et communauté',
-        objectif: "Disposer d'un environnement IA opérationnel et rencontrer la communauté d'entrepreneurs.",
-        contenu: [
-          'Présentation du parcours, des objectifs et des modalités de suivi',
-          'Paramétrage complet de votre outil IA',
-          "Rencontre avec la communauté d'entrepreneurs et accès au Cercle StartPoint",
-          'Mise en place de la fonctionnalité audio',
-        ],
-        livrable: 'Votre outil configuré et un réseau.',
-      },
-      {
-        num: '2',
-        title: 'Poser les fondations',
-        objectif: "Comprendre l'architecture d'un assistant IA, le connecter à vos outils et produire vos premiers prompts fiables.",
-        contenu: [
-          "Démystification de l'IA : ce qui marche vraiment pour les entrepreneurs",
-          'Architecture et subtilités du prompt',
-          'Connecter Claude à vos outils du quotidien',
-          "Création de visuels, de présentations et d'emails professionnels",
-        ],
-        livrable: "Les bases de l'IA générative et une cartographie de votre workflow.",
-      },
-      {
-        num: '3',
-        title: 'Gagnez du temps de suite',
-        objectif: 'Soulager les tâches les plus pénibles et chronophages du quotidien.',
-        contenu: [
-          'Prise de notes automatique et productivité',
-          'Organisation intelligente : to-do, blocs de temps, planification',
-          'Création de documents personnalisés sans hallucination',
-          'Recherche et veille accélérées',
-        ],
-        livrable: "Un document prêt à l'emploi et une semaine type optimisée.",
-      },
+    num: '·',
+    week: 'Semaine 1',
+    step: 'Paramétrage des outils et rencontre',
+    objectif: "Disposer d'un environnement IA opérationnel et rencontrer la communauté d'entrepreneurs.",
+    contenu: [
+      'Présentation du parcours, des objectifs et des modalités de suivi',
+      'Paramétrage complet de votre outil IA',
+      "Rencontre avec la communauté d'entrepreneurs et accès au Cercle StartPoint",
+      'Mise en place de la fonctionnalité audio',
     ],
+    livrable: 'Votre outil configuré et un réseau.',
   },
   {
-    phase: 'Phase 2 — Scaler',
-    semaines: 'Semaines 4–6',
-    intro: 'Produire davantage sans travailler plus : stratégie, marketing et vente augmentés.',
-    modules: [
-      {
-        num: '4',
-        title: 'Vision stratégique augmentée',
-        objectif: "Utiliser l'IA comme partenaire stratégique pour piloter son activité.",
-        contenu: [
-          'Clarification de la vision et structuration des idées',
-          'Comparaison de scénarios business et prise de décision',
-          'Identification des leviers de croissance',
-          'Construction de votre dashboard stratégique pluggé sur vos données',
-        ],
-        livrable: "Un dashboard stratégique pluggé sur vos données, une matrice impact/effort et un plan d'action.",
-      },
-      {
-        num: '5',
-        title: 'Marketing augmenté',
-        objectif: "Concevoir et décliner ses contenus marketing à grande échelle avec l'IA.",
-        contenu: [
-          'Définition du persona et choix des canaux',
-          "Formulation de l'USP",
-          "Création de posts, de visuels et d'un site avec l'IA",
-          'Distribution : un contenu décliné en cinq formats',
-        ],
-        livrable: "Un post publié (texte + visuel) et un site réalisé avec l'IA.",
-      },
-      {
-        num: '6',
-        title: 'Vente augmentée',
-        objectif: "Structurer son offre et son cycle de vente avec l'appui de l'IA.",
-        contenu: [
-          "Construction et chiffrage d'une offre",
-          "Prospection et génération de leads assistées par l'IA",
-          'Préparation de calls, scripts et négociation',
-          'Supports commerciaux interactifs et fidélisation (upsell, cross-sell)',
-        ],
-        livrable: 'Une offre structurée et deux propositions commerciales avec supports interactifs.',
-      },
+    num: '1',
+    week: 'Module 1 · Semaine 2',
+    step: 'Poser des fondations solides',
+    objectif: "Comprendre l'architecture d'un assistant IA, le connecter à vos outils et produire vos premiers prompts fiables.",
+    contenu: [
+      "Démystification de l'IA : ce qui marche vraiment pour les entrepreneurs",
+      'Architecture et subtilités du prompt',
+      'Connecter Claude à vos outils du quotidien',
+      "Création de visuels, de présentations et d'emails professionnels",
     ],
+    livrable: "Les bases de l'IA générative et une cartographie de votre workflow.",
   },
   {
-    phase: 'Phase 3 — Systématiser',
-    semaines: 'Semaines 7–8',
-    intro: 'Construire le système qui tourne sans vous et le rendre durable.',
-    modules: [
-      {
-        num: '7',
-        title: 'Débloquer son quotidien',
-        objectif: "Créer des solutions IA sur mesure pour ses besoins spécifiques.",
-        contenu: [
-          "Création de projets avec l'IA",
-          'Maîtrise des Claude Skills',
-          'Découverte et test du vibe coding',
-          "Création d'un tableau de bord",
-        ],
-        livrable: 'Une création codée et des modèles pour Claude Skills.',
-      },
-      {
-        num: '8',
-        title: 'Votre système IA personnel',
-        objectif: "Formaliser un système IA personnel complet et un plan d'action durable.",
-        contenu: [
-          'Agents et assistants pour gagner en autonomie',
-          'Connecteurs et Cowork : automatiser sans coder',
-          'Roadmap : standardiser → simplifier → automatiser',
-          'Coaching personnalisé pour construire vos premiers projets sur mesure',
-        ],
-        livrable: "Un système IA complet et un plan d'action post-programme.",
-      },
+    num: '2',
+    week: 'Module 2 · Semaine 3',
+    step: 'Gagner du temps tout de suite',
+    objectif: 'Soulager les tâches les plus pénibles et chronophages du quotidien.',
+    contenu: [
+      'Prise de notes automatique et productivité',
+      'Organisation intelligente : to-do, blocs de temps, planification',
+      'Création de documents personnalisés sans hallucination',
+      'Recherche et veille accélérées',
     ],
+    livrable: "Un document prêt à l'emploi et une semaine type optimisée.",
+  },
+  {
+    num: '3',
+    week: 'Module 3 · Semaine 4',
+    step: "Utilisez l'IA comme un partenaire stratégique",
+    objectif: "Utiliser l'IA comme partenaire stratégique pour piloter son activité.",
+    contenu: [
+      'Clarification de la vision et structuration des idées',
+      'Comparaison de scénarios business et prise de décision',
+      'Identification des leviers de croissance',
+      'Construction de votre dashboard stratégique pluggé sur vos données',
+    ],
+    livrable: "Un dashboard stratégique pluggé sur vos données, une matrice impact/effort et un plan d'action.",
+  },
+  {
+    num: '4',
+    week: 'Module 4 · Semaine 5',
+    step: "L'IA dans le Marketing",
+    objectif: "Concevoir et décliner ses contenus marketing à grande échelle avec l'IA.",
+    contenu: [
+      'Définition du persona et choix des canaux',
+      "Formulation de l'USP",
+      "Création de posts, de visuels et d'un site avec l'IA",
+      'Distribution : un contenu décliné en cinq formats',
+    ],
+    livrable: "Un post publié (texte + visuel) et un site réalisé avec l'IA.",
+  },
+  {
+    num: '5',
+    week: 'Module 5 · Semaine 6',
+    step: 'Plus de prospects et des offres plus claires',
+    objectif: "Structurer son offre et son cycle de vente avec l'appui de l'IA.",
+    contenu: [
+      "Construction et chiffrage d'une offre",
+      "Prospection et génération de leads assistées par l'IA",
+      'Préparation de calls, scripts et négociation',
+      'Supports commerciaux interactifs et fidélisation (upsell, cross-sell)',
+    ],
+    livrable: 'Une offre structurée et deux propositions commerciales avec supports interactifs.',
+  },
+  {
+    num: '6',
+    week: 'Module 6 · Semaine 7',
+    step: 'Configurer vos assistants et automatismes IA',
+    objectif: "Créer des solutions IA sur mesure pour ses besoins spécifiques.",
+    contenu: [
+      "Création de projets avec l'IA",
+      'Maîtrise des Claude Skills',
+      'Découverte et test du vibe coding',
+      "Création d'un tableau de bord",
+    ],
+    livrable: 'Une création codée et des modèles pour Claude Skills.',
+  },
+  {
+    num: '·',
+    week: 'Semaine 8',
+    step: 'Coaching de déblocage',
+    objectif: "Formaliser un système IA personnel complet et un plan d'action durable.",
+    contenu: [
+      'Agents et assistants pour gagner en autonomie',
+      'Connecteurs et Cowork : automatiser sans coder',
+      'Roadmap : standardiser, simplifier, automatiser',
+      'Coaching personnalisé pour construire vos premiers projets sur mesure',
+    ],
+    livrable: "Un système IA complet et un plan d'action post-programme.",
   },
 ]
 
@@ -243,14 +231,14 @@ export default function ProgrammePage() {
             >
               <span className="text-[#D8D0FF]">De «&nbsp;j&apos;ai testé ChatGPT&nbsp;»</span>{' '}
               <span className="text-[#F6F1EB]">à «&nbsp;</span>
-              <span className="text-[#FFFFAB]">j&apos;ai un système IA</span>
+              <span className="text-[#FFFFAB]">j&apos;ai mon propre système IA</span>
               <span className="text-[#F6F1EB]">&nbsp;».</span>
             </p>
 
             <p className="text-[#D8D0FF]/85 text-base md:text-lg leading-relaxed max-w-[640px] mx-auto md:mx-0">
-              Programme détaillé suivant la Méthode 3S (Simplifier › Scaler › Systématiser).
+              Programme détaillé suivant la Méthode Levier (Démystifier › Déléguer › Réinventer › Amplifier › Assumer › Libérer).
               Organisme de formation{' '}
-              <strong className="text-[#F6F1EB]">StartPoint IA (EURL BUTZI)</strong> — certifié
+              <strong className="text-[#F6F1EB]">StartPoint IA (EURL BUTZI)</strong>, certifié
               Qualiopi au titre des actions de formation.
             </p>
 
@@ -299,8 +287,10 @@ export default function ProgrammePage() {
               est un parcours de 8 semaines qui permet aux entrepreneurs, indépendants et dirigeants de TPE
               d&apos;intégrer concrètement l&apos;intelligence artificielle dans leur activité, sans
               compétences techniques préalables. La progression suit la{' '}
-              <strong>Méthode 3S</strong> : <em>Simplifier</em> son quotidien, <em>Scaler</em> sa
-              production, puis <em>Systématiser</em> grâce à un système IA personnel.
+              <strong>Méthode Levier</strong> : <em>Démystifier</em> l&apos;IA, <em>Déléguer</em> vos
+              tâches, <em>Réinventer</em> votre stratégie, <em>Amplifier</em> votre production,{' '}
+              <em>Assumer</em> votre offre, puis <em>Libérer</em> votre quotidien grâce à un système
+              IA personnel.
             </p>
           </Section>
 
@@ -343,57 +333,43 @@ export default function ProgrammePage() {
 
           {/* Programme détaillé */}
           <Section title="Contenu détaillé du programme">
-            <div className="space-y-8 mt-2">
-              {phases.map((ph) => (
-                <div key={ph.phase}>
-                  <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-1">
-                    <h3
-                      className="text-lg md:text-xl font-extrabold text-[#1E172D] tracking-tight"
+            <div className="space-y-4 mt-2">
+              {modules.map((m) => (
+                <div
+                  key={m.num}
+                  className="bg-white rounded-2xl border border-[#1E172D]/8 p-5 md:p-6"
+                >
+                  <div className="flex items-start gap-3 mb-3">
+                    <span
+                      className="flex-shrink-0 w-7 h-7 rounded-md inline-flex items-center justify-center text-xs font-bold bg-[#A68AFF]/12 text-[#A68AFF]"
                       style={{ fontFamily: 'var(--font-display)' }}
                     >
-                      {ph.phase}
-                    </h3>
-                    <span className="text-xs font-semibold text-[#A68AFF] uppercase tracking-widest">
-                      {ph.semaines}
+                      {m.num}
                     </span>
-                  </div>
-                  <p className="text-[#1E172D]/55 text-sm mb-4">{ph.intro}</p>
-
-                  <div className="space-y-4">
-                    {ph.modules.map((m) => (
-                      <div
-                        key={m.num}
-                        className="bg-white rounded-2xl border border-[#1E172D]/8 p-5 md:p-6"
+                    <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 pt-0.5">
+                      <h4
+                        className="text-base md:text-lg font-bold text-[#1E172D] leading-snug tracking-tight"
+                        style={{ fontFamily: 'var(--font-display)' }}
                       >
-                        <div className="flex items-start gap-3 mb-3">
-                          <span
-                            className="flex-shrink-0 w-7 h-7 rounded-md inline-flex items-center justify-center text-xs font-bold bg-[#A68AFF]/12 text-[#A68AFF]"
-                            style={{ fontFamily: 'var(--font-display)' }}
-                          >
-                            {m.num}
-                          </span>
-                          <h4
-                            className="text-base md:text-lg font-bold text-[#1E172D] leading-snug tracking-tight pt-0.5"
-                            style={{ fontFamily: 'var(--font-display)' }}
-                          >
-                            {m.title}
-                          </h4>
-                        </div>
-                        <p className="text-[#1E172D]/75 text-sm mb-3">
-                          <strong className="text-[#1E172D]">Objectif :</strong>{' '}
-                          {m.objectif}
-                        </p>
-                        <p className="text-[11px] font-bold uppercase tracking-widest text-[#1E172D]/40 mb-2">
-                          Contenu
-                        </p>
-                        <Bullets items={m.contenu} />
-                        <p className="text-sm text-[#1E172D]/75 mt-3 pt-3 border-t border-[#1E172D]/8">
-                          <strong className="text-[#1E172D]">Livrable :</strong>{' '}
-                          {m.livrable}
-                        </p>
-                      </div>
-                    ))}
+                        {m.step}
+                      </h4>
+                      <span className="text-[11px] font-semibold text-[#A68AFF] uppercase tracking-widest">
+                        {m.week}
+                      </span>
+                    </div>
                   </div>
+                  <p className="text-[#1E172D]/75 text-sm mb-3">
+                    <strong className="text-[#1E172D]">Objectif :</strong>{' '}
+                    {m.objectif}
+                  </p>
+                  <p className="text-[11px] font-bold uppercase tracking-widest text-[#1E172D]/40 mb-2">
+                    Contenu
+                  </p>
+                  <Bullets items={m.contenu} />
+                  <p className="text-sm text-[#1E172D]/75 mt-3 pt-3 border-t border-[#1E172D]/8">
+                    <strong className="text-[#1E172D]">Livrable :</strong>{' '}
+                    {m.livrable}
+                  </p>
                 </div>
               ))}
             </div>
@@ -505,7 +481,7 @@ export default function ProgrammePage() {
           <Section title="L'organisme de formation">
             <div className="bg-white rounded-2xl border border-[#1E172D]/8 p-5 md:p-6 text-sm text-[#1E172D]/75 leading-relaxed">
               <p>
-                <strong>StartPoint IA</strong> — marque commerciale de <strong>BUTZI EURL</strong>
+                <strong>StartPoint IA</strong>, marque commerciale de <strong>BUTZI EURL</strong>
               </p>
               <p>SIRET : 847 593 100 00013 · TVA intracommunautaire : FR 69 84 75 93 100</p>
               <p>Siège : 61 boulevard du Maréchal Joffre, 92340 Bourg-la-Reine</p>

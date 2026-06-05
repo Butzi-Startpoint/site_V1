@@ -40,13 +40,13 @@ function welcomeHtml(): string {
       Le cours gratuit pour les PME →
     </a>
   </p>
-  <p>À très vite,<br><strong>Butzi</strong><br><span style="color:#666;font-size:13px;">Fondateur — Startpoint IA</span></p>`)
+  <p>À très vite,<br><strong>Butzi</strong><br><span style="color:#666;font-size:13px;">Fondateur, Startpoint IA</span></p>`)
 }
 
 function followupHtml(): string {
   return WRAP(`
   <p>Bonjour,</p>
-  <p>Vous voilà arrivé(e) au bout du mini-cours IA — bravo&nbsp;! 🎉 J'espère qu'il vous a donné des premières idées concrètes à appliquer dans votre activité.</p>
+  <p>Vous voilà arrivé(e) au bout du mini-cours IA, bravo&nbsp;! 🎉 J'espère qu'il vous a donné des premières idées concrètes à appliquer dans votre activité.</p>
   <p>Maintenant que vous avez les bases, j'aime bien prendre 15 minutes (un café virtuel ☕) avec les personnes qui ont suivi le mini-cours. Pas de blabla commercial&nbsp;: on regarde ensemble où vous en êtes avec l'IA, ce qui bloque, et les prochaines étapes utiles <em>pour vous</em>.</p>
   <p style="text-align:center;margin:24px 0;">
     <a href="${CALENDLY_URL}" style="display:inline-block;background:#1E172D;color:#FFFFAB;padding:14px 28px;border-radius:999px;text-decoration:none;font-weight:bold;">
@@ -57,7 +57,7 @@ function followupHtml(): string {
     📞 Ou directement&nbsp;: <a href="${CALENDLY_URL}" style="color:#1E172D;font-weight:bold;">${CALENDLY_URL}</a>
   </p>
   <p>Si vous avez des questions d'ici là, répondez simplement à ce mail.</p>
-  <p>À très vite,<br><strong>Butzi</strong><br><span style="color:#666;font-size:13px;">Fondateur — Startpoint IA</span></p>`)
+  <p>À très vite,<br><strong>Butzi</strong><br><span style="color:#666;font-size:13px;">Fondateur, Startpoint IA</span></p>`)
 }
 
 function notificationHtml(email: string): string {
@@ -66,10 +66,10 @@ function notificationHtml(email: string): string {
   <p>Nouvelle inscription au <strong>mini-cours IA</strong> depuis la landing page.</p>
   <ul style="background:#F6F1EB;padding:16px 24px;border-radius:12px;list-style:none;">
     <li>• <strong>Email :</strong> ${escapeHtml(email)}</li>
-    <li>• <strong>Source :</strong> landing — bloc « Mini-cours gratuit »</li>
+    <li>• <strong>Source :</strong> landing, bloc « Mini-cours gratuit »</li>
   </ul>
   <p>L'email de bienvenue est parti automatiquement, et la relance « café virtuel » est programmée dans ${FOLLOWUP_DELAY_DAYS} jours.</p>
-  <p style="color:#666;font-size:13px;margin-top:32px;">— notification automatique du site</p>`)
+  <p style="color:#666;font-size:13px;margin-top:32px;">Notification automatique du site</p>`)
 }
 
 export async function POST(request: Request) {
@@ -121,7 +121,7 @@ export async function POST(request: Request) {
       from: FROM,
       to: email,
       replyTo: REPLY_TO,
-      subject: 'Vous avez fini le mini-cours — un café virtuel ? ☕',
+      subject: 'Vous avez fini le mini-cours, un café virtuel ? ☕',
       html: followupHtml(),
       scheduledAt,
     })

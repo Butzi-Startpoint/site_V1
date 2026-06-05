@@ -39,7 +39,7 @@ function acknowledgmentHtml(message: string): string {
   <p>Bonjour,</p>
   <p>Merci pour votre message&nbsp;! Il est bien arrivé et Butzi vous répondra personnellement par email très vite.</p>
   <p style="background:#F6F1EB;padding:16px 20px;border-radius:12px;white-space:pre-wrap;font-size:14px;color:#555;"><em>Votre message&nbsp;:</em><br>${escapeHtml(message)}</p>
-  <p>À très vite,<br><strong>Butzi</strong><br><span style="color:#666;font-size:13px;">Fondateur — Startpoint IA</span></p>`)
+  <p>À très vite,<br><strong>Butzi</strong><br><span style="color:#666;font-size:13px;">Fondateur, Startpoint IA</span></p>`)
 }
 
 export async function POST(request: Request) {

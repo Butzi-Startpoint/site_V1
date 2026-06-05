@@ -63,7 +63,7 @@ export function Guarantees() {
 
           {/* Text */}
           <motion.p variants={fadeUp} className="text-[#1E172D]/70 text-base md:text-lg leading-relaxed mb-6">
-            Vous suivez le programme, vous faites les exercices, et après 6 semaines vous n&apos;avez pas
+            Vous suivez le programme, vous faites les exercices, et après les 8 semaines vous n&apos;avez pas
             de système d&apos;IA opérationnel ? On continue ensemble gratuitement :{' '}
             <strong className="text-[#1E172D]">3 mois de Cercle StartPoint offerts + 1 session individuelle de déblocage.</strong>
           </motion.p>

@@ -24,9 +24,9 @@ const chakraPetch = Chakra_Petch({
 })
 
 export const metadata: Metadata = {
-  title: 'Accélération IA 360 — Programme IA pour Indépendants | StartPoint IA',
+  title: 'Accélération IA 360 : Programme IA pour Indépendants | StartPoint IA',
   description:
-    'Le programme de 6 semaines qui transforme votre façon de travailler avec l\'IA. Sans jargon technique. Pour coaches, consultants, formateurs et freelances.',
+    'Le programme de 8 semaines qui transforme votre façon de travailler avec l\'IA. Sans jargon technique. Pour coaches, consultants, formateurs et freelances.',
 }
 
 export default function RootLayout({

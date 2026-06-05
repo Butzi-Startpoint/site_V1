@@ -81,7 +81,7 @@ export function Solution() {
             <span className="text-[#A68AFF]">Pas un cours de plus.</span>
           </motion.h2>
           <motion.p variants={fadeUp} className="text-[#1E172D]/60 text-lg leading-relaxed">
-            6 semaines pour intégrer l&apos;IA dans votre quotidien d&apos;entrepreneur. Avec un cadre,
+            8 semaines pour intégrer l&apos;IA dans votre quotidien d&apos;entrepreneur. Avec un cadre,
             une méthode, et un accompagnement humain.
           </motion.p>
         </motion.div>
@@ -146,7 +146,7 @@ export function Solution() {
             style={{ fontFamily: 'var(--font-display)' }}>
             <span className="text-base">👥</span>
             8 personnes maximum par cohorte —{' '}
-            <span className="text-[#A68AFF] font-bold">4 places restantes</span>
+            <span className="text-[#A68AFF] font-bold">6 places restantes</span>
           </div>
         </motion.div>
       </div>

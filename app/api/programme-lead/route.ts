@@ -31,10 +31,10 @@ function notificationHtml(firstName: string, email: string): string {
     <li>• <strong>Prénom :</strong> ${escapeHtml(firstName)}</li>
     <li>• <strong>Email :</strong> ${escapeHtml(email)}</li>
     <li>• <strong>Date :</strong> ${escapeHtml(now)}</li>
-    <li>• <strong>Source :</strong> landing — bouton « Recevoir le programme complet »</li>
+    <li>• <strong>Source :</strong> landing, bouton « Recevoir le programme complet »</li>
   </ul>
   <p>L'email de bienvenue a été envoyé automatiquement à ${escapeHtml(email)} avec le lien du programme et la proposition de RDV 15 min.</p>
-  <p style="color:#666;font-size:13px;margin-top:32px;">— notification automatique du site</p>
+  <p style="color:#666;font-size:13px;margin-top:32px;">Notification automatique du site</p>
 </body></html>`
 }
 
@@ -54,7 +54,7 @@ function welcomeHtml(firstName: string): string {
     <a href="${CALENDLY_URL}" style="color:#1E172D;font-weight:bold;">${CALENDLY_URL}</a>
   </p>
   <p>Si vous avez des questions d'ici là, répondez simplement à ce mail.</p>
-  <p>À très vite,<br><strong>Butzi</strong><br><span style="color:#666;font-size:13px;">Fondateur — Startpoint IA</span></p>
+  <p>À très vite,<br><strong>Butzi</strong><br><span style="color:#666;font-size:13px;">Fondateur, Startpoint IA</span></p>
 </body></html>`
 }
 

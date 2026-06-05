@@ -28,7 +28,7 @@ const faqs: Faq[] = [
   },
   {
     q: "J'utilise déjà ChatGPT et Claude, qu'est-ce que ce programme va m'apporter en plus ?",
-    a: "Utiliser ChatGPT ou Claude, c'est une chose. En faire un véritable système qui transforme votre activité, c'en est une autre. Ce programme vous donne une méthode structurée, des cas d'usage concrets pour votre métier, et un accompagnement pour passer d'un usage ponctuel à un système IA complet qui tourne au quotidien.",
+    a: "Utiliser ChatGPT ou Claude, c'est une chose. En faire un véritable système qui transforme votre activité, c'en est une autre. Ce programme vous donne une méthode structurée, des cas d'usage concrets pour votre activité, et un accompagnement pour passer d'un usage ponctuel à un système IA complet qui tourne au quotidien.",
   },
   {
     q: 'Je ne suis pas technique, est-ce que je vais suivre ?',

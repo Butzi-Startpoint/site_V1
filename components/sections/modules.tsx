@@ -21,80 +21,62 @@ type Session = {
   desc: string
 }
 
-const programmePhases: { phase: string; color: string; sessions: Session[] }[] = [
+const programmeSessions: Session[] = [
   {
-    phase: 'Phase 1 — Simplifier',
-    color: '#A68AFF',
-    sessions: [
-      {
-        n: '1',
-        week: 'Semaine 1',
-        title: 'Préparation et communauté',
-        desc: "Vous rencontrez la communauté d'entrepreneurs, installez vos outils et arrivez en semaine 2 prêt à produire.",
-      },
-      {
-        n: '2',
-        week: 'Semaine 2',
-        title: 'Poser les fondations',
-        desc: "Comprendre ce que l'IA peut vraiment faire pour votre business. Architecture et subtilités de prompt, connecter Claude à vos outils. Premier résultat concret avant la fin de la session.",
-      },
-      {
-        n: '3',
-        week: 'Semaine 3',
-        title: 'Gagnez du temps de suite',
-        desc: "Des résultats immédiats sur vos tâches les plus pénibles et chronophages. Créez vos documents sans hallucination.",
-      },
-    ],
+    n: '·',
+    week: 'Semaine 1',
+    title: 'Paramétrage des outils et rencontre',
+    desc: "Vous rencontrez la communauté d'entrepreneurs, installez vos outils et arrivez en semaine 2 prêt à produire.",
   },
   {
-    phase: 'Phase 2 — Scaler',
-    color: '#1E172D',
-    sessions: [
-      {
-        n: '4',
-        week: 'Semaine 4',
-        title: 'Vision stratégique augmentée',
-        desc: 'Prenez du recul sur votre business. Clarifiez votre vision, tranchez vos décisions importantes et créez votre dashboard stratégique pluggé sur vos données.',
-      },
-      {
-        n: '5',
-        week: 'Semaine 5',
-        title: 'Marketing augmenté',
-        desc: "Clarifiez votre message, créez du contenu qui parle vraiment à votre cible et construisez votre site, le tout avec l'IA.",
-      },
-      {
-        n: '6',
-        week: 'Semaine 6',
-        title: 'Vente augmentée',
-        desc: 'Construisez une offre solide, trouvez les bonnes personnes, closez avec confiance. Et présentez le tout avec des supports interactifs incroyables.',
-      },
-    ],
+    n: '1',
+    week: 'Module 1 · Semaine 2',
+    title: 'Poser des fondations solides',
+    desc: "Comprendre ce que l'IA peut vraiment faire pour votre business. Architecture et subtilités de prompt, connecter Claude à vos outils. Premier résultat concret avant la fin de la session.",
   },
   {
-    phase: 'Phase 3 — Systématiser',
-    color: '#A68AFF',
-    sessions: [
-      {
-        n: '7',
-        week: 'Semaine 7',
-        title: 'Débloquer son quotidien',
-        desc: "L'IA devient un outil sur mesure pour votre métier. Créez vos propres projets, codez sans coder, débloquez votre quotidien.",
-      },
-      {
-        n: '8',
-        week: 'Semaine 8',
-        title: 'Votre système IA personnel',
-        desc: "Transformez les semaines d'apprentissage en habitudes durables. Standardisez, simplifiez, automatisez, et passez à l'action pour de bon. Coaching personnalisé pour construire vos premiers projets sur mesure.",
-      },
-    ],
+    n: '2',
+    week: 'Module 2 · Semaine 3',
+    title: 'Gagner du temps tout de suite',
+    desc: "Des résultats immédiats sur vos tâches les plus pénibles et chronophages. Créez vos documents sans hallucination.",
+  },
+  {
+    n: '3',
+    week: 'Module 3 · Semaine 4',
+    title: "Utilisez l'IA comme un partenaire stratégique",
+    desc: 'Prenez du recul sur votre business. Clarifiez votre vision, tranchez vos décisions importantes et créez votre dashboard stratégique pluggé sur vos données.',
+  },
+  {
+    n: '4',
+    week: 'Module 4 · Semaine 5',
+    title: "L'IA dans le Marketing",
+    desc: "Clarifiez votre message, créez du contenu qui parle vraiment à votre cible et construisez votre site, le tout avec l'IA.",
+  },
+  {
+    n: '5',
+    week: 'Module 5 · Semaine 6',
+    title: 'Plus de prospects et des offres plus claires',
+    desc: 'Construisez une offre solide, trouvez les bonnes personnes, closez avec confiance. Et présentez le tout avec des supports interactifs clairs.',
+  },
+  {
+    n: '6',
+    week: 'Module 6 · Semaine 7',
+    title: 'Configurer vos assistants et automatismes IA',
+    desc: "Donnez à l'IA la forme de votre activité. Vous construisez vos propres process IA pour que ce qui prenait des heures se fasse en quelques minutes, sans perdre la main.",
+  },
+  {
+    n: '·',
+    week: 'Semaine 8',
+    title: 'Coaching de déblocage',
+    desc: "Coaching personnalisé. On traite vos cas concrets en live, on ancre vos nouvelles habitudes et on cale votre plan d'action pour la suite. Vous repartez autonome.",
   },
 ]
 
 /* ── Bloc Qualiopi ── */
 const ficheQualiopi: [string, string][] = [
-  ['Intitulé officiel', 'Accélération IA 360 — Méthode 3S'],
-  ['Organisme', 'BUTZI EURL — Organisme de formation certifié Qualiopi (SIRET 84759310000013)'],
-  ['Modalité', 'Formation à distance — distanciel synchrone via classes virtuelles de groupe hebdomadaires'],
+  ['Intitulé officiel', 'Accélération IA 360 : Méthode Levier'],
+  ['Organisme', 'BUTZI EURL, organisme de formation certifié Qualiopi (SIRET 84759310000013)'],
+  ['Modalité', 'Formation à distance : distanciel synchrone via classes virtuelles de groupe hebdomadaires'],
   ['Durée totale', '12 heures de formation, sur 8 semaines'],
   ['Sessions live', '8 classes virtuelles de 90 minutes'],
   ['Public visé', 'Entrepreneurs, indépendants, consultants, coaches, formateurs, freelances'],
@@ -119,84 +101,72 @@ const evaluationQualiopi = [
   'Seuil de réussite : 80 % aux évaluations',
 ]
 
-const phases = [
+/* ── Bornes de départ et d'arrivée (style allégé) ── */
+const startBorne = {
+  label: 'Semaine 1 · point de départ',
+  title: 'Embarquement.',
+  text: 'On installe vos outils et vous rencontrez la communauté. Vous arrivez en semaine 2 prêt à produire.',
+}
+
+const endBorne = {
+  label: 'Semaine 8 · atterrissage',
+  title: 'Coaching de déblocage.',
+  text: 'On traite vos cas concrets en live et on ancre vos nouvelles habitudes. Vous repartez autonome.',
+}
+
+/* ── Les 6 étapes de la Méthode Levier ── */
+type LevierStep = {
+  n: string
+  step: string
+  week: string
+  objectif: string
+  result: string
+  highlight?: boolean
+}
+
+const levierSteps: LevierStep[] = [
   {
-    num: 'Phase 1',
-    label: 'Semaines 1–3',
-    title: 'Simplifier',
-    tagline: 'Récupérez du temps dès la semaine 2',
-    bullets: [
-      'Vos outils IA configurés et prêts à l\'emploi',
-      'Des prompts testés, adaptés à votre quotidien',
-      'Vos emails et documents rédigés en quelques clics',
-      'Votre veille métier qui tourne sans vous',
-      'Vos premières heures récupérées chaque semaine',
-    ],
-    result: "Vos premières heures récupérées dès la semaine 2.",
-    color: '#A68AFF',
-    dotColor: '#A68AFF',
-    bg: 'rgba(166,138,255,0.08)',
-    border: '1px solid rgba(166,138,255,0.25)',
-    iconBg: 'rgba(166,138,255,0.12)',
-    icon: (
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#A68AFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M18.37 2.63 14 7l-1.59-1.59a2 2 0 0 0-2.82 0L8 7l9 9 1.59-1.58a2 2 0 0 0 0-2.82L17 10l4.37-4.37a2.12 2.12 0 1 0-3-3Z"/>
-        <path d="M9 8c-2 3-4 3.5-7 4l8 10c2-1 6-5 6-7"/>
-        <path d="M14.5 17.5 4.5 15"/>
-      </svg>
-    ),
+    n: '1',
+    step: 'Démystifier',
+    week: 'Semaine 2',
+    objectif: "Comprendre ce que l'IA peut vraiment faire pour vous, sans jargon ni hype.",
+    result: "La peur tombe. Vous savez quoi attendre de l'IA.",
   },
   {
-    num: 'Phase 2',
-    label: 'Semaines 4–6',
-    title: 'Scaler',
-    tagline: 'Produisez plus sans travailler plus',
-    bullets: [
-      'Un contenu créé une fois, décliné partout',
-      'Votre marketing qui produit pendant que vous bossez',
-      'Une offre claire, chiffrée, prête à envoyer',
-      'Des prospects identifiés et contactés par l\'IA',
-      'Vos textes et prises de parole calibrés en minutes',
-    ],
-    result: "Un système de contenu et une offre prêts à vendre.",
-    color: '#1E172D',
-    dotColor: '#1E172D',
-    bg: 'rgba(255,255,171,0.25)',
-    border: '1px solid rgba(255,255,171,0.7)',
-    iconBg: 'rgba(255,255,171,0.5)',
-    icon: (
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1E172D" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
-        <polyline points="16 7 22 7 22 13"/>
-      </svg>
-    ),
+    n: '2',
+    step: 'Déléguer',
+    week: 'Semaine 3',
+    objectif: 'Confier vos tâches répétitives (devis, mails, relances) et récupérer vos premières heures.',
+    result: 'Vos premières heures récupérées, dès la semaine 3.',
   },
   {
-    num: 'Phase 3',
-    label: 'Semaines 7–8',
-    title: 'Systématiser',
-    tagline: 'Construisez le système qui tourne sans vous',
-    bullets: [
-      'Vos assistants IA sur mesure',
-      'Vos tâches répétitives tournent en automatique',
-      'Une feuille de route IA alignée sur vos revenus',
-      'Un projet IA déployé dans votre activité',
-      'Votre système complet, documenté, prêt à déléguer',
-    ],
-    result: "Votre système IA personnel, opérationnel et documenté.",
-    color: '#A68AFF',
-    dotColor: '#A68AFF',
-    bg: 'rgba(30,23,45,0.04)',
-    border: '1px solid rgba(30,23,45,0.12)',
-    iconBg: 'rgba(30,23,45,0.08)',
-    icon: (
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#A68AFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="3"/>
-        <path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/>
-        <path d="M15.54 8.46a5 5 0 0 1 0 7.07M8.46 8.46a5 5 0 0 0 0 7.07"/>
-      </svg>
-    ),
-    dark: true,
+    n: '3',
+    step: 'Réinventer',
+    week: 'Semaine 4',
+    objectif: "Prendre du recul et repenser votre business avec l'IA comme copilote stratégique.",
+    result: 'Une vision claire et un tableau de bord branché sur vos données.',
+  },
+  {
+    n: '4',
+    step: 'Amplifier',
+    week: 'Semaine 5',
+    objectif: 'Produire plus sans travailler plus : contenu, visibilité et marketing augmentés.',
+    result: 'Un système de contenu qui travaille pour vous.',
+  },
+  {
+    n: '5',
+    step: 'Assumer',
+    week: 'Semaine 6',
+    objectif: 'Construire une offre claire, oser annoncer votre prix, et vendre en restant vous-même.',
+    result: 'Vous parlez à de vrais clients, sans vous renier.',
+  },
+  {
+    n: '6',
+    step: 'Libérer',
+    week: 'Semaine 7',
+    objectif: 'Créer vos propres process IA : ce qui prenait des heures se fait en quelques minutes, et vous gardez la main.',
+    result: 'Votre système IA personnel : vos corvées en quelques clics, vous aux commandes.',
+    highlight: true,
   },
 ]
 
@@ -293,106 +263,150 @@ export function Modules() {
             className="inline-block px-4 py-1.5 rounded-full bg-[#FFFFAB] text-[#1E172D] text-xs font-bold uppercase tracking-widest mb-4"
             style={{ fontFamily: 'var(--font-display)' }}
           >
-            La Méthode 3S
+            La Méthode Levier
           </motion.span>
           <motion.p
             variants={fadeUp}
-            className="text-[#A68AFF] text-sm font-semibold uppercase tracking-wider mb-3"
+            className="text-[#A68AFF] text-sm font-semibold italic tracking-wide mb-3"
             style={{ fontFamily: 'var(--font-display)' }}
           >
-            de &ldquo;j&apos;ai testé ChatGPT&rdquo; à &ldquo;j&apos;ai un système IA&rdquo;
+            de «&nbsp;j&apos;ai testé ChatGPT&nbsp;» à «&nbsp;j&apos;ai mon propre système IA&nbsp;»
           </motion.p>
           <motion.h2
             variants={fadeUp}
             className="text-4xl md:text-5xl font-extrabold text-[#1E172D] leading-[1.15] tracking-tight mb-5"
             style={{ fontFamily: 'var(--font-display)' }}
           >
-            3 phases.{' '}
+            6 étapes.{' '}
             <span className="text-[#A68AFF]">8 semaines.</span>
           </motion.h2>
           <motion.p variants={fadeUp} className="text-[#1E172D]/55 text-lg max-w-[560px] mx-auto">
-            Un chemin clair pour intégrer l&apos;IA dans votre quotidien d&apos;indépendant.
+            Une semaine pour s&apos;installer, six modules pour transformer, une semaine pour ancrer.
+            À chaque étape, on enlève du bruit avant d&apos;ajouter de la valeur.
           </motion.p>
         </motion.div>
 
-        {/* 3 Phase cards */}
+        {/* Borne de départ — semaine 1 */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={viewport}
-          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } } }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-12"
+          variants={fadeUp}
+          className="max-w-[900px] mx-auto mb-6 rounded-2xl border border-dashed border-[#A68AFF]/40 bg-[#A68AFF]/[0.05] px-6 py-5 flex items-start gap-4"
         >
-          {phases.map((p) => (
+          <span className="flex-shrink-0 w-9 h-9 rounded-full bg-[#A68AFF]/12 inline-flex items-center justify-center">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#A68AFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M5 12h14M13 6l6 6-6 6"/>
+            </svg>
+          </span>
+          <div>
+            <span
+              className="block text-[10px] font-bold uppercase tracking-widest text-[#A68AFF] mb-1"
+              style={{ fontFamily: 'var(--font-display)' }}
+            >
+              {startBorne.label}
+            </span>
+            <p className="text-[#1E172D]/75 text-sm leading-relaxed">
+              <span className="text-[#1E172D] font-bold" style={{ fontFamily: 'var(--font-display)' }}>
+                {startBorne.title}
+              </span>{' '}
+              {startBorne.text}
+            </p>
+          </div>
+        </motion.div>
+
+        {/* 6 étapes Levier */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } } }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-6"
+        >
+          {levierSteps.map((s) => (
             <motion.div
-              key={p.num}
+              key={s.n}
               variants={cardSpring}
               whileHover={{
                 y: -8,
                 boxShadow: '0 24px 56px rgba(30,23,45,0.1)',
                 transition: { type: 'spring', stiffness: 300, damping: 22 },
               }}
-              className="rounded-2xl p-7 flex flex-col cursor-default relative overflow-hidden"
-              style={{ background: p.bg, border: p.border }}
+              className="rounded-2xl p-7 flex flex-col cursor-default relative overflow-hidden bg-white"
+              style={{ border: s.highlight ? '2px solid #A68AFF' : '1px solid rgba(30,23,45,0.1)' }}
             >
-              {/* Icon */}
-              <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 flex-shrink-0"
-                style={{ background: p.iconBg }}
-              >
-                {p.icon}
-              </div>
-
-              {/* Phase num + label */}
-              <div className="flex items-baseline gap-2 mb-1">
+              {/* Numéro + semaine */}
+              <div className="flex items-center justify-between mb-4">
                 <span
-                  className="text-xs font-bold uppercase tracking-widest"
-                  style={{ color: p.color, fontFamily: 'var(--font-display)' }}
+                  className="flex-shrink-0 w-10 h-10 rounded-xl inline-flex items-center justify-center text-base font-bold bg-[#A68AFF]/12 text-[#A68AFF]"
+                  style={{ fontFamily: 'var(--font-display)' }}
                 >
-                  {p.num}
+                  {s.n}
                 </span>
-                <span className="text-xs text-[#1E172D]/40 font-medium">{p.label}</span>
+                <span
+                  className="text-[10px] font-bold uppercase tracking-widest text-[#1E172D]/40"
+                  style={{ fontFamily: 'var(--font-display)' }}
+                >
+                  {s.week}
+                </span>
               </div>
 
               <h3
-                className="text-2xl font-extrabold text-[#1E172D] mb-1 tracking-tight"
+                className="text-2xl font-extrabold text-[#1E172D] mb-2 tracking-tight"
                 style={{ fontFamily: 'var(--font-display)' }}
               >
-                {p.title}
+                {s.step}
               </h3>
 
-              <p className="text-[#1E172D]/45 text-xs font-medium mb-4 leading-snug">{p.tagline}</p>
-
-              {/* Bullet list */}
-              <ul className="flex flex-col gap-2 mb-5 flex-1">
-                {p.bullets.map((b) => (
-                  <li key={b} className="flex items-start gap-2.5">
-                    <span
-                      className="flex-shrink-0 w-1.5 h-1.5 rounded-full mt-[5px]"
-                      style={{ background: p.dotColor, opacity: 0.7 }}
-                    />
-                    <span className="text-[#1E172D]/70 text-sm leading-snug">{b}</span>
-                  </li>
-                ))}
-              </ul>
+              <p className="text-[#1E172D]/70 text-sm leading-relaxed mb-5 flex-1">{s.objectif}</p>
 
               {/* Résultat */}
               <div
-                className="flex items-start gap-2.5 text-sm font-semibold px-4 py-3 rounded-xl"
+                className="flex items-start gap-2.5 px-4 py-3 rounded-xl"
                 style={{
-                  background: p.dark ? 'rgba(166,138,255,0.1)' : 'rgba(30,23,45,0.05)',
-                  border: p.dark ? '1px solid rgba(166,138,255,0.2)' : '1px solid rgba(30,23,45,0.08)',
-                  fontFamily: 'var(--font-display)',
-                  color: p.dark ? '#A68AFF' : '#1E172D',
+                  background: s.highlight ? 'rgba(166,138,255,0.1)' : 'rgba(30,23,45,0.05)',
+                  border: s.highlight ? '1px solid rgba(166,138,255,0.25)' : '1px solid rgba(30,23,45,0.08)',
                 }}
               >
-                <span className="mt-0.5 flex-shrink-0">→</span>
-                <span className="text-[#1E172D]/70 font-medium text-xs leading-relaxed">
-                  <span className="text-[#1E172D] font-bold">Résultat&nbsp;:</span> {p.result}
+                <span
+                  className="mt-0.5 flex-shrink-0 text-[#A68AFF] font-bold"
+                  style={{ fontFamily: 'var(--font-display)' }}
+                >
+                  ›
                 </span>
+                <span className="text-[#1E172D]/70 font-medium text-xs leading-relaxed">{s.result}</span>
               </div>
             </motion.div>
           ))}
+        </motion.div>
+
+        {/* Borne d'arrivée — semaine 8 */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+          variants={fadeUp}
+          className="max-w-[900px] mx-auto mb-12 rounded-2xl border border-dashed border-[#A68AFF]/40 bg-[#A68AFF]/[0.05] px-6 py-5 flex items-start gap-4"
+        >
+          <span className="flex-shrink-0 w-9 h-9 rounded-full bg-[#A68AFF]/12 inline-flex items-center justify-center">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#A68AFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M20 6 9 17l-5-5"/>
+            </svg>
+          </span>
+          <div>
+            <span
+              className="block text-[10px] font-bold uppercase tracking-widest text-[#A68AFF] mb-1"
+              style={{ fontFamily: 'var(--font-display)' }}
+            >
+              {endBorne.label}
+            </span>
+            <p className="text-[#1E172D]/75 text-sm leading-relaxed">
+              <span className="text-[#1E172D] font-bold" style={{ fontFamily: 'var(--font-display)' }}>
+                {endBorne.title}
+              </span>{' '}
+              {endBorne.text}
+            </p>
+          </div>
         </motion.div>
 
         {/* Programme de la formation — dépliant */}
@@ -432,24 +446,9 @@ export function Modules() {
                 Une classe virtuelle de 90 minutes chaque semaine, le mardi de 9h30 à 11h.{' '}
                 <span className="text-[#1E172D]/45">Replays disponibles, rattrapage possible.</span>
               </p>
-              <div className="space-y-8">
-                {programmePhases.map((ph) => (
-                  <div key={ph.phase}>
-                    <div className="flex items-center gap-2.5 mb-3 px-1">
-                      <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: ph.color }} />
-                      <h4
-                        className="text-[11px] font-bold uppercase tracking-widest text-[#1E172D]/55"
-                        style={{ fontFamily: 'var(--font-display)' }}
-                      >
-                        {ph.phase}
-                      </h4>
-                    </div>
-                    <div className="space-y-2.5">
-                      {ph.sessions.map((s) => (
-                        <SessionRow key={s.n} s={s} color={ph.color} />
-                      ))}
-                    </div>
-                  </div>
+              <div className="space-y-2.5">
+                {programmeSessions.map((s) => (
+                  <SessionRow key={s.n} s={s} color="#A68AFF" />
                 ))}
               </div>
             </div>

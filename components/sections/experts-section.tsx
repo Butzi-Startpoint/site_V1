@@ -38,7 +38,7 @@ export function ExpertsSection() {
           className="text-[#1E172D]/55 text-base mt-4 max-w-lg mx-auto leading-relaxed"
         >
           Chaque mois, des spécialistes invités couvrent les sujets qui comptent vraiment
-          pour votre activité — juridique, fiscal, marketing, automatisation et plus encore.
+          pour votre activité : juridique, fiscal, marketing, automatisation et plus encore.
         </motion.p>
       </motion.div>
 

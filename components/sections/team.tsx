@@ -40,7 +40,7 @@ const teamMembers: Member[] = [
   {
     name: 'Alexandre Mili',
     role: 'Automatisations & Agents IA',
-    bio: "Spécialiste automatisations et agents intelligents. Il conçoit les systèmes qui permettent aux entrepreneurs de déléguer leurs tâches répétitives à l'IA. Pendant que vous dormez, ses automations travaillent.",
+    bio: "Spécialiste automatisations et agents intelligents. Il conçoit les systèmes qui permettent aux entrepreneurs de déléguer leurs tâches répétitives à l'IA. Il conçoit les systèmes qui vous enlèvent les tâches répétitives, pas votre métier.",
     img: '/team/alexandre.webp',
     linkedin: 'https://www.linkedin.com/in/amili/',
     imgScale: 1.3,
@@ -202,7 +202,7 @@ export function Team() {
 
               <p className="text-[#1E172D]/65 text-sm md:text-base leading-relaxed max-w-2xl mx-auto md:mx-0">
                 Entrepreneur, conférencier international et auteur de deux ouvrages, Butzi a passé
-                10 ans à construire ses activités en indépendant — avant de tout repenser avec
+                10 ans à construire ses activités en indépendant, avant de tout repenser avec
                 l&apos;IA. Il a conçu les programmes de StartPoint IA à partir de cette expérience
                 terrain. Résultat&nbsp;: des formations pensées par quelqu&apos;un qui a les mêmes
                 galères que vous. (Mais avec de meilleurs prompts.)

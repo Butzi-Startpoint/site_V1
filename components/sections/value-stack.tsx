@@ -18,8 +18,8 @@ const stackItems = [
   },
   {
     num: '02',
-    title: 'La Méthode 3S : votre système IA complet',
-    desc: 'Simplifier › Scaler › Systématiser. La méthode qui transforme l\'IA d\'un gadget en levier de croissance pour votre activité.',
+    title: 'La Méthode Levier : votre système IA complet',
+    desc: 'Démystifier › Déléguer › Réinventer › Amplifier › Assumer › Libérer. La méthode qui transforme l\'IA d\'un gadget en levier de croissance pour votre activité.',
     value: '997 €',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A68AFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">

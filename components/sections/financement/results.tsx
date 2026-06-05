@@ -42,7 +42,7 @@ const STEPPERS: Record<Exclude<FafName, 'Non identifié'>, string[]> = {
   ],
   OPCO: [
     'Identifier votre OPCO selon votre branche professionnelle',
-    'Contactez-nous pour qu\'on vous oriente — le circuit OPCO diffère du FAF',
+    'Contactez-nous pour qu\'on vous oriente, le circuit OPCO diffère du FAF',
     'Constituer le dossier avec votre OPCO (devis + convention fournis)',
     'Suivre la formation',
     'Transmettre les justificatifs pour remboursement',
@@ -130,7 +130,7 @@ export function Results({ estimation }: { estimation: Estimation; shareUrl?: str
           <div className="flex justify-between items-baseline">
             <div className="flex-1 pr-4">
               <p className="text-[#1E172D]/80 font-medium" style={{ fontFamily: 'var(--font-display)' }}>
-                — Financement {estimation.fafName} estimé
+                Financement {estimation.fafName} estimé
               </p>
               {estimation.fafNote && (
                 <p className="text-xs text-[#1E172D]/50 mt-1 leading-relaxed">{estimation.fafNote}</p>
@@ -148,7 +148,7 @@ export function Results({ estimation }: { estimation: Estimation; shareUrl?: str
           <div className="flex justify-between items-baseline">
             <div className="flex-1 pr-4">
               <p className="text-[#1E172D]/80 font-medium" style={{ fontFamily: 'var(--font-display)' }}>
-                — Économie fiscale (déductibilité)
+                Économie fiscale (déductibilité)
               </p>
               <p className="text-xs text-[#1E172D]/50 mt-1 leading-relaxed">
                 Montant restant × taux IS ou TMI
@@ -219,7 +219,7 @@ export function Results({ estimation }: { estimation: Estimation; shareUrl?: str
             Vos prochaines étapes
           </h3>
           <p className="text-[#1E172D]/55 text-sm mb-6">
-            Circuit {estimation.fafName} — étape par étape
+            Circuit {estimation.fafName} : étape par étape
           </p>
           <ol className="space-y-4">
             {steps.map((step, i) => (

@@ -51,7 +51,7 @@ export function CtaFinal() {
               animate={{ scale: [1, 1.6, 1], opacity: [1, 0.5, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
             />
-            Prochaine cohorte : 23 septembre 2026 — 4 places restantes
+            Prochaine cohorte : 23 septembre 2026. 6 places restantes
           </motion.span>
 
           <motion.h2
@@ -61,14 +61,14 @@ export function CtaFinal() {
           >
             Prochaine cohorte : 23 septembre 2026.{' '}
             <br />
-            <span className="text-[#A68AFF]">4 places restantes.</span>
+            <span className="text-[#A68AFF]">6 places restantes.</span>
           </motion.h2>
 
           <motion.p
             variants={fadeUp}
             className="text-[#F6F1EB]/50 text-lg leading-relaxed mb-10"
           >
-            Les places sont limitées à 8 pour garantir la qualité de l&apos;accompagnement.
+            Les places sont limitées à 10 pour garantir la qualité de l&apos;accompagnement.
           </motion.p>
 
           <motion.div
@@ -105,7 +105,7 @@ export function CtaFinal() {
             variants={fadeUp}
             className="flex flex-wrap items-center justify-center gap-6 mt-12"
           >
-            {['Formation certifiée Qualiopi', '8 personnes max par cohorte', 'Garantie résultat'].map((badge) => (
+            {['Formation certifiée Qualiopi', 'Jusqu\'à 10 personnes par cohorte', 'Garantie résultat'].map((badge) => (
               <span
                 key={badge}
                 className="flex items-center gap-2 text-[#F6F1EB]/40 text-xs font-medium"

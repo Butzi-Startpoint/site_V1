@@ -158,7 +158,7 @@ export function LandingAccordionItem() {
             {/* Badge */}
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#A68AFF]/15 border border-[#A68AFF]/30 text-[#D8D0FF] text-sm font-medium tracking-wide">
               <span className="w-2 h-2 rounded-full bg-[#A68AFF] animate-pulse" />
-              Prochaine cohorte : 23 septembre 2026 — 4 places restantes
+              Prochaine cohorte : 23 septembre 2026. 6 places restantes
             </span>
 
             {/* Titre principal — promesse */}
@@ -166,22 +166,19 @@ export function LandingAccordionItem() {
               className="text-5xl md:text-6xl lg:text-[3.75rem] font-bold text-[#F6F1EB] leading-[1.05] tracking-tight"
               style={{ fontFamily: 'var(--font-display)' }}
             >
-              <span className="block">Agenda saturé.</span>
-              <span className="block">CA plafonné.</span>
+              <span className="block">Enfin du temps pour</span>
               <span className="block mt-1">
-                Changez la donne{' '}
-                <span className="text-[#FFFFAB]">avec l&apos;IA</span>
-                .
+                <span className="text-[#FFFFAB]">faire grandir votre business</span>.
               </span>
             </h1>
 
             {/* Sous-titre */}
             <p className="text-lg text-[#D8D0FF] leading-relaxed max-w-xl mx-auto lg:mx-0 pt-2">
               <span className="block [text-wrap:balance]">
-                La formation officielle qui donne des résultats dès les premières semaines grâce à des outils incroyables et des méthodes accessibles sans compétences techniques.
+                La formation certifiée Qualiopi qui donne des résultats dès les premières semaines, avec des outils concrets et des méthodes accessibles sans aucune compétence technique.
               </span>
               <span className="block mt-2 text-[#F6F1EB] font-medium">
-                1h30 / semaine à distance, sur 8 semaines.
+                1h30 par semaine, à distance, sur 8 semaines.
               </span>
             </p>
 

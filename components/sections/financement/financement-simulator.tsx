@@ -396,7 +396,7 @@ export function FinancementSimulator() {
               {state.budget === 'partie' && (
                 <Notice kind="info">
                   Le montant disponible sera réduit. Notre estimation suppose
-                  l&apos;enveloppe complète — votre montant réel pourrait être inférieur.
+                  l&apos;enveloppe complète, votre montant réel pourrait être inférieur.
                 </Notice>
               )}
             </>
@@ -459,8 +459,8 @@ export function FinancementSimulator() {
                     className="font-bold text-[#A68AFF] underline"
                   >
                     contactez-nous
-                  </a>{' '}
-                  — on peut parfois trouver des solutions.
+                  </a>
+                  , on peut parfois trouver des solutions.
                 </Notice>
               )}
             </>

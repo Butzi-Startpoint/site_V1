@@ -7,9 +7,9 @@ import { MeshGradientBg } from '@/components/ui/mesh-gradient-bg'
 import { CtaChevronButton } from '@/components/ui/cta-chevron-button'
 
 const cercleFeatures = [
-  'Q&A mensuel en visio avec Butzi — votre cas concret traité en live',
+  'Q&A mensuel en visio avec Butzi : votre cas concret traité en live',
   'Experts invités chaque mois : juridique, fiscal, marketing, ops',
-  'Veille IA curatée chaque semaine — 3 ressources commentées',
+  'Veille IA curatée chaque semaine : 3 ressources commentées',
 ]
 
 const tiers = [
@@ -56,7 +56,7 @@ export function AfterProgram() {
             style={{ fontFamily: 'var(--font-display)' }}
           >
             Et après les{' '}
-            <span className="text-[#FFFFAB]">6 semaines&nbsp;?</span>
+            <span className="text-[#FFFFAB]">8 semaines&nbsp;?</span>
           </motion.h2>
         </motion.div>
 

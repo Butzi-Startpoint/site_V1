@@ -31,7 +31,7 @@ export function Financing() {
             className="grid grid-cols-1 sm:grid-cols-2 gap-5"
           >
             {[
-              { icon: '🏛️', text: <><strong>Éligible OPCO</strong> — jusqu&apos;à <strong>2 500&nbsp;€</strong> pris en charge par votre FAF</> },
+              { icon: '🏛️', text: <><strong>Éligible OPCO</strong> : jusqu&apos;à <strong>2 500&nbsp;€</strong> pris en charge par votre FAF</> },
               { icon: '💳', text: <>Paiement en <strong>3x ou 4x sans frais</strong> disponible sur toutes les offres</> },
             ].map((item, i) => (
               <motion.div
