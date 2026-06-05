@@ -5,16 +5,11 @@ import { useState, type FormEvent } from 'react'
 function isValidEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
 }
-function encodeForm(data: Record<string, string>) {
-  return Object.keys(data)
-    .map((k) => encodeURIComponent(k) + '=' + encodeURIComponent(data[k]))
-    .join('&')
-}
 
 /**
  * Widget de chat (desktop) : bulle flottante → ouvre un mini-chat.
- * À l'envoi, le message est soumis au formulaire Netlify "chat-messages"
- * (notification email à configurer côté Netlify).
+ * À l'envoi, le message part par email via Resend (/api/chat-message) :
+ * notification à Butzi + accusé de réception au visiteur.
  */
 export function ChatWidget() {
   const [open, setOpen] = useState(false)
@@ -22,21 +17,30 @@ export function ChatWidget() {
   const [message, setMessage] = useState('')
   const [sending, setSending] = useState(false)
   const [sent, setSent] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const submit = async (e: FormEvent) => {
     e.preventDefault()
     if (!message.trim() || !isValidEmail(email)) return
     setSending(true)
-    const payload = { 'form-name': 'chat-messages', email, message }
+    setError(null)
     try {
-      await fetch('/__forms.html', {
+      const res = await fetch('/api/chat-message', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encodeForm(payload),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email.trim(), message: message.trim() }),
       })
-    } catch {}
-    setSending(false)
-    setSent(true)
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}))
+        throw new Error(data.error || 'Échec de l\'envoi')
+      }
+      setSent(true)
+    } catch (err) {
+      console.error(err)
+      setError("Une erreur est survenue. Réessayez dans un instant.")
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
@@ -100,6 +104,7 @@ export function ChatWidget() {
                 >
                   {sending ? 'Envoi…' : 'Envoyer'}
                 </button>
+                {error && <p className="text-red-600 text-xs leading-relaxed">{error}</p>}
               </form>
             )}
           </div>

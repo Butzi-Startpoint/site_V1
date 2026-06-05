@@ -6,11 +6,6 @@ import { fadeUp, stagger, viewport } from '@/lib/animations'
 
 type Status = 'idle' | 'submitting' | 'success' | 'error'
 
-const encode = (data: Record<string, string>) =>
-  Object.keys(data)
-    .map((k) => `${encodeURIComponent(k)}=${encodeURIComponent(data[k])}`)
-    .join('&')
-
 export function LeadMagnet() {
   const [email, setEmail] = useState('')
   const [status, setStatus] = useState<Status>('idle')
@@ -22,16 +17,15 @@ export function LeadMagnet() {
     setStatus('submitting')
     setErrorMsg('')
     try {
-      await fetch('/__forms.html', {
+      const res = await fetch('/api/mini-cours-lead', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encode({
-          'form-name': 'lead-magnet',
-          'bot-field': '',
-          email,
-          demande: 'Mini-cours gratuit pour indépendants',
-        }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email.trim() }),
       })
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}))
+        throw new Error(data.error || 'Échec de l\'envoi')
+      }
       setStatus('success')
     } catch (err) {
       console.error(err)
@@ -121,24 +115,7 @@ export function LeadMagnet() {
                   </p>
                 </motion.div>
               ) : (
-                <form
-                  name="lead-magnet"
-                  method="POST"
-                  data-netlify="true"
-                  data-netlify-honeypot="bot-field"
-                  onSubmit={handleSubmit}
-                  className="flex flex-col gap-3"
-                >
-                  {/* Netlify form-name hidden input */}
-                  <input type="hidden" name="form-name" value="lead-magnet" />
-                  {/* Honeypot for spam */}
-                  <p className="hidden">
-                    <label>
-                      Don&apos;t fill this out:{' '}
-                      <input name="bot-field" tabIndex={-1} autoComplete="off" />
-                    </label>
-                  </p>
-
+                <form onSubmit={handleSubmit} className="flex flex-col gap-3">
                   <label
                     htmlFor="lead-magnet-email"
                     className="text-xs font-bold uppercase tracking-widest text-[#1E172D]/55"
