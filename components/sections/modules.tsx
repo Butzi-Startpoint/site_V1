@@ -1,15 +1,19 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { fadeUp, stagger, viewport } from '@/lib/animations'
-import { PhoneRevealButton } from '@/components/ui/phone-reveal-button'
-import { ProgramEmailButton } from '@/components/ui/program-email-button'
 import type { Variants } from 'framer-motion'
+import { fadeUp, stagger, viewport } from '@/lib/animations'
+import { ProgramEmailButton } from '@/components/ui/program-email-button'
 
-const cardSpring: Variants = {
-  hidden:  { opacity: 0, y: 32, scale: 0.96 },
-  visible: { opacity: 1, y: 0,  scale: 1,
-    transition: { type: 'spring', stiffness: 220, damping: 24 } },
+/* Révélation premium : fondu + flou + légère montée, easing soyeux. */
+const premiumReveal: Variants = {
+  hidden: { opacity: 0, y: 30, filter: 'blur(14px)' },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: { duration: 0.85, ease: [0.22, 1, 0.36, 1] },
+  },
 }
 
 /* ── Sessions (aperçu landing : nom + une phrase) ──
@@ -127,10 +131,10 @@ type LevierStep = {
 const levierSteps: LevierStep[] = [
   {
     n: '1',
-    step: 'Démystifier',
+    step: 'Clarifier',
     week: 'Semaine 2',
     objectif: "Comprendre ce que l'IA peut vraiment faire pour vous, sans jargon ni hype.",
-    result: "La peur tombe. Vous savez quoi attendre de l'IA.",
+    result: "Vous savez utiliser l'IA et repérer où elle peut vraiment vous aider.",
   },
   {
     n: '2',
@@ -158,7 +162,7 @@ const levierSteps: LevierStep[] = [
     step: 'Assumer',
     week: 'Semaine 6',
     objectif: 'Construire une offre claire, oser annoncer votre prix, et vendre en restant vous-même.',
-    result: 'Vous parlez à de vrais clients, sans vous renier.',
+    result: 'Vous parlez à plus de clients, sans vous renier.',
   },
   {
     n: '6',
@@ -249,164 +253,188 @@ export function Modules() {
     <section className="bg-white py-20 md:py-28 relative overflow-hidden" id="modules">
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#A68AFF]/30 to-transparent" />
 
-      <div className="max-w-[1140px] mx-auto px-6">
+      {/* Halos d'ambiance premium */}
+      <div
+        className="pointer-events-none absolute top-1/4 right-0 w-[460px] h-[460px] rounded-full"
+        style={{ background: 'radial-gradient(circle, rgba(166,138,255,0.10) 0%, transparent 70%)', transform: 'translate(28%, -25%)' }}
+      />
+      <div
+        className="pointer-events-none absolute bottom-0 left-0 w-[380px] h-[380px] rounded-full"
+        style={{ background: 'radial-gradient(circle, rgba(255,255,171,0.20) 0%, transparent 70%)', transform: 'translate(-30%, 30%)' }}
+      />
+
+      <div className="relative max-w-[1140px] mx-auto px-6">
         {/* Header */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={viewport}
           variants={stagger}
-          className="text-center mb-14"
+          id="methode"
+          className="text-center mb-14 md:mb-16 scroll-mt-28"
         >
           <motion.span
             variants={fadeUp}
-            className="inline-block px-4 py-1.5 rounded-full bg-[#FFFFAB] text-[#1E172D] text-xs font-bold uppercase tracking-widest mb-4"
+            className="inline-block px-4 py-1.5 rounded-full bg-[#FFFFAB] text-[#1E172D] text-xs font-bold uppercase tracking-widest mb-5"
             style={{ fontFamily: 'var(--font-display)' }}
           >
-            La Méthode Levier
+            Notre méthode
           </motion.span>
+          <motion.h2
+            variants={fadeUp}
+            className="text-4xl md:text-5xl font-extrabold text-[#1E172D] leading-[1.15] tracking-tight"
+            style={{ fontFamily: 'var(--font-display)' }}
+          >
+            La Méthode{' '}
+            <span
+              className="text-transparent bg-clip-text"
+              style={{ backgroundImage: 'linear-gradient(135deg, #A68AFF 0%, #7C5CE0 100%)' }}
+            >
+              Levier
+            </span>
+          </motion.h2>
           <motion.p
             variants={fadeUp}
-            className="text-[#A68AFF] text-sm font-semibold italic tracking-wide mb-3"
+            className="text-[#A68AFF] text-sm md:text-base font-semibold italic tracking-wide mt-3"
             style={{ fontFamily: 'var(--font-display)' }}
           >
             de «&nbsp;j&apos;ai testé ChatGPT&nbsp;» à «&nbsp;j&apos;ai mon propre système IA&nbsp;»
           </motion.p>
-          <motion.h2
-            variants={fadeUp}
-            className="text-4xl md:text-5xl font-extrabold text-[#1E172D] leading-[1.15] tracking-tight mb-5"
-            style={{ fontFamily: 'var(--font-display)' }}
-          >
-            6 étapes.{' '}
-            <span className="text-[#A68AFF]">8 semaines.</span>
-          </motion.h2>
-          <motion.p variants={fadeUp} className="text-[#1E172D]/55 text-lg max-w-[560px] mx-auto">
-            Une semaine pour s&apos;installer, six modules pour transformer, une semaine pour ancrer.
-            À chaque étape, on enlève du bruit avant d&apos;ajouter de la valeur.
+          <motion.p variants={fadeUp} className="text-[#1E172D]/55 text-lg max-w-[600px] mx-auto mt-5">
+            6 étapes, 8 semaines. Une semaine pour s&apos;installer, six modules pour transformer, une
+            semaine pour ancrer. À chaque étape, on enlève du bruit avant d&apos;ajouter de la valeur.
           </motion.p>
         </motion.div>
 
-        {/* Borne de départ — semaine 1 */}
+        {/* Timeline verticale premium : rail continu + nœuds lumineux */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={viewport}
-          variants={fadeUp}
-          className="max-w-[900px] mx-auto mb-6 rounded-2xl border border-dashed border-[#A68AFF]/40 bg-[#A68AFF]/[0.05] px-6 py-5 flex items-start gap-4"
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.13, delayChildren: 0.08 } } }}
+          className="relative max-w-[760px] mx-auto mb-12"
         >
-          <span className="flex-shrink-0 w-9 h-9 rounded-full bg-[#A68AFF]/12 inline-flex items-center justify-center">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#A68AFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M5 12h14M13 6l6 6-6 6"/>
-            </svg>
-          </span>
-          <div>
-            <span
-              className="block text-[10px] font-bold uppercase tracking-widest text-[#A68AFF] mb-1"
-              style={{ fontFamily: 'var(--font-display)' }}
-            >
-              {startBorne.label}
-            </span>
-            <p className="text-[#1E172D]/75 text-sm leading-relaxed">
-              <span className="text-[#1E172D] font-bold" style={{ fontFamily: 'var(--font-display)' }}>
-                {startBorne.title}
-              </span>{' '}
-              {startBorne.text}
-            </p>
-          </div>
-        </motion.div>
+          {/* Rail vertical dégradé */}
+          <div
+            className="pointer-events-none absolute left-[19px] md:left-[21px] top-5 bottom-5 w-px"
+            style={{
+              background:
+                'linear-gradient(to bottom, transparent, rgba(166,138,255,0.5) 10%, rgba(166,138,255,0.5) 90%, transparent)',
+            }}
+          />
 
-        {/* 6 étapes Levier */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewport}
-          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } } }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-6"
-        >
+          {/* Borne de départ */}
+          <motion.div variants={premiumReveal} className="relative flex items-center gap-5 md:gap-7 pb-7 md:pb-8">
+            <div className="relative z-10 flex-shrink-0">
+              <div
+                className="w-10 h-10 md:w-11 md:h-11 rounded-full inline-flex items-center justify-center"
+                style={{ background: '#F1ECFF', boxShadow: '0 0 0 3px #fff, 0 4px 12px rgba(166,138,255,0.16)' }}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A68AFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </div>
+            </div>
+            <div className="flex-1 min-w-0 rounded-2xl border border-dashed border-[#A68AFF]/40 bg-[#A68AFF]/[0.04] px-5 py-4 md:px-6 md:py-5">
+              <span className="block text-[10px] font-bold uppercase tracking-widest text-[#A68AFF] mb-1" style={{ fontFamily: 'var(--font-display)' }}>
+                {startBorne.label}
+              </span>
+              <p className="text-[#1E172D]/75 text-sm leading-relaxed">
+                <span className="text-[#1E172D] font-bold" style={{ fontFamily: 'var(--font-display)' }}>{startBorne.title}</span>{' '}
+                {startBorne.text}
+              </p>
+            </div>
+          </motion.div>
+
+          {/* 6 étapes Levier */}
           {levierSteps.map((s) => (
-            <motion.div
-              key={s.n}
-              variants={cardSpring}
-              whileHover={{
-                y: -8,
-                boxShadow: '0 24px 56px rgba(30,23,45,0.1)',
-                transition: { type: 'spring', stiffness: 300, damping: 22 },
-              }}
-              className="rounded-2xl p-7 flex flex-col cursor-default relative overflow-hidden bg-white"
-              style={{ border: s.highlight ? '2px solid #A68AFF' : '1px solid rgba(30,23,45,0.1)' }}
-            >
-              {/* Numéro + semaine */}
-              <div className="flex items-center justify-between mb-4">
-                <span
-                  className="flex-shrink-0 w-10 h-10 rounded-xl inline-flex items-center justify-center text-base font-bold bg-[#A68AFF]/12 text-[#A68AFF]"
-                  style={{ fontFamily: 'var(--font-display)' }}
+            <motion.div key={s.n} variants={premiumReveal} className="relative flex items-center gap-5 md:gap-7 pb-7 md:pb-8">
+              {/* Nœud numéroté lumineux */}
+              <div className="relative z-10 flex-shrink-0">
+                <div
+                  className="w-10 h-10 md:w-11 md:h-11 rounded-full inline-flex items-center justify-center text-sm md:text-base font-semibold text-white"
+                  style={{
+                    fontFamily: 'var(--font-display)',
+                    background: 'linear-gradient(145deg, #3A2860 0%, #A68AFF 100%)',
+                    boxShadow: s.highlight
+                      ? '0 0 0 3px #fff, 0 0 0 5px rgba(255,255,171,0.7), 0 5px 14px rgba(166,138,255,0.35)'
+                      : '0 0 0 3px #fff, 0 4px 12px rgba(166,138,255,0.25)',
+                  }}
                 >
                   {s.n}
-                </span>
-                <span
-                  className="text-[10px] font-bold uppercase tracking-widest text-[#1E172D]/40"
-                  style={{ fontFamily: 'var(--font-display)' }}
-                >
-                  {s.week}
-                </span>
+                </div>
               </div>
 
-              <h3
-                className="text-2xl font-extrabold text-[#1E172D] mb-2 tracking-tight"
-                style={{ fontFamily: 'var(--font-display)' }}
-              >
-                {s.step}
-              </h3>
-
-              <p className="text-[#1E172D]/70 text-sm leading-relaxed mb-5 flex-1">{s.objectif}</p>
-
-              {/* Résultat */}
-              <div
-                className="flex items-start gap-2.5 px-4 py-3 rounded-xl"
+              {/* Carte */}
+              <motion.div
+                whileHover={{
+                  y: -3,
+                  boxShadow: s.highlight ? '0 24px 56px rgba(166,138,255,0.28)' : '0 22px 50px rgba(166,138,255,0.20)',
+                  transition: { type: 'spring', stiffness: 300, damping: 24 },
+                }}
+                className="group relative overflow-hidden flex-1 min-w-0 rounded-2xl p-5 md:p-6"
                 style={{
-                  background: s.highlight ? 'rgba(166,138,255,0.1)' : 'rgba(30,23,45,0.05)',
-                  border: s.highlight ? '1px solid rgba(166,138,255,0.25)' : '1px solid rgba(30,23,45,0.08)',
+                  background: s.highlight
+                    ? 'linear-gradient(180deg, rgba(166,138,255,0.10), rgba(166,138,255,0.03))'
+                    : 'linear-gradient(180deg, #ffffff, #FBFAFF)',
+                  border: s.highlight ? '1px solid rgba(166,138,255,0.5)' : '1px solid rgba(30,23,45,0.07)',
+                  boxShadow: s.highlight ? '0 16px 44px rgba(166,138,255,0.16)' : '0 4px 20px rgba(30,23,45,0.04)',
                 }}
               >
-                <span
-                  className="mt-0.5 flex-shrink-0 text-[#A68AFF] font-bold"
-                  style={{ fontFamily: 'var(--font-display)' }}
-                >
-                  ›
-                </span>
-                <span className="text-[#1E172D]/70 font-medium text-xs leading-relaxed">{s.result}</span>
-              </div>
+                {/* Voile teinté au survol — version claire/transparente de la couleur des cercles */}
+                <div className="pointer-events-none absolute inset-0 bg-[#A68AFF]/0 group-hover:bg-[#A68AFF]/[0.08] transition-colors duration-1000 ease-out" />
+                <div className="relative">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#A68AFF]" style={{ fontFamily: 'var(--font-display)' }}>
+                    {s.week}
+                  </span>
+                  {s.highlight && (
+                    <span
+                      className="text-[9px] font-bold uppercase tracking-widest text-[#1E172D] bg-[#FFFFAB] rounded-full px-2 py-0.5"
+                      style={{ fontFamily: 'var(--font-display)' }}
+                    >
+                      Temps fort
+                    </span>
+                  )}
+                </div>
+                <h3 className="text-lg md:text-xl font-extrabold text-[#1E172D] tracking-tight mb-1.5" style={{ fontFamily: 'var(--font-display)' }}>
+                  {s.step}
+                </h3>
+                <p className="text-[#1E172D]/65 text-sm leading-relaxed">{s.objectif}</p>
+                {/* Résultat : caché par défaut (desktop), révélé en fondu au survol */}
+                <div className="overflow-hidden transition-all duration-1000 ease-out max-h-24 opacity-100 mt-3 md:max-h-0 md:opacity-0 md:mt-0 md:group-hover:max-h-24 md:group-hover:opacity-100 md:group-hover:mt-3">
+                  <div className="flex items-start gap-2 pt-3 border-t border-[#1E172D]/[0.06]">
+                    <span className="text-[#A68AFF] font-bold leading-snug" style={{ fontFamily: 'var(--font-display)' }}>›</span>
+                    <span className="text-[#1E172D]/70 text-sm font-medium leading-snug">{s.result}</span>
+                  </div>
+                </div>
+                </div>
+              </motion.div>
             </motion.div>
           ))}
-        </motion.div>
 
-        {/* Borne d'arrivée — semaine 8 */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewport}
-          variants={fadeUp}
-          className="max-w-[900px] mx-auto mb-12 rounded-2xl border border-dashed border-[#A68AFF]/40 bg-[#A68AFF]/[0.05] px-6 py-5 flex items-start gap-4"
-        >
-          <span className="flex-shrink-0 w-9 h-9 rounded-full bg-[#A68AFF]/12 inline-flex items-center justify-center">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#A68AFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M20 6 9 17l-5-5"/>
-            </svg>
-          </span>
-          <div>
-            <span
-              className="block text-[10px] font-bold uppercase tracking-widest text-[#A68AFF] mb-1"
-              style={{ fontFamily: 'var(--font-display)' }}
-            >
-              {endBorne.label}
-            </span>
-            <p className="text-[#1E172D]/75 text-sm leading-relaxed">
-              <span className="text-[#1E172D] font-bold" style={{ fontFamily: 'var(--font-display)' }}>
-                {endBorne.title}
-              </span>{' '}
-              {endBorne.text}
-            </p>
-          </div>
+          {/* Borne d'arrivée */}
+          <motion.div variants={premiumReveal} className="relative flex items-center gap-5 md:gap-7">
+            <div className="relative z-10 flex-shrink-0">
+              <div
+                className="w-10 h-10 md:w-11 md:h-11 rounded-full inline-flex items-center justify-center"
+                style={{ background: '#F1ECFF', boxShadow: '0 0 0 3px #fff, 0 4px 12px rgba(166,138,255,0.16)' }}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A68AFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+              </div>
+            </div>
+            <div className="flex-1 min-w-0 rounded-2xl border border-dashed border-[#A68AFF]/40 bg-[#A68AFF]/[0.04] px-5 py-4 md:px-6 md:py-5">
+              <span className="block text-[10px] font-bold uppercase tracking-widest text-[#A68AFF] mb-1" style={{ fontFamily: 'var(--font-display)' }}>
+                {endBorne.label}
+              </span>
+              <p className="text-[#1E172D]/75 text-sm leading-relaxed">
+                <span className="text-[#1E172D] font-bold" style={{ fontFamily: 'var(--font-display)' }}>{endBorne.title}</span>{' '}
+                {endBorne.text}
+              </p>
+            </div>
+          </motion.div>
         </motion.div>
 
         {/* Programme de la formation — dépliant */}
@@ -448,7 +476,7 @@ export function Modules() {
               </p>
               <div className="space-y-2.5">
                 {programmeSessions.map((s) => (
-                  <SessionRow key={s.n} s={s} color="#A68AFF" />
+                  <SessionRow key={s.week} s={s} color="#A68AFF" />
                 ))}
               </div>
             </div>
@@ -546,10 +574,16 @@ export function Modules() {
           className="flex flex-col sm:flex-row items-center justify-center gap-3"
         >
           <ProgramEmailButton label="Recevoir le programme complet" />
-          <PhoneRevealButton
-            label="Appel gratuit pour plus d'informations"
-            className="px-7 py-3.5 rounded-full"
-          />
+          <a
+            href="#pricing"
+            className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl bg-[#1E172D] text-[#F6F1EB] font-bold text-sm hover:bg-[#2a1f3d] transition-colors"
+            style={{ fontFamily: 'var(--font-display)' }}
+          >
+            Rejoindre la prochaine cohorte
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
         </motion.div>
       </div>
     </section>

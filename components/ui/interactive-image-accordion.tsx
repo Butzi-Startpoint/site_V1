@@ -5,6 +5,9 @@ import { ScrambleText } from '@/components/ui/scramble-text';
 import { CertLink } from '@/components/ui/qualiopi-badge';
 import { useSwipe } from '@/lib/use-swipe';
 
+const GOOGLE_REVIEWS_URL =
+  'https://www.google.com/search?sca_esv=2c335ba9186fa769&cs=0&sxsrf=ANbL-n79kVxeIk2N7m4oTbLKTaV3V2L3Zg:1780688794225&q=Butzi+-+Conf%C3%A9rencier+%26+Magicien+%7C+Keynote+Speaker+%26+Magician+Avis&rldimm=15684917062307454983&tbm=lcl&hl=fr-FR#lkt=LocalPoiReviews';
+
 // --- Types ---
 interface AccordionItemData {
   id: number;
@@ -185,7 +188,7 @@ export function LandingAccordionItem() {
             {/* CTA + social proof */}
             <div className="flex flex-col sm:flex-row items-center lg:items-start gap-4 pt-6 md:pt-8">
               <a
-                href="#pricing"
+                href="#methode"
                 className={[
                   'inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-base',
                   'bg-[#FFFFAB] text-[#1E172D] shadow-lg shadow-[#FFFFAB]/20',
@@ -193,7 +196,7 @@ export function LandingAccordionItem() {
                   'transition-all duration-200',
                 ].join(' ')}
               >
-                Rejoindre la prochaine cohorte
+                En savoir plus
                 <svg
                   className="w-4 h-4"
                   fill="none"
@@ -209,17 +212,6 @@ export function LandingAccordionItem() {
                 </svg>
               </a>
 
-            </div>
-
-            {/* Réassurance Qualiopi — sous le bouton */}
-            <div className="mt-5 text-center lg:text-left">
-              <p
-                className="text-[#FFFFAB] text-sm font-semibold tracking-wide"
-                style={{ fontFamily: 'var(--font-display)' }}
-              >
-                Organisme de formation certifié Qualiopi
-              </p>
-              <CertLink className="mt-1 text-[#D8D0FF] text-xs hover:text-[#F6F1EB] transition-colors" />
             </div>
           </div>
 
@@ -286,6 +278,68 @@ export function LandingAccordionItem() {
             </div>
           </div>
 
+        </div>
+
+        {/* Bandeau réassurance : Qualiopi + note Google, juste au-dessus des logos */}
+        <div className="mt-12 md:mt-16 pt-10 border-t border-white/10 flex flex-col sm:flex-row flex-wrap items-center sm:items-start justify-center lg:justify-start gap-6 sm:gap-x-10 sm:gap-y-6">
+          {/* Qualiopi */}
+          <div className="flex items-center gap-3">
+            <span className="inline-flex items-center justify-center bg-white rounded-lg px-2.5 py-1.5 flex-shrink-0">
+              <img src="/qualiopi-logo.png" alt="Certification Qualiopi" className="h-7 md:h-8 w-auto" />
+            </span>
+            <div className="text-left">
+              <p
+                className="text-[#F6F1EB] text-sm font-semibold leading-tight"
+                style={{ fontFamily: 'var(--font-display)' }}
+              >
+                Organisme de formation certifié Qualiopi
+              </p>
+              <CertLink className="text-[#D8D0FF] text-xs hover:text-[#F6F1EB] transition-colors" />
+            </div>
+          </div>
+
+          {/* Séparateur vertical */}
+          <span className="hidden sm:block w-px h-10 bg-white/15" />
+
+          {/* Note Google */}
+          <a
+            href={GOOGLE_REVIEWS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-2.5"
+          >
+            <span className="text-[#FBBC04] text-xl leading-none">★</span>
+            <div className="text-left">
+              <p
+                className="text-[#F6F1EB] text-sm font-semibold leading-tight"
+                style={{ fontFamily: 'var(--font-display)' }}
+              >
+                4,9/5 sur Google
+              </p>
+              <span className="text-[#D8D0FF] text-xs group-hover:text-[#F6F1EB] transition-colors">
+                Voir les avis →
+              </span>
+            </div>
+          </a>
+
+          {/* Séparateur vertical */}
+          <span className="hidden sm:block w-px h-10 bg-white/15" />
+
+          {/* Partenaire CCI : logo centré sur le texte, sans gonfler la ligne */}
+          <div className="flex items-center gap-2.5">
+            <p
+              className="text-[#F6F1EB] text-sm font-semibold leading-tight whitespace-nowrap"
+              style={{ fontFamily: 'var(--font-display)' }}
+            >
+              Partenaire de la CCI
+            </p>
+            <img
+              src="/logos/CCI.png"
+              alt="Chambre de Commerce et d'Industrie de Normandie"
+              className="h-20 md:h-24 w-auto -my-7 md:-my-9"
+              style={{ filter: 'brightness(0) invert(1) opacity(0.9)' }}
+            />
+          </div>
         </div>
       </div>
     </section>

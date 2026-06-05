@@ -109,21 +109,6 @@ export function Problem() {
           </ul>
 
         </div>
-
-        {/* Bande de transition — on enlève avant d'ajouter */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewport}
-          variants={fadeUp}
-          className="mt-14 md:mt-16 max-w-[760px] mx-auto text-center"
-        >
-          <p className="text-[#1E172D]/75 text-lg md:text-xl leading-relaxed">
-            On vous pousse à ajouter toujours plus. Plus d&apos;outils, plus d&apos;agents, plus d&apos;automatisations.{' '}
-            <strong className="text-[#1E172D]">Nous, on fait l&apos;inverse&nbsp;: on enlève avant d&apos;ajouter.</strong>{' '}
-            On garde les 2-3 usages qui changent vraiment votre quotidien. On jette le reste.
-          </p>
-        </motion.div>
       </div>
     </section>
   )

@@ -1,9 +1,9 @@
 import { Navbar } from '@/components/sections/navbar'
 import { LandingAccordionItem } from '@/components/ui/interactive-image-accordion'
 import { TestimonialsSection } from '@/components/sections/testimonials-section'
-import { ClientsBar } from '@/components/sections/clients-bar'
 import { CircularTestimonialsSection } from '@/components/sections/circular-testimonials-section'
 import { Problem } from '@/components/sections/problem'
+import { Founder } from '@/components/sections/founder'
 import { Modules } from '@/components/sections/modules'
 import { ForWho } from '@/components/sections/for-who'
 import { ValueStack } from '@/components/sections/value-stack'
@@ -27,8 +27,8 @@ export default function Home() {
         <LandingAccordionItem />
       </div>
 
-      <ClientsBar />
       <Problem />
+      <Founder />
       <CircularTestimonialsSection />
       <Modules />
       <TestimonialsSection />

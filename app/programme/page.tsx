@@ -236,7 +236,7 @@ export default function ProgrammePage() {
             </p>
 
             <p className="text-[#D8D0FF]/85 text-base md:text-lg leading-relaxed max-w-[640px] mx-auto md:mx-0">
-              Programme détaillé suivant la Méthode Levier (Démystifier › Déléguer › Réinventer › Amplifier › Assumer › Libérer).
+              Programme détaillé suivant la Méthode Levier (Clarifier › Déléguer › Réinventer › Amplifier › Assumer › Libérer).
               Organisme de formation{' '}
               <strong className="text-[#F6F1EB]">StartPoint IA (EURL BUTZI)</strong>, certifié
               Qualiopi au titre des actions de formation.
@@ -287,7 +287,7 @@ export default function ProgrammePage() {
               est un parcours de 8 semaines qui permet aux entrepreneurs, indépendants et dirigeants de TPE
               d&apos;intégrer concrètement l&apos;intelligence artificielle dans leur activité, sans
               compétences techniques préalables. La progression suit la{' '}
-              <strong>Méthode Levier</strong> : <em>Démystifier</em> l&apos;IA, <em>Déléguer</em> vos
+              <strong>Méthode Levier</strong> : <em>Clarifier</em> l&apos;IA, <em>Déléguer</em> vos
               tâches, <em>Réinventer</em> votre stratégie, <em>Amplifier</em> votre production,{' '}
               <em>Assumer</em> votre offre, puis <em>Libérer</em> votre quotidien grâce à un système
               IA personnel.
@@ -336,7 +336,7 @@ export default function ProgrammePage() {
             <div className="space-y-4 mt-2">
               {modules.map((m) => (
                 <div
-                  key={m.num}
+                  key={m.step}
                   className="bg-white rounded-2xl border border-[#1E172D]/8 p-5 md:p-6"
                 >
                   <div className="flex items-start gap-3 mb-3">
