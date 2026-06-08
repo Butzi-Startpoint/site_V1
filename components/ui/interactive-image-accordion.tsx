@@ -161,7 +161,7 @@ export function LandingAccordionItem() {
             {/* Badge */}
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#A68AFF]/15 border border-[#A68AFF]/30 text-[#D8D0FF] text-sm font-medium tracking-wide">
               <span className="w-2 h-2 rounded-full bg-[#A68AFF] animate-pulse" />
-              Prochaine cohorte : 23 septembre 2026. 6 places restantes
+              Prochaine cohorte : octobre 2026
             </span>
 
             {/* Titre principal — promesse */}

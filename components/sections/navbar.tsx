@@ -89,7 +89,7 @@ export function Navbar() {
             size="sm"
             className="hidden md:inline-flex"
           >
-            Prochaine cohorte 23 septembre
+            Prochaine cohorte octobre 2026
           </CtaChevronButton>
 
           {/* Burger */}
@@ -127,7 +127,7 @@ export function Navbar() {
             <a href={ctaHref} onClick={() => setMenuOpen(false)}
               className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-[#FFFFAB] text-[#1E172D] text-sm font-semibold mt-2 cursor-pointer"
               style={{ fontFamily: 'var(--font-display)' }}>
-              Prochaine cohorte 23 septembre →
+              Prochaine cohorte octobre 2026 →
             </a>
           </div>
         </motion.div>
