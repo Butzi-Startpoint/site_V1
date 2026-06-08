@@ -281,7 +281,7 @@ export function LandingAccordionItem() {
         </div>
 
         {/* Bandeau réassurance : Qualiopi + note Google, juste au-dessus des logos */}
-        <div className="mt-12 md:mt-16 pt-10 border-t border-white/10 flex flex-col sm:flex-row flex-wrap items-center sm:items-start justify-center lg:justify-start gap-6 sm:gap-x-10 sm:gap-y-6">
+        <div className="mt-12 md:mt-16 pt-10 border-t border-white/10 flex flex-col sm:flex-row flex-wrap items-start justify-center lg:justify-start gap-6 sm:gap-x-10 sm:gap-y-6">
           {/* Qualiopi */}
           <div className="flex items-center gap-3">
             <span className="inline-flex items-center justify-center bg-white rounded-lg px-2.5 py-1.5 flex-shrink-0">
@@ -308,7 +308,7 @@ export function LandingAccordionItem() {
             rel="noopener noreferrer"
             className="group flex items-center gap-2.5"
           >
-            <span className="text-[#FBBC04] text-xl leading-none">★</span>
+            <span className="text-[#FBBC04] text-base leading-none tracking-tight">★★★★★</span>
             <div className="text-left">
               <p
                 className="text-[#F6F1EB] text-sm font-semibold leading-tight"
@@ -325,8 +325,8 @@ export function LandingAccordionItem() {
           {/* Séparateur vertical */}
           <span className="hidden sm:block w-px h-10 bg-white/15" />
 
-          {/* Partenaire CCI : logo centré sur le texte, sans gonfler la ligne */}
-          <div className="flex items-center gap-2.5">
+          {/* Partenaire CCI : sur mobile logo puis texte, sur desktop texte puis logo flottant */}
+          <div className="flex flex-row-reverse sm:flex-row items-center gap-2.5">
             <p
               className="text-[#F6F1EB] text-sm font-semibold leading-tight whitespace-nowrap"
               style={{ fontFamily: 'var(--font-display)' }}
@@ -336,7 +336,7 @@ export function LandingAccordionItem() {
             <img
               src="/logos/CCI.png"
               alt="Chambre de Commerce et d'Industrie de Normandie"
-              className="h-20 md:h-24 w-auto -my-7 md:-my-9"
+              className="h-20 md:h-24 w-auto sm:-my-7 md:-my-9"
               style={{ filter: 'brightness(0) invert(1) opacity(0.9)' }}
             />
           </div>

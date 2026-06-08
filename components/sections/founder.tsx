@@ -201,7 +201,7 @@ export function Founder() {
               Dans cette formation, on se concentre sur votre rapport à l&apos;IA, les bons réflexes et
               des usages concrets qui vont changer votre quotidien.&nbsp;»
             </motion.p>
-            <motion.p variants={fadeUp} className="text-[#1E172D]/75 text-lg leading-relaxed mt-8 md:mt-10">
+            <motion.p variants={fadeUp} className="hidden md:block text-[#1E172D]/60 text-base italic leading-relaxed mt-8 md:mt-10">
               Butzi mène depuis 10 ans un travail de fond sur l&apos;humain&nbsp;: notre relation au
               travail, à la créativité et à la transformation.
             </motion.p>
