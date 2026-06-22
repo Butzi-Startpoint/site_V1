@@ -169,10 +169,9 @@ export function LandingAccordionItem() {
               className="text-3xl md:text-6xl lg:text-[3.75rem] font-bold text-[#F6F1EB] leading-[1.15] md:leading-[1.05] tracking-tight"
               style={{ fontFamily: 'var(--font-display)' }}
             >
-              <span className="block">Avec l&apos;IA, libérez le temps pour faire</span>
-              <span className="block mt-1">
-                <span className="text-[#FFFFAB]">grandir votre business</span>.
-              </span>
+              <span className="block">Reprenez votre temps.</span>
+              <span className="block mt-1">Libérez <span className="text-[#FFFFAB]">votre croissance</span>.</span>
+              <span className="block mt-1">Avec l&apos;IA</span>
             </h1>
 
             {/* Sous-titre */}

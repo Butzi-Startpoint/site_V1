@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { fadeUp, stagger, viewport } from '@/lib/animations'
 import { useSwipe } from '@/lib/use-swipe'
+import { CircularTestimonials } from '@/components/ui/circular-testimonials'
 
 type QuoteSegment = { text: string; bold?: boolean }
 type Testimonial = {
@@ -46,6 +47,14 @@ const testimonials: Testimonial[] = [
     src: "/accompli/Paul.jpeg",
   },
 ]
+
+/* Desktop (carrousel 3D d'origine) : on affiche le témoignage de Paul en entier. */
+const desktopTestimonials = testimonials.map(({ quote, more, name, designation, src }) => ({
+  quote: more && typeof quote === 'string' ? quote + more : quote,
+  name,
+  designation,
+  src,
+}))
 
 function renderQuote(quote: string | QuoteSegment[]) {
   const segments = Array.isArray(quote) ? quote : [{ text: quote }]
@@ -107,13 +116,36 @@ export function CircularTestimonialsSection() {
           </motion.h2>
         </motion.div>
 
-        {/* Carte témoignage */}
+        {/* Desktop : carrousel 3D d'origine (présentation conservée) */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewport}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="relative max-w-[760px] mx-auto select-none"
+          className="hidden lg:flex justify-center"
+        >
+          <CircularTestimonials
+            testimonials={desktopTestimonials}
+            autoplay={true}
+            colors={{
+              name: '#1E172D',
+              designation: '#1E172D99',
+              testimony: '#1E172Dcc',
+              arrowBackground: '#1E172D',
+              arrowForeground: '#F6F1EB',
+              arrowHoverBackground: '#A68AFF',
+            }}
+            fontSizes={{ name: '22px', designation: '14px', quote: '17px' }}
+          />
+        </motion.div>
+
+        {/* Mobile : carte témoignage + navigation par avatars */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={viewport}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="lg:hidden relative max-w-[760px] mx-auto select-none"
           {...swipe}
         >
           <div className="relative rounded-3xl bg-white border border-[#1E172D]/[0.08] shadow-[0_24px_60px_rgba(30,23,45,0.10)] px-7 py-9 md:px-12 md:py-12 overflow-hidden">

@@ -22,103 +22,178 @@ export function Problem() {
         style={{ background: 'radial-gradient(circle, rgba(30,23,45,0.07) 0%, transparent 70%)', transform: 'translate(-20%, 20%)' }} />
 
       <div className="relative max-w-[1140px] mx-auto px-6">
-        {/* Texte + CTA, centrés */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewport}
-          variants={stagger}
-          className="max-w-[760px] mx-auto text-center"
-        >
-          <motion.span
-            variants={fadeUp}
-            className="inline-block px-4 py-1.5 rounded-full bg-[#1E172D] text-[#FFFFAB] text-xs font-bold uppercase tracking-widest mb-5"
-            style={{ fontFamily: 'var(--font-display)' }}
-          >
-            Le constat
-          </motion.span>
-
-          <motion.h2
-            variants={fadeUp}
-            className="text-4xl md:text-5xl font-extrabold text-[#1E172D] leading-[1.15] tracking-tight mb-6"
-            style={{ fontFamily: 'var(--font-display)' }}
-          >
-            Vous utilisez l&apos;IA à{' '}
-            <span className="relative inline-block">
-              <span className="relative z-10">5%</span>
-              <motion.span
-                className="absolute -bottom-1 left-0 h-[4px] bg-[#A68AFF] rounded-full"
-                initial={{ width: 0 }}
-                whileInView={{ width: '100%' }}
-                viewport={viewport}
-                transition={{ duration: 0.6, delay: 0.4, ease: 'easeOut' }}
-              />
-            </span>{' '}
-            de son potentiel.
-          </motion.h2>
-
-          <motion.p
-            variants={fadeUp}
-            className="text-[#1E172D]/70 text-lg leading-relaxed mb-8"
-          >
-            Vous avez testé ChatGPT. Deux-trois prompts. Des résultats moyens. Vous êtes retourné à vos habitudes.{' '}
-            <strong className="text-[#1E172D]">
-              Le problème, ce n&apos;est pas l&apos;outil. C&apos;est que personne ne vous a montré comment
-              l&apos;utiliser pour VOTRE activité.
-            </strong>
-          </motion.p>
-
-          <motion.div variants={fadeUp} className="flex justify-center">
-            <CtaChevronButton
-              as="a"
-              href="https://calendly.com/butzi/15-minutes-call-catch-up"
-              target="_blank"
-              rel="noopener noreferrer"
-              tone="dark"
-              size="md"
+        {/* ── Desktop : disposition d'origine, 2 colonnes (texte + CTA | liste claire) ── */}
+        <div className="hidden lg:grid lg:grid-cols-2 gap-20 items-center">
+          {/* Gauche — texte */}
+          <motion.div initial="hidden" whileInView="visible" viewport={viewport} variants={stagger}>
+            <motion.span
+              variants={fadeUp}
+              className="inline-block px-4 py-1.5 rounded-full bg-[#1E172D] text-[#FFFFAB] text-xs font-bold uppercase tracking-widest mb-5"
+              style={{ fontFamily: 'var(--font-display)' }}
             >
-              Réserver un appel gratuit
-            </CtaChevronButton>
+              Le constat
+            </motion.span>
+
+            <motion.h2
+              variants={fadeUp}
+              className="text-4xl md:text-5xl font-extrabold text-[#1E172D] leading-[1.15] tracking-tight mb-6"
+              style={{ fontFamily: 'var(--font-display)' }}
+            >
+              Vous utilisez l&apos;IA à{' '}
+              <span className="relative inline-block">
+                <span className="relative z-10">5%</span>
+                <motion.span
+                  className="absolute -bottom-1 left-0 h-[4px] bg-[#A68AFF] rounded-full"
+                  initial={{ width: 0 }}
+                  whileInView={{ width: '100%' }}
+                  viewport={viewport}
+                  transition={{ duration: 0.6, delay: 0.4, ease: 'easeOut' }}
+                />
+              </span>{' '}
+              de son potentiel.
+            </motion.h2>
+
+            <motion.p variants={fadeUp} className="text-[#1E172D]/70 text-lg leading-relaxed mb-8">
+              Vous avez testé ChatGPT. Deux-trois prompts. Des résultats moyens. Vous êtes retourné à vos habitudes.{' '}
+              <strong className="text-[#1E172D]">
+                Le problème, ce n&apos;est pas l&apos;outil. C&apos;est que personne ne vous a montré comment
+                l&apos;utiliser pour VOTRE activité.
+              </strong>
+            </motion.p>
+
+            <motion.div variants={fadeUp}>
+              <CtaChevronButton
+                as="a"
+                href="https://calendly.com/butzi/15-minutes-call-catch-up"
+                target="_blank"
+                rel="noopener noreferrer"
+                tone="dark"
+                size="md"
+              >
+                Réserver un appel gratuit
+              </CtaChevronButton>
+            </motion.div>
           </motion.div>
-        </motion.div>
 
-        {/* Encadré sombre « Vous vous reconnaissez ? » — les 4 points apparaissent un par un */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-40px' }}
-          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.16, delayChildren: 0.1 } } }}
-          className="mt-12 md:mt-16 max-w-[820px] mx-auto rounded-3xl bg-[#1E172D] px-6 py-8 md:px-10 md:py-10 shadow-[0_24px_60px_rgba(30,23,45,0.25)]"
-        >
-          <motion.h3
-            variants={fadeUp}
-            className="text-center text-2xl md:text-3xl font-extrabold text-[#FFFFAB] tracking-tight mb-6 md:mb-8"
-            style={{ fontFamily: 'var(--font-display)' }}
-          >
-            Vous vous reconnaissez&nbsp;?
-          </motion.h3>
-
-          <ul className="flex flex-col max-w-[640px] mx-auto">
+          {/* Droite — liste de pain points (style clair) */}
+          <ul className="flex flex-col">
             {problems.map((text, i) => (
               <motion.li
                 key={i}
-                variants={fadeUp}
-                className="flex items-start gap-4 py-4 border-b border-white/10 last:border-0"
+                initial={{ opacity: 0, filter: 'blur(14px)', y: 6 }}
+                whileInView={{ opacity: 1, filter: 'blur(0px)', y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ duration: 1.2, delay: i * 0.18, ease: [0.16, 1, 0.3, 1] }}
+                className="flex items-start gap-4 py-4 border-b border-[#1E172D]/10 last:border-0"
               >
-                {/* Croix violette */}
                 <span
                   className="flex-shrink-0 mt-0.5 text-[#A68AFF] font-bold text-base leading-none select-none"
                   style={{ fontFamily: 'var(--font-display)' }}
                 >
                   ✕
                 </span>
-                <p className="text-[#F6F1EB]/80 text-[0.95rem] leading-relaxed [&_strong]:text-[#F6F1EB] [&_strong]:font-bold">
+                <p className="text-[#1E172D]/75 text-[0.95rem] leading-relaxed [&_strong]:text-[#1E172D] [&_strong]:font-bold">
                   {text}
                 </p>
               </motion.li>
             ))}
           </ul>
-        </motion.div>
+        </div>
+
+        {/* ── Mobile/tablette : texte + CTA centrés, puis encadré sombre « Vous vous reconnaissez ? » ── */}
+        <div className="lg:hidden">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewport}
+            variants={stagger}
+            className="max-w-[760px] mx-auto text-center"
+          >
+            <motion.span
+              variants={fadeUp}
+              className="inline-block px-4 py-1.5 rounded-full bg-[#1E172D] text-[#FFFFAB] text-xs font-bold uppercase tracking-widest mb-5"
+              style={{ fontFamily: 'var(--font-display)' }}
+            >
+              Le constat
+            </motion.span>
+
+            <motion.h2
+              variants={fadeUp}
+              className="text-4xl md:text-5xl font-extrabold text-[#1E172D] leading-[1.15] tracking-tight mb-6"
+              style={{ fontFamily: 'var(--font-display)' }}
+            >
+              Vous utilisez l&apos;IA à{' '}
+              <span className="relative inline-block">
+                <span className="relative z-10">5%</span>
+                <motion.span
+                  className="absolute -bottom-1 left-0 h-[4px] bg-[#A68AFF] rounded-full"
+                  initial={{ width: 0 }}
+                  whileInView={{ width: '100%' }}
+                  viewport={viewport}
+                  transition={{ duration: 0.6, delay: 0.4, ease: 'easeOut' }}
+                />
+              </span>{' '}
+              de son potentiel.
+            </motion.h2>
+
+            <motion.p variants={fadeUp} className="text-[#1E172D]/70 text-lg leading-relaxed mb-8">
+              Vous avez testé ChatGPT. Deux-trois prompts. Des résultats moyens. Vous êtes retourné à vos habitudes.{' '}
+              <strong className="text-[#1E172D]">
+                Le problème, ce n&apos;est pas l&apos;outil. C&apos;est que personne ne vous a montré comment
+                l&apos;utiliser pour VOTRE activité.
+              </strong>
+            </motion.p>
+
+            <motion.div variants={fadeUp} className="flex justify-center">
+              <CtaChevronButton
+                as="a"
+                href="https://calendly.com/butzi/15-minutes-call-catch-up"
+                target="_blank"
+                rel="noopener noreferrer"
+                tone="dark"
+                size="md"
+              >
+                Réserver un appel gratuit
+              </CtaChevronButton>
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-40px' }}
+            variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.16, delayChildren: 0.1 } } }}
+            className="mt-12 max-w-[820px] mx-auto rounded-3xl bg-[#1E172D] px-6 py-8 shadow-[0_24px_60px_rgba(30,23,45,0.25)]"
+          >
+            <motion.h3
+              variants={fadeUp}
+              className="text-center text-2xl font-extrabold text-[#FFFFAB] tracking-tight mb-6"
+              style={{ fontFamily: 'var(--font-display)' }}
+            >
+              Vous vous reconnaissez&nbsp;?
+            </motion.h3>
+
+            <ul className="flex flex-col max-w-[640px] mx-auto">
+              {problems.map((text, i) => (
+                <motion.li
+                  key={i}
+                  variants={fadeUp}
+                  className="flex items-start gap-4 py-4 border-b border-white/10 last:border-0"
+                >
+                  <span
+                    className="flex-shrink-0 mt-0.5 text-[#A68AFF] font-bold text-base leading-none select-none"
+                    style={{ fontFamily: 'var(--font-display)' }}
+                  >
+                    ✕
+                  </span>
+                  <p className="text-[#F6F1EB]/80 text-[0.95rem] leading-relaxed [&_strong]:text-[#F6F1EB] [&_strong]:font-bold">
+                    {text}
+                  </p>
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
+        </div>
       </div>
     </section>
   )
