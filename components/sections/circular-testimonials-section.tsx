@@ -1,10 +1,19 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { fadeUp, stagger, viewport } from '@/lib/animations'
-import { CircularTestimonials } from '@/components/ui/circular-testimonials'
+import { useSwipe } from '@/lib/use-swipe'
 
-const testimonials = [
+type QuoteSegment = { text: string; bold?: boolean }
+type Testimonial = {
+  quote: string | QuoteSegment[]
+  name: string
+  designation: string
+  src: string
+}
+
+const testimonials: Testimonial[] = [
   {
     quote:
       "Les conseils de Butzi m'ont aidé à me défaire de certains préjugés sur des outils d'IA, à les intégrer plus rapidement dans mon travail et à gagner en fluidité et en temps.",
@@ -38,16 +47,44 @@ const testimonials = [
   },
 ]
 
+function renderQuote(quote: string | QuoteSegment[]) {
+  const segments = Array.isArray(quote) ? quote : [{ text: quote }]
+  return segments.map((s, i) =>
+    s.bold ? (
+      <strong key={i} className="text-[#1E172D] font-bold">{s.text}</strong>
+    ) : (
+      <span key={i}>{s.text}</span>
+    ),
+  )
+}
+
 export function CircularTestimonialsSection() {
+  const [active, setActive] = useState(0)
+  const len = testimonials.length
+  const goNext = () => setActive((i) => (i + 1) % len)
+  const goPrev = () => setActive((i) => (i - 1 + len) % len)
+  const swipe = useSwipe(goNext, goPrev)
+  const t = testimonials[active]
+
   return (
-    <section className="bg-[#F6F1EB] py-16 md:py-20 relative overflow-hidden">
+    <section className="bg-[#F6F1EB] py-16 md:py-24 relative overflow-hidden">
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#A68AFF]/20 to-transparent" />
 
-      <div className="max-w-[1140px] mx-auto px-6">
+      {/* Halo d'ambiance */}
+      <div
+        className="pointer-events-none absolute top-1/4 right-0 w-[440px] h-[440px] rounded-full"
+        style={{ background: 'radial-gradient(circle, rgba(166,138,255,0.12) 0%, transparent 70%)', transform: 'translate(30%, -20%)' }}
+      />
+      <div
+        className="pointer-events-none absolute bottom-0 left-0 w-[360px] h-[360px] rounded-full"
+        style={{ background: 'radial-gradient(circle, rgba(255,255,171,0.22) 0%, transparent 70%)', transform: 'translate(-30%, 30%)' }}
+      />
+
+      <div className="relative max-w-[1140px] mx-auto px-6">
         {/* Header */}
         <motion.div
           initial="hidden" whileInView="visible" viewport={viewport} variants={stagger}
-          className="text-center mb-12"
+          className="text-center mb-10 md:mb-12"
         >
           <motion.span
             variants={fadeUp}
@@ -61,36 +98,86 @@ export function CircularTestimonialsSection() {
             className="text-4xl md:text-5xl font-extrabold text-[#1E172D] leading-[1.15] tracking-tight"
             style={{ fontFamily: 'var(--font-display)' }}
           >
-            Ce qu&apos;ils ont{' '}
-            <span className="text-[#A68AFF]">accompli</span>
+            Ce qu&apos;ils ont <span className="text-[#A68AFF]">accompli</span>
           </motion.h2>
         </motion.div>
 
-        {/* Component */}
+        {/* Carte témoignage */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewport}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="flex justify-center"
+          className="relative max-w-[760px] mx-auto select-none"
+          {...swipe}
         >
-          <CircularTestimonials
-            testimonials={testimonials}
-            autoplay={true}
-            colors={{
-              name:                "#1E172D",
-              designation:         "#1E172D99",
-              testimony:           "#1E172Dcc",
-              arrowBackground:     "#1E172D",
-              arrowForeground:     "#F6F1EB",
-              arrowHoverBackground:"#A68AFF",
-            }}
-            fontSizes={{
-              name:        "22px",
-              designation: "14px",
-              quote:       "17px",
-            }}
-          />
+          <div className="relative rounded-3xl bg-white border border-[#1E172D]/[0.08] shadow-[0_24px_60px_rgba(30,23,45,0.10)] px-7 py-9 md:px-12 md:py-12 overflow-hidden">
+            {/* Barre d'accent en haut */}
+            <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#A68AFF] via-[#A68AFF]/60 to-[#FFFFAB]" />
+
+            {/* Guillemet décoratif */}
+            <span
+              className="absolute -top-6 right-5 md:right-8 text-[140px] md:text-[180px] leading-none text-[#A68AFF]/[0.10] font-serif select-none pointer-events-none"
+              aria-hidden="true"
+            >
+              &rdquo;
+            </span>
+
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={active}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -16 }}
+                transition={{ duration: 0.35, ease: 'easeInOut' }}
+              >
+                <p className="relative text-[#1E172D]/80 text-lg md:text-xl leading-relaxed font-medium">
+                  {renderQuote(t.quote)}
+                </p>
+
+                <div className="flex items-center gap-4 mt-8 pt-6 border-t border-[#1E172D]/[0.08]">
+                  <img
+                    src={t.src}
+                    alt={t.name}
+                    className="w-14 h-14 rounded-full object-cover ring-2 ring-[#A68AFF]/40 flex-shrink-0"
+                  />
+                  <div className="min-w-0">
+                    <p
+                      className="text-[#1E172D] font-bold text-base md:text-lg leading-tight"
+                      style={{ fontFamily: 'var(--font-display)' }}
+                    >
+                      {t.name}
+                    </p>
+                    <p className="text-[#1E172D]/55 text-sm leading-snug">{t.designation}</p>
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Navigation par avatars */}
+          <div className="flex items-center justify-center gap-3 md:gap-4 mt-7">
+            {testimonials.map((item, i) => (
+              <button
+                key={item.src}
+                onClick={() => setActive(i)}
+                aria-label={`Voir le témoignage de ${item.name}`}
+                className="rounded-full transition-transform duration-300"
+                style={{ transform: i === active ? 'scale(1)' : 'scale(0.82)' }}
+              >
+                <img
+                  src={item.src}
+                  alt={item.name}
+                  className={[
+                    'w-11 h-11 md:w-12 md:h-12 rounded-full object-cover transition-all duration-300',
+                    i === active
+                      ? 'ring-2 ring-[#A68AFF] opacity-100'
+                      : 'ring-1 ring-[#1E172D]/10 opacity-50 hover:opacity-90',
+                  ].join(' ')}
+                />
+              </button>
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>

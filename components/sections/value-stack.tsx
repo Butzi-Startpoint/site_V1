@@ -111,38 +111,48 @@ export function ValueStack() {
           className="space-y-2.5 mb-6"
         >
           {stackItems.map((item) => (
-            <motion.div
-              key={item.num}
-              variants={rowVariant}
-              className="flex items-center gap-4 rounded-2xl px-5 py-4 cursor-default"
-              style={{
-                background: 'rgba(30,23,45,0.03)',
-                border: '1px solid rgba(30,23,45,0.07)',
-              }}
-            >
-              <div
-                className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                style={{ background: 'rgba(166,138,255,0.15)' }}
+            <motion.div key={item.num} variants={rowVariant}>
+              <details
+                className="group rounded-2xl overflow-hidden"
+                style={{
+                  background: 'rgba(30,23,45,0.03)',
+                  border: '1px solid rgba(30,23,45,0.07)',
+                }}
               >
-                {item.icon}
-              </div>
+                <summary className="flex items-center gap-4 px-5 py-4 cursor-pointer list-none [&::-webkit-details-marker]:hidden hover:bg-[#A68AFF]/[0.04] transition-colors">
+                  <div
+                    className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                    style={{ background: 'rgba(166,138,255,0.15)' }}
+                  >
+                    {item.icon}
+                  </div>
 
-              <div className="flex-1 min-w-0">
-                <p className="text-[#1E172D] font-semibold text-sm leading-snug"
-                  style={{ fontFamily: 'var(--font-display)' }}>
-                  {item.title}
+                  <p
+                    className="flex-1 min-w-0 text-[#1E172D] font-semibold text-sm leading-snug"
+                    style={{ fontFamily: 'var(--font-display)' }}
+                  >
+                    {item.title}
+                  </p>
+
+                  <span
+                    className="flex-shrink-0 text-[#A68AFF] font-bold text-sm whitespace-nowrap"
+                    style={{ fontFamily: 'var(--font-display)' }}
+                  >
+                    {item.value}
+                  </span>
+
+                  <svg
+                    className="w-4 h-4 text-[#1E172D]/40 transition-transform duration-200 group-open:rotate-180 flex-shrink-0"
+                    fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+
+                <p className="px-5 pb-4 pl-[76px] -mt-1 text-[#1E172D]/55 text-xs leading-relaxed">
+                  {item.desc}
                 </p>
-                <p className="text-[#1E172D]/50 text-xs mt-0.5 leading-relaxed">{item.desc}</p>
-              </div>
-
-              <div className="flex-shrink-0 text-right pl-4">
-                <span
-                  className="text-[#A68AFF] font-bold text-sm whitespace-nowrap"
-                  style={{ fontFamily: 'var(--font-display)' }}
-                >
-                  {item.value}
-                </span>
-              </div>
+              </details>
             </motion.div>
           ))}
         </motion.div>

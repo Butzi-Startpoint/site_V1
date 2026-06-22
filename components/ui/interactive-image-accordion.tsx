@@ -169,7 +169,7 @@ export function LandingAccordionItem() {
               className="text-3xl md:text-6xl lg:text-[3.75rem] font-bold text-[#F6F1EB] leading-[1.15] md:leading-[1.05] tracking-tight"
               style={{ fontFamily: 'var(--font-display)' }}
             >
-              <span className="block">Enfin du temps pour faire</span>
+              <span className="block">Avec l&apos;IA, libérez le temps pour faire</span>
               <span className="block mt-1">
                 <span className="text-[#FFFFAB]">grandir votre business</span>.
               </span>

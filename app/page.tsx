@@ -33,10 +33,15 @@ export default function Home() {
       <Modules />
       <TestimonialsSection />
       <ValueStack />
-      <Bonuses />
-      <Pricing />
-      <Guarantees />
-      <ForWho />
+
+      {/* Sur mobile : « Pour qui » remonte juste après les bonus (réordonnancement via flex order) */}
+      <div className="flex flex-col">
+        <div className="order-1"><Bonuses /></div>
+        <div className="order-2 md:order-4"><ForWho /></div>
+        <div className="order-3 md:order-2"><Pricing /></div>
+        <div className="order-4 md:order-3"><Guarantees /></div>
+      </div>
+
       <AfterProgram />
       <Team />
       <FaqSection />
