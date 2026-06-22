@@ -166,7 +166,7 @@ export function LandingAccordionItem() {
 
             {/* Titre principal — promesse */}
             <h1
-              className="text-2xl md:text-6xl lg:text-[3.75rem] font-bold text-[#F6F1EB] leading-[1.15] md:leading-[1.05] tracking-tight"
+              className="text-3xl md:text-6xl lg:text-[3.75rem] font-bold text-[#F6F1EB] leading-[1.15] md:leading-[1.05] tracking-tight"
               style={{ fontFamily: 'var(--font-display)' }}
             >
               <span className="block">Enfin du temps pour faire</span>
@@ -178,7 +178,7 @@ export function LandingAccordionItem() {
             {/* Sous-titre */}
             <p className="text-lg text-[#D8D0FF] leading-relaxed max-w-xl mx-auto lg:mx-0 pt-2">
               <span className="block [text-wrap:balance]">
-                <span className="text-[#F6F1EB] font-bold">La formation à l&apos;IA certifiée Qualiopi</span> qui donne des résultats dès les premières semaines, avec des outils concrets et des méthodes accessibles sans aucune compétence technique.
+                <span className="text-[#F6F1EB] font-bold">La formation à l&apos;IA certifiée <span className="font-normal md:font-bold">Qualiopi</span></span> qui donne des résultats dès les premières semaines, avec des outils concrets et des méthodes accessibles sans aucune compétence technique.
               </span>
               {/* Desktop : ligne 1h30 ici ; sur mobile elle passe sous le carrousel */}
               <span className="hidden lg:block mt-2 text-[#F6F1EB] font-medium">
@@ -346,8 +346,8 @@ export function LandingAccordionItem() {
           {/* Séparateur vertical */}
           <span className="hidden sm:block w-px h-10 bg-white/15" />
 
-          {/* Partenaire CCI : sur mobile logo puis texte, sur desktop texte puis logo flottant */}
-          <div className="flex flex-row-reverse sm:flex-row items-center gap-2.5">
+          {/* Partenaire CCI : masqué sur mobile ; desktop texte puis logo flottant */}
+          <div className="hidden sm:flex flex-row-reverse sm:flex-row items-center gap-2.5">
             <p
               className="text-[#F6F1EB] text-sm font-semibold leading-tight whitespace-nowrap"
               style={{ fontFamily: 'var(--font-display)' }}

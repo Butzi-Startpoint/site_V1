@@ -152,7 +152,7 @@ export const CircularTestimonials = ({
         {/* Images — sur mobile : en fondu derrière le texte */}
         <div ref={containerRef}
           style={{ position: "relative", width: "100%", height: "24rem", perspective: "1000px", touchAction: "pan-y", userSelect: "none" }}
-          className="max-md:!absolute max-md:!inset-0 max-md:!h-full max-md:!w-full max-md:overflow-hidden max-md:rounded-3xl max-md:opacity-[0.18]">
+          className="max-md:!absolute max-md:!top-0 max-md:!inset-x-0 max-md:!h-[34rem] max-md:overflow-hidden max-md:rounded-3xl max-md:opacity-[0.18]">
           {testimonials.map((t, i) => (
             <img key={t.src} src={t.src} alt={t.name} draggable={false}
               style={{
@@ -166,11 +166,11 @@ export const CircularTestimonials = ({
         </div>
 
         {/* Voile clair mobile pour la lisibilité du texte par-dessus l'image */}
-        <div className="md:hidden absolute inset-0 z-[1] rounded-3xl bg-[#F6F1EB]/45 pointer-events-none" />
+        <div className="md:hidden absolute top-0 inset-x-0 h-[34rem] z-[1] rounded-3xl bg-[#F6F1EB]/45 pointer-events-none" />
 
         {/* Content — sur mobile : au premier plan, centré, texte noir */}
         <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}
-          className="max-md:!relative max-md:z-10 max-md:!justify-center max-md:items-center max-md:text-center max-md:min-h-[26rem] max-md:py-8">
+          className="max-md:!relative max-md:z-10 max-md:!justify-center max-md:items-center max-md:text-center max-md:min-h-[34rem] max-md:py-8">
           <AnimatePresence mode="wait">
             <motion.div key={activeIndex} variants={quoteVariants}
               initial="initial" animate="animate" exit="exit"
@@ -233,11 +233,13 @@ export const CircularTestimonials = ({
           </div>
         </div>
 
-        {/* Indice de swipe mobile : flèche minimaliste à droite, centrée verticalement */}
-        <div className="md:hidden absolute right-1 top-1/2 -translate-y-1/2 z-20 pointer-events-none text-[#1E172D]/50 motion-safe:animate-pulse">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M9 6l6 6-6 6" />
-          </svg>
+        {/* Indice de swipe mobile : pastille flèche à droite, centrée sur l'image */}
+        <div className="md:hidden absolute right-2 top-[17rem] -translate-y-1/2 z-20 pointer-events-none">
+          <span className="flex items-center justify-center w-9 h-9 rounded-full bg-[#1E172D] text-[#F6F1EB] shadow-lg shadow-[#1E172D]/30 motion-safe:animate-pulse">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M9 6l6 6-6 6" />
+            </svg>
+          </span>
         </div>
       </div>
     </div>
