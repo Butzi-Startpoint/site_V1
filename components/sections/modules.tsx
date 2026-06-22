@@ -325,7 +325,7 @@ export function Modules() {
           />
 
           {/* Borne de départ */}
-          <motion.div variants={premiumReveal} className="relative flex items-center gap-5 md:gap-7 pb-7 md:pb-8">
+          <motion.div variants={premiumReveal} className="relative flex items-center gap-4 md:gap-7 pb-4 md:pb-8">
             <div className="relative z-10 flex-shrink-0">
               <div
                 className="w-10 h-10 md:w-11 md:h-11 rounded-full inline-flex items-center justify-center"
@@ -341,15 +341,15 @@ export function Modules() {
                 {startBorne.label}
               </span>
               <p className="text-[#1E172D]/75 text-sm leading-relaxed">
-                <span className="text-[#1E172D] font-bold" style={{ fontFamily: 'var(--font-display)' }}>{startBorne.title}</span>{' '}
-                {startBorne.text}
+                <span className="text-[#1E172D] font-bold" style={{ fontFamily: 'var(--font-display)' }}>{startBorne.title}</span>
+                <span className="hidden md:inline">{' '}{startBorne.text}</span>
               </p>
             </div>
           </motion.div>
 
           {/* 6 étapes Levier */}
           {levierSteps.map((s) => (
-            <motion.div key={s.n} variants={premiumReveal} className="relative flex items-center gap-5 md:gap-7 pb-7 md:pb-8">
+            <motion.div key={s.n} variants={premiumReveal} className="relative flex items-center gap-4 md:gap-7 pb-4 md:pb-8">
               {/* Nœud numéroté lumineux */}
               <div className="relative z-10 flex-shrink-0">
                 <div
@@ -373,7 +373,7 @@ export function Modules() {
                   boxShadow: s.highlight ? '0 24px 56px rgba(166,138,255,0.28)' : '0 22px 50px rgba(166,138,255,0.20)',
                   transition: { type: 'spring', stiffness: 300, damping: 24 },
                 }}
-                className="group relative overflow-hidden flex-1 min-w-0 rounded-2xl p-5 md:p-6"
+                className="group relative overflow-hidden flex-1 min-w-0 rounded-2xl p-4 md:p-6"
                 style={{
                   background: s.highlight
                     ? 'linear-gradient(180deg, rgba(166,138,255,0.10), rgba(166,138,255,0.03))'
@@ -398,10 +398,11 @@ export function Modules() {
                     </span>
                   )}
                 </div>
-                <h3 className="text-lg md:text-xl font-extrabold text-[#1E172D] tracking-tight mb-1.5" style={{ fontFamily: 'var(--font-display)' }}>
+                <h3 className="text-lg md:text-xl font-extrabold text-[#1E172D] tracking-tight md:mb-1.5" style={{ fontFamily: 'var(--font-display)' }}>
                   {s.step}
                 </h3>
-                <p className="text-[#1E172D]/65 text-sm leading-relaxed">{s.objectif}</p>
+                {/* Description masquée sur mobile pour que toute la méthode tienne sur un écran */}
+                <p className="hidden md:block text-[#1E172D]/65 text-sm leading-relaxed">{s.objectif}</p>
                 {/* Résultat : caché par défaut (desktop), révélé en fondu au survol */}
                 <div className="overflow-hidden transition-all duration-1000 ease-out max-h-0 opacity-0 mt-0 md:group-hover:max-h-24 md:group-hover:opacity-100 md:group-hover:mt-3">
                   <div className="flex items-start gap-2 pt-3 border-t border-[#1E172D]/[0.06]">
@@ -415,7 +416,7 @@ export function Modules() {
           ))}
 
           {/* Borne d'arrivée — carte qui se déplie au survol, comme les étapes */}
-          <motion.div variants={premiumReveal} className="relative flex items-center gap-5 md:gap-7">
+          <motion.div variants={premiumReveal} className="relative flex items-center gap-4 md:gap-7">
             <div className="relative z-10 flex-shrink-0">
               <div
                 className="w-10 h-10 md:w-11 md:h-11 rounded-full inline-flex items-center justify-center"
@@ -432,7 +433,7 @@ export function Modules() {
                 boxShadow: '0 22px 50px rgba(166,138,255,0.20)',
                 transition: { type: 'spring', stiffness: 300, damping: 24 },
               }}
-              className="group relative overflow-hidden flex-1 min-w-0 rounded-2xl p-5 md:p-6"
+              className="group relative overflow-hidden flex-1 min-w-0 rounded-2xl p-4 md:p-6"
               style={{
                 background: 'linear-gradient(180deg, #ffffff, #FBFAFF)',
                 border: '1px solid rgba(30,23,45,0.07)',
@@ -441,13 +442,14 @@ export function Modules() {
             >
               <div className="pointer-events-none absolute inset-0 bg-[#A68AFF]/0 group-hover:bg-[#A68AFF]/[0.08] transition-colors duration-1000 ease-out" />
               <div className="relative">
-                <span className="block text-[10px] font-bold uppercase tracking-widest text-[#A68AFF] mb-2" style={{ fontFamily: 'var(--font-display)' }}>
+                <span className="block text-[10px] font-bold uppercase tracking-widest text-[#A68AFF] mb-1 md:mb-2" style={{ fontFamily: 'var(--font-display)' }}>
                   {endBorne.label}
                 </span>
-                <h3 className="text-lg md:text-xl font-extrabold text-[#1E172D] tracking-tight mb-1.5" style={{ fontFamily: 'var(--font-display)' }}>
+                <h3 className="text-lg md:text-xl font-extrabold text-[#1E172D] tracking-tight md:mb-1.5" style={{ fontFamily: 'var(--font-display)' }}>
                   {endBorne.title}
                 </h3>
-                <p className="text-[#1E172D]/65 text-sm leading-relaxed">{endBorne.text}</p>
+                {/* Description masquée sur mobile */}
+                <p className="hidden md:block text-[#1E172D]/65 text-sm leading-relaxed">{endBorne.text}</p>
                 {/* Détail : caché par défaut (desktop), révélé en fondu au survol */}
                 <div className="overflow-hidden transition-all duration-1000 ease-out max-h-0 opacity-0 mt-0 md:group-hover:max-h-32 md:group-hover:opacity-100 md:group-hover:mt-3">
                   <div className="flex items-start gap-2 pt-3 border-t border-[#1E172D]/[0.06]">

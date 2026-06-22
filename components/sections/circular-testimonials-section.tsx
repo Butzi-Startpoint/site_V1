@@ -8,6 +8,7 @@ import { useSwipe } from '@/lib/use-swipe'
 type QuoteSegment = { text: string; bold?: boolean }
 type Testimonial = {
   quote: string | QuoteSegment[]
+  more?: string
   name: string
   designation: string
   src: string
@@ -22,25 +23,24 @@ const testimonials: Testimonial[] = [
     src: "/accompli/Daniel.jpg",
   },
   {
-    quote: [
-      { text: "Avant je tournais à 60h par semaine entre mes trois activités, sans jamais avoir le temps de créer, et je ne voyais pas comment l'IA pouvait changer ça. Butzi m'a aidé à construire un vrai système : aujourd'hui l'IA gère ma prise de notes, une partie de mon admin, et l'IA est devenue un réflexe. " },
-      { text: "Je suis redescendu à 45h par semaine, je dégage 8h pour la création pure, et mon chiffre d'affaires a grimpé de 35% sur quatre mois.", bold: true },
-      { text: " Le projet qui résume tout ça : j'ai créé Growth Cats, avec Claude. Sans coder. Et je respire enfin un peu !" },
-    ],
+    quote:
+      "Avant je tournais à 60h par semaine entre mes trois activités, sans jamais le temps de créer. Butzi m'a aidé à construire un vrai système : aujourd'hui l'IA gère ma prise de notes et une partie de mon admin, c'est devenu un réflexe. Je suis redescendu à 45h par semaine, et j'ai monté un nouveau projet, avec le temps de respirer.",
     name: "Nabeel Arshad",
     designation: "Growth Cats · One With Magic — magicien & entrepreneur",
     src: "/accompli/nabeel.jpeg",
   },
   {
     quote:
-      "J'utilisais déjà certains outils IA de manière isolée et je sentais que j'utilisais à peine 10% de leur potentiel. Après la formation, ma vision a changé : je commence par une stratégie globale où l'IA m'accompagne dès le début, avant de rentrer dans le détail, notamment sur l'automatisation. Nous avons même pu créer notre propre ERP qu'aucun autre outil du marché n'était en mesure de faire. Un gain de temps énorme et des choses impossibles à envisager avant !",
+      "J'utilisais déjà certains outils IA de manière isolée et je sentais que j'utilisais à peine 10% de leur potentiel. Après la formation, ma vision a changé : je commence par une stratégie globale où l'IA m'accompagne dès le début, avant de rentrer dans le détail, notamment sur l'automatisation. Nous avons même pu créer notre propre ERP avec l'IA.",
     name: "Guillaume Touzé",
     designation: "Association Easy Way",
     src: "/accompli/guillaume.jpg",
   },
   {
     quote:
-      "Avant de travailler avec Butzi, j'avais quelques notions sur l'IA : je comprenais globalement ce que c'était et à quoi ça servait, mais je n'étais absolument pas conscient de l'ampleur et du potentiel qu'elle pouvait avoir. La première chose que Butzi a apportée, ça a été de m'aider à mettre de l'ordre dans toutes les informations que j'avais déjà en tête, tout en élargissant énormément ma compréhension du sujet. Sa formation m'a surtout été très utile dans ma manière d'utiliser l'IA au quotidien : j'ai réalisé que ce n'était pas un outil limité à une seule fonction, mais quelque chose de beaucoup plus vaste, avec des possibilités presque infinies.",
+      "Avant de travailler avec Butzi, j'avais quelques notions sur l'IA : je comprenais globalement ce que c'était et à quoi ça servait, mais je n'étais absolument pas conscient de l'ampleur et du potentiel qu'elle pouvait avoir. La première chose que Butzi a apportée, ça a été de m'aider à mettre de l'ordre dans toutes les informations que j'avais déjà en tête, tout en élargissant énormément ma compréhension du sujet.",
+    more:
+      " Sa formation m'a surtout été très utile dans ma manière d'utiliser l'IA au quotidien : j'ai réalisé que ce n'était pas un outil limité à une seule fonction, mais quelque chose de beaucoup plus vaste, avec des possibilités presque infinies.",
     name: "Paul Rivenc",
     designation: "Done Design",
     src: "/accompli/Paul.jpeg",
@@ -60,9 +60,14 @@ function renderQuote(quote: string | QuoteSegment[]) {
 
 export function CircularTestimonialsSection() {
   const [active, setActive] = useState(0)
+  const [expanded, setExpanded] = useState(false)
   const len = testimonials.length
-  const goNext = () => setActive((i) => (i + 1) % len)
-  const goPrev = () => setActive((i) => (i - 1 + len) % len)
+  const select = (i: number) => {
+    setActive(((i % len) + len) % len)
+    setExpanded(false)
+  }
+  const goNext = () => select(active + 1)
+  const goPrev = () => select(active - 1)
   const swipe = useSwipe(goNext, goPrev)
   const t = testimonials[active]
 
@@ -133,7 +138,24 @@ export function CircularTestimonialsSection() {
               >
                 <p className="relative text-[#1E172D]/80 text-lg md:text-xl leading-relaxed font-medium">
                   {renderQuote(t.quote)}
+                  {t.more && expanded && <span>{t.more}</span>}
                 </p>
+
+                {t.more && (
+                  <button
+                    onClick={() => setExpanded((e) => !e)}
+                    className="mt-3 inline-flex items-center gap-1.5 text-[#A68AFF] font-semibold text-sm hover:text-[#7C5CE0] transition-colors"
+                    style={{ fontFamily: 'var(--font-display)' }}
+                  >
+                    {expanded ? 'Réduire' : 'Lire la suite'}
+                    <svg
+                      className={['w-4 h-4 transition-transform duration-200', expanded ? 'rotate-180' : ''].join(' ')}
+                      fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                )}
 
                 <div className="flex items-center gap-4 mt-8 pt-6 border-t border-[#1E172D]/[0.08]">
                   <img
@@ -160,7 +182,7 @@ export function CircularTestimonialsSection() {
             {testimonials.map((item, i) => (
               <button
                 key={item.src}
-                onClick={() => setActive(i)}
+                onClick={() => select(i)}
                 aria-label={`Voir le témoignage de ${item.name}`}
                 className="rounded-full transition-transform duration-300"
                 style={{ transform: i === active ? 'scale(1)' : 'scale(0.82)' }}
