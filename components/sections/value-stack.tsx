@@ -66,6 +66,65 @@ const stackItems = [
       </svg>
     ),
   },
+  {
+    num: 'b1',
+    title: 'Bonus · Kit Accélérateur « Premiers résultats en 48h »',
+    desc: '5 systèmes d\'IA prêts à l\'emploi (emails pro, posts LinkedIn, devis, comptes-rendus, veille métier). Vous gagnez du temps avant même la première session.',
+    value: '297 €',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A68AFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+      </svg>
+    ),
+  },
+  {
+    num: 'b2',
+    title: 'Bonus · Bibliothèque de Cas d\'Usage IA par Métier',
+    desc: '+40 cas d\'usage classés par profil (consultant, coach, formateur, freelance) avec le prompt exact et le résultat attendu.',
+    value: '297 €',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A68AFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+      </svg>
+    ),
+  },
+  {
+    num: 'b3',
+    title: 'Bonus · Garantie Zéro Session Perdue',
+    desc: 'Replay sous 24h + résumé écrit avec les actions clés. Vous manquez une session, vous ne perdez rien.',
+    value: '197 €',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A68AFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <polyline points="9 12 11 14 15 10"/>
+      </svg>
+    ),
+  },
+  {
+    num: 'b4',
+    title: 'Bonus · Kit opérationnel à chaque module',
+    desc: 'Templates, skills IA, prompts, checklists, systèmes d\'IA. Tout ce qu\'il faut pour appliquer immédiatement, testé sur +120 entrepreneurs.',
+    value: '297 €',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A68AFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+      </svg>
+    ),
+  },
+  {
+    num: 'b5',
+    title: 'Bonus · Mises à jour à vie',
+    desc: 'L\'IA évolue chaque mois. Votre cours aussi. Accès permanent aux nouvelles vidéos, prompts et méthodes ajoutés au programme.',
+    value: '497 €',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A68AFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="23 4 23 10 17 10"/>
+        <polyline points="1 20 1 14 7 14"/>
+        <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+      </svg>
+    ),
+  },
 ]
 
 const rowVariant = {
@@ -85,13 +144,6 @@ export function ValueStack() {
           initial="hidden" whileInView="visible" viewport={viewport} variants={stagger}
           className="text-center mb-12"
         >
-          <motion.span
-            variants={fadeUp}
-            className="inline-block px-4 py-1.5 rounded-full bg-[#1E172D] text-[#FFFFAB] text-xs font-bold uppercase tracking-widest mb-5"
-            style={{ fontFamily: 'var(--font-display)' }}
-          >
-            Ce qui est inclus
-          </motion.span>
           <motion.h2
             variants={fadeUp}
             className="text-3xl md:text-4xl font-extrabold text-[#1E172D] leading-[1.2] tracking-tight"
@@ -157,33 +209,84 @@ export function ValueStack() {
           ))}
         </motion.div>
 
-        {/* Total bar — cliquable vers les offres */}
+        {/* Encadré violet — détail des prix, cliquable vers les offres */}
         <motion.a
           href="#pricing"
-          initial={{ opacity: 0, y: 20, scale: 0.98 }}
+          initial={{ opacity: 0, y: 24, scale: 0.97 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          whileHover={{ scale: 1.015 }}
+          whileHover={{ scale: 1.01 }}
           viewport={viewport}
-          transition={{ duration: 0.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="rounded-2xl px-6 py-5 flex items-center justify-between cursor-pointer scroll-smooth"
-          style={{ background: '#FFFFAB' }}
+          transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          className="relative block rounded-3xl overflow-hidden p-8 md:p-12 cursor-pointer"
+          style={{
+            background: 'linear-gradient(135deg, #1E172D 0%, #2a1f3d 100%)',
+            boxShadow: '0 24px 64px rgba(30,23,45,0.25)',
+          }}
         >
-          <div>
-            <p className="text-[#1E172D]/50 text-[10px] uppercase tracking-widest font-bold"
-              style={{ fontFamily: 'var(--font-display)' }}>
-              Valeur totale du programme
-            </p>
-            <p className="text-[#1E172D] font-extrabold text-3xl tracking-tight mt-0.5"
-              style={{ fontFamily: 'var(--font-display)' }}>
-              4 488 €
-            </p>
-          </div>
-          <div className="text-right">
-            <p className="text-[#1E172D]/50 text-xs mb-0.5">À partir de</p>
-            <p className="text-[#1E172D] font-extrabold text-2xl tracking-tight"
-              style={{ fontFamily: 'var(--font-display)' }}>
-              2 997 €
-            </p>
+          {/* Accent glows */}
+          <div
+            className="absolute -top-20 -right-20 w-72 h-72 rounded-full pointer-events-none"
+            style={{ background: 'radial-gradient(circle, rgba(255,255,171,0.18) 0%, transparent 70%)' }}
+          />
+          <div
+            className="absolute -bottom-32 -left-32 w-96 h-96 rounded-full pointer-events-none"
+            style={{ background: 'radial-gradient(circle, rgba(166,138,255,0.15) 0%, transparent 70%)' }}
+          />
+
+          <div className="relative w-full">
+            <div className="space-y-2.5">
+              <div className="flex items-baseline justify-between gap-6 text-[#F6F1EB]/85">
+                <span className="text-sm md:text-base">
+                  Programme{' '}
+                  <span style={{ fontFamily: 'var(--font-tech)' }}>Accélération IA 360</span>{' '}
+                  complet
+                </span>
+                <span
+                  className="font-bold text-base md:text-lg whitespace-nowrap"
+                  style={{ fontFamily: 'var(--font-display)' }}
+                >
+                  4 488 €
+                </span>
+              </div>
+              <div className="flex items-baseline justify-between gap-6 text-[#F6F1EB]/85">
+                <span className="text-sm md:text-base">Tous les bonus inclus</span>
+                <span
+                  className="font-bold text-base md:text-lg whitespace-nowrap"
+                  style={{ fontFamily: 'var(--font-display)' }}
+                >
+                  + 1 585 €
+                </span>
+              </div>
+              <div className="h-px bg-[#F6F1EB]/15 my-2" />
+              <div className="flex items-baseline justify-between gap-6">
+                <span
+                  className="text-[#F6F1EB] text-base md:text-lg font-bold"
+                  style={{ fontFamily: 'var(--font-display)' }}
+                >
+                  Valeur cumulée totale
+                </span>
+                <span
+                  className="text-[#F6F1EB]/60 text-2xl md:text-3xl font-extrabold whitespace-nowrap line-through decoration-[#A68AFF]/70 decoration-[3px]"
+                  style={{ fontFamily: 'var(--font-display)' }}
+                >
+                  6 073 €
+                </span>
+              </div>
+              <div className="flex items-baseline justify-between gap-6 pt-1">
+                <span
+                  className="text-[#FFFFAB] text-base md:text-lg font-bold"
+                  style={{ fontFamily: 'var(--font-display)' }}
+                >
+                  À partir de
+                </span>
+                <span
+                  className="text-[#FFFFAB] text-3xl md:text-4xl font-extrabold tracking-tight whitespace-nowrap leading-none"
+                  style={{ fontFamily: 'var(--font-display)' }}
+                >
+                  2 997 €
+                </span>
+              </div>
+            </div>
           </div>
         </motion.a>
       </div>

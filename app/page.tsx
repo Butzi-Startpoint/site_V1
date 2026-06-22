@@ -7,7 +7,6 @@ import { Founder } from '@/components/sections/founder'
 import { Modules } from '@/components/sections/modules'
 import { ForWho } from '@/components/sections/for-who'
 import { ValueStack } from '@/components/sections/value-stack'
-import { Bonuses } from '@/components/sections/bonuses'
 import { Pricing } from '@/components/sections/pricing'
 import { Guarantees } from '@/components/sections/guarantees'
 import { AfterProgram } from '@/components/sections/after-program'
@@ -34,12 +33,11 @@ export default function Home() {
       <TestimonialsSection />
       <ValueStack />
 
-      {/* Sur mobile : « Pour qui » remonte juste après les bonus (réordonnancement via flex order) */}
+      {/* Sur mobile : « Pour qui » remonte juste après « Ce qui est inclus » (réordonnancement via flex order) */}
       <div className="flex flex-col">
-        <div className="order-1"><Bonuses /></div>
-        <div className="order-2 md:order-4"><ForWho /></div>
-        <div className="order-3 md:order-2"><Pricing /></div>
-        <div className="order-4 md:order-3"><Guarantees /></div>
+        <div className="order-1 md:order-3"><ForWho /></div>
+        <div className="order-2 md:order-1"><Pricing /></div>
+        <div className="order-3 md:order-2"><Guarantees /></div>
       </div>
 
       <AfterProgram />

@@ -348,20 +348,10 @@ export function Modules() {
                 {/* Voile teinté au survol — version claire/transparente de la couleur des cercles */}
                 <div className="pointer-events-none absolute inset-0 bg-[#A68AFF]/0 group-hover:bg-[#A68AFF]/[0.08] transition-colors duration-1000 ease-out" />
                 <div className="relative">
-                {s.highlight && (
-                  <div className="mb-2">
-                    <span
-                      className="text-[9px] font-bold uppercase tracking-widest text-[#1E172D] bg-[#FFFFAB] rounded-full px-2 py-0.5"
-                      style={{ fontFamily: 'var(--font-display)' }}
-                    >
-                      Temps fort
-                    </span>
-                  </div>
-                )}
                 <h3 className="text-lg md:text-xl font-extrabold text-[#1E172D] tracking-tight md:mb-1.5" style={{ fontFamily: 'var(--font-display)' }}>
                   {s.step}
                   {/* Mobile : courte explication en police légère, à côté du verbe */}
-                  <span className="md:hidden font-light text-[#1E172D]/55 text-sm"> {s.hint}</span>
+                  <span className="md:hidden font-light text-[#1E172D]/55 text-sm">{' '}{s.hint}</span>
                 </h3>
                 {/* Description complète masquée sur mobile (visible desktop) */}
                 <p className="hidden md:block text-[#1E172D]/65 text-sm leading-relaxed">{s.objectif}</p>
@@ -445,7 +435,7 @@ export function Modules() {
                   className="text-lg md:text-xl font-extrabold text-[#1E172D] tracking-tight"
                   style={{ fontFamily: 'var(--font-display)' }}
                 >
-                  Cadre &amp; certification Qualiopi
+                  Cadre Qualiopi
                 </h3>
                 <p className="text-[#1E172D]/50 text-xs">
                   Organisme certifié Qualiopi · informations réglementaires
@@ -517,7 +507,7 @@ export function Modules() {
           <ProgramEmailButton label="Recevoir le programme complet" />
           <a
             href="#pricing"
-            className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl bg-[#1E172D] text-[#F6F1EB] font-bold text-sm hover:bg-[#2a1f3d] transition-colors"
+            className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-[#FFFFAB] text-[#1E172D] font-bold text-sm shadow-lg shadow-[#FFFFAB]/20 hover:bg-[#f5f08c] transition-colors"
             style={{ fontFamily: 'var(--font-display)' }}
           >
             Rejoindre la prochaine cohorte
