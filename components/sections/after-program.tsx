@@ -43,20 +43,13 @@ export function AfterProgram() {
           variants={stagger}
           className="mb-12 md:mb-14"
         >
-          <motion.span
-            variants={fadeUp}
-            className="inline-block px-4 py-1.5 rounded-full bg-[#FFFFAB] text-[#1E172D] text-xs font-bold uppercase tracking-widest mb-6"
-            style={{ fontFamily: 'var(--font-display)' }}
-          >
-            Après le programme
-          </motion.span>
           <motion.h2
             variants={fadeUp}
             className="text-4xl md:text-5xl xl:text-6xl font-extrabold text-[#F6F1EB] leading-[1.05] tracking-tight"
             style={{ fontFamily: 'var(--font-display)' }}
           >
-            Et après les{' '}
-            <span className="text-[#FFFFAB]">8 semaines&nbsp;?</span>
+            La communauté qui{' '}
+            <span className="text-[#FFFFAB]">change la donne</span>
           </motion.h2>
         </motion.div>
 

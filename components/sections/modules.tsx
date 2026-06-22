@@ -105,25 +105,11 @@ const evaluationQualiopi = [
   'Seuil de réussite : 80 % aux évaluations',
 ]
 
-/* ── Bornes de départ et d'arrivée (style allégé) ── */
-const startBorne = {
-  label: 'Semaine 1 · point de départ',
-  title: 'Embarquement.',
-  text: 'On installe vos outils et vous rencontrez la communauté. Vous arrivez en semaine 2 prêt à produire.',
-}
-
-const endBorne = {
-  label: 'Semaine 8 · atterrissage',
-  title: 'Session de groupe.',
-  text: 'On traite vos cas concrets en live et on ancre vos nouvelles habitudes. Vous repartez autonome.',
-  detail: 'On débloque ensemble les dernières problématiques de chacun et vous créez votre propre roadmap sur la méthode Levier : vous repartez avec un plan d\'action clair, applicable dès le lendemain.',
-}
-
 /* ── Les 6 étapes de la Méthode Levier ── */
 type LevierStep = {
   n: string
   step: string
-  week: string
+  hint: string
   objectif: string
   result: string
   highlight?: boolean
@@ -133,42 +119,42 @@ const levierSteps: LevierStep[] = [
   {
     n: '1',
     step: 'Clarifier',
-    week: 'Semaine 2',
+    hint: "ce qu'est l'IA et où vous en êtes",
     objectif: "Comprendre ce que l'IA peut vraiment faire pour vous, sans jargon ni hype.",
     result: "Vous savez utiliser l'IA et repérer où elle peut vraiment vous aider.",
   },
   {
     n: '2',
     step: 'Déléguer',
-    week: 'Semaine 3',
+    hint: 'le pénible et le redondant',
     objectif: 'Confier vos tâches répétitives (devis, mails, relances) et récupérer vos premières heures.',
     result: 'Vos premières heures récupérées, dès la semaine 3.',
   },
   {
     n: '3',
     step: 'Réinventer',
-    week: 'Semaine 4',
+    hint: "votre business avec l'IA",
     objectif: "Prendre du recul et repenser votre business avec l'IA comme copilote stratégique.",
     result: 'Une vision claire et un tableau de bord branché sur vos données.',
   },
   {
     n: '4',
     step: 'Amplifier',
-    week: 'Semaine 5',
+    hint: 'votre contenu et votre visibilité',
     objectif: 'Produire plus sans travailler plus : contenu, visibilité et marketing augmentés.',
     result: 'Un système de contenu qui travaille pour vous.',
   },
   {
     n: '5',
     step: 'Assumer',
-    week: 'Semaine 6',
+    hint: 'votre offre et vos prix',
     objectif: 'Construire une offre claire, oser annoncer votre prix, et vendre en restant vous-même.',
     result: 'Vous parlez à plus de clients, sans vous renier.',
   },
   {
     n: '6',
     step: 'Libérer',
-    week: 'Semaine 7',
+    hint: 'votre temps avec vos process IA',
     objectif: 'Créer vos propres process IA : ce qui prenait des heures se fait en quelques minutes, et vous gardez la main.',
     result: 'Votre système IA personnel : vos corvées en quelques clics, vous aux commandes.',
     highlight: true,
@@ -324,29 +310,6 @@ export function Modules() {
             }}
           />
 
-          {/* Borne de départ */}
-          <motion.div variants={premiumReveal} className="relative flex items-center gap-4 md:gap-7 pb-4 md:pb-8">
-            <div className="relative z-10 flex-shrink-0">
-              <div
-                className="w-10 h-10 md:w-11 md:h-11 rounded-full inline-flex items-center justify-center"
-                style={{ background: '#F1ECFF', boxShadow: '0 0 0 3px #fff, 0 4px 12px rgba(166,138,255,0.16)' }}
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A68AFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14M13 6l6 6-6 6" />
-                </svg>
-              </div>
-            </div>
-            <div className="flex-1 min-w-0 rounded-2xl border border-dashed border-[#A68AFF]/40 bg-[#A68AFF]/[0.04] px-5 py-4 md:px-6 md:py-5">
-              <span className="block text-[10px] font-bold uppercase tracking-widest text-[#A68AFF] mb-1" style={{ fontFamily: 'var(--font-display)' }}>
-                {startBorne.label}
-              </span>
-              <p className="text-[#1E172D]/75 text-sm leading-relaxed">
-                <span className="text-[#1E172D] font-bold" style={{ fontFamily: 'var(--font-display)' }}>{startBorne.title}</span>
-                <span className="hidden md:inline">{' '}{startBorne.text}</span>
-              </p>
-            </div>
-          </motion.div>
-
           {/* 6 étapes Levier */}
           {levierSteps.map((s) => (
             <motion.div key={s.n} variants={premiumReveal} className="relative flex items-center gap-4 md:gap-7 pb-4 md:pb-8">
@@ -385,23 +348,22 @@ export function Modules() {
                 {/* Voile teinté au survol — version claire/transparente de la couleur des cercles */}
                 <div className="pointer-events-none absolute inset-0 bg-[#A68AFF]/0 group-hover:bg-[#A68AFF]/[0.08] transition-colors duration-1000 ease-out" />
                 <div className="relative">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#A68AFF]" style={{ fontFamily: 'var(--font-display)' }}>
-                    {s.week}
-                  </span>
-                  {s.highlight && (
+                {s.highlight && (
+                  <div className="mb-2">
                     <span
                       className="text-[9px] font-bold uppercase tracking-widest text-[#1E172D] bg-[#FFFFAB] rounded-full px-2 py-0.5"
                       style={{ fontFamily: 'var(--font-display)' }}
                     >
                       Temps fort
                     </span>
-                  )}
-                </div>
+                  </div>
+                )}
                 <h3 className="text-lg md:text-xl font-extrabold text-[#1E172D] tracking-tight md:mb-1.5" style={{ fontFamily: 'var(--font-display)' }}>
                   {s.step}
+                  {/* Mobile : courte explication en police légère, à côté du verbe */}
+                  <span className="md:hidden font-light text-[#1E172D]/55 text-sm"> {s.hint}</span>
                 </h3>
-                {/* Description masquée sur mobile pour que toute la méthode tienne sur un écran */}
+                {/* Description complète masquée sur mobile (visible desktop) */}
                 <p className="hidden md:block text-[#1E172D]/65 text-sm leading-relaxed">{s.objectif}</p>
                 {/* Résultat : caché par défaut (desktop), révélé en fondu au survol */}
                 <div className="overflow-hidden transition-all duration-1000 ease-out max-h-0 opacity-0 mt-0 md:group-hover:max-h-24 md:group-hover:opacity-100 md:group-hover:mt-3">
@@ -414,52 +376,6 @@ export function Modules() {
               </motion.div>
             </motion.div>
           ))}
-
-          {/* Borne d'arrivée — carte qui se déplie au survol, comme les étapes */}
-          <motion.div variants={premiumReveal} className="relative flex items-center gap-4 md:gap-7">
-            <div className="relative z-10 flex-shrink-0">
-              <div
-                className="w-10 h-10 md:w-11 md:h-11 rounded-full inline-flex items-center justify-center"
-                style={{ background: '#F1ECFF', boxShadow: '0 0 0 3px #fff, 0 4px 12px rgba(166,138,255,0.16)' }}
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A68AFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M20 6 9 17l-5-5" />
-                </svg>
-              </div>
-            </div>
-            <motion.div
-              whileHover={{
-                y: -3,
-                boxShadow: '0 22px 50px rgba(166,138,255,0.20)',
-                transition: { type: 'spring', stiffness: 300, damping: 24 },
-              }}
-              className="group relative overflow-hidden flex-1 min-w-0 rounded-2xl p-4 md:p-6"
-              style={{
-                background: 'linear-gradient(180deg, #ffffff, #FBFAFF)',
-                border: '1px solid rgba(30,23,45,0.07)',
-                boxShadow: '0 4px 20px rgba(30,23,45,0.04)',
-              }}
-            >
-              <div className="pointer-events-none absolute inset-0 bg-[#A68AFF]/0 group-hover:bg-[#A68AFF]/[0.08] transition-colors duration-1000 ease-out" />
-              <div className="relative">
-                <span className="block text-[10px] font-bold uppercase tracking-widest text-[#A68AFF] mb-1 md:mb-2" style={{ fontFamily: 'var(--font-display)' }}>
-                  {endBorne.label}
-                </span>
-                <h3 className="text-lg md:text-xl font-extrabold text-[#1E172D] tracking-tight md:mb-1.5" style={{ fontFamily: 'var(--font-display)' }}>
-                  {endBorne.title}
-                </h3>
-                {/* Description masquée sur mobile */}
-                <p className="hidden md:block text-[#1E172D]/65 text-sm leading-relaxed">{endBorne.text}</p>
-                {/* Détail : caché par défaut (desktop), révélé en fondu au survol */}
-                <div className="overflow-hidden transition-all duration-1000 ease-out max-h-0 opacity-0 mt-0 md:group-hover:max-h-32 md:group-hover:opacity-100 md:group-hover:mt-3">
-                  <div className="flex items-start gap-2 pt-3 border-t border-[#1E172D]/[0.06]">
-                    <span className="text-[#A68AFF] font-bold leading-snug" style={{ fontFamily: 'var(--font-display)' }}>›</span>
-                    <span className="text-[#1E172D]/70 text-sm font-medium leading-snug">{endBorne.detail}</span>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
         </motion.div>
 
         {/* Programme de la formation — dépliant */}

@@ -146,21 +146,21 @@ export function Founder() {
             {/* Chiffres clés façon section L'équipe */}
             <motion.div
               variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
-              className="flex flex-wrap md:flex-nowrap justify-center md:justify-start gap-2.5 mb-6"
+              className="flex flex-nowrap justify-center md:justify-start gap-2 md:gap-2.5 mb-6"
             >
               {metrics.map((m) => (
                 <motion.div
                   key={m.label}
                   variants={fadeUp}
-                  className="px-3.5 py-2.5 rounded-xl bg-white border border-[#1E172D]/10 hover:border-[#A68AFF] transition-colors text-center min-w-[64px]"
+                  className="flex-1 md:flex-none min-w-0 md:min-w-[64px] px-2 md:px-3.5 py-2 md:py-2.5 rounded-xl bg-white border border-[#1E172D]/10 hover:border-[#A68AFF] transition-colors text-center"
                 >
                   <p
-                    className="text-xl font-extrabold text-[#1E172D] leading-none"
+                    className="text-base md:text-xl font-extrabold text-[#1E172D] leading-none"
                     style={{ fontFamily: 'var(--font-display)' }}
                   >
                     {m.value}
                   </p>
-                  <p className="text-[10px] font-semibold text-[#1E172D]/55 uppercase tracking-wide mt-1">
+                  <p className="text-[9px] md:text-[10px] font-semibold text-[#1E172D]/55 uppercase tracking-tight md:tracking-wide mt-1">
                     {m.label}
                   </p>
                 </motion.div>
@@ -172,15 +172,15 @@ export function Founder() {
                 target="_blank"
                 rel="noopener noreferrer"
                 variants={fadeUp}
-                className="px-3.5 py-2.5 rounded-xl bg-white border border-[#1E172D]/10 hover:border-[#A68AFF] transition-colors text-center min-w-[64px]"
+                className="flex-1 md:flex-none min-w-0 md:min-w-[64px] px-2 md:px-3.5 py-2 md:py-2.5 rounded-xl bg-white border border-[#1E172D]/10 hover:border-[#A68AFF] transition-colors text-center"
               >
                 <p
-                  className="text-xl font-extrabold text-[#1E172D] leading-none"
+                  className="text-base md:text-xl font-extrabold text-[#1E172D] leading-none"
                   style={{ fontFamily: 'var(--font-display)' }}
                 >
                   4,9/5
                 </p>
-                <p className="text-[10px] font-semibold text-[#1E172D]/55 uppercase tracking-wide mt-1 flex items-center justify-center gap-1">
+                <p className="text-[9px] md:text-[10px] font-semibold text-[#1E172D]/55 uppercase tracking-tight md:tracking-wide mt-1 flex items-center justify-center gap-1">
                   <span className="text-[#FBBC04] text-sm leading-none">★</span> sur Google
                 </p>
               </motion.a>
