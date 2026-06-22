@@ -92,7 +92,11 @@ export function Problem() {
                 whileInView={{ opacity: 1, filter: 'blur(0px)', y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 1.2, delay: i * 0.18, ease: [0.16, 1, 0.3, 1] }}
-                className="flex items-start gap-4 py-4 border-b border-[#1E172D]/10 last:border-0"
+                className={[
+                  'items-start gap-4 py-4 border-b border-[#1E172D]/10 last:border-0',
+                  // Dernier point masqué sur mobile (visible à partir de md)
+                  i === problems.length - 1 ? 'hidden md:flex' : 'flex',
+                ].join(' ')}
               >
                 {/* Croix violette */}
                 <span

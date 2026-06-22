@@ -166,7 +166,7 @@ export function LandingAccordionItem() {
 
             {/* Titre principal — promesse */}
             <h1
-              className="text-5xl md:text-6xl lg:text-[3.75rem] font-bold text-[#F6F1EB] leading-[1.05] tracking-tight"
+              className="text-2xl md:text-6xl lg:text-[3.75rem] font-bold text-[#F6F1EB] leading-[1.15] md:leading-[1.05] tracking-tight"
               style={{ fontFamily: 'var(--font-display)' }}
             >
               <span className="block">Enfin du temps pour faire</span>
@@ -178,15 +178,16 @@ export function LandingAccordionItem() {
             {/* Sous-titre */}
             <p className="text-lg text-[#D8D0FF] leading-relaxed max-w-xl mx-auto lg:mx-0 pt-2">
               <span className="block [text-wrap:balance]">
-                La formation certifiée Qualiopi qui donne des résultats dès les premières semaines, avec des outils concrets et des méthodes accessibles sans aucune compétence technique.
+                <span className="text-[#F6F1EB] font-bold">La formation à l&apos;IA certifiée Qualiopi</span> qui donne des résultats dès les premières semaines, avec des outils concrets et des méthodes accessibles sans aucune compétence technique.
               </span>
-              <span className="block mt-2 text-[#F6F1EB] font-medium">
+              {/* Desktop : ligne 1h30 ici ; sur mobile elle passe sous le carrousel */}
+              <span className="hidden lg:block mt-2 text-[#F6F1EB] font-medium">
                 1h30 par semaine, à distance, sur 8 semaines.
               </span>
             </p>
 
-            {/* CTA + social proof */}
-            <div className="flex flex-col sm:flex-row items-center lg:items-start gap-4 pt-6 md:pt-8">
+            {/* CTA + social proof — desktop : ici ; mobile : sous le carrousel */}
+            <div className="hidden lg:flex flex-col sm:flex-row items-center lg:items-start gap-4 pt-6 md:pt-8">
               <a
                 href="#methode"
                 className={[
@@ -275,6 +276,26 @@ export function LandingAccordionItem() {
                   aria-label={`Voir ${accordionItems[index].title}`}
                 />
               ))}
+            </div>
+
+            {/* Mobile : ligne 1h30 + CTA, après le carrousel */}
+            <div className="lg:hidden mt-8 flex flex-col items-center gap-5 text-center">
+              <p className="text-[#F6F1EB] font-medium text-lg">
+                1h30 par semaine, à distance, sur 8 semaines.
+              </p>
+              <a
+                href="#methode"
+                className={[
+                  'inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-base',
+                  'bg-[#FFFFAB] text-[#1E172D] shadow-lg shadow-[#FFFFAB]/20',
+                  'transition-all duration-200',
+                ].join(' ')}
+              >
+                En savoir plus
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </a>
             </div>
           </div>
 

@@ -147,13 +147,15 @@ export function ValueStack() {
           ))}
         </motion.div>
 
-        {/* Total bar */}
-        <motion.div
+        {/* Total bar — cliquable vers les offres */}
+        <motion.a
+          href="#pricing"
           initial={{ opacity: 0, y: 20, scale: 0.98 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          whileHover={{ scale: 1.015 }}
           viewport={viewport}
           transition={{ duration: 0.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="rounded-2xl px-6 py-5 flex items-center justify-between"
+          className="rounded-2xl px-6 py-5 flex items-center justify-between cursor-pointer scroll-smooth"
           style={{ background: '#FFFFAB' }}
         >
           <div>
@@ -173,7 +175,7 @@ export function ValueStack() {
               2 997 €
             </p>
           </div>
-        </motion.div>
+        </motion.a>
       </div>
     </section>
   )

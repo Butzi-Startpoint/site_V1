@@ -71,8 +71,8 @@ const programmeSessions: Session[] = [
   {
     n: '·',
     week: 'Semaine 8',
-    title: 'Coaching de déblocage',
-    desc: "Coaching personnalisé. On traite vos cas concrets en live, on ancre vos nouvelles habitudes et on cale votre plan d'action pour la suite. Vous repartez autonome.",
+    title: 'Session de groupe',
+    desc: "Session de groupe. On traite vos cas concrets en live, on ancre vos nouvelles habitudes et on cale votre plan d'action pour la suite. Vous repartez autonome.",
   },
 ]
 
@@ -114,8 +114,9 @@ const startBorne = {
 
 const endBorne = {
   label: 'Semaine 8 · atterrissage',
-  title: 'Coaching de déblocage.',
+  title: 'Session de groupe.',
   text: 'On traite vos cas concrets en live et on ancre vos nouvelles habitudes. Vous repartez autonome.',
+  detail: 'On débloque ensemble les dernières problématiques de chacun et vous créez votre propre roadmap sur la méthode Levier : vous repartez avec un plan d\'action clair, applicable dès le lendemain.',
 }
 
 /* ── Les 6 étapes de la Méthode Levier ── */
@@ -172,6 +173,13 @@ const levierSteps: LevierStep[] = [
     result: 'Votre système IA personnel : vos corvées en quelques clics, vous aux commandes.',
     highlight: true,
   },
+]
+
+/* ── Version condensée mobile : les 8 jalons en accordéon (tient sur un écran) ── */
+const parcoursMobile = [
+  { week: 'Semaine 1', title: 'Embarquement', body: startBorne.text },
+  ...levierSteps.map((s) => ({ week: s.week, title: s.step, body: `${s.objectif} ${s.result}` })),
+  { week: 'Semaine 8', title: 'Session de groupe', body: `${endBorne.text} ${endBorne.detail}` },
 ]
 
 /* ── Sous-composants ── */
@@ -306,13 +314,50 @@ export function Modules() {
           </motion.p>
         </motion.div>
 
-        {/* Timeline verticale premium : rail continu + nœuds lumineux */}
+        {/* Méthode Levier — version condensée mobile : accordéon des 8 jalons */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+          variants={fadeUp}
+          className="md:hidden max-w-[760px] mx-auto mb-10 rounded-2xl border border-[#1E172D]/10 bg-white overflow-hidden divide-y divide-[#1E172D]/[0.08]"
+        >
+          {parcoursMobile.map((p) => (
+            <details key={p.week} className="group">
+              <summary className="flex items-center gap-2.5 px-4 py-2.5 cursor-pointer list-none [&::-webkit-details-marker]:hidden hover:bg-[#A68AFF]/[0.04] transition-colors">
+                <span
+                  className="flex-shrink-0 w-[68px] text-[10px] font-bold uppercase tracking-wider text-[#A68AFF]"
+                  style={{ fontFamily: 'var(--font-display)' }}
+                >
+                  {p.week}
+                </span>
+                <span
+                  className="flex-1 text-[#1E172D] font-bold text-[13px] leading-tight tracking-tight"
+                  style={{ fontFamily: 'var(--font-display)' }}
+                >
+                  {p.title}
+                </span>
+                <svg
+                  className="w-3.5 h-3.5 text-[#1E172D]/40 transition-transform duration-200 group-open:rotate-180 flex-shrink-0"
+                  fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <p className="px-4 pb-3 pl-[90px] -mt-0.5 text-[#1E172D]/65 text-[13px] leading-relaxed">
+                {p.body}
+              </p>
+            </details>
+          ))}
+        </motion.div>
+
+        {/* Timeline verticale premium : rail continu + nœuds lumineux (desktop) */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={viewport}
           variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.13, delayChildren: 0.08 } } }}
-          className="relative max-w-[760px] mx-auto mb-12"
+          className="hidden md:block relative max-w-[760px] mx-auto mb-12"
         >
           {/* Rail vertical dégradé */}
           <div
@@ -413,7 +458,7 @@ export function Modules() {
             </motion.div>
           ))}
 
-          {/* Borne d'arrivée */}
+          {/* Borne d'arrivée — carte qui se déplie au survol, comme les étapes */}
           <motion.div variants={premiumReveal} className="relative flex items-center gap-5 md:gap-7">
             <div className="relative z-10 flex-shrink-0">
               <div
@@ -425,15 +470,37 @@ export function Modules() {
                 </svg>
               </div>
             </div>
-            <div className="flex-1 min-w-0 rounded-2xl border border-dashed border-[#A68AFF]/40 bg-[#A68AFF]/[0.04] px-5 py-4 md:px-6 md:py-5">
-              <span className="block text-[10px] font-bold uppercase tracking-widest text-[#A68AFF] mb-1" style={{ fontFamily: 'var(--font-display)' }}>
-                {endBorne.label}
-              </span>
-              <p className="text-[#1E172D]/75 text-sm leading-relaxed">
-                <span className="text-[#1E172D] font-bold" style={{ fontFamily: 'var(--font-display)' }}>{endBorne.title}</span>{' '}
-                {endBorne.text}
-              </p>
-            </div>
+            <motion.div
+              whileHover={{
+                y: -3,
+                boxShadow: '0 22px 50px rgba(166,138,255,0.20)',
+                transition: { type: 'spring', stiffness: 300, damping: 24 },
+              }}
+              className="group relative overflow-hidden flex-1 min-w-0 rounded-2xl p-5 md:p-6"
+              style={{
+                background: 'linear-gradient(180deg, #ffffff, #FBFAFF)',
+                border: '1px solid rgba(30,23,45,0.07)',
+                boxShadow: '0 4px 20px rgba(30,23,45,0.04)',
+              }}
+            >
+              <div className="pointer-events-none absolute inset-0 bg-[#A68AFF]/0 group-hover:bg-[#A68AFF]/[0.08] transition-colors duration-1000 ease-out" />
+              <div className="relative">
+                <span className="block text-[10px] font-bold uppercase tracking-widest text-[#A68AFF] mb-2" style={{ fontFamily: 'var(--font-display)' }}>
+                  {endBorne.label}
+                </span>
+                <h3 className="text-lg md:text-xl font-extrabold text-[#1E172D] tracking-tight mb-1.5" style={{ fontFamily: 'var(--font-display)' }}>
+                  {endBorne.title}
+                </h3>
+                <p className="text-[#1E172D]/65 text-sm leading-relaxed">{endBorne.text}</p>
+                {/* Détail : caché par défaut (desktop), révélé en fondu au survol */}
+                <div className="overflow-hidden transition-all duration-1000 ease-out max-h-32 opacity-100 mt-3 md:max-h-0 md:opacity-0 md:mt-0 md:group-hover:max-h-32 md:group-hover:opacity-100 md:group-hover:mt-3">
+                  <div className="flex items-start gap-2 pt-3 border-t border-[#1E172D]/[0.06]">
+                    <span className="text-[#A68AFF] font-bold leading-snug" style={{ fontFamily: 'var(--font-display)' }}>›</span>
+                    <span className="text-[#1E172D]/70 text-sm font-medium leading-snug">{endBorne.detail}</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
         </motion.div>
 

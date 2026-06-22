@@ -63,7 +63,7 @@ const thirdColumn  = testimonials.slice(6, 9)
 
 export function TestimonialsSection() {
   return (
-    <section className="bg-[#F6F1EB] py-20 md:py-28 relative overflow-hidden">
+    <section className="hidden md:block bg-[#F6F1EB] py-20 md:py-28 relative overflow-hidden">
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#A68AFF]/20 to-transparent" />
 
       <div className="max-w-[1140px] mx-auto px-6">

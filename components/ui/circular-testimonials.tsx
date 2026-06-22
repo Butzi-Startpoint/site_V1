@@ -146,12 +146,13 @@ export const CircularTestimonials = ({
 
   return (
     <div style={{ width: "100%", maxWidth: "56rem", padding: "2rem" }}>
-      <div style={{ display: "grid", gap: "5rem" }}
-        className="md:grid-cols-2 grid-cols-1">
-        {/* Images */}
+      <div {...swipe}
+        style={{ display: "grid", gap: "5rem" }}
+        className="md:grid-cols-2 grid-cols-1 relative max-md:!gap-0">
+        {/* Images — sur mobile : en fondu derrière le texte */}
         <div ref={containerRef}
-          {...swipe}
-          style={{ position: "relative", width: "100%", height: "24rem", perspective: "1000px", touchAction: "pan-y", userSelect: "none" }}>
+          style={{ position: "relative", width: "100%", height: "24rem", perspective: "1000px", touchAction: "pan-y", userSelect: "none" }}
+          className="max-md:!absolute max-md:!inset-0 max-md:!h-full max-md:!w-full max-md:overflow-hidden max-md:rounded-3xl max-md:opacity-[0.18]">
           {testimonials.map((t, i) => (
             <img key={t.src} src={t.src} alt={t.name} draggable={false}
               style={{
@@ -164,8 +165,12 @@ export const CircularTestimonials = ({
           ))}
         </div>
 
-        {/* Content */}
-        <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+        {/* Voile clair mobile pour la lisibilité du texte par-dessus l'image */}
+        <div className="md:hidden absolute inset-0 z-[1] rounded-3xl bg-[#F6F1EB]/45 pointer-events-none" />
+
+        {/* Content — sur mobile : au premier plan, centré, texte noir */}
+        <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}
+          className="max-md:!relative max-md:z-10 max-md:!justify-center max-md:items-center max-md:text-center max-md:min-h-[26rem] max-md:py-8">
           <AnimatePresence mode="wait">
             <motion.div key={activeIndex} variants={quoteVariants}
               initial="initial" animate="animate" exit="exit"
@@ -198,9 +203,9 @@ export const CircularTestimonials = ({
             </motion.div>
           </AnimatePresence>
 
-          {/* Arrows */}
+          {/* Arrows — masquées sur mobile (navigation au swipe) */}
           <div style={{ display: "flex", gap: "1.5rem", paddingTop: "3rem" }}
-            className="md:pt-0">
+            className="md:pt-0 max-md:!hidden">
             <button onClick={handlePrev}
               onMouseEnter={() => setHoverPrev(true)}
               onMouseLeave={() => setHoverPrev(false)}
@@ -226,6 +231,13 @@ export const CircularTestimonials = ({
               <ArrowRight size={18} color={colorArrowFg} />
             </button>
           </div>
+        </div>
+
+        {/* Indice de swipe mobile : flèche minimaliste à droite, centrée verticalement */}
+        <div className="md:hidden absolute right-1 top-1/2 -translate-y-1/2 z-20 pointer-events-none text-[#1E172D]/50 motion-safe:animate-pulse">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M9 6l6 6-6 6" />
+          </svg>
         </div>
       </div>
     </div>

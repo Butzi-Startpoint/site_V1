@@ -135,7 +135,7 @@ const modules: Module[] = [
     objectif: "Créer des solutions IA sur mesure pour ses besoins spécifiques.",
     contenu: [
       "Création de projets avec l'IA",
-      'Maîtrise des Claude Skills',
+      'Expérimentation avec Claude Co-work et Claude Skills',
       'Découverte et test du vibe coding',
       "Création d'un tableau de bord",
     ],
@@ -144,13 +144,12 @@ const modules: Module[] = [
   {
     num: '·',
     week: 'Semaine 8',
-    step: 'Coaching de déblocage',
+    step: 'Session de groupe',
     objectif: "Formaliser un système IA personnel complet et un plan d'action durable.",
     contenu: [
-      'Agents et assistants pour gagner en autonomie',
-      'Connecteurs et Cowork : automatiser sans coder',
-      'Roadmap : standardiser, simplifier, automatiser',
-      'Coaching personnalisé pour construire vos premiers projets sur mesure',
+      'Créer sa propre roadmap sur la méthode Levier et son plan d\'action',
+      'Session de groupe pour construire vos premiers projets sur mesure',
+      'Déblocage des problématiques restantes des apprenants',
     ],
     livrable: "Un système IA complet et un plan d'action post-programme.",
   },

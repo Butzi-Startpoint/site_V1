@@ -196,8 +196,9 @@ export function Founder() {
             <motion.p variants={fadeUp} className="text-[#1E172D]/75 text-lg leading-relaxed mt-4">
               Le but est de gagner de l&apos;espace pour repenser son activité avec l&apos;IA. De
               l&apos;espace pour se concentrer sur ce qui vous fait vibrer et, idéalement, scaler.
+              <span className="md:hidden">&nbsp;»</span>
             </motion.p>
-            <motion.p variants={fadeUp} className="text-[#1E172D]/75 text-lg leading-relaxed mt-4">
+            <motion.p variants={fadeUp} className="hidden md:block text-[#1E172D]/75 text-lg leading-relaxed mt-4">
               Dans cette formation, on se concentre sur votre rapport à l&apos;IA, les bons réflexes et
               des usages concrets qui vont changer votre quotidien.&nbsp;»
             </motion.p>

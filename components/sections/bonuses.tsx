@@ -96,14 +96,36 @@ export function Bonuses() {
           </motion.h2>
         </motion.div>
 
-        {/* Bonus cards */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-60px' }}
-          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } } }}
-          className="space-y-4 mb-8"
-        >
+        {/* Bonus cards — repliés par défaut (mobile + desktop), clic pour dérouler */}
+        <details className="group mb-8 rounded-2xl border border-[#1E172D]/10 bg-white/60 overflow-hidden">
+          <summary className="flex items-center gap-3 px-5 py-4 cursor-pointer list-none [&::-webkit-details-marker]:hidden hover:bg-[#A68AFF]/[0.04] transition-colors">
+            <span
+              className="flex-shrink-0 w-9 h-9 rounded-xl bg-[#FFFFAB] inline-flex items-center justify-center text-[#1E172D] font-extrabold text-sm"
+              style={{ fontFamily: 'var(--font-display)' }}
+            >
+              5
+            </span>
+            <div className="flex-1">
+              <p className="text-[#1E172D] font-bold text-sm md:text-base" style={{ fontFamily: 'var(--font-display)' }}>
+                Voir le détail des 5 bonus
+              </p>
+              <p className="text-[#1E172D]/50 text-xs">Inclus dans toutes les offres · valeur 1&nbsp;585&nbsp;€</p>
+            </div>
+            <svg
+              className="w-4 h-4 text-[#1E172D]/40 transition-transform duration-200 group-open:rotate-180 flex-shrink-0"
+              fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-60px' }}
+            variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } } }}
+            className="space-y-4 px-4 md:px-5 pb-5 pt-1"
+          >
           {bonuses.map((b) => (
             <motion.div
               key={b.num}
@@ -152,15 +174,18 @@ export function Bonuses() {
               </div>
             </motion.div>
           ))}
-        </motion.div>
+          </motion.div>
+        </details>
 
-        {/* Hero comparison block — value vs price */}
-        <motion.div
+        {/* Hero comparison block — value vs price, cliquable vers les offres */}
+        <motion.a
+          href="#pricing"
           initial={{ opacity: 0, y: 24, scale: 0.97 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          whileHover={{ scale: 1.01 }}
           viewport={viewport}
           transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="relative rounded-3xl overflow-hidden p-8 md:p-12"
+          className="relative block rounded-3xl overflow-hidden p-8 md:p-12 cursor-pointer"
           style={{
             background: 'linear-gradient(135deg, #1E172D 0%, #2a1f3d 100%)',
             boxShadow: '0 24px 64px rgba(30,23,45,0.25)',
@@ -236,7 +261,7 @@ export function Bonuses() {
               </div>
             </div>
           </div>
-        </motion.div>
+        </motion.a>
       </div>
     </section>
   )
