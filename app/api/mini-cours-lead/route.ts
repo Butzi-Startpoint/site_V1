@@ -26,6 +26,23 @@ function escapeHtml(s: string): string {
 const WRAP = (inner: string) =>
   `<!DOCTYPE html><html><body style="font-family:system-ui,sans-serif;color:#1E172D;max-width:560px;margin:0 auto;padding:24px;line-height:1.6">${inner}</body></html>`
 
+const FOOTER_HTML = `
+  <hr style="border:none;border-top:1px solid #e5e0d8;margin:32px 0 16px;">
+  <p style="color:#999;font-size:12px;line-height:1.6;margin:0;">
+    Vous recevez cet email parce que vous vous êtes inscrit au mini-cours IA sur startpoint-ia.fr.<br>
+    BUTZI EURL — Organisme de formation certifié Qualiopi · SIRET&nbsp;847&nbsp;593&nbsp;100&nbsp;00013<br>
+    61 boulevard du Maréchal Joffre, 92340 Bourg-la-Reine<br>
+    Vous ne souhaitez plus recevoir ces emails ? Répondez «&nbsp;STOP&nbsp;» à ce message.
+  </p>`
+
+const FOOTER_TEXT = `
+
+—
+Vous recevez cet email parce que vous vous êtes inscrit au mini-cours IA sur startpoint-ia.fr.
+BUTZI EURL — Organisme de formation certifié Qualiopi · SIRET 847 593 100 00013
+61 boulevard du Maréchal Joffre, 92340 Bourg-la-Reine
+Vous ne souhaitez plus recevoir ces emails ? Répondez « STOP » à ce message.`
+
 function welcomeHtml(): string {
   return WRAP(`
   <p>Bonjour,</p>
@@ -40,7 +57,24 @@ function welcomeHtml(): string {
       Le cours gratuit pour les PME →
     </a>
   </p>
-  <p>À très vite,<br><strong>Butzi</strong><br><span style="color:#666;font-size:13px;">Fondateur, Startpoint IA</span></p>`)
+  <p>À très vite,<br><strong>Butzi</strong><br><span style="color:#666;font-size:13px;">Fondateur, Startpoint IA</span></p>${FOOTER_HTML}`)
+}
+
+function welcomeText(): string {
+  return `Bonjour,
+
+Vous avez demandé l'accès au mini-cours sur l'IA et vous allez voir, vous avez bien fait !
+
+Vous allez bientôt recevoir une série d'emails gratuits pour comprendre et faire vos premiers pas dans l'IA, spécialement conçue pour les indépendants, entrepreneurs et freelances.
+
+⚠️ Attention : ce n'est pas le même contenu que pour les PME. Ici, on parle agilité, débrouille, efficacité et créativité.
+
+Si vous avez une équipe ou que vous rentrez plutôt dans la case PME, un autre cours gratuit sur 4 jours est mieux adapté à vos besoins (sécurité des données, déploiement de l'IA, etc.) :
+${PME_URL}
+
+À très vite,
+Butzi
+Fondateur, Startpoint IA${FOOTER_TEXT}`
 }
 
 function followupHtml(): string {
@@ -57,7 +91,24 @@ function followupHtml(): string {
     📞 Ou directement&nbsp;: <a href="${CALENDLY_URL}" style="color:#1E172D;font-weight:bold;">${CALENDLY_URL}</a>
   </p>
   <p>Si vous avez des questions d'ici là, répondez simplement à ce mail.</p>
-  <p>À très vite,<br><strong>Butzi</strong><br><span style="color:#666;font-size:13px;">Fondateur, Startpoint IA</span></p>`)
+  <p>À très vite,<br><strong>Butzi</strong><br><span style="color:#666;font-size:13px;">Fondateur, Startpoint IA</span></p>${FOOTER_HTML}`)
+}
+
+function followupText(): string {
+  return `Bonjour,
+
+Vous voilà arrivé(e) au bout du mini-cours IA, bravo ! J'espère qu'il vous a donné des premières idées concrètes à appliquer dans votre activité.
+
+Maintenant que vous avez les bases, j'aime bien prendre 15 minutes (un café virtuel) avec les personnes qui ont suivi le mini-cours. Pas de blabla commercial : on regarde ensemble où vous en êtes avec l'IA, ce qui bloque, et les prochaines étapes utiles pour vous.
+
+Réservez votre créneau :
+${CALENDLY_URL}
+
+Si vous avez des questions d'ici là, répondez simplement à ce mail.
+
+À très vite,
+Butzi
+Fondateur, Startpoint IA${FOOTER_TEXT}`
 }
 
 function notificationHtml(email: string): string {
@@ -70,6 +121,15 @@ function notificationHtml(email: string): string {
   </ul>
   <p>L'email de bienvenue est parti automatiquement, et la relance « café virtuel » est programmée dans ${FOLLOWUP_DELAY_DAYS} jours.</p>
   <p style="color:#666;font-size:13px;margin-top:32px;">Notification automatique du site</p>`)
+}
+
+function notificationText(email: string): string {
+  return `Nouvelle inscription au mini-cours IA depuis la landing page.
+
+Email : ${email}
+Source : landing, bloc « Mini-cours gratuit »
+
+L'email de bienvenue est parti automatiquement, et la relance « café virtuel » est programmée dans ${FOLLOWUP_DELAY_DAYS} jours.`
 }
 
 export async function POST(request: Request) {
@@ -99,6 +159,10 @@ export async function POST(request: Request) {
       replyTo: REPLY_TO,
       subject: 'Votre mini-cours IA arrive 🎉',
       html: welcomeHtml(),
+      text: welcomeText(),
+      headers: {
+        'List-Unsubscribe': `<mailto:${REPLY_TO}?subject=Desinscription>`,
+      },
     }),
     resend.emails.send({
       from: FROM,
@@ -106,6 +170,7 @@ export async function POST(request: Request) {
       replyTo: email,
       subject: 'Nouvelle inscription au mini-cours IA',
       html: notificationHtml(email),
+      text: notificationText(email),
     }),
   ])
 
@@ -123,6 +188,10 @@ export async function POST(request: Request) {
       replyTo: REPLY_TO,
       subject: 'Vous avez fini le mini-cours, un café virtuel ? ☕',
       html: followupHtml(),
+      text: followupText(),
+      headers: {
+        'List-Unsubscribe': `<mailto:${REPLY_TO}?subject=Desinscription>`,
+      },
       scheduledAt,
     })
     if (followup.error) {

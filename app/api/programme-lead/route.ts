@@ -59,6 +59,7 @@ function welcomeHtml(firstName: string): string {
   <p style="color:#999;font-size:12px;line-height:1.6;margin:0;">
     Vous recevez cet email parce que vous avez demandé le programme <strong>Accélération IA 360</strong> sur acceleration-ia.fr.<br>
     BUTZI EURL — Organisme de formation certifié Qualiopi · SIRET&nbsp;847&nbsp;593&nbsp;100&nbsp;00013<br>
+    61 boulevard du Maréchal Joffre, 92340 Bourg-la-Reine<br>
     Une question, ou vous ne souhaitez plus être contacté ? Répondez simplement «&nbsp;STOP&nbsp;» à cet email.
   </p>
 </body></html>`
@@ -86,6 +87,7 @@ Fondateur, Startpoint IA
 —
 Vous recevez cet email parce que vous avez demandé le programme Accélération IA 360 sur acceleration-ia.fr.
 BUTZI EURL — Organisme de formation certifié Qualiopi · SIRET 847 593 100 00013
+61 boulevard du Maréchal Joffre, 92340 Bourg-la-Reine
 Vous ne souhaitez plus être contacté ? Répondez « STOP » à cet email.`
 }
 
