@@ -55,7 +55,50 @@ function welcomeHtml(firstName: string): string {
   </p>
   <p>Si vous avez des questions d'ici là, répondez simplement à ce mail.</p>
   <p>À très vite,<br><strong>Butzi</strong><br><span style="color:#666;font-size:13px;">Fondateur, Startpoint IA</span></p>
+  <hr style="border:none;border-top:1px solid #e5e0d8;margin:32px 0 16px;">
+  <p style="color:#999;font-size:12px;line-height:1.6;margin:0;">
+    Vous recevez cet email parce que vous avez demandé le programme <strong>Accélération IA 360</strong> sur acceleration-ia.fr.<br>
+    BUTZI EURL — Organisme de formation certifié Qualiopi · SIRET&nbsp;847&nbsp;593&nbsp;100&nbsp;00013<br>
+    Une question, ou vous ne souhaitez plus être contacté ? Répondez simplement «&nbsp;STOP&nbsp;» à cet email.
+  </p>
 </body></html>`
+}
+
+function welcomeText(firstName: string): string {
+  return `Bonjour ${firstName},
+
+Merci pour votre intérêt pour Accélération IA 360 !
+
+Voici le programme détaillé, certifié Qualiopi (8 sessions, objectifs pédagogiques et modalités de financement) :
+${PROGRAMME_URL}
+
+Avant de vous lancer, j'aime bien échanger 15 minutes au téléphone avec chaque entrepreneur intéressé. Pas de blabla commercial : on regarde ensemble si la formation correspond vraiment à votre situation, vos objectifs et vos contraintes du moment.
+
+Réservez un créneau qui vous arrange :
+${CALENDLY_URL}
+
+Si vous avez des questions d'ici là, répondez simplement à ce mail.
+
+À très vite,
+Butzi
+Fondateur, Startpoint IA
+
+—
+Vous recevez cet email parce que vous avez demandé le programme Accélération IA 360 sur acceleration-ia.fr.
+BUTZI EURL — Organisme de formation certifié Qualiopi · SIRET 847 593 100 00013
+Vous ne souhaitez plus être contacté ? Répondez « STOP » à cet email.`
+}
+
+function notificationText(firstName: string, email: string): string {
+  const now = new Date().toLocaleString('fr-FR', { dateStyle: 'long', timeStyle: 'short', timeZone: 'Europe/Paris' })
+  return `${firstName} vient de demander le programme complet Accélération IA depuis la landing page.
+
+Prénom : ${firstName}
+Email : ${email}
+Date : ${now}
+Source : landing, bouton « Recevoir le programme complet »
+
+L'email de bienvenue a été envoyé automatiquement à ${email}.`
 }
 
 export async function POST(request: Request) {
@@ -86,6 +129,7 @@ export async function POST(request: Request) {
       replyTo: email,
       subject: `${firstName} a demandé le programme complet Accélération IA`,
       html: notificationHtml(firstName, email),
+      text: notificationText(firstName, email),
     }),
     resend.emails.send({
       from: FROM,
@@ -93,6 +137,10 @@ export async function POST(request: Request) {
       replyTo: REPLY_TO,
       subject: 'Le programme Accélération IA 360, et un café (virtuel) ?',
       html: welcomeHtml(firstName),
+      text: welcomeText(firstName),
+      headers: {
+        'List-Unsubscribe': `<mailto:${REPLY_TO}?subject=Desinscription>`,
+      },
     }),
   ])
 
