@@ -23,6 +23,21 @@ function escapeHtml(s: string): string {
 const WRAP = (inner: string) =>
   `<!DOCTYPE html><html><body style="font-family:system-ui,sans-serif;color:#1E172D;max-width:560px;margin:0 auto;padding:24px;line-height:1.6">${inner}</body></html>`
 
+const FOOTER_HTML = `
+  <hr style="border:none;border-top:1px solid #e5e0d8;margin:32px 0 16px;">
+  <p style="color:#999;font-size:12px;line-height:1.6;margin:0;">
+    Vous recevez cet email parce que vous nous avez écrit via le chat de startpoint-ia.fr.<br>
+    BUTZI EURL — Organisme de formation certifié Qualiopi · SIRET&nbsp;847&nbsp;593&nbsp;100&nbsp;00013<br>
+    61 boulevard du Maréchal Joffre, 92340 Bourg-la-Reine
+  </p>`
+
+const FOOTER_TEXT = `
+
+—
+Vous recevez cet email parce que vous nous avez écrit via le chat de startpoint-ia.fr.
+BUTZI EURL — Organisme de formation certifié Qualiopi · SIRET 847 593 100 00013
+61 boulevard du Maréchal Joffre, 92340 Bourg-la-Reine`
+
 function notificationHtml(email: string, message: string): string {
   return WRAP(`
   <p>Bonjour Butzi,</p>
@@ -39,7 +54,31 @@ function acknowledgmentHtml(message: string): string {
   <p>Bonjour,</p>
   <p>Merci pour votre message&nbsp;! Il est bien arrivé et Butzi vous répondra personnellement par email très vite.</p>
   <p style="background:#F6F1EB;padding:16px 20px;border-radius:12px;white-space:pre-wrap;font-size:14px;color:#555;"><em>Votre message&nbsp;:</em><br>${escapeHtml(message)}</p>
-  <p>À très vite,<br><strong>Butzi</strong><br><span style="color:#666;font-size:13px;">Fondateur, Startpoint IA</span></p>`)
+  <p>À très vite,<br><strong>Butzi</strong><br><span style="color:#666;font-size:13px;">Fondateur, Startpoint IA</span></p>${FOOTER_HTML}`)
+}
+
+function notificationText(email: string, message: string): string {
+  return `Nouveau message via le chat du site.
+
+Email : ${email}
+
+Message :
+${message}
+
+Répondez directement à ce mail pour répondre à la personne.`
+}
+
+function acknowledgmentText(message: string): string {
+  return `Bonjour,
+
+Merci pour votre message ! Il est bien arrivé et Butzi vous répondra personnellement par email très vite.
+
+Votre message :
+${message}
+
+À très vite,
+Butzi
+Fondateur, Startpoint IA${FOOTER_TEXT}`
 }
 
 export async function POST(request: Request) {
@@ -70,6 +109,7 @@ export async function POST(request: Request) {
       replyTo: email,
       subject: 'Nouveau message via le chat du site',
       html: notificationHtml(email, message),
+      text: notificationText(email, message),
     }),
     resend.emails.send({
       from: FROM,
@@ -77,6 +117,10 @@ export async function POST(request: Request) {
       replyTo: REPLY_TO,
       subject: 'On a bien reçu votre message 📬',
       html: acknowledgmentHtml(message),
+      text: acknowledgmentText(message),
+      headers: {
+        'List-Unsubscribe': `<mailto:${REPLY_TO}?subject=Desinscription>`,
+      },
     }),
   ])
 
