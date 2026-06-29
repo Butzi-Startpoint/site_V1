@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { fadeUp, stagger, viewport } from '@/lib/animations'
 import { LogoCloud } from '@/components/ui/logo-cloud-3'
 import { PhoneRevealButton } from '@/components/ui/phone-reveal-button'
+import { cn } from '@/lib/utils'
 
 /* Lien vers les avis Google de Butzi. */
 const GOOGLE_REVIEWS_URL =
@@ -51,15 +52,66 @@ const metrics = [
 
 /* Mêmes logos que le bandeau du héro (rendus ici en silhouette sombre). */
 const refLogos = [
-  { alt: 'Chanel', src: '/logos/chanel.png', heightClass: 'h-3.5 md:h-4' },
-  { alt: 'TED', src: '/logos/ted.png' },
-  { alt: 'Samsung', src: '/logos/Samsung.png' },
-  { alt: 'Airbus', src: '/logos/Airbus_Logo_2017.svg.png', heightClass: 'h-4 md:h-5' },
-  { alt: 'Mindvalley', src: '/logos/Mindvalley.png', heightClass: 'h-5 md:h-6' },
-  { alt: 'Bpifrance', src: '/logos/Bpifrance_logo.svg.png' },
-  { alt: 'CCI', src: '/logos/CCI.png', heightClass: 'h-16 md:h-[72px]' },
-  { alt: 'DCF', src: '/logos/DCF_Logo_Nom_complet.png', heightClass: 'h-8 md:h-10' },
+  { alt: 'Chanel', src: '/logos/chanel.png', heightClass: 'h-5 md:h-6' },
+  { alt: 'TED', src: '/logos/ted.png', heightClass: 'h-7 md:h-8' },
+  { alt: 'Samsung', src: '/logos/Samsung.png', heightClass: 'h-7 md:h-8' },
+  { alt: 'Airbus', src: '/logos/Airbus_Logo_2017.svg.png', heightClass: 'h-6 md:h-7' },
+  { alt: 'Mindvalley', src: '/logos/Mindvalley.png', heightClass: 'h-7 md:h-8' },
+  { alt: 'Bpifrance', src: '/logos/Bpifrance_logo.svg.png', heightClass: 'h-7 md:h-8' },
+  { alt: 'CCI', src: '/logos/CCI.png', heightClass: 'h-[90px] md:h-[100px]' },
+  { alt: 'DCF', src: '/logos/DCF_Logo_Nom_complet.png', heightClass: 'h-11 md:h-14' },
 ]
+
+/* Rangée de chiffres clés (TEDx, interventions, livres, note Google) — réutilisée
+   sur mobile (au-dessus de la photo) et sur desktop (colonne de droite). */
+function MetricsRow({ className }: { className?: string }) {
+  return (
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={viewport}
+      variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
+      className={cn('flex flex-nowrap justify-center md:justify-start gap-2 md:gap-2.5', className)}
+    >
+      {metrics.map((m) => (
+        <motion.div
+          key={m.label}
+          variants={fadeUp}
+          className="flex-1 md:flex-none min-w-0 md:min-w-[64px] px-2 md:px-3.5 py-2 md:py-2.5 rounded-xl bg-white border border-[#1E172D]/10 hover:border-[#A68AFF] transition-colors text-center"
+        >
+          <p
+            className="text-base md:text-xl font-extrabold text-[#1E172D] leading-none"
+            style={{ fontFamily: 'var(--font-display)' }}
+          >
+            {m.value}
+          </p>
+          <p className="text-[9px] md:text-[10px] font-semibold text-[#1E172D]/55 uppercase tracking-tight md:tracking-wide mt-1">
+            {m.label}
+          </p>
+        </motion.div>
+      ))}
+
+      {/* Note Google */}
+      <motion.a
+        href={GOOGLE_REVIEWS_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        variants={fadeUp}
+        className="flex-1 md:flex-none min-w-0 md:min-w-[64px] px-2 md:px-3.5 py-2 md:py-2.5 rounded-xl bg-white border border-[#1E172D]/10 hover:border-[#A68AFF] transition-colors text-center"
+      >
+        <p
+          className="text-base md:text-xl font-extrabold text-[#1E172D] leading-none"
+          style={{ fontFamily: 'var(--font-display)' }}
+        >
+          4,9/5
+        </p>
+        <p className="text-[9px] md:text-[10px] font-semibold text-[#1E172D]/55 uppercase tracking-tight md:tracking-wide mt-1 flex items-center justify-center gap-1">
+          <span className="text-[#FBBC04] text-sm leading-none">★</span> sur Google
+        </p>
+      </motion.a>
+    </motion.div>
+  )
+}
 
 export function Founder() {
   return (
@@ -91,6 +143,9 @@ export function Founder() {
             <span className="text-[#A68AFF]">Un mot de Butzi</span>, fondateur de StartPoint IA
           </motion.h2>
         </motion.div>
+
+        {/* Mobile : chiffres clés sous le titre, au-dessus de la photo */}
+        <MetricsRow className="md:hidden mb-9" />
 
         {/* Photo (cercle jaune) + texte */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
@@ -143,48 +198,8 @@ export function Founder() {
             variants={stagger}
             className="order-2 min-w-0 text-center md:text-left"
           >
-            {/* Chiffres clés façon section L'équipe */}
-            <motion.div
-              variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
-              className="flex flex-nowrap justify-center md:justify-start gap-2 md:gap-2.5 mb-6"
-            >
-              {metrics.map((m) => (
-                <motion.div
-                  key={m.label}
-                  variants={fadeUp}
-                  className="flex-1 md:flex-none min-w-0 md:min-w-[64px] px-2 md:px-3.5 py-2 md:py-2.5 rounded-xl bg-white border border-[#1E172D]/10 hover:border-[#A68AFF] transition-colors text-center"
-                >
-                  <p
-                    className="text-base md:text-xl font-extrabold text-[#1E172D] leading-none"
-                    style={{ fontFamily: 'var(--font-display)' }}
-                  >
-                    {m.value}
-                  </p>
-                  <p className="text-[9px] md:text-[10px] font-semibold text-[#1E172D]/55 uppercase tracking-tight md:tracking-wide mt-1">
-                    {m.label}
-                  </p>
-                </motion.div>
-              ))}
-
-              {/* Note Google */}
-              <motion.a
-                href={GOOGLE_REVIEWS_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                variants={fadeUp}
-                className="flex-1 md:flex-none min-w-0 md:min-w-[64px] px-2 md:px-3.5 py-2 md:py-2.5 rounded-xl bg-white border border-[#1E172D]/10 hover:border-[#A68AFF] transition-colors text-center"
-              >
-                <p
-                  className="text-base md:text-xl font-extrabold text-[#1E172D] leading-none"
-                  style={{ fontFamily: 'var(--font-display)' }}
-                >
-                  4,9/5
-                </p>
-                <p className="text-[9px] md:text-[10px] font-semibold text-[#1E172D]/55 uppercase tracking-tight md:tracking-wide mt-1 flex items-center justify-center gap-1">
-                  <span className="text-[#FBBC04] text-sm leading-none">★</span> sur Google
-                </p>
-              </motion.a>
-            </motion.div>
+            {/* Chiffres clés — desktop (sur mobile ils sont au-dessus de la photo) */}
+            <MetricsRow className="hidden md:flex mb-6" />
 
             {/* Texte */}
             <motion.p variants={fadeUp} className="text-[#1E172D]/75 text-lg leading-relaxed">

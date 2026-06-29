@@ -9,7 +9,6 @@ import { ForWho } from '@/components/sections/for-who'
 import { ValueStack } from '@/components/sections/value-stack'
 import { Pricing } from '@/components/sections/pricing'
 import { Guarantees } from '@/components/sections/guarantees'
-import { AfterProgram } from '@/components/sections/after-program'
 import { Team } from '@/components/sections/team'
 import { FaqSection } from '@/components/sections/faq-section'
 import { LeadMagnet } from '@/components/sections/lead-magnet'
@@ -40,7 +39,6 @@ export default function Home() {
         <div className="order-3 md:order-2"><Guarantees /></div>
       </div>
 
-      <AfterProgram />
       <Team />
       <FaqSection />
       <LeadMagnet />

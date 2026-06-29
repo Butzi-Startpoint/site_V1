@@ -5,6 +5,8 @@ import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { motion, useScroll, useSpring } from 'framer-motion'
 import { CtaChevronButton } from '@/components/ui/cta-chevron-button'
+import { MorphingLogo } from '@/components/ui/morphing-logo'
+import { CertLink } from '@/components/ui/qualiopi-badge'
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -54,11 +56,16 @@ export function Navbar() {
       >
         <div className="max-w-[1280px] mx-auto px-6 py-3 flex items-center justify-between">
           {/* Logo animé */}
-          <Link href="/" className="flex flex-col items-start no-underline group cursor-pointer -my-10 md:-my-12">
+          <Link href="/" className="flex items-center no-underline group cursor-pointer">
+            {/* Mobile : GIF qui se transforme en wordmark « Accélération IA 360 » */}
+            <span className="md:hidden">
+              <MorphingLogo />
+            </span>
+            {/* Desktop : GIF inchangé */}
             <img
               src="/startpoint-logo.gif"
               alt="StartPoint IA"
-              className="h-36 md:h-40 w-auto object-contain"
+              className="hidden md:block h-40 w-auto object-contain -my-12"
             />
           </Link>
 
@@ -90,6 +97,22 @@ export function Navbar() {
           >
             Prochaine cohorte octobre 2026
           </CtaChevronButton>
+
+          {/* Qualiopi — mobile uniquement : logo + mention en dessous, ouvre le certificat */}
+          <CertLink
+            ariaLabel="Organisme de formation certifié Qualiopi — voir le certificat"
+            className="md:hidden flex-col items-center gap-1.5"
+          >
+            <span className="inline-flex bg-white rounded-xl px-3 py-2 shadow-[0_2px_10px_rgba(30,23,45,0.12)]">
+              <img src="/qualiopi-logo.png" alt="Certifié Qualiopi" className="h-11 w-auto" />
+            </span>
+            <span
+              className="text-[#1E172D] text-[9px] font-semibold leading-tight text-center max-w-[112px]"
+              style={{ fontFamily: 'var(--font-display)' }}
+            >
+              Organisme de formation certifié Qualiopi
+            </span>
+          </CertLink>
         </div>
       </motion.header>
     </>

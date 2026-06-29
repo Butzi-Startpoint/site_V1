@@ -158,8 +158,7 @@ export function ValueStack() {
             className="text-3xl md:text-4xl font-extrabold text-[#1E172D] leading-[1.2] tracking-tight"
             style={{ fontFamily: 'var(--font-display)' }}
           >
-            Ce qui est inclus dans le programme{' '}
-            <span className="text-[#A68AFF]">Accélération IA 360</span>
+            <span className="text-[#A68AFF]">C&apos;est inclus</span>{' '}dans le programme&nbsp;!
           </motion.h2>
         </motion.div>
 

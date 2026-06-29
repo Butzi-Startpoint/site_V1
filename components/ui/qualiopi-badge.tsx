@@ -1,22 +1,37 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, type ReactNode } from 'react'
 import { cn } from '@/lib/utils'
 
 const CERT_PDF = '/qualiopi-certificat.pdf'
 
-/* Lien "Voir le certificat" → ouvre le PDF dans une pop-up (modal). */
-export function CertLink({ className }: { className?: string }) {
+/* Lien "Voir le certificat" → ouvre le PDF dans une pop-up (modal).
+   Par défaut affiche le texte "Voir le certificat" ; on peut passer un
+   déclencheur personnalisé (ex. le logo Qualiopi) via `children`. */
+export function CertLink({
+  className,
+  children,
+  ariaLabel,
+}: {
+  className?: string
+  children?: ReactNode
+  ariaLabel?: string
+}) {
   const [open, setOpen] = useState(false)
   return (
     <>
       <button
         type="button"
         onClick={() => setOpen(true)}
+        aria-label={ariaLabel}
         className={cn('group inline-flex items-center gap-1.5 cursor-pointer', className)}
       >
-        Voir le certificat
-        <span className="transition-transform group-hover:translate-x-0.5">→</span>
+        {children ?? (
+          <>
+            Voir le certificat
+            <span className="transition-transform group-hover:translate-x-0.5">→</span>
+          </>
+        )}
       </button>
 
       {open && (

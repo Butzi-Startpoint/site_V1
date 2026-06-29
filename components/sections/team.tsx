@@ -92,7 +92,54 @@ function LinkedInIcon({ href, label }: { href: string; label: string }) {
   )
 }
 
+/* Carte d'un membre d'équipe — réutilisée par la grille desktop et le carrousel mobile */
+function MemberCard({ m }: { m: Member }) {
+  return (
+    <div
+      className="rounded-2xl bg-white border border-[#1E172D]/8 p-6 flex flex-col items-center text-center h-full transition-shadow hover:shadow-[0_16px_40px_rgba(30,23,45,0.10)]"
+      style={{ boxShadow: '0 1px 4px rgba(30,23,45,0.04)' }}
+    >
+      {/* Photo ronde avec dégradé */}
+      <div
+        className="relative w-40 h-40 rounded-full flex-shrink-0 overflow-hidden"
+        style={{ background: PHOTO_GRADIENT }}
+      >
+        <img
+          src={m.img}
+          alt={m.name}
+          loading="lazy"
+          className="absolute inset-0 w-full h-full object-cover object-top"
+          style={m.imgScale ? { transform: `scale(${m.imgScale}) translateY(7%)`, transformOrigin: 'center', objectPosition: 'center' } : undefined}
+          onError={(e) => {
+            ;(e.target as HTMLImageElement).style.display = 'none'
+          }}
+        />
+      </div>
+
+      <h4
+        className="text-lg font-extrabold text-[#1E172D] tracking-tight mt-4"
+        style={{ fontFamily: 'var(--font-display)' }}
+      >
+        {m.name}
+      </h4>
+      <p
+        className="text-[#A68AFF] text-[11px] font-bold uppercase tracking-widest mt-1 mb-3"
+        style={{ fontFamily: 'var(--font-display)' }}
+      >
+        {m.role}
+      </p>
+      <p className="text-[#1E172D]/60 text-sm leading-relaxed flex-1">{m.bio}</p>
+
+      {/* LinkedIn */}
+      <div className="mt-4">
+        <LinkedInIcon href={m.linkedin} label={m.name} />
+      </div>
+    </div>
+  )
+}
+
 export function Team() {
+
   return (
     <section className="bg-[#F6F1EB] py-20 md:py-28 relative overflow-hidden" id="equipe">
       {/* Top separator */}
@@ -179,21 +226,21 @@ export function Team() {
               {/* Metric cards */}
               <motion.div
                 variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } } }}
-                className="flex flex-wrap justify-center md:justify-start gap-3 mb-6"
+                className="flex flex-nowrap justify-center md:justify-start gap-2 md:gap-3 mb-6"
               >
                 {metrics.map((m) => (
                   <motion.div
                     key={m.label}
                     variants={metricVariant}
-                    className="px-5 py-3 rounded-xl bg-white border border-[#1E172D]/10 hover:border-[#A68AFF] transition-colors text-center min-w-[96px]"
+                    className="flex-1 md:flex-none min-w-0 md:min-w-[96px] px-2 md:px-5 py-2 md:py-3 rounded-xl bg-white border border-[#1E172D]/10 hover:border-[#A68AFF] transition-colors text-center"
                   >
                     <p
-                      className="text-2xl font-extrabold text-[#1E172D] leading-none"
+                      className="text-lg md:text-2xl font-extrabold text-[#1E172D] leading-none"
                       style={{ fontFamily: 'var(--font-display)' }}
                     >
                       {m.value}
                     </p>
-                    <p className="text-[11px] font-semibold text-[#1E172D]/55 uppercase tracking-wide mt-1">
+                    <p className="text-[9px] md:text-[11px] font-semibold text-[#1E172D]/55 uppercase tracking-tight md:tracking-wide mt-1">
                       {m.label}
                     </p>
                   </motion.div>
@@ -247,58 +294,68 @@ export function Team() {
           </div>
         </motion.div>
 
-        {/* Bloc équipe — 3 cartes */}
+        {/* Bloc équipe — Desktop : grille de 3 cartes */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
           variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.2, delayChildren: 0.05 } } }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          className="hidden lg:grid grid-cols-3 gap-6"
         >
           {teamMembers.map((m) => (
             <motion.div
               key={m.name}
               variants={cardVariant}
               whileHover={{ y: -4, transition: { type: 'spring', stiffness: 300, damping: 22 } }}
-              className="rounded-2xl bg-white border border-[#1E172D]/8 p-6 flex flex-col items-center text-center transition-shadow hover:shadow-[0_16px_40px_rgba(30,23,45,0.10)]"
-              style={{ boxShadow: '0 1px 4px rgba(30,23,45,0.04)' }}
+              className="h-full"
             >
-              {/* Photo ronde avec dégradé */}
-              <div
-                className="relative w-40 h-40 rounded-full flex-shrink-0 overflow-hidden"
+              <MemberCard m={m} />
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Bloc équipe — Mobile : juste les avatars ronds (pas de carte) */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-60px' }}
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.12 } } }}
+          className="lg:hidden flex flex-wrap items-start justify-center gap-x-5 gap-y-7"
+        >
+          {teamMembers.map((m) => (
+            <motion.a
+              key={m.name}
+              variants={cardVariant}
+              href={m.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex flex-col items-center text-center w-[104px]"
+            >
+              <span
+                className="block w-24 h-24 rounded-full overflow-hidden ring-2 ring-[#A68AFF]/40"
                 style={{ background: PHOTO_GRADIENT }}
               >
                 <img
                   src={m.img}
                   alt={m.name}
                   loading="lazy"
-                  className="absolute inset-0 w-full h-full object-cover object-top"
-                  style={m.imgScale ? { transform: `scale(${m.imgScale}) translateY(7%)`, transformOrigin: 'center', objectPosition: 'center' } : undefined}
+                  className="w-full h-full object-cover object-top"
+                  style={m.imgScale ? { transform: `scale(${m.imgScale}) translateY(7%)` } : undefined}
                   onError={(e) => {
                     ;(e.target as HTMLImageElement).style.display = 'none'
                   }}
                 />
-              </div>
-
-              <h4
-                className="text-lg font-extrabold text-[#1E172D] tracking-tight mt-4"
+              </span>
+              <span
+                className="mt-2.5 text-[#1E172D] font-bold text-sm leading-tight"
                 style={{ fontFamily: 'var(--font-display)' }}
               >
                 {m.name}
-              </h4>
-              <p
-                className="text-[#A68AFF] text-[11px] font-bold uppercase tracking-widest mt-1 mb-3"
-                style={{ fontFamily: 'var(--font-display)' }}
-              >
+              </span>
+              <span className="text-[#A68AFF] text-[10px] font-bold uppercase tracking-wide mt-0.5 leading-tight">
                 {m.role}
-              </p>
-              <p className="text-[#1E172D]/60 text-sm leading-relaxed flex-1">{m.bio}</p>
-
-              {/* LinkedIn */}
-              <div className="mt-4">
-                <LinkedInIcon href={m.linkedin} label={m.name} />
-              </div>
-            </motion.div>
+              </span>
+            </motion.a>
           ))}
         </motion.div>
       </div>

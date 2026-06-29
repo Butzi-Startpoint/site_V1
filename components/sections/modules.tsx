@@ -350,8 +350,8 @@ export function Modules() {
                 <div className="relative">
                 <h3 className="text-lg md:text-xl font-extrabold text-[#1E172D] tracking-tight md:mb-1.5" style={{ fontFamily: 'var(--font-display)' }}>
                   {s.step}
-                  {/* Mobile : courte explication en police légère, à côté du verbe */}
-                  <span className="md:hidden font-light text-[#1E172D]/55 text-sm">{' '}{s.hint}</span>
+                  {/* Mobile : courte explication en police légère, sur sa propre ligne */}
+                  <span className="md:hidden block font-light text-[#1E172D]/55 text-sm mt-0.5">{s.hint}</span>
                 </h3>
                 {/* Description complète masquée sur mobile (visible desktop) */}
                 <p className="hidden md:block text-[#1E172D]/65 text-sm leading-relaxed">{s.objectif}</p>
