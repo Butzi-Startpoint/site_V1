@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import { ScrambleText } from '@/components/ui/scramble-text';
 import { CertLink } from '@/components/ui/qualiopi-badge';
-import { useSwipe } from '@/lib/use-swipe';
 
 const GOOGLE_REVIEWS_URL =
   'https://www.google.com/search?sca_esv=2c335ba9186fa769&cs=0&sxsrf=ANbL-n79kVxeIk2N7m4oTbLKTaV3V2L3Zg:1780688794225&q=Butzi+-+Conf%C3%A9rencier+%26+Magicien+%7C+Keynote+Speaker+%26+Magician+Avis&rldimm=15684917062307454983&tbm=lcl&hl=fr-FR#lkt=LocalPoiReviews';
@@ -139,10 +138,6 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
 export function LandingAccordionItem() {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const goNext = () => setActiveIndex((i) => (i + 1) % accordionItems.length);
-  const goPrev = () => setActiveIndex((i) => (i - 1 + accordionItems.length) % accordionItems.length);
-  const swipe = useSwipe(goNext, goPrev);
-
   return (
     <section className="bg-[#1E172D] font-sans">
       <div className="container mx-auto px-6 pt-8 md:pt-12 pb-16 md:pb-28">
@@ -150,6 +145,18 @@ export function LandingAccordionItem() {
 
           {/* ── Côté gauche : texte ── */}
           <div className="w-full lg:w-[45%] text-center lg:text-left space-y-6">
+
+            {/* Badge Qualiopi — tout en haut du hero, mobile uniquement */}
+            <div className="lg:hidden flex justify-center -mb-1">
+              <span className="inline-flex items-center gap-2 pl-1.5 pr-3 py-1 rounded-full bg-white/95 shadow-[0_4px_16px_rgba(0,0,0,0.18)]">
+                <span className="inline-flex items-center justify-center bg-white rounded-full">
+                  <img src="/qualiopi-logo.png" alt="Certification Qualiopi" className="h-5 w-auto" />
+                </span>
+                <span className="text-[#1E172D] text-xs font-semibold tracking-wide">
+                  Certifiée Qualiopi
+                </span>
+              </span>
+            </div>
 
             {/* Marque — petit wordmark tech + effet déchiffrage */}
             <ScrambleText
@@ -165,8 +172,18 @@ export function LandingAccordionItem() {
             </span>
 
             {/* Titre principal — promesse */}
+            {/* Mobile : version courte */}
             <h1
-              className="text-3xl md:text-6xl lg:text-[3.75rem] font-bold text-[#F6F1EB] leading-[1.15] md:leading-[1.05] tracking-tight"
+              className="lg:hidden text-4xl font-bold text-[#F6F1EB] leading-[1.15] tracking-tight"
+              style={{ fontFamily: 'var(--font-display)' }}
+            >
+              <span className="block">Plus de temps,</span>
+              <span className="block mt-1">plus de <span className="text-[#FFFFAB]">croissance</span>.</span>
+              <span className="block mt-1">Grâce à l&apos;IA.</span>
+            </h1>
+            {/* Desktop : titre original (inchangé) */}
+            <h1
+              className="hidden lg:block text-3xl md:text-6xl lg:text-[3.75rem] font-bold text-[#F6F1EB] leading-[1.15] md:leading-[1.05] tracking-tight"
               style={{ fontFamily: 'var(--font-display)' }}
             >
               <span className="block">Reprenez votre temps.</span>
@@ -229,24 +246,13 @@ export function LandingAccordionItem() {
               ))}
             </div>
 
-            {/* Mobile : carrousel image unique (plein écran) */}
+            {/* Mobile : image statique unique (plus de carrousel) */}
             <div className="lg:hidden">
-              <div
-                className="relative w-full h-[380px] rounded-2xl overflow-hidden ring-2 ring-[#A68AFF]/50 shadow-[0_0_32px_rgba(166,138,255,0.25)] touch-pan-y select-none"
-                {...swipe}
-              >
+              <div className="relative w-full h-[380px] rounded-2xl overflow-hidden ring-2 ring-[#A68AFF]/50 shadow-[0_0_32px_rgba(166,138,255,0.25)] select-none">
                 <img
-                  key={accordionItems[activeIndex].id}
-                  src={accordionItems[activeIndex].imageUrl}
-                  alt={accordionItems[activeIndex].title}
+                  src="/accordion/1.jpg"
+                  alt="Accélération IA 360 — gagnez du temps grâce à l’IA"
                   className="absolute inset-0 w-full h-full object-cover"
-                  style={{
-                    objectPosition: accordionItems[activeIndex].objectPosition ?? 'center',
-                    transform: accordionItems[activeIndex].zoom
-                      ? `scale(${accordionItems[activeIndex].zoom})`
-                      : undefined,
-                    transformOrigin: accordionItems[activeIndex].objectPosition ?? 'center',
-                  }}
                   onError={(e) => {
                     const target = e.target as HTMLImageElement
                     target.onerror = null
@@ -254,30 +260,10 @@ export function LandingAccordionItem() {
                   }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1E172D]/85 via-[#1E172D]/20 to-transparent" />
-                <span className="absolute bottom-5 left-1/2 -translate-x-1/2 w-[88%] text-center text-white font-semibold text-lg leading-snug">
-                  {accordionItems[activeIndex].title}
-                </span>
               </div>
             </div>
 
-            {/* Indicateurs de navigation mobile */}
-            <div className="flex justify-center gap-2 mt-4 lg:hidden">
-              {accordionItems.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setActiveIndex(index)}
-                  className={[
-                    'h-1.5 rounded-full transition-all duration-300',
-                    index === activeIndex
-                      ? 'w-6 bg-[#A68AFF]'
-                      : 'w-1.5 bg-[#D8D0FF]/40',
-                  ].join(' ')}
-                  aria-label={`Voir ${accordionItems[index].title}`}
-                />
-              ))}
-            </div>
-
-            {/* Mobile : ligne 1h30 + CTA, après le carrousel */}
+            {/* Mobile : ligne 1h30 + CTA, après l’image */}
             <div className="lg:hidden mt-8 flex flex-col items-center gap-5 text-center">
               <p className="text-[#F6F1EB] font-medium text-lg">
                 1h30 par semaine, à distance, sur 8 semaines.

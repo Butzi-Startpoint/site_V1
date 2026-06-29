@@ -8,7 +8,6 @@ import { CtaChevronButton } from '@/components/ui/cta-chevron-button'
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
-  const [menuOpen, setMenuOpen] = useState(false)
   const { scrollYProgress } = useScroll()
   const scaleX = useSpring(scrollYProgress, { stiffness: 200, damping: 30 })
   const pathname = usePathname()
@@ -91,46 +90,7 @@ export function Navbar() {
           >
             Prochaine cohorte octobre 2026
           </CtaChevronButton>
-
-          {/* Burger */}
-          <motion.button
-            whileTap={{ scale: 0.9 }}
-            className="md:hidden flex flex-col gap-1.5 p-1 cursor-pointer"
-            onClick={() => setMenuOpen((v) => !v)}
-            aria-label="Menu"
-          >
-            <motion.span animate={{ rotate: menuOpen ? 45 : 0, y: menuOpen ? 8 : 0 }} className="block w-6 h-0.5 bg-[#1E172D] rounded-full" />
-            <motion.span animate={{ opacity: menuOpen ? 0 : 1 }}                        className="block w-6 h-0.5 bg-[#1E172D] rounded-full" />
-            <motion.span animate={{ rotate: menuOpen ? -45 : 0, y: menuOpen ? -8 : 0 }} className="block w-6 h-0.5 bg-[#1E172D] rounded-full" />
-          </motion.button>
         </div>
-
-        {/* Mobile menu */}
-        <motion.div
-          initial={false}
-          animate={{ height: menuOpen ? 'auto' : 0, opacity: menuOpen ? 1 : 0 }}
-          transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-          className="md:hidden overflow-hidden bg-[#F6F1EB] border-t border-[#1E172D]/8"
-        >
-          <div className="px-6 py-4 flex flex-col gap-4">
-            {links.map((l) => (
-              <Link key={l.href} href={l.href} onClick={() => setMenuOpen(false)}
-                className={`text-base font-semibold transition-colors cursor-pointer ${
-                  isActive(l.href)
-                    ? 'text-[#1E172D]'
-                    : 'text-[#1E172D]/65 hover:text-[#1E172D]'
-                }`}
-                style={{ fontFamily: 'var(--font-display)' }}>
-                {l.label}
-              </Link>
-            ))}
-            <a href={ctaHref} onClick={() => setMenuOpen(false)}
-              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-[#FFFFAB] text-[#1E172D] text-sm font-semibold mt-2 cursor-pointer"
-              style={{ fontFamily: 'var(--font-display)' }}>
-              Prochaine cohorte octobre 2026 →
-            </a>
-          </div>
-        </motion.div>
       </motion.header>
     </>
   )
