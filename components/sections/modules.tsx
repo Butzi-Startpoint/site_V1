@@ -79,7 +79,7 @@ const programmeSessions: Session[] = [
 /* ── Bloc Qualiopi ── */
 const ficheQualiopi: [string, string][] = [
   ['Intitulé officiel', 'Accélération IA 360 : Méthode Levier'],
-  ['Organisme', 'BUTZI EURL, organisme de formation certifié Qualiopi (SIRET 84759310000013)'],
+  ['Organisme', 'BUTZI EURL, organisme de formation certifié Qualiopi (SIRET 84759310000021)'],
   ['Modalité', 'Formation à distance : distanciel synchrone via classes virtuelles de groupe hebdomadaires'],
   ['Durée totale', '12 heures de formation, sur 8 semaines'],
   ['Sessions live', '8 classes virtuelles de 90 minutes'],

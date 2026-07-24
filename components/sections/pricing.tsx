@@ -47,54 +47,54 @@ const themeClasses: Record<Theme, {
   light: {
     card: 'bg-white border-[#1E172D]/12 shadow-[0_2px_16px_rgba(30,23,45,0.04)] hover:shadow-[0_20px_56px_rgba(30,23,45,0.09)]',
     header: 'bg-white border-[#1E172D]/8',
-    planName: 'text-[#1E172D]/70',
+    planName: 'text-[#1E172D]',
     price: 'text-[#1E172D]',
-    description: 'text-[#1E172D]/50',
+    description: 'text-[#1E172D]/80',
     valueDesc: 'text-[#A68AFF]',
     badge: '',
     cta: 'border-2 border-[#1E172D] text-[#1E172D] bg-transparent hover:bg-[#1E172D] hover:text-white',
-    payment: 'text-[#1E172D]/40',
-    paymentSecondary: 'text-[#1E172D]/55',
-    sectionLabel: 'text-[#1E172D]/35',
+    payment: 'text-[#1E172D]/70',
+    paymentSecondary: 'text-[#1E172D]/80',
+    sectionLabel: 'text-[#1E172D]/70',
     listItem: 'text-[#1E172D]',
-    listSubNote: 'text-[#1E172D]/40',
+    listSubNote: 'text-[#1E172D]/70',
     checkIcon: 'text-[#A68AFF]',
-    guarantee: 'text-[#1E172D]/55',
+    guarantee: 'text-[#1E172D]/80',
     qualiopiWrap: 'bg-[#F6F1EB]/60 border-[#1E172D]/8',
-    qualiopiText: 'text-[#1E172D]/50',
-    qualiopiStrong: 'text-[#1E172D]/70',
+    qualiopiText: 'text-[#1E172D]/75',
+    qualiopiStrong: 'text-[#1E172D]',
     qualiopiIconStroke: '#A68AFF',
     extrasTitle: 'text-[#1E172D]',
     extrasSeparator: '',
     extrasContainer: 'bg-[#A68AFF]/8 border-[#A68AFF]/15',
-    extrasRow: 'text-[#1E172D]/55',
+    extrasRow: 'text-[#1E172D]/80',
     extrasTotal: 'border-[#A68AFF]/20 text-[#1E172D]',
     extrasFooter: 'text-[#A68AFF]',
   },
   highlight: {
     card: 'border-[#A68AFF]/70 shadow-[0_0_0_2px_rgba(166,138,255,0.45),0_24px_64px_rgba(166,138,255,0.30)]',
     header: 'bg-[#A68AFF]/8',
-    planName: 'text-[#1E172D]/70',
+    planName: 'text-[#1E172D]',
     price: 'text-[#1E172D]',
-    description: 'text-[#1E172D]/55',
+    description: 'text-[#1E172D]/80',
     valueDesc: 'text-[#A68AFF]',
     badge: '',
     cta: 'bg-[#A68AFF] hover:bg-[#9070ee] text-white border-0',
-    payment: 'text-[#1E172D]/40',
-    paymentSecondary: 'text-[#1E172D]/55',
-    sectionLabel: 'text-[#1E172D]/35',
+    payment: 'text-[#1E172D]/70',
+    paymentSecondary: 'text-[#1E172D]/80',
+    sectionLabel: 'text-[#1E172D]/70',
     listItem: 'text-[#1E172D]',
-    listSubNote: 'text-[#1E172D]/40',
+    listSubNote: 'text-[#1E172D]/70',
     checkIcon: 'text-[#A68AFF]',
-    guarantee: 'text-[#1E172D]/55',
+    guarantee: 'text-[#1E172D]/80',
     qualiopiWrap: 'bg-[#F6F1EB]/60 border-[#1E172D]/8',
-    qualiopiText: 'text-[#1E172D]/50',
-    qualiopiStrong: 'text-[#1E172D]/70',
+    qualiopiText: 'text-[#1E172D]/75',
+    qualiopiStrong: 'text-[#1E172D]',
     qualiopiIconStroke: '#A68AFF',
     extrasTitle: 'text-[#1E172D]',
     extrasSeparator: '',
     extrasContainer: 'bg-[#A68AFF]/8 border-[#A68AFF]/15',
-    extrasRow: 'text-[#1E172D]/55',
+    extrasRow: 'text-[#1E172D]/80',
     extrasTotal: 'border-[#A68AFF]/20 text-[#1E172D]',
     extrasFooter: 'text-[#A68AFF]',
   },
@@ -156,7 +156,7 @@ const plans: Plan[] = [
     icon: <Users className="w-4 h-4" />,
     name: 'Essentiel',
     description: 'Tout le programme Méthode Levier + tous les bonus',
-    valueDesc: 'Valeur 6 073 €',
+    valueDesc: 'Valeur 5 973 €',
     price: '2 997 €',
     badge: null,
     cta: 'Réserver ma place',
@@ -181,7 +181,7 @@ const plans: Plan[] = [
     icon: <Zap className="w-4 h-4" />,
     name: 'Momentum',
     description: 'Tout le programme Méthode Levier + tous les bonus, plus :',
-    valueDesc: 'Valeur 6 073 €',
+    valueDesc: 'Valeur 6 997 €',
     price: '3 497 €',
     badge: 'Recommandé',
     cta: 'Réserver ma place',
@@ -223,11 +223,11 @@ const plans: Plan[] = [
       { text: 'Tout le programme Méthode Levier + tous les bonus', sub: 'Programme finançable via FAF (Qualiopi)' },
       '1 séance de coaching 1:1 avec Butzi (1 heure)',
       'Votre plan d\'action créé pour vous',
-      'Audit de stack + setup de 3 automations livrées et documentées',
+      'Audit de stack + setup de 3 automatisations livrées et documentées',
       'Playbook de maintenance inclus',
       '12 mois de communauté de pairs Cercle StartPoint inclus',
     ],
-    guarantee: 'Vos automations ne fonctionnent pas après 30 jours ? Le spécialiste revient les corriger gratuitement.',
+    guarantee: 'Vos automatisations ne fonctionnent pas après 30 jours ? Le spécialiste revient les corriger gratuitement.',
     extras: null,
     theme: 'dark',
   },
@@ -240,7 +240,7 @@ const QualiopiNote = ({ theme }: { theme: Theme }) => {
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={t.qualiopiIconStroke} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0 mt-0.5">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
       </svg>
-      <p className={`text-[10px] leading-relaxed ${t.qualiopiText}`}>
+      <p className={`text-[11px] leading-relaxed ${t.qualiopiText}`}>
         Formation certifiée <strong className={t.qualiopiStrong}>Qualiopi</strong> · éligible FAF
         (AGEFICE, FIF-PL, FAFCEA) ·{' '}
         <a
@@ -324,11 +324,14 @@ export function Pricing() {
                       >
                         {plan.price}
                       </PricingCard.MainPrice>
+                      <PricingCard.Period className={t.paymentSecondary}>TTC</PricingCard.Period>
                     </PricingCard.Price>
 
-                    <p className={`text-xs mb-1 leading-relaxed ${t.description}`}>{plan.description}</p>
+                    <p className={`text-[11px] -mt-2 mb-2 ${t.payment}`}>(TVA non applicable)</p>
+
+                    <p className={`text-[13px] mb-1 leading-relaxed ${t.description}`}>{plan.description}</p>
                     {plan.valueDesc && (
-                      <p className={`text-xs font-semibold mb-3 ${t.valueDesc}`}>{plan.valueDesc}</p>
+                      <p className={`text-[13px] font-semibold mb-3 ${t.valueDesc}`}>{plan.valueDesc}</p>
                     )}
 
                     <Button
@@ -341,10 +344,10 @@ export function Pricing() {
                     </Button>
 
                     {plan.payment && (
-                      <p className={`text-center text-[10px] mt-2 font-medium ${t.payment}`}>{plan.payment}</p>
+                      <p className={`text-center text-[11px] mt-2 font-medium ${t.payment}`}>{plan.payment}</p>
                     )}
                     {plan.paymentSecondary && (
-                      <p className={`text-center text-[11px] mt-0.5 font-semibold ${t.paymentSecondary}`}>
+                      <p className={`text-center text-xs mt-0.5 font-semibold ${t.paymentSecondary}`}>
                         {plan.paymentSecondary}
                       </p>
                     )}
@@ -354,7 +357,7 @@ export function Pricing() {
 
                   <PricingCard.Body>
                     <div>
-                      <p className={`text-[10px] font-bold tracking-widest uppercase mb-3 ${t.sectionLabel}`}
+                      <p className={`text-[11px] font-bold tracking-widest uppercase mb-3 ${t.sectionLabel}`}
                         style={{ fontFamily: 'var(--font-display)' }}>
                         {plan.sectionLabel}
                       </p>
@@ -369,7 +372,7 @@ export function Pricing() {
                                 <span>{text}</span>
                               </div>
                               {sub && (
-                                <span className={`text-[11px] mt-1 ml-7 italic ${t.listSubNote}`}>
+                                <span className={`text-xs mt-1 ml-7 italic ${t.listSubNote}`}>
                                   {sub}
                                 </span>
                               )}
@@ -380,7 +383,7 @@ export function Pricing() {
                     </div>
 
                     {plan.guarantee && (
-                      <p className={`text-[11px] leading-relaxed italic ${t.guarantee}`}>
+                      <p className={`text-xs leading-relaxed italic ${t.guarantee}`}>
                         {plan.guarantee}
                       </p>
                     )}
@@ -388,7 +391,7 @@ export function Pricing() {
                     {plan.extras && (
                       <details className="group">
                         <summary
-                          className={`flex items-center justify-center gap-1.5 cursor-pointer list-none [&::-webkit-details-marker]:hidden text-[11px] font-bold uppercase tracking-widest ${t.sectionLabel}`}
+                          className={`flex items-center justify-center gap-1.5 cursor-pointer list-none [&::-webkit-details-marker]:hidden text-xs font-bold uppercase tracking-widest ${t.sectionLabel}`}
                           style={{ fontFamily: 'var(--font-display)' }}
                         >
                           Valeur incluse
@@ -410,14 +413,14 @@ export function Pricing() {
                           )}
                           <div className={`rounded-xl px-4 py-3 text-sm border ${t.extrasContainer}`}>
                             {plan.extras.map(row => (
-                              <div key={row.label} className={`flex justify-between text-xs py-1 ${t.extrasRow}`}>
+                              <div key={row.label} className={`flex justify-between text-[13px] py-1 ${t.extrasRow}`}>
                                 <span>{row.label}</span><span>{row.val}</span>
                               </div>
                             ))}
-                            <div className={`border-t mt-2 pt-2 flex justify-between font-bold text-xs ${t.extrasTotal}`}>
+                            <div className={`border-t mt-2 pt-2 flex justify-between font-bold text-[13px] ${t.extrasTotal}`}>
                               <span>Valeur totale des extras</span><span>1 024 €</span>
                             </div>
-                            <p className={`text-[11px] font-semibold mt-2 text-center ${t.extrasFooter}`}>
+                            <p className={`text-xs font-semibold mt-2 text-center ${t.extrasFooter}`}>
                               Pour seulement 500 € de plus
                             </p>
                           </div>

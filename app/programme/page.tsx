@@ -482,7 +482,7 @@ export default function ProgrammePage() {
               <p>
                 <strong>StartPoint IA</strong>, marque commerciale de <strong>BUTZI EURL</strong>
               </p>
-              <p>SIRET : 847 593 100 00013 · TVA intracommunautaire : FR 69 84 75 93 100</p>
+              <p>SIRET : 847 593 100 00021 · TVA intracommunautaire : FR 69 84 75 93 100</p>
               <p>Siège : 61 boulevard du Maréchal Joffre, 92340 Bourg-la-Reine</p>
               <p>Directeur de la publication : Johannes Alinhac</p>
               <p>

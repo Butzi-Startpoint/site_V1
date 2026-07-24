@@ -27,7 +27,7 @@ const FOOTER_HTML = `
   <hr style="border:none;border-top:1px solid #e5e0d8;margin:32px 0 16px;">
   <p style="color:#999;font-size:12px;line-height:1.6;margin:0;">
     Vous recevez cet email parce que vous nous avez écrit via le chat de startpoint-ia.fr.<br>
-    BUTZI EURL — Organisme de formation certifié Qualiopi · SIRET&nbsp;847&nbsp;593&nbsp;100&nbsp;00013<br>
+    BUTZI EURL — Organisme de formation certifié Qualiopi · SIRET&nbsp;847&nbsp;593&nbsp;100&nbsp;00021<br>
     61 boulevard du Maréchal Joffre, 92340 Bourg-la-Reine
   </p>`
 
@@ -35,7 +35,7 @@ const FOOTER_TEXT = `
 
 —
 Vous recevez cet email parce que vous nous avez écrit via le chat de startpoint-ia.fr.
-BUTZI EURL — Organisme de formation certifié Qualiopi · SIRET 847 593 100 00013
+BUTZI EURL — Organisme de formation certifié Qualiopi · SIRET 847 593 100 00021
 61 boulevard du Maréchal Joffre, 92340 Bourg-la-Reine`
 
 function notificationHtml(email: string, message: string): string {
