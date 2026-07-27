@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Navbar } from '@/components/sections/navbar'
 import { FooterSection } from '@/components/sections/footer-section'
 import { MeshGradientBg } from '@/components/ui/mesh-gradient-bg'
+import { CohortCalendar } from '@/components/sections/cohort-calendar'
 
 export const metadata: Metadata = {
   title: 'Programme détaillé : Accélération IA 360 | StartPoint IA',
@@ -17,11 +18,17 @@ const ficheItems: { label: string; value: string }[] = [
   { label: 'Modalité', value: 'Formation à distance : distanciel synchrone via classes virtuelles de groupe hebdomadaires' },
   { label: 'Sessions live', value: '8 classes virtuelles de 90 min' },
   { label: 'Public', value: 'Entrepreneurs, indépendants, consultants, coaches, formateurs, freelances' },
-  { label: 'Prérequis', value: 'Avoir un ordinateur avec une connexion internet · niveau débutant en IA accepté' },
+  { label: 'Prérequis', value: 'Aucun prérequis technique. Être à l\'aise avec l\'usage courant d\'un ordinateur et la navigation sur internet.' },
+  { label: 'Matériel nécessaire', value: 'Ordinateur et smartphone équipé d\'un navigateur web à jour et d\'une connexion internet · de quoi prendre des notes (carnet ou feuilles, stylo)' },
   { label: 'Effectif', value: '10 participants maximum par cohorte' },
   { label: 'Tarif', value: "À partir de 2 997 € HT, finançable (FAF, déductibilité fiscale)" },
   { label: 'Sanction', value: 'Attestation de fin de formation' },
   { label: 'Accessibilité', value: 'Formation accessible aux personnes en situation de handicap' },
+]
+
+const materiel: string[] = [
+  "Ordinateur et smartphone équipé d'un navigateur web à jour et d'une connexion internet",
+  'De quoi prendre des notes (carnet ou feuilles, stylo)',
 ]
 
 const objectifs: string[] = [
@@ -308,8 +315,14 @@ export default function ProgrammePage() {
             </p>
             <p>
               <strong>Prérequis :</strong>{' '}
-              avoir un ordinateur avec une connexion internet ; niveau débutant en IA accepté.
+              aucun prérequis technique. Être à l&apos;aise avec l&apos;usage courant d&apos;un
+              ordinateur et la navigation sur internet.
             </p>
+          </Section>
+
+          {/* Matériel nécessaire */}
+          <Section title="Matériel nécessaire pour suivre la formation">
+            <Bullets items={materiel} />
           </Section>
 
           {/* Durée, rythme et modalités */}
@@ -328,6 +341,11 @@ export default function ProgrammePage() {
               <strong>Disponibilité conseillée :</strong>{' '}
               environ 1 h 30 par semaine pendant la durée du parcours.
             </p>
+          </Section>
+
+          {/* Calendrier de la cohorte */}
+          <Section title="Calendrier des sessions">
+            <CohortCalendar />
           </Section>
 
           {/* Programme détaillé */}

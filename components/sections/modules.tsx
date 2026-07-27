@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import type { Variants } from 'framer-motion'
 import { fadeUp, stagger, viewport } from '@/lib/animations'
 import { ProgramEmailButton } from '@/components/ui/program-email-button'
+import { CohortCalendar } from '@/components/sections/cohort-calendar'
 
 /* Révélation premium : fondu + flou + légère montée, easing soyeux. */
 const premiumReveal: Variants = {
@@ -84,7 +85,8 @@ const ficheQualiopi: [string, string][] = [
   ['Durée totale', '12 heures de formation, sur 8 semaines'],
   ['Sessions live', '8 classes virtuelles de 90 minutes'],
   ['Public visé', 'Entrepreneurs, indépendants, consultants, coaches, formateurs, freelances'],
-  ['Prérequis', 'Avoir un ordinateur avec une connexion internet ; niveau débutant en IA accepté'],
+  ['Prérequis', 'Aucun prérequis technique. Être à l\'aise avec l\'usage courant d\'un ordinateur et la navigation sur internet.'],
+  ['Matériel nécessaire', 'Ordinateur et smartphone équipé d\'un navigateur web à jour et d\'une connexion internet ; de quoi prendre des notes (carnet ou feuilles, stylo)'],
   ['Effectif', '10 participants maximum par cohorte'],
   ['Accessibilité', 'Formation accessible aux personnes en situation de handicap. Contactez-nous pour adapter les modalités.'],
 ]
@@ -410,6 +412,9 @@ export function Modules() {
                   <SessionRow key={s.week} s={s} color="#A68AFF" />
                 ))}
               </div>
+
+              {/* Calendrier de la cohorte — dates dans lib/cohort.ts */}
+              <CohortCalendar className="mt-6 bg-white" />
             </div>
           </details>
         </motion.div>

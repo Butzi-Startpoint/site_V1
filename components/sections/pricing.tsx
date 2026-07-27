@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { CheckCircle2, Users, Zap, Star } from 'lucide-react'
 import { fadeUp, stagger, viewport } from '@/lib/animations'
@@ -7,6 +8,8 @@ import { Button } from '@/components/ui/button'
 import * as PricingCard from '@/components/ui/pricing-card'
 import { QualiopiBadge } from '@/components/ui/qualiopi-badge'
 import { PhoneRevealButton } from '@/components/ui/phone-reveal-button'
+import { ReservationModal } from '@/components/ReservationModal'
+import { OFFERS, CALENDLY_URL, type OfferKey } from '@/lib/offers'
 import type { Variants } from 'framer-motion'
 
 const cardVariant: Variants = {
@@ -130,7 +133,7 @@ const themeClasses: Record<Theme, {
 type Feature = string | { text: string; sub: string }
 
 type Plan = {
-  key: string
+  key: OfferKey
   icon: React.ReactNode
   name: string
   description: string
@@ -138,7 +141,6 @@ type Plan = {
   price: string
   badge: string | null
   cta: string
-  href: string
   popular: boolean
   sectionLabel: string
   payment: string | null
@@ -160,7 +162,6 @@ const plans: Plan[] = [
     price: '2 997 €',
     badge: null,
     cta: 'Réserver ma place',
-    href: 'https://panier.acceleration-ia.fr/essentiel',
     popular: false,
     sectionLabel: 'Inclus',
     payment: 'Paiement en 1x ou 3x sans frais',
@@ -185,7 +186,6 @@ const plans: Plan[] = [
     price: '3 497 €',
     badge: 'Recommandé',
     cta: 'Réserver ma place',
-    href: 'https://panier.acceleration-ia.fr/momentum',
     popular: true,
     sectionLabel: 'Tout l\'Essentiel, plus',
     payment: 'Paiement en 1x ou 3x sans frais',
@@ -214,7 +214,6 @@ const plans: Plan[] = [
     price: '5 997 €',
     badge: null,
     cta: 'Réserver ma place',
-    href: 'https://panier.acceleration-ia.fr/premium',
     popular: false,
     sectionLabel: 'Inclus',
     payment: 'Paiement en 1x ou 3x sans frais',
@@ -232,6 +231,41 @@ const plans: Plan[] = [
     theme: 'dark',
   },
 ]
+
+/* CTA d'offre : ouvre la modale d'aiguillage (entreprise → checkout,
+   particulier → Calendly), état local à chaque carte. */
+function ReserveCta({
+  offerKey,
+  label,
+  ctaClassName,
+}: {
+  offerKey: OfferKey
+  label: string
+  ctaClassName: string
+}) {
+  const [open, setOpen] = useState(false)
+  const offer = OFFERS[offerKey]
+  return (
+    <>
+      <Button
+        type="button"
+        variant="default"
+        onClick={() => setOpen(true)}
+        className={`w-full font-bold rounded-full cursor-pointer mt-3 ${ctaClassName}`}
+        style={{ fontFamily: 'var(--font-display)' }}
+      >
+        {label} →
+      </Button>
+      <ReservationModal
+        open={open}
+        onClose={() => setOpen(false)}
+        offerName={offer.name}
+        checkoutUrl={offer.checkoutUrl}
+        calendlyUrl={CALENDLY_URL}
+      />
+    </>
+  )
+}
 
 const QualiopiNote = ({ theme }: { theme: Theme }) => {
   const t = themeClasses[theme]
@@ -334,14 +368,7 @@ export function Pricing() {
                       <p className={`text-[13px] font-semibold mb-3 ${t.valueDesc}`}>{plan.valueDesc}</p>
                     )}
 
-                    <Button
-                      asChild
-                      variant="default"
-                      className={`w-full font-bold rounded-full cursor-pointer mt-3 ${t.cta}`}
-                      style={{ fontFamily: 'var(--font-display)' }}
-                    >
-                      <a href={plan.href}>{plan.cta} →</a>
-                    </Button>
+                    <ReserveCta offerKey={plan.key} label={plan.cta} ctaClassName={t.cta} />
 
                     {plan.payment && (
                       <p className={`text-center text-[11px] mt-2 font-medium ${t.payment}`}>{plan.payment}</p>
