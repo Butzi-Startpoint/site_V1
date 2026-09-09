@@ -21,22 +21,27 @@ export function FooterSection() {
         </p>
         <div className="flex items-center justify-center gap-4 text-sm flex-wrap">
           <a
-            href="https://www.startpoint-ia.fr/mentions-legales"
-            target="_blank"
-            rel="noopener"
+            href="/mentions-legales"
             className="text-[#F6F1EB]/35 hover:text-[#F6F1EB]/70 transition-colors"
             style={{ fontFamily: 'var(--font-display)' }}
           >
             Mentions légales
           </a>
           <a
-            href="https://www.startpoint-ia.fr/politique-confidentialite"
+            href="/politique-confidentialite"
+            className="text-[#F6F1EB]/35 hover:text-[#F6F1EB]/70 transition-colors"
+            style={{ fontFamily: 'var(--font-display)' }}
+          >
+            Politique de confidentialité
+          </a>
+          <a
+            href="https://panier.acceleration-ia.fr/cgv"
             target="_blank"
             rel="noopener"
             className="text-[#F6F1EB]/35 hover:text-[#F6F1EB]/70 transition-colors"
             style={{ fontFamily: 'var(--font-display)' }}
           >
-            Politique de confidentialité
+            CGV
           </a>
         </div>
       </div>

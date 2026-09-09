@@ -32,7 +32,7 @@ export function Financing() {
           >
             {[
               { icon: '🏛️', text: <><strong>Éligible OPCO</strong> : jusqu&apos;à <strong>2 500&nbsp;€</strong> pris en charge par votre FAF</> },
-              { icon: '💳', text: <>Paiement en <strong>3x ou 4x sans frais</strong> disponible sur toutes les offres</> },
+              { icon: '💳', text: <>Paiement en <strong>3x</strong> disponible sur toutes les offres</> },
             ].map((item, i) => (
               <motion.div
                 key={i}

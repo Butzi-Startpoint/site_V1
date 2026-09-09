@@ -82,7 +82,10 @@ export function Solution() {
           </motion.h2>
           <motion.p variants={fadeUp} className="text-[#1E172D]/60 text-lg leading-relaxed">
             8 semaines pour intégrer l&apos;IA dans votre quotidien d&apos;entrepreneur. Avec un cadre,
-            une méthode, et un accompagnement humain.
+            une méthode, et un accompagnement humain.{' '}
+            <span className="text-[#1E172D] font-semibold">
+              Soit seulement 90&nbsp;min par semaine, en visio, avec replay si vous ratez.
+            </span>
           </motion.p>
         </motion.div>
 

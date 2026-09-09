@@ -21,7 +21,7 @@ const ficheItems: { label: string; value: string }[] = [
   { label: 'Prérequis', value: 'Aucun prérequis technique. Être à l\'aise avec l\'usage courant d\'un ordinateur et la navigation sur internet.' },
   { label: 'Matériel nécessaire', value: 'Ordinateur et smartphone équipé d\'un navigateur web à jour et d\'une connexion internet · de quoi prendre des notes (carnet ou feuilles, stylo)' },
   { label: 'Effectif', value: '10 participants maximum par cohorte' },
-  { label: 'Tarif', value: "À partir de 2 997 € HT, finançable (FAF, déductibilité fiscale)" },
+  { label: 'Tarif', value: "À partir de 2 997 €, exonéré de TVA (art. 261-4-4° a du CGI), finançable (FAF, déductibilité fiscale)" },
   { label: 'Sanction', value: 'Attestation de fin de formation' },
   { label: 'Accessibilité', value: 'Formation accessible aux personnes en situation de handicap' },
 ]
@@ -427,8 +427,9 @@ export default function ProgrammePage() {
           {/* Tarifs & financement */}
           <Section title="Tarifs et financement">
             <p>
-              Tarifs HT : <strong>Essentiel 2 997 €</strong> · <strong>Momentum 3 497 €</strong> ·{' '}
-              <strong>Premium 5 997 €</strong>. Paiement en 1 fois ou en 3 fois sans frais.
+              Tarifs, exonérés de TVA (art. 261-4-4° a du CGI) :{' '}
+              <strong>Essentiel 2 997 €</strong> · <strong>Momentum 3 497 €</strong> ·{' '}
+              <strong>Premium 5 997 €</strong>. Paiement en 1 fois ou en 3 fois.
             </p>
             <p>
               La formation est <strong>éligible au financement</strong> par les Fonds
@@ -487,10 +488,18 @@ export default function ProgrammePage() {
           </Section>
 
           {/* Indicateurs */}
-          <Section title="Indicateurs de performance">
+          <Section title="Indicateurs de résultats">
             <p>
-              Les indicateurs de résultats (taux de satisfaction, taux de complétion, taux
-              d&apos;atteinte des objectifs) seront publiés à l&apos;issue de la première cohorte.
+              <strong>Accélération IA 360</strong> est une nouvelle action de formation. La première
+              cohorte se déroule d&apos;octobre à décembre 2026 : les indicateurs de résultats (taux
+              de satisfaction, taux de complétion, taux d&apos;atteinte des objectifs) seront publiés
+              à l&apos;issue de celle-ci.
+            </p>
+            <p>
+              À titre indicatif, sur une précédente action de formation à l&apos;IA animée par Butzi
+              (format court d&apos;une journée, mai 2025) : <strong>taux de satisfaction de 95 %</strong>{' '}
+              (4 participants). Ce résultat porte sur une action distincte et ne préjuge pas de ceux
+              d&apos;Accélération IA 360.
             </p>
           </Section>
 

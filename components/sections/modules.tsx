@@ -5,6 +5,7 @@ import type { Variants } from 'framer-motion'
 import { fadeUp, stagger, viewport } from '@/lib/animations'
 import { ProgramEmailButton } from '@/components/ui/program-email-button'
 import { CohortCalendar } from '@/components/sections/cohort-calendar'
+import { ButziVideo } from '@/components/ui/butzi-video'
 
 /* Révélation premium : fondu + flou + légère montée, easing soyeux. */
 const premiumReveal: Variants = {
@@ -291,7 +292,14 @@ export function Modules() {
           </motion.p>
           <motion.p variants={fadeUp} className="text-[#1E172D]/55 text-lg max-w-[600px] mx-auto mt-5">
             6 étapes, 8 semaines. Une semaine pour s&apos;installer, six modules pour transformer, une
-            semaine pour ancrer. À chaque étape, on enlève du bruit avant d&apos;ajouter de la valeur.
+            semaine pour ancrer.
+          </motion.p>
+          <motion.p
+            variants={fadeUp}
+            className="text-[#1E172D]/70 text-sm md:text-base font-semibold mt-3"
+            style={{ fontFamily: 'var(--font-display)' }}
+          >
+            Et rassurez-vous&nbsp;: c&apos;est seulement 90&nbsp;min par semaine, en visio, avec replay si vous ratez.
           </motion.p>
         </motion.div>
 
@@ -370,13 +378,22 @@ export function Modules() {
           ))}
         </motion.div>
 
+        {/* Programme + Qualiopi : sur desktop, vidéo verticale à gauche, détails à droite */}
+        {/* Même largeur (760) et même décalage gauche (pastille 44 + gap 28 = 72px)
+            que la timeline, pour aligner le bord gauche de la vidéo sur les cartes. */}
+        <div className="max-w-[760px] mx-auto mt-4 mb-12 md:flex md:items-center md:gap-6 md:pl-[72px]">
+          {/* Vidéo de Butzi (desktop uniquement) — alignée sous les cartes Levier */}
+          <ButziVideo className="hidden md:block md:w-[280px] md:flex-shrink-0" />
+
+          {/* Colonne détails : programme + organisme Qualiopi */}
+          <div className="flex-1 min-w-0 space-y-6">
         {/* Programme de la formation — dépliant */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={viewport}
           variants={fadeUp}
-          className="mt-4 mb-12 max-w-[900px] mx-auto rounded-3xl border border-[#A68AFF]/25 bg-[#F6F1EB] overflow-hidden"
+          className="rounded-3xl border border-[#A68AFF]/25 bg-[#F6F1EB] overflow-hidden"
         >
           <details className="group">
             <summary className="flex items-center gap-3 px-6 md:px-8 py-5 cursor-pointer list-none [&::-webkit-details-marker]:hidden hover:bg-[#A68AFF]/[0.04] transition-colors bg-white/60">
@@ -419,13 +436,13 @@ export function Modules() {
           </details>
         </motion.div>
 
-        {/* Bloc Qualiopi — dépliant principal */}
+        {/* Bloc Organisme Certifié Qualiopi — dépliant principal */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={viewport}
           variants={fadeUp}
-          className="max-w-[900px] mx-auto mb-12 rounded-3xl border border-[#A68AFF]/25 bg-[#F6F1EB] overflow-hidden"
+          className="rounded-3xl border border-[#A68AFF]/25 bg-[#F6F1EB] overflow-hidden"
         >
           <details className="group">
             <summary className="flex items-center gap-3 px-6 md:px-8 py-5 cursor-pointer list-none [&::-webkit-details-marker]:hidden hover:bg-[#A68AFF]/[0.04] transition-colors bg-white/60">
@@ -440,7 +457,7 @@ export function Modules() {
                   className="text-lg md:text-xl font-extrabold text-[#1E172D] tracking-tight"
                   style={{ fontFamily: 'var(--font-display)' }}
                 >
-                  Cadre Qualiopi
+                  Organisme Certifié Qualiopi
                 </h3>
                 <p className="text-[#1E172D]/50 text-xs">
                   Organisme certifié Qualiopi · informations réglementaires
@@ -487,6 +504,26 @@ export function Modules() {
               </div>
             </Dropdown>
 
+            {/* Indicateurs de résultats (Qualiopi indicateur 2) */}
+            <Dropdown title="Indicateurs de résultats">
+              <div className="mt-4 space-y-3 text-[13px] text-[#1E172D]/70 leading-relaxed">
+                <p>
+                  <strong className="text-[#1E172D]">Accélération IA 360</strong> est une{' '}
+                  <strong className="text-[#1E172D]">nouvelle action de formation</strong>. La
+                  première cohorte se déroule d&apos;octobre à décembre 2026&nbsp;: les indicateurs
+                  de résultats (satisfaction, assiduité, atteinte des objectifs) seront publiés à
+                  l&apos;issue de celle-ci.
+                </p>
+                <p>
+                  À titre indicatif, sur une précédente action de formation à l&apos;IA animée par
+                  Butzi (format court d&apos;une journée, mai 2025)&nbsp;:{' '}
+                  <strong className="text-[#1E172D]">taux de satisfaction de 95&nbsp;%</strong>{' '}
+                  (4&nbsp;participants). Ce résultat porte sur une action distincte et ne préjuge pas
+                  de ceux d&apos;Accélération IA 360.
+                </p>
+              </div>
+            </Dropdown>
+
             {/* Financement */}
             <p className="pt-3 text-[13px] text-[#1E172D]/70 leading-relaxed">
               <span className="font-bold text-[#1E172D]" style={{ fontFamily: 'var(--font-display)' }}>
@@ -500,6 +537,8 @@ export function Modules() {
           </div>
           </details>
         </motion.div>
+          </div>
+        </div>
 
         {/* CTA : recevoir le programme + appel */}
         <motion.div

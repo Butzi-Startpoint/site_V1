@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { fadeUp, stagger, viewport } from '@/lib/animations'
 import { LogoCloud } from '@/components/ui/logo-cloud-3'
 import { PhoneRevealButton } from '@/components/ui/phone-reveal-button'
+import { FounderMedia } from '@/components/ui/founder-media'
 import { cn } from '@/lib/utils'
 
 /* Lien vers les avis Google de Butzi. */
@@ -151,27 +152,7 @@ export function Founder() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
           {/* Photo sur cercle jaune, surgit de bas en haut, + réseaux */}
           <div className="order-1 flex flex-col items-center gap-7">
-            <div className="relative flex items-center justify-center">
-              {/* Cercle jaune derrière (comme avant), agrandi avec la photo */}
-              <motion.div
-                initial={{ scale: 0.85, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                viewport={viewport}
-                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute z-0 h-[310px] w-[310px] sm:h-[400px] sm:w-[400px] md:h-[500px] md:w-[500px] rounded-full"
-                style={{ background: '#FFFFAB' }}
-              />
-              {/* Photo : plus grande, monte de bas en haut, bas fondu dans le cercle */}
-              <motion.img
-                src="/team/butzi.webp"
-                alt="Butzi (Johannes Alinhac), fondateur de StartPoint IA"
-                initial={{ opacity: 0, y: 70 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={viewport}
-                transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-                className="relative z-10 w-[265px] sm:w-[340px] md:w-[420px] lg:w-[460px] h-auto object-contain [mask-image:linear-gradient(to_bottom,black_82%,transparent)]"
-              />
-            </div>
+            <FounderMedia />
 
             {/* Réseaux sociaux */}
             <div className="flex items-center gap-1.5">

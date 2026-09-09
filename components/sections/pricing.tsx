@@ -164,7 +164,7 @@ const plans: Plan[] = [
     cta: 'Réserver ma place',
     popular: false,
     sectionLabel: 'Inclus',
-    payment: 'Paiement en 1x ou 3x sans frais',
+    payment: 'Paiement en 1x',
     paymentSecondary: 'ou 3 x 1\u00a0019 €',
     features: [
       '8 sessions live en groupe (1/semaine, 90 mn)',
@@ -188,7 +188,7 @@ const plans: Plan[] = [
     cta: 'Réserver ma place',
     popular: true,
     sectionLabel: 'Tout l\'Essentiel, plus',
-    payment: 'Paiement en 1x ou 3x sans frais',
+    payment: 'Paiement en 1x',
     paymentSecondary: 'ou 3 x 1\u00a0189 €',
     features: [
       'Tout le programme Essentiel',
@@ -216,7 +216,7 @@ const plans: Plan[] = [
     cta: 'Réserver ma place',
     popular: false,
     sectionLabel: 'Inclus',
-    payment: 'Paiement en 1x ou 3x sans frais',
+    payment: 'Paiement en 1x',
     paymentSecondary: 'ou 3 x 2\u00a0039 €',
     features: [
       { text: 'Tout le programme Méthode Levier + tous les bonus', sub: 'Programme finançable via FAF (Qualiopi)' },
@@ -358,10 +358,12 @@ export function Pricing() {
                       >
                         {plan.price}
                       </PricingCard.MainPrice>
-                      <PricingCard.Period className={t.paymentSecondary}>TTC</PricingCard.Period>
+                      <PricingCard.Period className={t.paymentSecondary}>net de TVA</PricingCard.Period>
                     </PricingCard.Price>
 
-                    <p className={`text-[11px] -mt-2 mb-2 ${t.payment}`}>(TVA non applicable)</p>
+                    <p className={`text-[11px] -mt-2 mb-2 ${t.payment}`}>
+                      Exonéré de TVA (art. 261-4-4° a du CGI)
+                    </p>
 
                     <p className={`text-[13px] mb-1 leading-relaxed ${t.description}`}>{plan.description}</p>
                     {plan.valueDesc && (
