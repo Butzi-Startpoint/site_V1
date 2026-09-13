@@ -37,11 +37,20 @@ export function CohortCalendar({ className }: { className?: string }) {
           <p className="text-[#1E172D]/55 text-xs md:text-[13px] leading-relaxed mt-0.5">
             {COHORT.format} · {COHORT.totalHours} · {COHORT.maxParticipants}
           </p>
+          <p className="text-[#1E172D]/70 text-xs md:text-[13px] leading-relaxed mt-1">
+            <strong className="text-[#1E172D]">Créneau prévisionnel</strong> : {COHORT.slot}
+          </p>
         </div>
       </div>
 
       {/* Dates des sessions */}
       <div className="px-6 md:px-8 py-5 md:py-6">
+        <p
+          className="text-[10px] font-bold uppercase tracking-widest text-[#A68AFF] mb-3"
+          style={{ fontFamily: 'var(--font-display)' }}
+        >
+          Dates prévisionnelles
+        </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8">
           {COHORT.sessions.map((s) => (
             <div
@@ -58,7 +67,10 @@ export function CohortCalendar({ className }: { className?: string }) {
             </div>
           ))}
         </div>
-        <p className="text-[#1E172D]/55 text-xs italic leading-relaxed mt-4">
+        <p className="text-[#1E172D]/55 text-xs leading-relaxed mt-4">
+          {COHORT.slotNote}
+        </p>
+        <p className="text-[#1E172D]/55 text-xs italic leading-relaxed mt-2">
           {COHORT.replayNote}
         </p>
       </div>

@@ -5,7 +5,6 @@ import type { Variants } from 'framer-motion'
 import { fadeUp, stagger, viewport } from '@/lib/animations'
 import { ProgramEmailButton } from '@/components/ui/program-email-button'
 import { CohortCalendar } from '@/components/sections/cohort-calendar'
-import { ButziVideo } from '@/components/ui/butzi-video'
 
 /* Révélation premium : fondu + flou + légère montée, easing soyeux. */
 const premiumReveal: Variants = {
@@ -378,15 +377,9 @@ export function Modules() {
           ))}
         </motion.div>
 
-        {/* Programme + Qualiopi : sur desktop, vidéo verticale à gauche, détails à droite */}
-        {/* Même largeur (760) et même décalage gauche (pastille 44 + gap 28 = 72px)
-            que la timeline, pour aligner le bord gauche de la vidéo sur les cartes. */}
-        <div className="max-w-[760px] mx-auto mt-4 mb-12 md:flex md:items-center md:gap-6 md:pl-[72px]">
-          {/* Vidéo de Butzi (desktop uniquement) — alignée sous les cartes Levier */}
-          <ButziVideo className="hidden md:block md:w-[280px] md:flex-shrink-0" />
-
-          {/* Colonne détails : programme + organisme Qualiopi */}
-          <div className="flex-1 min-w-0 space-y-6">
+        {/* Programme + organisme Qualiopi — même largeur (760) que la timeline. */}
+        <div className="max-w-[760px] mx-auto mt-4 mb-12">
+          <div className="min-w-0 space-y-6">
         {/* Programme de la formation — dépliant */}
         <motion.div
           initial="hidden"
@@ -421,8 +414,15 @@ export function Modules() {
 
             <div className="px-6 md:px-8 py-6 md:py-7 border-t border-[#1E172D]/[0.06]">
               <p className="text-[#1E172D]/55 text-sm mb-6 leading-relaxed">
-                Une classe virtuelle de 90 minutes chaque semaine, le mardi de 9h30 à 11h.{' '}
-                <span className="text-[#1E172D]/45">Replays disponibles, rattrapage possible.</span>
+                8 semaines, à raison d&apos;une session collective de 1h30 par semaine.{' '}
+                <span className="text-[#1E172D]/80">
+                  <strong className="text-[#1E172D]">Créneau prévisionnel</strong> : mardi de 9h30 à 11h.
+                </span>{' '}
+                <span className="text-[#1E172D]/45">
+                  Le calendrier définitif est établi avec les participants avant le démarrage de la
+                  cohorte, afin de tenir compte au mieux des disponibilités du groupe. Replays
+                  disponibles, rattrapage possible.
+                </span>
               </p>
               <div className="space-y-2.5">
                 {programmeSessions.map((s) => (

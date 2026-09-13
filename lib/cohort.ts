@@ -6,7 +6,10 @@ export type CohortSession = { n: number; date: string }
 
 export const COHORT = {
   name: "Cohorte d'octobre 2026",
-  format: '8 sessions de 90 minutes, le mardi de 9h30 à 11h00',
+  format: 'une session collective de 1h30 par semaine, sur 8 semaines',
+  slot: 'mardi de 9h30 à 11h',
+  slotNote:
+    'Le calendrier définitif est établi avec les participants avant le démarrage de la cohorte, afin de tenir compte au mieux des disponibilités du groupe.',
   totalHours: '12 heures au total',
   maxParticipants: '10 participants maximum',
   sessions: [

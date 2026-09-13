@@ -41,7 +41,16 @@ function loadYouTubeAPI(): Promise<void> {
  * Le clic étant un geste utilisateur, la lecture démarre avec le son (50 %) et
  * la piste de sous-titres YouTube désactivée.
  */
-export function ButziVideo({ className = '' }: { className?: string }) {
+export function ButziVideo({
+  className = '',
+  startImmediately = false,
+}: {
+  className?: string
+  /* Démarre le lecteur dès le montage, sans passer par la façade au clic.
+     À n'utiliser qu'en réponse à un geste utilisateur (ex. clic sur la photo
+     du fondateur) : l'activation « sticky » de ce clic autorise le son. */
+  startImmediately?: boolean
+}) {
   type YTApi = {
     setVolume: (v: number) => void
     unMute: () => void
@@ -52,7 +61,7 @@ export function ButziVideo({ className = '' }: { className?: string }) {
   }
   const holderRef = useRef<HTMLDivElement>(null)
   const playerRef = useRef<YTApi | undefined>(undefined)
-  const [started, setStarted] = useState(false)
+  const [started, setStarted] = useState(startImmediately)
 
   /* ⚠️ Aucun préchargement de l'API YouTube : charger iframe_api dès l'affichage
      transmettrait l'adresse IP du visiteur à Google avant tout consentement.
