@@ -135,6 +135,10 @@ export function FinancementSimulator() {
     if (fiscal) next.fiscal = fiscal
     if (tmi) next.tmi = tmi
     if (startDate) next.startDate = startDate
+    // Hydratation depuis l'URL au montage : le setState en effet est ici le bon
+    // choix (l'URL est inconnue en SSR ; lire window en initialiseur casserait
+    // l'hydratation). La règle perf ne s'applique donc pas à ce cas.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setState(next)
     if (statut && anciennete && urssaf && budget && fiscal) {
       setShowResults(true)

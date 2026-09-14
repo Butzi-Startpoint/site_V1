@@ -1,0 +1,38 @@
+name: CI
+
+# Filet de sécurité : à chaque push sur main et à chaque pull request,
+# on réinstalle proprement, on lint et on build. Si l'un échoue, le commit
+# est marqué en rouge sur GitHub avant toute mise en ligne.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+# Un nouveau push sur une même branche annule le run précédent encore en cours.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Lint + Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
