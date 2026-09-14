@@ -40,10 +40,9 @@ export function ScrambleText({
     const prefersReduced =
       typeof window !== 'undefined' &&
       window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
-    if (prefersReduced) {
-      setDisplay(text)
-      return
-    }
+    // `display` est déjà initialisé à `text` : en mouvement réduit, on ne lance
+    // simplement pas l'animation (pas de setState superflu dans l'effet).
+    if (prefersReduced) return
 
     let started = false
     let interval: ReturnType<typeof setInterval> | null = null

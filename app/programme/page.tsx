@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { Navbar } from '@/components/sections/navbar'
 import { FooterSection } from '@/components/sections/footer-section'
 import { MeshGradientBg } from '@/components/ui/mesh-gradient-bg'
@@ -250,13 +251,13 @@ export default function ProgrammePage() {
 
             {/* CTA */}
             <div className="flex flex-col sm:flex-row items-center md:items-start justify-center md:justify-start gap-3 mt-8">
-              <a
+              <Link
                 href="/#pricing"
                 className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#FFFFAB] text-[#1E172D] font-bold text-sm md:text-base hover:bg-[#f5f08c] hover:scale-[1.02] transition-all"
                 style={{ fontFamily: 'var(--font-display)' }}
               >
                 Rejoindre la prochaine cohorte →
-              </a>
+              </Link>
               <a
                 href="/financement"
                 className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-white/25 bg-white/5 backdrop-blur-md text-[#F6F1EB] font-semibold text-sm md:text-base hover:bg-white/10 transition-colors"
