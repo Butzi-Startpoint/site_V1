@@ -12,8 +12,9 @@ const faqs: Faq[] = [
     q: 'Est-ce que je peux financer la formation avec mon CPF ?',
     a: (
       <>
-        Non, la formation n&apos;est pas finançable par le CPF. Le CPF ne couvre pas
-        ce type de formation pour les indépendants et dirigeants. Mais d&apos;autres
+        Non, la formation <strong>n&apos;est pas éligible au CPF</strong>. Pour être
+        finançable par le CPF, une formation doit être enregistrée au RNCP ou au
+        Répertoire spécifique, ce qui n&apos;est pas le cas de celle-ci. Mais d&apos;autres
         financements existent et sont souvent plus avantageux&nbsp;: votre FAF
         (AGEFICE, FIF-PL ou FAFCEA selon votre statut), la déductibilité fiscale
         de la formation, et le crédit d&apos;impôt formation dirigeant.{' '}

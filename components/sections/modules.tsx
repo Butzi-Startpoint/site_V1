@@ -88,6 +88,7 @@ const ficheQualiopi: [string, string][] = [
   ['Prérequis', 'Aucun prérequis technique. Être à l\'aise avec l\'usage courant d\'un ordinateur et la navigation sur internet.'],
   ['Matériel nécessaire', 'Ordinateur et smartphone équipé d\'un navigateur web à jour et d\'une connexion internet ; de quoi prendre des notes (carnet ou feuilles, stylo)'],
   ['Effectif', '10 participants maximum par cohorte'],
+  ['Délais d\'accès', 'Inscription possible jusqu\'à 7 jours avant le démarrage, sous réserve de places. Pour une prise en charge FAF, prévoir environ 1 mois.'],
   ['Accessibilité', 'Formation accessible aux personnes en situation de handicap. Contactez-nous pour adapter les modalités.'],
 ]
 

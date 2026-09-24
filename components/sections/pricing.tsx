@@ -10,7 +10,24 @@ import { QualiopiBadge } from '@/components/ui/qualiopi-badge'
 import { PhoneRevealButton } from '@/components/ui/phone-reveal-button'
 import { ReservationModal } from '@/components/ReservationModal'
 import { OFFERS, CALENDLY_URL, type OfferKey } from '@/lib/offers'
+import { formatEUR } from '@/lib/format'
+import { grandTotal } from '@/components/sections/value-stack'
+import { FORMATION_PRICE } from '@/components/sections/financement/calculator'
 import type { Variants } from 'framer-motion'
+
+/* Prix des offres (source unique) : les libellés et l'écart Essentiel → Momentum en découlent. */
+const PRICES: Record<OfferKey, number> = { essentiel: FORMATION_PRICE, momentum: 3497, premium: 5997 }
+
+/* Totaux calculés depuis la même source que le value stack — jamais de chiffre en dur. */
+const essentielValueTotal = grandTotal
+
+const momentumExtras = [
+  { label: 'Audit individuel', value: 200 },
+  { label: 'Séance de coaching 45 min', value: 350 },
+  { label: 'Cercle StartPoint (6 mois)', value: 474 },
+]
+const momentumExtrasTotal = momentumExtras.reduce((sum, e) => sum + e.value, 0)
+const momentumValueTotal = essentielValueTotal + momentumExtrasTotal
 
 const cardVariant: Variants = {
   hidden:  { opacity: 0, y: 40, scale: 0.96 },
@@ -145,10 +162,13 @@ type Plan = {
   sectionLabel: string
   payment: string | null
   paymentSecondary: string | null
+  installmentTotal?: number
   features: Feature[]
   guarantee?: string
   extras: { label: string; val: string }[] | null
   extrasTitle?: string
+  extrasTotal?: number
+  extrasFooter?: string
   theme: Theme
 }
 
@@ -158,14 +178,15 @@ const plans: Plan[] = [
     icon: <Users className="w-4 h-4" />,
     name: 'Essentiel',
     description: 'Tout le programme Méthode Levier + tous les bonus',
-    valueDesc: 'Valeur 5 973 €',
-    price: '2 997 €',
+    valueDesc: `Valeur ${formatEUR(essentielValueTotal)}`,
+    price: formatEUR(PRICES.essentiel),
     badge: null,
     cta: 'Réserver ma place',
     popular: false,
     sectionLabel: 'Inclus',
     payment: 'Paiement en 1x',
     paymentSecondary: 'ou 3 x 1\u00a0019 €',
+    installmentTotal: 1019 * 3,
     features: [
       '8 sessions live en groupe (1/semaine, 90 mn)',
       'Accès au cours en ligne : +80 vidéos',
@@ -182,14 +203,15 @@ const plans: Plan[] = [
     icon: <Zap className="w-4 h-4" />,
     name: 'Momentum',
     description: 'Tout le programme Méthode Levier + tous les bonus, plus :',
-    valueDesc: 'Valeur 6 997 €',
-    price: '3 497 €',
+    valueDesc: `Valeur ${formatEUR(momentumValueTotal)}`,
+    price: formatEUR(PRICES.momentum),
     badge: 'Recommandé',
     cta: 'Réserver ma place',
     popular: true,
     sectionLabel: 'Tout l\'Essentiel, plus',
     payment: 'Paiement en 1x',
     paymentSecondary: 'ou 3 x 1\u00a0189 €',
+    installmentTotal: 1189 * 3,
     features: [
       'Tout le programme Essentiel',
       'Audit individuel pré-programme (30 min)',
@@ -197,12 +219,10 @@ const plans: Plan[] = [
       '6 mois de communauté de pairs Cercle StartPoint',
       'Kit de templates avancés par métier',
     ],
-    extras: [
-      { label: 'Audit individuel', val: '200 €' },
-      { label: 'Séance de coaching 45 min', val: '350 €' },
-      { label: 'Cercle StartPoint (6 mois)', val: '474 €' },
-    ],
-    extrasTitle: 'Valeur totale Momentum : 6 997 €',
+    extras: momentumExtras.map((e) => ({ label: e.label, val: formatEUR(e.value) })),
+    extrasTitle: `Valeur totale Momentum : ${formatEUR(momentumValueTotal)}`,
+    extrasTotal: momentumExtrasTotal,
+    extrasFooter: `Pour seulement ${formatEUR(PRICES.momentum - PRICES.essentiel)} de plus`,
     theme: 'highlight',
   },
   {
@@ -211,13 +231,14 @@ const plans: Plan[] = [
     name: 'Premium',
     description: 'Le programme complet + votre système IA installé clé en main.',
     valueDesc: null,
-    price: '5 997 €',
+    price: formatEUR(PRICES.premium),
     badge: null,
     cta: 'Réserver ma place',
     popular: false,
     sectionLabel: 'Inclus',
     payment: 'Paiement en 1x',
     paymentSecondary: 'ou 3 x 2\u00a0039 €',
+    installmentTotal: 2039 * 3,
     features: [
       { text: 'Tout le programme Méthode Levier + tous les bonus', sub: 'Programme finançable via FAF (Qualiopi)' },
       '1 séance de coaching 1:1 avec Butzi (1 heure)',
@@ -358,7 +379,7 @@ export function Pricing() {
                       >
                         {plan.price}
                       </PricingCard.MainPrice>
-                      <PricingCard.Period className={t.paymentSecondary}>net de TVA</PricingCard.Period>
+                      <PricingCard.Period className={t.paymentSecondary}>net de taxe</PricingCard.Period>
                     </PricingCard.Price>
 
                     <p className={`text-[11px] -mt-2 mb-2 ${t.payment}`}>
@@ -378,6 +399,11 @@ export function Pricing() {
                     {plan.paymentSecondary && (
                       <p className={`text-center text-xs mt-0.5 font-semibold ${t.paymentSecondary}`}>
                         {plan.paymentSecondary}
+                      </p>
+                    )}
+                    {plan.installmentTotal && (
+                      <p className={`text-center text-[11px] mt-0.5 ${t.payment}`}>
+                        soit {formatEUR(plan.installmentTotal)} au total
                       </p>
                     )}
 
@@ -447,10 +473,10 @@ export function Pricing() {
                               </div>
                             ))}
                             <div className={`border-t mt-2 pt-2 flex justify-between font-bold text-[13px] ${t.extrasTotal}`}>
-                              <span>Valeur totale des extras</span><span>1 024 €</span>
+                              <span>Valeur totale des extras</span><span>{plan.extrasTotal && formatEUR(plan.extrasTotal)}</span>
                             </div>
                             <p className={`text-xs font-semibold mt-2 text-center ${t.extrasFooter}`}>
-                              Pour seulement 500 € de plus
+                              {plan.extrasFooter}
                             </p>
                           </div>
                         </div>
