@@ -52,8 +52,8 @@ const bonuses = [
   },
   {
     num: 'Bonus 5',
-    title: 'Mises à jour à vie',
-    desc: 'L\'IA évolue chaque mois. Votre cours aussi. Accès permanent aux nouvelles vidéos, prompts et méthodes ajoutés au programme.',
+    title: 'Mises à jour pendant 12 mois',
+    desc: 'L\'IA évolue chaque mois. Votre cours aussi. Accès aux nouvelles vidéos, prompts et méthodes ajoutés au programme pendant 12 mois.',
     value: '497 €',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1E172D" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">

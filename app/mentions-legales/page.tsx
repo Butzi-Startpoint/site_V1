@@ -48,7 +48,7 @@ export default function MentionsLegalesPage() {
             <p>
               Les actions de formation professionnelle continue dispensées par BUTZI EURL sont{' '}
               <strong>exonérées de TVA</strong> en application de l&apos;article 261-4-4° a du Code
-              général des impôts. Les prix des formations sont donc nets de TVA.
+              général des impôts. Les prix des formations sont donc nets de taxe.
             </p>
             <p>Code APE/NAF : 85.59A — Formation continue d&apos;adultes</p>
             <p>Siège social : 61 boulevard du Maréchal Joffre, 92340 Bourg-la-Reine, France</p>

@@ -2,13 +2,15 @@
 
 import { motion } from 'framer-motion'
 import { fadeUp, stagger, viewport } from '@/lib/animations'
+import { formatEUR } from '@/lib/format'
+import { FORMATION_PRICE } from '@/components/sections/financement/calculator'
 
-const stackItems = [
+export const stackItems = [
   {
     num: '01',
     title: '8 sessions live en groupe',
     desc: 'Chaque semaine, on travaille SUR votre business, pas en théorie. Vous repartez avec des actions concrètes à chaque session.',
-    value: '2 100 €',
+    value: 2100,
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A68AFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="6" width="14" height="12" rx="2"/>
@@ -20,7 +22,7 @@ const stackItems = [
     num: '02',
     title: 'La Méthode Levier : votre système IA complet',
     desc: 'Clarifier › Déléguer › Réinventer › Amplifier › Assumer › Libérer. La méthode qui transforme l\'IA d\'un gadget en levier de croissance pour votre activité.',
-    value: '997 €',
+    value: 997,
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A68AFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
@@ -33,8 +35,8 @@ const stackItems = [
   {
     num: '03',
     title: 'Accès au cours en ligne : +80 vidéos',
-    desc: 'Toute la théorie, les tutos et les exemples concrets accessibles à vie, à votre rythme, en complément des sessions live.',
-    value: '497 €',
+    desc: 'Toute la théorie, les tutos et les exemples concrets accessibles pendant 12 mois, à votre rythme, en complément des sessions live.',
+    value: 497,
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A68AFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <polygon points="5,3 19,12 5,21 5,3"/>
@@ -45,7 +47,7 @@ const stackItems = [
     num: '04',
     title: 'Communauté : Cercle StartPoint',
     desc: 'Le réseau privé d\'entrepreneurs qui utilisent l\'IA au quotidien. Entraide, partages de résultats, contenus exclusifs.',
-    value: '497 €',
+    value: 497,
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A68AFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -58,8 +60,8 @@ const stackItems = [
   {
     num: '05',
     title: 'Accompagnement continu entre les sessions',
-    desc: 'Vous n\'êtes jamais bloqué. Questions illimitées, feedback personnalisé, ressources complémentaires entre chaque live.',
-    value: '397 €',
+    desc: 'Vous n\'êtes jamais bloqué. Réponses à vos questions, feedback personnalisé, ressources complémentaires entre chaque live.',
+    value: 397,
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A68AFF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
@@ -69,12 +71,12 @@ const stackItems = [
 ]
 
 /* ── Les 5 bonus, regroupés dans une case dépliante (« Voir le détail des 5 bonus ») ── */
-const bonuses = [
+export const bonuses = [
   {
     num: 'Bonus 1',
     title: 'Kit Accélérateur « Premiers résultats en 48h »',
     desc: '5 systèmes d\'IA prêts à l\'emploi (emails pro, posts LinkedIn, devis, comptes-rendus, veille métier). Vous gagnez du temps avant même la première session.',
-    value: '297 €',
+    value: 297,
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1E172D" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
@@ -85,7 +87,7 @@ const bonuses = [
     num: 'Bonus 2',
     title: 'Bibliothèque de Cas d\'Usage IA par Métier',
     desc: '+40 cas d\'usage classés par profil (consultant, coach, formateur, freelance) avec le prompt exact et le résultat attendu.',
-    value: '297 €',
+    value: 297,
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1E172D" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
@@ -97,7 +99,7 @@ const bonuses = [
     num: 'Bonus 3',
     title: 'Garantie Zéro Session Perdue',
     desc: 'Replay sous 24h + résumé écrit avec les actions clés. Vous manquez une session, vous ne perdez rien.',
-    value: '197 €',
+    value: 197,
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1E172D" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -109,7 +111,7 @@ const bonuses = [
     num: 'Bonus 4',
     title: 'Kit opérationnel à chaque module',
     desc: 'Templates, skills IA, prompts, checklists, systèmes d\'IA. Tout ce qu\'il faut pour appliquer immédiatement, testé sur +120 entrepreneurs.',
-    value: '297 €',
+    value: 297,
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1E172D" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
@@ -118,9 +120,9 @@ const bonuses = [
   },
   {
     num: 'Bonus 5',
-    title: 'Mises à jour à vie',
-    desc: 'L\'IA évolue chaque mois. Votre cours aussi. Accès permanent aux nouvelles vidéos, prompts et méthodes ajoutés au programme.',
-    value: '497 €',
+    title: 'Mises à jour pendant 12 mois',
+    desc: 'L\'IA évolue chaque mois. Votre cours aussi. Accès aux nouvelles vidéos, prompts et méthodes ajoutés au programme pendant 12 mois.',
+    value: 497,
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1E172D" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="23 4 23 10 17 10"/>
@@ -140,6 +142,11 @@ const rowVariant = {
   hidden: { opacity: 0, x: -24 },
   visible: { opacity: 1, x: 0, transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] } },
 }
+
+/* Totaux calculés depuis les tableaux ci-dessus — ne jamais taper un total en dur. */
+export const stackTotal = stackItems.reduce((sum, i) => sum + i.value, 0)
+export const bonusesTotal = bonuses.reduce((sum, b) => sum + b.value, 0)
+export const grandTotal = stackTotal + bonusesTotal
 
 export function ValueStack() {
   return (
@@ -198,7 +205,7 @@ export function ValueStack() {
                     className="flex-shrink-0 text-[#A68AFF] font-bold text-sm whitespace-nowrap"
                     style={{ fontFamily: 'var(--font-display)' }}
                   >
-                    {item.value}
+                    {formatEUR(item.value)}
                   </span>
 
                   <svg
@@ -230,7 +237,7 @@ export function ValueStack() {
               <p className="text-[#1E172D] font-bold text-sm md:text-base" style={{ fontFamily: 'var(--font-display)' }}>
                 Voir le détail des 5 bonus
               </p>
-              <p className="text-[#1E172D]/50 text-xs">Inclus dans toutes les offres · valeur 1&nbsp;585&nbsp;€</p>
+              <p className="text-[#1E172D]/50 text-xs">Inclus dans toutes les offres · valeur {formatEUR(bonusesTotal)}</p>
             </div>
             <svg
               className="w-4 h-4 text-[#1E172D]/40 transition-transform duration-200 group-open:rotate-180 flex-shrink-0"
@@ -279,7 +286,7 @@ export function ValueStack() {
                       className="flex-shrink-0 text-[#A68AFF] font-bold text-sm whitespace-nowrap"
                       style={{ fontFamily: 'var(--font-display)' }}
                     >
-                      {b.value}
+                      {formatEUR(b.value)}
                     </span>
                   </div>
                   <p className="text-[#1E172D]/60 text-sm leading-relaxed">{b.desc}</p>
@@ -325,7 +332,7 @@ export function ValueStack() {
                   className="font-bold text-base md:text-lg whitespace-nowrap"
                   style={{ fontFamily: 'var(--font-display)' }}
                 >
-                  4 488 €
+                  {formatEUR(stackTotal)}
                 </span>
               </div>
               <div className="flex items-baseline justify-between gap-6 text-[#F6F1EB]/85">
@@ -334,7 +341,7 @@ export function ValueStack() {
                   className="font-bold text-base md:text-lg whitespace-nowrap"
                   style={{ fontFamily: 'var(--font-display)' }}
                 >
-                  + 1 585 €
+                  + {formatEUR(bonusesTotal)}
                 </span>
               </div>
               <div className="h-px bg-[#F6F1EB]/15 my-2" />
@@ -349,7 +356,7 @@ export function ValueStack() {
                   className="text-[#F6F1EB]/60 text-2xl md:text-3xl font-extrabold whitespace-nowrap line-through decoration-[#A68AFF]/70 decoration-[3px]"
                   style={{ fontFamily: 'var(--font-display)' }}
                 >
-                  6 073 €
+                  {formatEUR(grandTotal)}
                 </span>
               </div>
               <div className="flex items-baseline justify-between gap-6 pt-1">
@@ -363,7 +370,7 @@ export function ValueStack() {
                   className="text-[#FFFFAB] text-3xl md:text-4xl font-extrabold tracking-tight whitespace-nowrap leading-none"
                   style={{ fontFamily: 'var(--font-display)' }}
                 >
-                  2 997 €
+                  {formatEUR(FORMATION_PRICE)}
                 </span>
               </div>
             </div>
