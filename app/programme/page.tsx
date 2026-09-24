@@ -60,17 +60,19 @@ type Module = {
 
 const modules: Module[] = [
   {
-    num: '·',
-    week: 'Semaine 1',
-    step: 'Paramétrage des outils et rencontre',
-    objectif: "Disposer d'un environnement IA opérationnel et rencontrer la communauté d'entrepreneurs.",
+    num: '0',
+    week: 'Module 0 · Semaine 1',
+    step: "Introduction à l'IA et paramétrage sécurisé de vos outils",
+    objectif: "Comprendre les fondamentaux de l'IA générative, paramétrer votre outil IA de façon sécurisée et rencontrer la communauté d'entrepreneurs.",
     contenu: [
+      "Introduction à l'IA générative : ce qu'elle peut vraiment faire pour votre activité",
+      'Bonnes pratiques de sécurité et de confidentialité des données',
       'Présentation du parcours, des objectifs et des modalités de suivi',
-      'Paramétrage complet de votre outil IA',
+      'Paramétrage complet et sécurisé de votre outil IA',
       "Rencontre avec la communauté d'entrepreneurs et accès au Cercle StartPoint",
       'Mise en place de la fonctionnalité audio',
     ],
-    livrable: 'Votre outil configuré et un réseau.',
+    livrable: 'Votre outil configuré en sécurité et un réseau.',
   },
   {
     num: '1',
@@ -151,8 +153,8 @@ const modules: Module[] = [
     livrable: 'Une création codée et des modèles pour Claude Skills.',
   },
   {
-    num: '·',
-    week: 'Semaine 8',
+    num: '7',
+    week: 'Module 7 · Semaine 8',
     step: 'Session de groupe',
     objectif: "Formaliser un système IA personnel complet et un plan d'action durable.",
     contenu: [
