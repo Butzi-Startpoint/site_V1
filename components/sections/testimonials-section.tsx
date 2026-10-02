@@ -39,19 +39,19 @@ const testimonials: Testimonial[] = [
   // Retours complémentaires
   {
     text: "Il a ouvert les esprits et nous a fourni des outils précis pour mettre en application l'IA dans notre quotidien professionnel.",
-    image: "https://randomuser.me/api/portraits/women/65.jpg",
+    image: "/retours/lena-t.jpg",
     name: "Léna T.",
     role: "CerFrance",
   },
   {
     text: "Très bonne intervention sur l'utilisation de l'IA ! Merci pour votre intervention inspirante.",
-    image: "https://randomuser.me/api/portraits/women/32.jpg",
+    image: "/retours/valerie-davire.jpg",
     name: "Valérie Daviré",
     role: "Secrétaire médicale indépendante",
   },
   {
     text: "Le propos est pertinent, l'animation est rythmée et tonique, l'atmosphère toujours bienveillante. Ce détour inspirant a été apprécié à chaque fois par les participants.",
-    image: "https://randomuser.me/api/portraits/women/47.jpg",
+    image: "/retours/laurene-castor.jpg",
     name: "Laurène Castor",
     role: "Openclassrooms",
   },

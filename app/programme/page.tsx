@@ -22,6 +22,7 @@ const ficheItems: { label: string; value: string }[] = [
   { label: 'Prérequis', value: 'Aucun prérequis technique. Être à l\'aise avec l\'usage courant d\'un ordinateur et la navigation sur internet.' },
   { label: 'Matériel nécessaire', value: 'Ordinateur et smartphone équipé d\'un navigateur web à jour et d\'une connexion internet · de quoi prendre des notes (carnet ou feuilles, stylo)' },
   { label: 'Effectif', value: '10 participants maximum par cohorte' },
+  { label: 'Délais d\'accès', value: 'Inscription possible jusqu\'à 7 jours avant le démarrage, sous réserve de places. Pour une prise en charge FAF, prévoir environ 1 mois.' },
   { label: 'Tarif', value: "À partir de 2 997 €, exonéré de TVA (art. 261-4-4° a du CGI), finançable (FAF, déductibilité fiscale)" },
   { label: 'Sanction', value: 'Attestation de fin de formation' },
   { label: 'Accessibilité', value: 'Formation accessible aux personnes en situation de handicap' },
@@ -59,17 +60,19 @@ type Module = {
 
 const modules: Module[] = [
   {
-    num: '·',
-    week: 'Semaine 1',
-    step: 'Paramétrage des outils et rencontre',
-    objectif: "Disposer d'un environnement IA opérationnel et rencontrer la communauté d'entrepreneurs.",
+    num: '0',
+    week: 'Module 0 · Semaine 1',
+    step: "Introduction à l'IA et paramétrage sécurisé de vos outils",
+    objectif: "Comprendre les fondamentaux de l'IA générative, paramétrer votre outil IA de façon sécurisée et rencontrer la communauté d'entrepreneurs.",
     contenu: [
+      "Introduction à l'IA générative : ce qu'elle peut vraiment faire pour votre activité",
+      'Bonnes pratiques de sécurité et de confidentialité des données',
       'Présentation du parcours, des objectifs et des modalités de suivi',
-      'Paramétrage complet de votre outil IA',
+      'Paramétrage complet et sécurisé de votre outil IA',
       "Rencontre avec la communauté d'entrepreneurs et accès au Cercle StartPoint",
       'Mise en place de la fonctionnalité audio',
     ],
-    livrable: 'Votre outil configuré et un réseau.',
+    livrable: 'Votre outil configuré en sécurité et un réseau.',
   },
   {
     num: '1',
@@ -150,8 +153,8 @@ const modules: Module[] = [
     livrable: 'Une création codée et des modèles pour Claude Skills.',
   },
   {
-    num: '·',
-    week: 'Semaine 8',
+    num: '7',
+    week: 'Module 7 · Semaine 8',
     step: 'Session de groupe',
     objectif: "Formaliser un système IA personnel complet et un plan d'action durable.",
     contenu: [
@@ -450,10 +453,10 @@ export default function ProgrammePage() {
           <Section title="Délais d'accès">
             <p>
               L&apos;inscription s&apos;effectue en plusieurs étapes : pré-inscription, entretien de
-              positionnement, devis et convention, puis confirmation et accès. En cas de financement
-              FAF, le dossier doit être déposé au minimum <strong>15 jours avant</strong> le début de
-              la formation. Le délai d&apos;accès recommandé est d&apos;environ{' '}
-              <strong>10 à 15 jours ouvrés</strong> avant le démarrage de la cohorte.
+              positionnement, devis et convention, puis confirmation et accès. L&apos;inscription est
+              possible <strong>jusqu&apos;à 7 jours avant</strong> le démarrage de la cohorte, sous
+              réserve de places disponibles. Pour une prise en charge par un FAF, prévoir{' '}
+              <strong>environ 1 mois</strong> avant le démarrage pour constituer et déposer le dossier.
             </p>
           </Section>
 

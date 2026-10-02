@@ -28,10 +28,10 @@ type Session = {
 
 const programmeSessions: Session[] = [
   {
-    n: '·',
-    week: 'Semaine 1',
-    title: 'Paramétrage des outils et rencontre',
-    desc: "Vous rencontrez la communauté d'entrepreneurs, installez vos outils et arrivez en semaine 2 prêt à produire.",
+    n: '0',
+    week: 'Module 0 · Semaine 1',
+    title: "Introduction à l'IA et paramétrage sécurisé de vos outils",
+    desc: "Vous découvrez les fondamentaux de l'IA générative, sécurisez et paramétrez vos outils, puis rencontrez la communauté d'entrepreneurs. Vous arrivez en semaine 2 prêt à produire.",
   },
   {
     n: '1',
@@ -70,8 +70,8 @@ const programmeSessions: Session[] = [
     desc: "Donnez à l'IA la forme de votre activité. Vous construisez vos propres process IA pour que ce qui prenait des heures se fasse en quelques minutes, sans perdre la main.",
   },
   {
-    n: '·',
-    week: 'Semaine 8',
+    n: '7',
+    week: 'Module 7 · Semaine 8',
     title: 'Session de groupe',
     desc: "Session de groupe. On traite vos cas concrets en live, on ancre vos nouvelles habitudes et on cale votre plan d'action pour la suite. Vous repartez autonome.",
   },
@@ -88,6 +88,7 @@ const ficheQualiopi: [string, string][] = [
   ['Prérequis', 'Aucun prérequis technique. Être à l\'aise avec l\'usage courant d\'un ordinateur et la navigation sur internet.'],
   ['Matériel nécessaire', 'Ordinateur et smartphone équipé d\'un navigateur web à jour et d\'une connexion internet ; de quoi prendre des notes (carnet ou feuilles, stylo)'],
   ['Effectif', '10 participants maximum par cohorte'],
+  ['Délais d\'accès', 'Inscription possible jusqu\'à 7 jours avant le démarrage, sous réserve de places. Pour une prise en charge FAF, prévoir environ 1 mois.'],
   ['Accessibilité', 'Formation accessible aux personnes en situation de handicap. Contactez-nous pour adapter les modalités.'],
 ]
 

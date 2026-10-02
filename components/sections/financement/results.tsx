@@ -4,6 +4,7 @@ import { useState, type FormEvent } from 'react'
 import { motion } from 'framer-motion'
 import { CountUp } from './count-up'
 import { ScrambleText } from '@/components/ui/scramble-text'
+import { FORMATION_HOURS } from './calculator'
 import type { Estimation, FafName } from './types'
 
 function encodeForm(data: Record<string, string>) {
@@ -114,7 +115,7 @@ export function Results({ estimation }: { estimation: Estimation; shareUrl?: str
           <div className="flex justify-between items-baseline pb-4 border-b border-[#1E172D]/10">
             <div>
               <p className="text-[#1E172D] font-semibold" style={{ fontFamily: 'var(--font-display)' }}>
-                Formation <ScrambleText text="Accélération IA 360" style={{ fontFamily: 'var(--font-tech)' }} /> (12h)
+                Formation <ScrambleText text="Accélération IA 360" style={{ fontFamily: 'var(--font-tech)' }} /> ({FORMATION_HOURS}h)
               </p>
               <p className="text-xs text-[#1E172D]/50 mt-0.5">Tarif Essentiel HT</p>
             </div>
