@@ -3,11 +3,15 @@
 import { useState, type FormEvent } from 'react'
 import { motion } from 'framer-motion'
 import { fadeUp, stagger, viewport } from '@/lib/animations'
+import { DIAGNOSTIC_URL } from '@/lib/offers'
 
 type Status = 'idle' | 'submitting' | 'success' | 'error'
 
+/* Lead magnet : diagnostic gratuit. L'email part directement dans Brevo
+   (route /api/diagnostic-lead), puis la personne accède au quiz. */
 export function LeadMagnet() {
   const [email, setEmail] = useState('')
+  const [company, setCompany] = useState('') // champ piège anti-bot, doit rester vide
   const [status, setStatus] = useState<Status>('idle')
   const [errorMsg, setErrorMsg] = useState('')
 
@@ -17,10 +21,10 @@ export function LeadMagnet() {
     setStatus('submitting')
     setErrorMsg('')
     try {
-      const res = await fetch('/api/mini-cours-lead', {
+      const res = await fetch('/api/diagnostic-lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email.trim() }),
+        body: JSON.stringify({ email: email.trim(), company }),
       })
       if (!res.ok) {
         const data = await res.json().catch(() => ({}))
@@ -35,7 +39,7 @@ export function LeadMagnet() {
   }
 
   return (
-    <section className="bg-[#F6F1EB] py-20 md:py-24 relative overflow-hidden" id="mini-cours">
+    <section className="bg-[#F6F1EB] py-20 md:py-24 relative overflow-hidden" id="diagnostic">
       {/* Soft decorative gradient */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -63,7 +67,7 @@ export function LeadMagnet() {
                 className="inline-block px-3 py-1 rounded-full bg-[#FFFFAB] text-[#1E172D] text-[11px] font-bold uppercase tracking-widest mb-4"
                 style={{ fontFamily: 'var(--font-display)' }}
               >
-                Mini-cours gratuit
+                Diagnostic gratuit
               </motion.span>
 
               <motion.h2
@@ -71,16 +75,18 @@ export function LeadMagnet() {
                 className="text-3xl md:text-4xl font-extrabold text-[#1E172D] leading-[1.15] tracking-tight"
                 style={{ fontFamily: 'var(--font-display)' }}
               >
-                Pas encore prêt&nbsp;? Commencez par le{' '}
-                <span className="text-[#A68AFF]">mini-cours gratuit.</span>
+                Diagnostiquez{' '}
+                <span className="text-[#A68AFF]">votre business</span>{' '}
+                en 2&nbsp;minutes.
               </motion.h2>
 
               <motion.p
                 variants={fadeUp}
                 className="text-[#1E172D]/65 text-base md:text-lg mt-4 leading-relaxed"
               >
-                4 vidéos par email pour faire vos premiers pas avec l&apos;IA dans votre
-                activité d&apos;indépendant.
+                8 questions pour repérer où vous perdez du temps sans le voir. Vous
+                obtenez votre profil et des pistes concrètes à appliquer avec l&apos;IA dans
+                votre activité.
               </motion.p>
             </div>
 
@@ -102,17 +108,26 @@ export function LeadMagnet() {
                     border: '1px solid rgba(166,138,255,0.3)',
                   }}
                 >
-                  <div className="text-4xl mb-3">📬</div>
+                  <div className="text-4xl mb-3">✅</div>
                   <p
                     className="text-[#1E172D] font-bold text-base md:text-lg leading-snug"
                     style={{ fontFamily: 'var(--font-display)' }}
                   >
-                    C&apos;est parti&nbsp;! Vérifiez votre boîte mail.
+                    Parfait&nbsp;! Votre diagnostic vous attend.
                   </p>
                   <p className="text-[#1E172D]/60 text-sm mt-2 leading-relaxed">
-                    La première vidéo arrive dans quelques minutes. Pensez à
-                    regarder vos spams au cas où.
+                    Comptez 2&nbsp;minutes pour répondre aux 8&nbsp;questions.
                   </p>
+                  <a
+                    href={DIAGNOSTIC_URL}
+                    className="mt-5 inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-[#1E172D] text-[#F6F1EB] font-bold text-sm hover:bg-[#2a1f3d] transition-colors"
+                    style={{ fontFamily: 'var(--font-display)' }}
+                  >
+                    Commencer le diagnostic
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                    </svg>
+                  </a>
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="flex flex-col gap-3">
@@ -137,6 +152,18 @@ export function LeadMagnet() {
                     style={{ fontFamily: 'var(--font-display)' }}
                   />
 
+                  {/* Champ piège : invisible pour les humains, rempli par certains robots */}
+                  <input
+                    type="text"
+                    name="company"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                    value={company}
+                    onChange={(e) => setCompany(e.target.value)}
+                    className="absolute left-[-9999px] h-0 w-0 opacity-0"
+                  />
+
                   <motion.button
                     type="submit"
                     whileHover={{ scale: 1.02, boxShadow: '0 12px 30px rgba(30,23,45,0.20)' }}
@@ -145,7 +172,7 @@ export function LeadMagnet() {
                     className="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-[#1E172D] text-[#F6F1EB] font-bold text-sm cursor-pointer shimmer-hover disabled:opacity-60 disabled:cursor-not-allowed"
                     style={{ fontFamily: 'var(--font-display)' }}
                   >
-                    {status === 'submitting' ? 'Envoi…' : 'Recevoir le mini-cours gratuit'}
+                    {status === 'submitting' ? 'Envoi…' : 'Faire le diagnostic gratuit'}
                     {status !== 'submitting' && (
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
@@ -161,8 +188,12 @@ export function LeadMagnet() {
                     className="text-[11px] text-[#1E172D]/45 leading-relaxed mt-1"
                     style={{ fontFamily: 'var(--font-display)' }}
                   >
-                    En soumettant votre email vous acceptez de recevoir le mini-cours et
-                    la newsletter StartPoint IA. Désabonnement en un clic.
+                    En soumettant votre email, vous acceptez de recevoir la newsletter
+                    StartPoint IA et des conseils sur l&apos;IA. Désabonnement en un clic.{' '}
+                    <a href="/politique-confidentialite" className="underline hover:text-[#1E172D]/70">
+                      Politique de confidentialité
+                    </a>
+                    .
                   </p>
                 </form>
               )}
