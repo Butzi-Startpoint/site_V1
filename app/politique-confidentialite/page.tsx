@@ -123,6 +123,7 @@ export default function PolitiqueConfidentialitePage() {
                 <><strong>Netlify, Inc.</strong> (États-Unis) — hébergement du site et réception des formulaires (Netlify Forms)</>,
                 <><strong>Resend</strong> (États-Unis) — envoi des e-mails transactionnels</>,
                 <><strong>Systeme.io</strong> (Union européenne) — tunnel de commande et paiement</>,
+                <><strong>Brevo</strong> (France, Union européenne) — gestion de la liste de contacts et envoi des e-mails d&apos;information</>,
                 <><strong>Calendly</strong> (États-Unis) — prise de rendez-vous</>,
                 <><strong>Google</strong> — messagerie professionnelle et lecteur vidéo YouTube (mode « sans cookie »)</>,
                 <><strong>Meta / WhatsApp</strong> — uniquement si vous nous contactez via le bouton WhatsApp</>,
@@ -223,7 +224,7 @@ export default function PolitiqueConfidentialitePage() {
             </p>
           </Section>
 
-          <p className="text-xs text-[#1E172D]/45 mt-8">Dernière mise à jour : 9 septembre 2026.</p>
+          <p className="text-xs text-[#1E172D]/45 mt-8">Dernière mise à jour : 16 octobre 2026.</p>
         </div>
       </main>
       <FooterSection />

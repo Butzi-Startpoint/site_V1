@@ -24,3 +24,6 @@ export const OFFERS: Record<OfferKey, Offer> = {
 
 /* Prise de rendez-vous pour les particuliers (aiguillage hors checkout). */
 export const CALENDLY_URL = 'https://calendly.com/butzi/15-minutes-call-catch-up'
+
+/* Quiz « Diagnostic IA » (site guides.acceleration-ia.fr). Le slash final évite une redirection 301. */
+export const DIAGNOSTIC_URL = 'https://guides.acceleration-ia.fr/diagnostic/'
