@@ -34,15 +34,6 @@ export function FooterSection() {
           >
             Politique de confidentialité
           </a>
-          <a
-            href="https://panier.acceleration-ia.fr/cgv"
-            target="_blank"
-            rel="noopener"
-            className="text-[#F6F1EB]/35 hover:text-[#F6F1EB]/70 transition-colors"
-            style={{ fontFamily: 'var(--font-display)' }}
-          >
-            CGV
-          </a>
         </div>
       </div>
     </footer>

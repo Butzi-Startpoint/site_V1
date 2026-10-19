@@ -23,7 +23,7 @@ const ficheItems: { label: string; value: string }[] = [
   { label: 'Matériel nécessaire', value: 'Ordinateur et smartphone équipé d\'un navigateur web à jour et d\'une connexion internet · de quoi prendre des notes (carnet ou feuilles, stylo)' },
   { label: 'Effectif', value: '10 participants maximum par cohorte' },
   { label: 'Délais d\'accès', value: 'Inscription possible jusqu\'à 7 jours avant le démarrage, sous réserve de places. Pour une prise en charge FAF, prévoir environ 1 mois.' },
-  { label: 'Tarif', value: "À partir de 2 997 €, exonéré de TVA (art. 261-4-4° a du CGI), finançable (FAF, déductibilité fiscale)" },
+  { label: 'Tarif', value: "À partir de 2 497 €, exonéré de TVA (art. 261-4-4° a du CGI), finançable (FAF, déductibilité fiscale)" },
   { label: 'Sanction', value: 'Attestation de fin de formation' },
   { label: 'Accessibilité', value: 'Formation accessible aux personnes en situation de handicap' },
 ]
@@ -434,8 +434,8 @@ export default function ProgrammePage() {
           <Section title="Tarifs et financement">
             <p>
               Tarifs, exonérés de TVA (art. 261-4-4° a du CGI) :{' '}
-              <strong>Essentiel 2 997 €</strong> · <strong>Momentum 3 497 €</strong> ·{' '}
-              <strong>Premium 5 997 €</strong>. Paiement en 1 fois ou en 3 fois.
+              <strong>Essentiel 2 497 €</strong> · <strong>Momentum 3 497 €</strong> ·{' '}
+              <strong>Premium 5 997 €</strong>. Paiement en 1 fois ou en 3 fois sans frais.
             </p>
             <p>
               La formation est <strong>éligible au financement</strong> par les Fonds

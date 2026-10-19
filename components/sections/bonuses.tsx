@@ -256,7 +256,7 @@ export function Bonuses() {
                   className="text-[#FFFFAB] text-3xl md:text-4xl font-extrabold tracking-tight whitespace-nowrap leading-none"
                   style={{ fontFamily: 'var(--font-display)' }}
                 >
-                  2 997 €
+                  2 497 €
                 </span>
               </div>
             </div>

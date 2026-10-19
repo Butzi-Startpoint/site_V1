@@ -1,6 +1,6 @@
 import type { Estimation, FafName, Fiscal, Statut, Tmi, WizardState } from './types'
 
-export const FORMATION_PRICE = 2997
+export const FORMATION_PRICE = 2497
 export const FORMATION_HOURS = 12
 
 export function calculateFaf(statut: Statut | null): { amount: number; name: FafName; note: string } {

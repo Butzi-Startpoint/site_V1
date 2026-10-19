@@ -123,17 +123,6 @@ export default function MentionsLegalesPage() {
             </p>
           </Section>
 
-          <Section title="Conditions de vente">
-            <p>
-              Les conditions générales de vente applicables aux formations et prestations sont
-              accessibles lors de la commande, sur le tunnel de vente{' '}
-              <a href="https://panier.acceleration-ia.fr/cgv" target="_blank" rel="noopener" className="text-[#A68AFF] font-bold hover:underline">
-                panier.acceleration-ia.fr/cgv
-              </a>
-              .
-            </p>
-          </Section>
-
           <Section title="Responsabilité">
             <p>
               BUTZI EURL s&apos;efforce de fournir des informations à jour et vérifiées, sans pouvoir
