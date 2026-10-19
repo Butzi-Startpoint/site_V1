@@ -435,7 +435,7 @@ export default function ProgrammePage() {
             <p>
               Tarifs, exonérés de TVA (art. 261-4-4° a du CGI) :{' '}
               <strong>Essentiel 2 497 €</strong> · <strong>Momentum 3 497 €</strong> ·{' '}
-              <strong>Premium 5 997 €</strong>. Paiement en 1 fois ou en 3 fois.
+              <strong>Premium 5 997 €</strong>. Paiement en 1 fois ou en 3 fois sans frais.
             </p>
             <p>
               La formation est <strong>éligible au financement</strong> par les Fonds

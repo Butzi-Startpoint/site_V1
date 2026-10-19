@@ -185,8 +185,7 @@ const plans: Plan[] = [
     popular: false,
     sectionLabel: 'Inclus',
     payment: 'Paiement en 1x',
-    paymentSecondary: 'ou 3 x 849 €',
-    installmentTotal: 849 * 3,
+    paymentSecondary: 'ou en 3 fois sans frais',
     features: [
       '8 sessions live en groupe (1/semaine, 90 mn)',
       'Accès au cours en ligne : +80 vidéos',
@@ -210,8 +209,7 @@ const plans: Plan[] = [
     popular: true,
     sectionLabel: 'Tout l\'Essentiel, plus',
     payment: 'Paiement en 1x',
-    paymentSecondary: 'ou 3 x 1\u00a0189 €',
-    installmentTotal: 1189 * 3,
+    paymentSecondary: 'ou en 3 fois sans frais',
     features: [
       'Tout le programme Essentiel',
       'Audit individuel pré-programme (30 min)',
@@ -237,8 +235,7 @@ const plans: Plan[] = [
     popular: false,
     sectionLabel: 'Inclus',
     payment: 'Paiement en 1x',
-    paymentSecondary: 'ou 3 x 2\u00a0039 €',
-    installmentTotal: 2039 * 3,
+    paymentSecondary: 'ou en 3 fois sans frais',
     features: [
       { text: 'Tout le programme Méthode Levier + tous les bonus', sub: 'Programme finançable via FAF (Qualiopi)' },
       '1 séance de coaching 1:1 avec Butzi (1 heure)',
