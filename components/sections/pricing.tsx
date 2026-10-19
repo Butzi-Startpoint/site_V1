@@ -185,8 +185,8 @@ const plans: Plan[] = [
     popular: false,
     sectionLabel: 'Inclus',
     payment: 'Paiement en 1x',
-    paymentSecondary: 'ou 3 x 1\u00a0019 €',
-    installmentTotal: 1019 * 3,
+    paymentSecondary: 'ou 3 x 849 €',
+    installmentTotal: 849 * 3,
     features: [
       '8 sessions live en groupe (1/semaine, 90 mn)',
       'Accès au cours en ligne : +80 vidéos',
