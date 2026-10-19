@@ -417,7 +417,7 @@ export function Modules() {
               <p className="text-[#1E172D]/55 text-sm mb-6 leading-relaxed">
                 8 semaines, à raison d&apos;une session collective de 1h30 par semaine.{' '}
                 <span className="text-[#1E172D]/80">
-                  <strong className="text-[#1E172D]">Créneau prévisionnel</strong> : mardi de 9h30 à 11h.
+                  <strong className="text-[#1E172D]">Créneau prévisionnel</strong> : vendredi de 14h à 15h30.
                 </span>{' '}
                 <span className="text-[#1E172D]/45">
                   Le calendrier définitif est établi avec les participants avant le démarrage de la

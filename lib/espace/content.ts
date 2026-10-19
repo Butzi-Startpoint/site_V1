@@ -3,7 +3,12 @@ import { COHORT } from '@/lib/cohort'
 /* ── Contenu de l'espace cohorte ──
    Tout se modifie ici. Un module sans `replay` affiche « Replay bientôt disponible ». */
 
-export type Link = { label: string; description?: string; href: string }
+export type Link = {
+  label: string
+  description?: string
+  href: string
+  extra?: { label: string; href: string } // second lien dans la même carte (ex. replay)
+}
 export type Prompt = { title: string; text: string }
 
 export type Module = {
@@ -39,6 +44,10 @@ export const START_HERE: Link[] = [
     label: "Faire un site avec l'IA",
     description: 'Le guide pour construire ton site avec l’IA.',
     href: 'https://guides.acceleration-ia.fr/lecture/faire-un-site',
+    extra: {
+      label: 'Voir le replay',
+      href: 'https://drive.google.com/file/d/1nvkFUFjxFCxMi15-D71AT7bVtCoEP3O3/view?usp=sharing',
+    },
   },
 ]
 

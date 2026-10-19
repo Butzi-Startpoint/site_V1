@@ -338,7 +338,7 @@ export default function ProgrammePage() {
             </p>
             <p>
               Le format se compose de <strong>8 classes virtuelles de groupe de 90 minutes</strong>{' '}
-              (une par semaine). <strong>Créneau prévisionnel :</strong> mardi de 9 h 30 à 11 h. Le
+              (une par semaine). <strong>Créneau prévisionnel :</strong> vendredi de 14 h à 15 h 30. Le
               calendrier définitif est établi avec les participants avant le démarrage de la cohorte,
               afin de tenir compte au mieux des disponibilités du groupe. Les{' '}
               <strong>replays sont disponibles</strong> et le rattrapage est possible.
