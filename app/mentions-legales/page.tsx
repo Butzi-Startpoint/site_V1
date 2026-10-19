@@ -89,10 +89,6 @@ export default function MentionsLegalesPage() {
                 www.netlify.com
               </a>
             </p>
-            <p>
-              Le tunnel de commande (sous-domaine <strong>panier.acceleration-ia.fr</strong>) est
-              opéré via la plateforme <strong>Systeme.io</strong> (Systeme.io, France).
-            </p>
           </Section>
 
           <Section title="Propriété intellectuelle">

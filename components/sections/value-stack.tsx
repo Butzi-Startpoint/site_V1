@@ -110,7 +110,7 @@ export const bonuses = [
   {
     num: 'Bonus 4',
     title: 'Kit opérationnel à chaque module',
-    desc: 'Templates, skills IA, prompts, checklists, systèmes d\'IA. Tout ce qu\'il faut pour appliquer immédiatement, testé sur +120 entrepreneurs.',
+    desc: 'Templates, skills IA, prompts, checklists, systèmes d\'IA. Tout ce qu\'il faut pour appliquer immédiatement.',
     value: 297,
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1E172D" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
