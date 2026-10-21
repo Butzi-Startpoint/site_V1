@@ -51,10 +51,10 @@ export const START_HERE: Link[] = [
   },
 ]
 
-/* Titres officiels : identiques à la page /programme (module 0 = semaine 1). */
+/* Titres du programme Notion (module 0 = semaine 1, affiché sans le mot « module »). */
 const official: { title: string; objectif: string; livrable: string }[] = [
   {
-    title: "Introduction à l'IA et paramétrage sécurisé de vos outils",
+    title: "Paramétrage des outils et introduction à l'IA",
     objectif: "Comprendre les fondamentaux de l'IA générative, paramétrer votre outil IA de façon sécurisée et rencontrer la communauté d'entrepreneurs.",
     livrable: 'Votre outil configuré en sécurité et un réseau.',
   },
@@ -95,6 +95,22 @@ const official: { title: string; objectif: string; livrable: string }[] = [
   },
 ]
 
+/* Ressources par module (index = numéro de module). Les fiches sont servies par /espace/fiches/[slug]. */
+const RESOURCES: Record<number, Link[]> = {
+  0: [
+    {
+      label: 'Fiche Formules IA et DPA',
+      description: 'Claude et ChatGPT : quelle formule pour quelles données, avec exemples.',
+      href: '/espace/fiches/fiche-formules-dpa',
+    },
+    {
+      label: 'Fiche AI Act Solopreneur',
+      description: "Les 8 pièges à éviter pour utiliser l'IA sans franchir la ligne, même seul.",
+      href: '/espace/fiches/fiche-ai-act',
+    },
+  ],
+}
+
 export const MODULES: Module[] = official.map((o, i) => ({
   slug: `module-${i}`,
   n: i,
@@ -102,6 +118,7 @@ export const MODULES: Module[] = official.map((o, i) => ({
   hint: o.objectif,
   livrable: o.livrable,
   date: COHORT.sessions[i].date,
+  resources: RESOURCES[i],
 }))
 
 /* Exemple de remplissage d'un module :

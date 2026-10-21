@@ -1,10 +1,41 @@
 import Link from 'next/link'
 import { COHORT } from '@/lib/cohort'
-import { MODULES, START_HERE } from '@/lib/espace/content'
+import { MODULES, START_HERE, type Link as Resource } from '@/lib/espace/content'
 import { getMember } from '@/lib/espace/session'
 import { LoginForm } from './login-form'
 
 const display = { fontFamily: 'var(--font-display)' }
+
+function ResourceGrid({ items }: { items: Resource[] }) {
+  return (
+    <div className="grid gap-3 sm:grid-cols-2">
+      {items.map((r) => (
+        <div
+          key={r.href}
+          className="group flex flex-col rounded-2xl border border-[#1E172D]/10 bg-white p-5 transition hover:-translate-y-0.5 hover:border-[#A68AFF] hover:shadow-md"
+        >
+          <a href={r.href} target="_blank" rel="noopener noreferrer" className="block flex-1">
+            <p className="font-bold leading-snug" style={display}>
+              {r.label} <span className="text-[#A68AFF] transition group-hover:translate-x-0.5">→</span>
+            </p>
+            {r.description && <p className="mt-1.5 text-sm text-[#1E172D]/60">{r.description}</p>}
+          </a>
+          {r.extra && (
+            <a
+              href={r.extra.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 inline-block self-start rounded-lg bg-[#FFFFAB] px-3 py-1.5 text-sm font-bold hover:bg-[#f5f58f]"
+              style={display}
+            >
+              {r.extra.label} →
+            </a>
+          )}
+        </div>
+      ))}
+    </div>
+  )
+}
 
 export default async function EspacePage() {
   const member = await getMember()
@@ -34,32 +65,7 @@ export default async function EspacePage() {
         <h2 className="mb-4 text-xl font-extrabold" style={display}>
           Pour commencer
         </h2>
-        <div className="grid gap-3 sm:grid-cols-2">
-          {START_HERE.map((r) => (
-            <div
-              key={r.href}
-              className="group flex flex-col rounded-2xl border border-[#1E172D]/10 bg-white p-5 transition hover:-translate-y-0.5 hover:border-[#A68AFF] hover:shadow-md"
-            >
-              <a href={r.href} target="_blank" rel="noopener noreferrer" className="block flex-1">
-                <p className="font-bold leading-snug" style={display}>
-                  {r.label} <span className="text-[#A68AFF] transition group-hover:translate-x-0.5">→</span>
-                </p>
-                {r.description && <p className="mt-1.5 text-sm text-[#1E172D]/60">{r.description}</p>}
-              </a>
-              {r.extra && (
-                <a
-                  href={r.extra.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-3 inline-block self-start rounded-lg bg-[#FFFFAB] px-3 py-1.5 text-sm font-bold hover:bg-[#f5f58f]"
-                  style={display}
-                >
-                  {r.extra.label} →
-                </a>
-              )}
-            </div>
-          ))}
-        </div>
+        <ResourceGrid items={START_HERE} />
       </section>
 
       <section>
@@ -77,14 +83,14 @@ export default async function EspacePage() {
                   className="flex h-10 w-10 flex-none items-center justify-center rounded-full text-sm font-semibold text-white"
                   style={{ ...display, background: 'linear-gradient(145deg, #3A2860 0%, #A68AFF 100%)' }}
                 >
-                  {m.n}
+                  {m.n + 1}
                 </span>
                 <span className="min-w-0 flex-1">
                   <span className="block font-bold" style={display}>
-                    Module {m.n} : {m.title}
+                    {m.title}
                   </span>
                   <span className="block truncate text-sm text-[#1E172D]/60">
-                    Semaine {m.n + 1} · {m.date}
+                    {m.n > 0 && `Module ${m.n} · `}Semaine {m.n + 1} · {m.date}{m.resources ? ` · ${m.resources.length} ressources` : ''}
                   </span>
                 </span>
                 <span
