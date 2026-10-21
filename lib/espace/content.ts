@@ -99,6 +99,11 @@ const official: { title: string; objectif: string; livrable: string }[] = [
 const RESOURCES: Record<number, Link[]> = {
   0: [
     {
+      label: "Charte d'usage de l'IA",
+      description: 'Un modèle en 8 engagements à personnaliser et à montrer à tes clients.',
+      href: '/espace/fiches/charte-ia',
+    },
+    {
       label: 'Fiche Formules IA et DPA',
       description: 'Claude et ChatGPT : quelle formule pour quelles données, avec exemples.',
       href: '/espace/fiches/fiche-formules-dpa',
