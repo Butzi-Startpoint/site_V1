@@ -51,6 +51,14 @@ export const START_HERE: Link[] = [
   },
 ]
 
+export const FICHES_PRATIQUES: Link[] = [
+  {
+    label: 'Fiche AI Act Solopreneur',
+    description: "Les 8 pièges à éviter pour utiliser l'IA sans franchir la ligne, même seul.",
+    href: '/espace/fiches/fiche-ai-act',
+  },
+]
+
 /* Titres officiels : identiques à la page /programme (module 0 = semaine 1). */
 const official: { title: string; objectif: string; livrable: string }[] = [
   {
