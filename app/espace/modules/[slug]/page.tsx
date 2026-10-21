@@ -20,7 +20,7 @@ export default async function ModulePage({ params }: { params: Promise<{ slug: s
           ← Retour à l’espace
         </Link>
         <p className="mt-5 text-xs font-bold uppercase tracking-widest text-[#A68AFF]">
-          Module {m.n} · Semaine {m.n + 1} · {m.date}
+          {m.n > 0 && `Module ${m.n} · `}Semaine {m.n + 1} · {m.date}
         </p>
         <h1 className="mt-1 text-3xl font-extrabold tracking-tight md:text-4xl" style={display}>
           {m.title}

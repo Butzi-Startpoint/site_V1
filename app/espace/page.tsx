@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { COHORT } from '@/lib/cohort'
-import { FICHES_PRATIQUES, MODULES, START_HERE, type Link as Resource } from '@/lib/espace/content'
+import { MODULES, START_HERE, type Link as Resource } from '@/lib/espace/content'
 import { getMember } from '@/lib/espace/session'
 import { LoginForm } from './login-form'
 
@@ -70,13 +70,6 @@ export default async function EspacePage() {
 
       <section>
         <h2 className="mb-4 text-xl font-extrabold" style={display}>
-          Fiches pratiques
-        </h2>
-        <ResourceGrid items={FICHES_PRATIQUES} />
-      </section>
-
-      <section>
-        <h2 className="mb-4 text-xl font-extrabold" style={display}>
           Replays et ressources par session
         </h2>
         <ul className="space-y-3">
@@ -90,14 +83,14 @@ export default async function EspacePage() {
                   className="flex h-10 w-10 flex-none items-center justify-center rounded-full text-sm font-semibold text-white"
                   style={{ ...display, background: 'linear-gradient(145deg, #3A2860 0%, #A68AFF 100%)' }}
                 >
-                  {m.n}
+                  {m.n + 1}
                 </span>
                 <span className="min-w-0 flex-1">
                   <span className="block font-bold" style={display}>
-                    Module {m.n} : {m.title}
+                    {m.title}
                   </span>
                   <span className="block truncate text-sm text-[#1E172D]/60">
-                    Semaine {m.n + 1} · {m.date}
+                    {m.n > 0 && `Module ${m.n} · `}Semaine {m.n + 1} · {m.date}{m.resources ? ` · ${m.resources.length} ressources` : ''}
                   </span>
                 </span>
                 <span
