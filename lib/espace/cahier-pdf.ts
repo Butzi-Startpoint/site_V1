@@ -137,11 +137,6 @@ export async function downloadCahierPdf(cahier: Cahier, values: CahierValues, me
   text(cahier.intro, M, 9.5, 'normal', SOFT)
 
   for (const b of cahier.blocks) {
-    if (b.type === 'recap') {
-      // La fiche récap occupe sa propre page.
-      doc.addPage()
-      y = M
-    }
     need(30)
     heading(b.title)
     if ('intro' in b && b.intro) {
@@ -158,73 +153,6 @@ export async function downloadCahierPdf(cahier: Cahier, values: CahierValues, me
         y += 0.8
       }
       y += 1.5
-    }
-
-    if (b.type === 'recap') {
-      for (const sec of b.sections) {
-        need(22)
-        y += 2
-        text(sec.title.toUpperCase(), M, 8, 'bold', VIOLET)
-        y += 0.8
-        if (sec.text) {
-          text(sec.text, M, 10, 'normal', INK)
-          y += 0.8
-        }
-        if (sec.items) {
-          for (const it of sec.items) {
-            need(6)
-            fill(YELLOW)
-            const w = doc.getTextWidth(clean(it)) + 5
-            doc.roundedRect(M, y, Math.min(w, CW), 6, 3, 3, 'F')
-            text(it, M + 2.5, 9.5, 'bold', INK, CW - 5)
-            y += 1.6
-          }
-        }
-        if (sec.levels) {
-          const n = sec.levels.length
-          const step = 7
-          const total = n * step + 5
-          need(total + 2)
-          const y0 = y
-          const shades: RGB[] = [[241, 237, 255], [228, 220, 255], [216, 208, 255], [199, 185, 255], [183, 164, 255]]
-          sec.levels.forEach((lv, i) => {
-            fill(shades[Math.min(i, shades.length - 1)])
-            doc.roundedRect(M + i * 5, y0 + i * step, CW * 0.75 - i * 10, total - i * step - i * 1.2, 2, 2, 'F')
-          })
-          sec.levels.forEach((lv, i) => {
-            doc.setFont('helvetica', 'bold')
-            doc.setFontSize(9)
-            color(INK)
-            doc.text(clean(lv), M + i * 5 + 3, y0 + i * step + 4.8)
-          })
-          y = y0 + total + 3
-        }
-        if (sec.compare) {
-          const colW = (CW - 4) / 2
-          doc.setFontSize(9.5)
-          doc.setFont('helvetica', 'normal')
-          const heights = sec.compare.map((c) => (doc.splitTextToSize(clean(c.text), colW - 9) as string[]).length * lineH(9.5) + 11)
-          const h = Math.max(...heights)
-          need(h + 2)
-          sec.compare.forEach((c, i) => {
-            const x = M + i * (colW + 4)
-            fill(CREAM)
-            doc.roundedRect(x, y, colW, h, 2, 2, 'F')
-            fill(VIOLET)
-            doc.rect(x, y, 1.2, h, 'F')
-            doc.setFont('helvetica', 'bold')
-            doc.setFontSize(10)
-            color(INK)
-            doc.text(clean(c.title), x + 5, y + 5.5)
-            doc.setFont('helvetica', 'normal')
-            doc.setFontSize(9.5)
-            color(INK)
-            const lines = doc.splitTextToSize(clean(c.text), colW - 9) as string[]
-            lines.forEach((l, k) => doc.text(l, x + 5, y + 11 + k * lineH(9.5) - 1))
-          })
-          y += h + 3
-        }
-      }
     }
 
     if (b.type === 'fields') {

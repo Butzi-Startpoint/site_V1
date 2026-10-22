@@ -3,8 +3,11 @@ import { COHORT } from '@/lib/cohort'
 /* ── Contenu de l'espace cohorte ──
    Tout se modifie ici. Un module sans `replay` affiche « Replay bientôt disponible ». */
 
+export type IconName = 'doc' | 'shield' | 'scale' | 'checklist' | 'recap' | 'book'
+
 export type Link = {
   label: string
+  icon?: IconName
   description?: string
   href: string
   extra?: { label: string; href: string } // second lien dans la même carte (ex. replay)
@@ -105,17 +108,26 @@ const official: { title: string; objectif: string; livrable: string }[] = [
 const RESOURCES: Record<number, Link[]> = {
   0: [
     {
+      label: 'Fiche récap de la séance',
+      icon: 'recap',
+      description: "L'essentiel sur l'IA, l'IA générative, les LLM et les agents.",
+      href: '/espace/cahiers/semaine-1/recap',
+    },
+    {
       label: "Charte d'usage de l'IA",
-      description: 'Un modèle en 8 engagements à personnaliser et à montrer à tes clients.',
+      icon: 'checklist',
+      description: 'Un modèle en 8 engagements à personnaliser et à montrer à vos clients.',
       href: '/espace/fiches/charte-ia',
     },
     {
       label: 'Fiche Formules IA et DPA',
+      icon: 'shield',
       description: 'Claude et ChatGPT : quelle formule pour quelles données, avec exemples.',
       href: '/espace/fiches/fiche-formules-dpa',
     },
     {
       label: 'Fiche AI Act Solopreneur',
+      icon: 'scale',
       description: "Les 8 pièges à éviter pour utiliser l'IA sans franchir la ligne, même seul.",
       href: '/espace/fiches/fiche-ai-act',
     },
