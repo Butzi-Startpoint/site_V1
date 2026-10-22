@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation'
 import { MODULES } from '@/lib/espace/content'
 import { getMember } from '@/lib/espace/session'
 import { CopyButton } from '../../copy-button'
+import { getCahier } from '@/lib/espace/cahiers'
+import { CahierPreview } from '../../cahier-preview'
 
 const display = { fontFamily: 'var(--font-display)' }
 
@@ -49,6 +51,8 @@ export default async function ModulePage({ params }: { params: Promise<{ slug: s
           <p className="text-[#1E172D]/60">Le replay sera disponible après la session.</p>
         )}
       </section>
+
+      {m.cahier && getCahier(m.cahier) && <CahierPreview cahier={getCahier(m.cahier)!} />}
 
       {m.recap && (
         <section>
