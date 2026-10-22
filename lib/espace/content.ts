@@ -26,6 +26,11 @@ export type Module = {
 
 export const START_HERE: Link[] = [
   {
+    label: "Livret d'accueil",
+    description: 'Programme, organisation, évaluation, règles et cadre administratif de la formation.',
+    href: '/espace/fiches/livret-accueil',
+  },
+  {
     label: 'Cours en ligne',
     description: 'Les leçons de la formation sur Systeme.io.',
     href: 'https://systeme.io/school',

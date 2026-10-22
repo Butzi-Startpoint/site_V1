@@ -1,4 +1,5 @@
 import ficheAiAct from './files/fiche-ai-act'
+import livretAccueil from './files/livret-accueil'
 import chartIa from './files/charte-ia'
 import ficheFormulesDpa from './files/fiche-formules-dpa'
 
@@ -7,4 +8,5 @@ export const FICHES: Record<string, string> = {
   'fiche-ai-act': ficheAiAct,
   'fiche-formules-dpa': ficheFormulesDpa,
   'charte-ia': chartIa,
+  'livret-accueil': livretAccueil,
 }
