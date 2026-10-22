@@ -22,6 +22,7 @@ export type Module = {
   recap?: string[] // paragraphes
   prompts?: Prompt[]
   resources?: Link[] // templates, PDF, liens
+  cahier?: string // slug d'un cahier d'exercices (lib/espace/cahiers.ts)
 }
 
 export const START_HERE: Link[] = [
@@ -129,6 +130,7 @@ export const MODULES: Module[] = official.map((o, i) => ({
   livrable: o.livrable,
   date: COHORT.sessions[i].date,
   resources: RESOURCES[i],
+  cahier: i === 0 ? 'semaine-1' : undefined,
 }))
 
 /* Exemple de remplissage d'un module :
