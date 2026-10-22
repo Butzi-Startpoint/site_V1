@@ -5,6 +5,7 @@ import { getMember } from '@/lib/espace/session'
 import { CopyButton } from '../../copy-button'
 import { getCahier } from '@/lib/espace/cahiers'
 import { CahierPreview } from '../../cahier-preview'
+import { ResourceCard } from '../../resource-card'
 
 const display = { fontFamily: 'var(--font-display)' }
 
@@ -93,21 +94,11 @@ export default async function ModulePage({ params }: { params: Promise<{ slug: s
           <h2 className="mb-3 text-lg font-extrabold" style={display}>
             Templates et ressources
           </h2>
-          <ul className="space-y-2">
+          <div className="space-y-2">
             {m.resources.map((r) => (
-              <li key={r.href}>
-                <a
-                  href={r.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-semibold underline decoration-[#A68AFF] underline-offset-4 hover:text-[#7C5CE0]"
-                >
-                  {r.label}
-                </a>
-                {r.description && <span className="text-[#1E172D]/60"> : {r.description}</span>}
-              </li>
+              <ResourceCard key={r.href} r={r} />
             ))}
-          </ul>
+          </div>
         </section>
       )}
     </article>

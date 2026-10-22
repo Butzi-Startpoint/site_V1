@@ -20,7 +20,6 @@ export type Block =
       personalize?: { id: string; label: string; token: string; placeholder?: string }
       answers: Field[]
     }
-  | { type: 'recap'; id: string; title: string; intro?: string; sections: RecapSection[] }
 
 /** Fiche récap : texte, liste, schéma emboîté ou comparaison de deux colonnes. */
 export type RecapSection = {
@@ -40,6 +39,8 @@ export type Cahier = {
   /** Résumé court affiché sur l'aperçu. */
   teaser: string
   blocks: Block[]
+  /** Fiche récap de la séance, servie sur une page à part (/espace/cahiers/[slug]/recap). */
+  recap?: { title: string; intro?: string; sections: RecapSection[] }
 }
 
 export const CAHIERS: Cahier[] = [
@@ -78,9 +79,9 @@ export const CAHIERS: Cahier[] = [
       {
         type: 'checklist',
         id: 'parametrage',
-        title: 'Fiche pratique : bien démarrer avec ChatGPT',
+        title: 'Paramétrage essentiel',
         intro:
-          "Paramétrage essentiel. Avec Claude, les mêmes réglages se trouvent dans Paramètres, puis Confidentialité. Cochez chaque ligne pendant la séance, elle est validée en direct pendant votre partage d'écran.",
+          "Les réglages de confidentialité se trouvent dans Paramètres : Contrôle des données (ChatGPT) ou Confidentialité (Claude). Cochez chaque ligne pendant la séance, elle est validée en direct pendant votre partage d'écran.",
         items: [
           { id: 'partage', label: "J'ai désactivé le partage des données pour entraîner les prochains modèles" },
           { id: 'sensibles', label: 'Je ne colle jamais de données ultra sensibles (mots de passe, données bancaires)' },
@@ -113,9 +114,9 @@ export const CAHIERS: Cahier[] = [
       {
         type: 'prompt',
         id: 'mission-interview',
-        title: 'Mission 1 : apprendre à tutoyer son IA',
+        title: "Mission 1 : l'IA vous interviewe en 30 questions",
         intro:
-          "Demandez à votre IA de vous interviewer en 30 questions et répondez-lui à la voix, comme à une personne, en la tutoyant. Les missions ne sont pas notées : elles servent de base de travail à la semaine 2.",
+          "Demandez à votre IA de vous interviewer et répondez-lui à la voix. Les missions ne sont pas notées : elles servent de base de travail à la semaine 2.",
         prompt:
           "Tu es un consultant business bienveillant et curieux. Pose-moi 30 questions sur mon activité, mes objectifs et qui je suis : mon business, mes clients, mes offres, mon quotidien, mes forces, mes blocages, ce qui me prend le plus de temps, mes ambitions à 1 an, 3 ans et 10 ans.",
         answers: [{ id: 'interview', label: "Ce que j'ai découvert sur moi et mon activité", lines: 3 }],
@@ -140,9 +141,8 @@ export const CAHIERS: Cahier[] = [
           { id: 'temps', label: 'Ce que je ferai du temps gagné', lines: 2 },
         ],
       },
-      {
-        type: 'recap',
-        id: 'recap',
+    ],
+    recap: {
         title: 'Fiche récap de la séance',
         intro: "L'essentiel de ce qui a été dit sur l'IA. Nous y revenons en semaine 2.",
         sections: [
@@ -174,8 +174,7 @@ export const CAHIERS: Cahier[] = [
             ],
           },
         ],
-      },
-    ],
+    },
   },
 ]
 
